@@ -7,5 +7,4 @@ import 'package:funvas/funvas.dart';
 
 final creativecreatorormaybenotTweets = <Funvas>[
   One(),
-  ExampleFunvas(),
 ];
