@@ -18,8 +18,9 @@ class FunvasContainer extends StatefulWidget {
   /// timer on the state will reset, restarting [Funvas.u] at `0` seconds.
   const FunvasContainer({
     Key key,
-    this.funvas,
-  }) : super(key: key);
+    @required this.funvas,
+  })  : assert(funvas != null),
+        super(key: key);
 
   /// The [Funvas] that can draw in the container.
   final Funvas funvas;
@@ -47,8 +48,7 @@ class _FunvasContainerState extends State<FunvasContainer> {
     super.didUpdateWidget(oldWidget);
 
     if (oldWidget.funvas != widget.funvas) {
-      _time.dispose();
-      _time = ValueNotifier(0);
+      _time.value = 0;
       _start = DateTime.now();
     }
   }
@@ -71,6 +71,7 @@ class _FunvasContainerState extends State<FunvasContainer> {
 
   void _update() {
     _time.value = DateTime.now().difference(_start).inMicroseconds / 1e6;
+    _scheduleUpdate();
   }
 
   @override
@@ -78,7 +79,7 @@ class _FunvasContainerState extends State<FunvasContainer> {
     return CustomPaint(
       willChange: true,
       painter: FunvasPainter(
-        time: null,
+        time: _time,
         delegate: widget.funvas,
       ),
     );
