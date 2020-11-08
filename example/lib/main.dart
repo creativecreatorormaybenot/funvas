@@ -70,7 +70,7 @@ class WaveFunvas extends Funvas {
   void u(double t) {
     c.scale(x.width / 1920, x.height / 1080);
 
-    for (int i = 0; i < 64; i++) {
+    for (var i = 0; i < 64; i++) {
       c.drawRect(
         Rect.fromLTWH(
           i * 30.0,
@@ -91,7 +91,7 @@ class OrbsFunvas extends Funvas {
     c.scale(x.width / 1920, x.height / 1080);
 
     final v = t + 400;
-    for (int q = 255; q > 0; q--) {
+    for (var q = 255; q > 0; q--) {
       final paint = Paint()..color = R(q, q, q);
       c.drawCircle(
           Offset(

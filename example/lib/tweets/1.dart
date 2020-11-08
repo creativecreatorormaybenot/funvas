@@ -41,12 +41,12 @@ class One extends Funvas {
         );
       }
 
-      for (int i = 0; i < delta * 10; i++) {
+      for (var i = 0; i < delta * 10; i++) {
         draw(i * 7.0);
       }
     }
 
-    for (int i = 0; i < 16; i++) {
+    for (var i = 0; i < 16; i++) {
       sc(i / 2 / 10, 120.0 - i * 7);
     }
   }
