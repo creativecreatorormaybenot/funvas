@@ -10,6 +10,7 @@ The idea of the package is to provide an easy way to create custom canvas animat
 on time and some math functions (sine, cosine, etc.) - like [this one][Twitter].
 
 GIFs to be inserted here (:
+Will be added once `0.1.0` is around.
 
 *Inspired by Dwitter* ([check it out][Dwitter]). This is also the reason why
 the following shortcut functions and variables are available; they might be expanded upon in the 
@@ -31,7 +32,8 @@ You can of course use all of the `Canvas` functionality, the same way you can us
 
 ## Usage  
 
-USAGE to be inserted here (:
+USAGE to be inserted here (:  
+Will be added once `0.1.0` is around.
 
 See the [example package][example] for a complete example implementation.
 
