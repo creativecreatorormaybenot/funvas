@@ -1,4 +1,3 @@
-import 'package:example/main.dart';
 import 'package:example/tweets/1.dart';
 import 'package:funvas/funvas.dart';
 
