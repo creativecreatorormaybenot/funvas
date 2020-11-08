@@ -10,8 +10,6 @@ jobs:
     timeout-minutes: 9
     runs-on: ubuntu-latest
     name: Configuration of funvas
-    strategy:
-      fail-fast: false
 
     steps:
       - uses: actions/checkout@v2.3.3
@@ -24,9 +22,6 @@ jobs:
     timeout-minutes: 4
     runs-on: ubuntu-latest
     name: Publishing of funvas
-    strategy:
-      matrix:
-      fail-fast: false
 
     steps:
       - uses: actions/checkout@v2.3.3

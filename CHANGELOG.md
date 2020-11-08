@@ -1,3 +1,3 @@
-## 0.1.0
+## 0.0.1
 
-* Initial release.
+* Pre-release version of funvas that is a functioning package but not yet polished.
