@@ -23,9 +23,9 @@ abstract class Funvas {
   /// Returns the tangent of [radians], shorthand for [tan].
   double T(double radians) => tan(radians);
 
-  /// Returns an RGB(A) color, shorthand for [Color.fromARGB].
-  Color R(num r, num g, num b, [num a]) {
-    return Color.fromARGB((a ?? 255) ~/ 1, r ~/ 1, g ~/ 1, b ~/ 1);
+  /// Returns an RGB(O) color, shorthand for [Color.fromRGBO].
+  Color R(num r, num g, num b, [num o]) {
+    return Color.fromRGBO(r ~/ 1, g ~/ 1, b ~/ 1, o ?? 1);
   }
 
   /// The context for the funvas, providing the available size.
@@ -74,7 +74,8 @@ class FunvasPainter extends CustomPainter {
   const FunvasPainter({
     @required this.time,
     @required this.delegate,
-  })  : assert(time != null),
+  })
+      : assert(time != null),
         assert(delegate != null),
         super(repaint: time);
 
