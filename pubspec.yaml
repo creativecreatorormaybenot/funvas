@@ -1,0 +1,22 @@
+name: funvas
+description: >2-
+  Package that allows creating canvas animations based on time and math functions.
+
+  Fun + canvas -> funvas :)
+version: 0.1.0
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  meta: any
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  pedantic: ^1.9.2
