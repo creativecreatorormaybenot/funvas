@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'file:///G:/os/creativecreatorormaybenot/funvas/example/lib/tweets/tweets.dart';
+import 'package:example/tweets/tweets.dart';
 import 'package:example/viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:funvas/funvas.dart';
