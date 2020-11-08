@@ -74,8 +74,7 @@ class FunvasPainter extends CustomPainter {
   const FunvasPainter({
     @required this.time,
     @required this.delegate,
-  })
-      : assert(time != null),
+  })  : assert(time != null),
         assert(delegate != null),
         super(repaint: time);
 
