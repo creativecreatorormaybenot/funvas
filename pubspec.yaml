@@ -4,6 +4,7 @@ description: >2-
 
   Fun + canvas -> funvas :)
 version: 0.0.1
+repository: https://github.com/creativecreatorormaybenot/funvas
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -13,7 +14,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  meta: any
+  meta: ^1.2.3
 
 dev_dependencies:
   flutter_test:
