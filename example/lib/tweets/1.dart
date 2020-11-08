@@ -1,6 +1,10 @@
-part of tweets;
+import 'dart:math';
+import 'dart:ui';
 
-class _One extends Funvas {
+import 'package:funvas/funvas.dart';
+
+/// todo(creativecreatorormaybe): add tweet link.
+class One extends Funvas {
   @override
   void u(double t) {
     final w = x.width,
@@ -11,7 +15,7 @@ class _One extends Funvas {
     // Draw background.
     c.drawPaint(Paint()..color = R(242, 227, 193));
 
-    final outer = m * (.4 + C(t / 9) * .04);
+    final outer = m * (.42 + C(t / 3) * 5e-2);
 
     // Draw background circle.
     c.drawCircle(
@@ -24,19 +28,25 @@ class _One extends Funvas {
 
     // Draws a small circle.
     void sc(double delta, double radius) {
-      final offset = center +
-          Offset.fromDirection(
-              T(S(t + delta * 1.7)) * pi * 2, outer - padding - radius);
-
-      c.drawCircle(
-          offset,
-          radius,
+      void draw(double minorDelta) {
+        c.drawCircle(
+          center +
+              Offset.fromDirection(
+                  T(S(t + pow(.2, delta))) * pi * 2 + minorDelta / 100,
+                  outer - padding - radius - minorDelta / 10),
+          radius - minorDelta / 10,
           Paint()
-            ..color =
-                R(200 + delta * 40, 100 + delta * 80, 100, .1 + delta / 3));
+            ..color = R(200 + delta * 40, 100 + delta * 80, 100 - minorDelta,
+                .1 + delta / 5),
+        );
+      }
+
+      for (int i = 0; i < delta * 10; i++) {
+        draw(i * 7.0);
+      }
     }
 
-    for (int i = 16; i > 0; i--) {
+    for (int i = 0; i < 16; i++) {
       sc(i / 2 / 10, 120.0 - i * 7);
     }
   }

@@ -1,0 +1,39 @@
+name: Checks
+
+on:
+  pull_request:
+    branches:
+      - master
+    paths:
+      - '**/lib/**'
+      - '**/android/**'
+      - '**/ios/**'
+      - '**/pubspec.yaml'
+      - '**/test/**'
+      - '**/test_driver/**'
+      - '**/assets/**'
+
+jobs:
+  analyze:
+    timeout-minutes: 7
+    runs-on: ${{ matrix.os }}
+    name: Analysis of funvas (${{ matrix.channel }}; ${{ matrix.os }})
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        channel:
+          - 'stable'
+          - 'beta'
+          - 'dev'
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v2.3.3
+      - uses: subosito/flutter-action@v1.3.2
+        with:
+          channel: ${{ matrix.channel }}
+      - run: flutter pub get
+      - name: Check format
+        run: dart format . --set-exit-if-changed
+      - run: flutter analyze
