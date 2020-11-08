@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:example/tweets.dart';
+import 'package:example/viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:funvas/funvas.dart';
 
@@ -20,40 +22,29 @@ class ExampleApp extends StatelessWidget {
     OrbsFunvas(),
   ];
 
-  static int _selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body: StatefulBuilder(builder: (context, setState) {
-          return Stack(
+      home: DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text('creativecreatorormaybenot Funvas'),
+            bottom: TabBar(
+              isScrollable: true,
+              tabs: [
+                Tab(text: 'Examples'),
+                Tab(text: '@creativemaybeno tweets'),
+              ],
+            ),
+          ),
+          body: TabBarView(
             children: [
-              Center(
-                child: AspectRatio(
-                  aspectRatio: 1,
-                  child: FunvasContainer(
-                    funvas: examples[_selectedIndex],
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Padding(
-                  padding: const EdgeInsets.all(32),
-                  child: OutlinedButton(
-                    onPressed: () {
-                      setState(() {
-                        _selectedIndex = (_selectedIndex + 1) % examples.length;
-                      });
-                    },
-                    child: const Text('Next'),
-                  ),
-                ),
-              ),
+              FunvasViewer(funvases: ExampleApp.examples),
+              FunvasViewer(funvases: creativecreatorormaybenotTweets),
             ],
-          );
-        }),
+          ),
+        ),
       ),
     );
   }
