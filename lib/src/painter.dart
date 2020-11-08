@@ -24,8 +24,8 @@ abstract class Funvas {
   double T(double radians) => tan(radians);
 
   /// Returns an RGB(A) color, shorthand for [Color.fromARGB].
-  Color R(int r, int g, int b, [int a]) {
-    return Color.fromARGB(a ?? 255, r, g, b);
+  Color R(num r, num g, num b, [num a]) {
+    return Color.fromARGB((a ?? 255) ~/ 1, r ~/ 1, g ~/ 1, b ~/ 1);
   }
 
   /// The context for the funvas, providing the available size.
@@ -56,6 +56,11 @@ class FunvasContext {
 
   /// The height available to the canvas.
   final double height;
+
+  @override
+  String toString() {
+    return 'FunvasContext($width, $height)';
+  }
 }
 
 /// The [CustomPainter] implementation that provides the [Funvas] with a canvas
@@ -69,7 +74,9 @@ class FunvasPainter extends CustomPainter {
   const FunvasPainter({
     @required this.time,
     @required this.delegate,
-  }) : super(repaint: time);
+  })  : assert(time != null),
+        assert(delegate != null),
+        super(repaint: time);
 
   /// The time managed by the funvas state.
   final ValueListenable<double> time;
@@ -84,6 +91,7 @@ class FunvasPainter extends CustomPainter {
 
     delegate._c = canvas;
     delegate._x = FunvasContext(size.width, size.height);
+    delegate.u(time.value);
 
     canvas.restore();
   }

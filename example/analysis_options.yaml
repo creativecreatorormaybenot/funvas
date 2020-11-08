@@ -1,0 +1,5 @@
+include: package:pedantic/analysis_options.1.9.2.yaml
+
+linter:
+  rules:
+    - public_member_api_docs
