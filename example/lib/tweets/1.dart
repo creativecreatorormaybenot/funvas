@@ -3,7 +3,7 @@ import 'dart:ui';
 
 import 'package:funvas/funvas.dart';
 
-/// todo(creativecreatorormaybe): add tweet link.
+/// https://twitter.com/creativemaybeno/status/1325389303288107008?s=20
 class One extends Funvas {
   @override
   void u(double t) {

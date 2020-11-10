@@ -1,4 +1,5 @@
 import 'package:example/tweets/1.dart';
+import 'package:example/tweets/2.dart';
 import 'package:funvas/funvas.dart';
 
 /// This file contains funvases from creativecreatorormaybenot's tweets.
@@ -6,4 +7,5 @@ import 'package:funvas/funvas.dart';
 
 final creativecreatorormaybenotTweets = <Funvas>[
   One(),
+  Two(),
 ];
