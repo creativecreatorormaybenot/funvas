@@ -6,6 +6,6 @@ import 'package:funvas/funvas.dart';
 /// You can find them in the timeline here: https://twitter.com/creativemaybeno.
 
 final creativecreatorormaybenotTweets = <Funvas>[
-  One(),
   Two(),
+  One(),
 ];
