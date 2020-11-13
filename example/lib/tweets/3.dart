@@ -8,8 +8,10 @@ import 'package:funvas/funvas.dart';
 class Three extends Funvas {
   @override
   void u(double t) {
-    final backgroundPaint = Paint()..color = Color(0xff600060),
-        foregroundPaint = Paint()..color = Color(0xeeadffd2);
+    final backgroundPaint = Paint()..color = Color(0xffffc108),
+        foregroundPaint = Paint()
+          ..color = Color(0xee0175c2)
+          ..strokeWidth = 2;
 
     c.drawPaint(backgroundPaint);
 
@@ -18,7 +20,7 @@ class Three extends Funvas {
     void drawBall(double radians, double distance, double radius) {
       final p = rect.center + Offset.fromDirection(-radians - pi / 2, distance);
 
-      c.drawLine(rect.center, p, foregroundPaint..strokeWidth = 1);
+      c.drawLine(rect.center, p, foregroundPaint);
       c.drawCircle(p, radius, foregroundPaint);
     }
 
@@ -34,7 +36,7 @@ class Three extends Funvas {
       drawBall(
         curve.transform((t - i / 12) / 2.5 % 1) * 2 * pi,
         40.0 + i * ((x.width / 2 - 128) / count),
-        9 + i / 6,
+        11 + i / 5,
       );
     }
 
