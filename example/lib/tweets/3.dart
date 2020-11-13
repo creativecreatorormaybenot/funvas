@@ -22,17 +22,18 @@ class Three extends Funvas {
       c.drawCircle(p, radius, foregroundPaint);
     }
 
+    const count = 12;
+
     c.translate(x.width / 2, x.height / 2);
-    c.rotate(C(t));
+    c.rotate(Cubic(.4, 0, .4, 1).transform(t / 10 % 1) * 2 * pi);
     c.translate(-x.width / 2, -x.height / 2);
 
-    final count = 28;
     for (var i = 0; i < count; i++) {
       final addend = (i / count) * .5,
           curve = Cubic(.4 + addend, 0, .4 + addend, 1);
       drawBall(
         curve.transform((t - i / 12) / 2.5 % 1) * 2 * pi,
-        40.0 + i * ((x.width / 2 - 56) / count),
+        40.0 + i * ((x.width / 2 - 128) / count),
         9 + i / 6,
       );
     }
