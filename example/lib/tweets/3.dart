@@ -10,7 +10,7 @@ class Three extends Funvas {
   void u(double t) {
     final backgroundPaint = Paint()..color = Color(0xffffc108),
         foregroundPaint = Paint()
-          ..color = Color(0xee13b9fd)
+          ..color = Color(0xee0175c2)
           ..strokeWidth = 2;
 
     c.drawPaint(backgroundPaint);
