@@ -11,7 +11,7 @@ class Three extends Funvas {
     final backgroundPaint = Paint()..color = Color(0xffffc108),
         foregroundPaint = Paint()
           ..color = Color(0xee13b9fd)
-          ..strokeWidth = x.width / 250;
+          ..strokeWidth = 2;
 
     c.drawPaint(backgroundPaint);
 
@@ -36,11 +36,11 @@ class Three extends Funvas {
       drawBall(
         curve.transform((t - i / 12) / 2.5 % 1) * 2 * pi,
         40.0 + i * ((x.width / 2 - 128) / count),
-        x.width / 62.5 + i / (x.width / 187.5),
+        11 + i / 5,
       );
     }
 
     // Draw center dot.
-    c.drawCircle(rect.center, 7, foregroundPaint);
+    c.drawCircle(rect.center, 5, foregroundPaint);
   }
 }
