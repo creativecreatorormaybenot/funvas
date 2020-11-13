@@ -42,3 +42,4 @@ app.*.map.json
 
 # Animation export
 export/*/*.png
+export/*.gif
