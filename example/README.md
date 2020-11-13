@@ -26,7 +26,7 @@ You can configure the following parameters:
 The exporter uses `flutter_test` and its **goldens files** to generate the frames. Those will be
 saved at `export/<animation name>/<frame number>.gif`. gifsicle will then assemble a GIF from the
 frames. Note that you will also need to adjust the bash script (`export/export_gif.sh`) to use your
-frames (the path) and also your frame rate (the delay is given in milliseconds, i.e. the delay
-between two frames - you will have to calculate that yourself).
+frames (the path) and also your frame rate (the delay is given in hundredths of a second, i.e. the
+delay between two frames - you will have to calculate that yourself).
 
 [gifsicle]: http://www.lcdf.org/gifsicle

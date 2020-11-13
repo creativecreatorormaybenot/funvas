@@ -8,8 +8,8 @@ import 'package:funvas/funvas.dart';
 class Three extends Funvas {
   @override
   void u(double t) {
-    final backgroundPaint = Paint()..color = Color(0xff600060),
-        foregroundPaint = Paint()..color = Color(0xeeadffd2);
+    final backgroundPaint = Paint()..color = Color(0xffffc108),
+        foregroundPaint = Paint()..color = Color(0xee02569b);
 
     c.drawPaint(backgroundPaint);
 

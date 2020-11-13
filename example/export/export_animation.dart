@@ -44,7 +44,7 @@ void main() {
     final fileNameWidth = (goldensNeeded - 1).toString().length;
 
     for (var i = 0; i < goldensNeeded; i++) {
-      time.value = 1 / fps * i;
+      time.value = microseconds / goldensNeeded * i / 1e6;
       await tester.pump();
 
       final matcher = MatchesGoldenFile.forStringPath(
