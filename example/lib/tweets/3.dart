@@ -33,7 +33,7 @@ class Three extends Funvas {
           curve = Cubic(.4 + addend, 0, .4 + addend, 1);
       drawBall(
         curve.transform((t - i / 12) / 2.5 % 1) * 2 * pi,
-        40.0 + i * ((x.width / 2 - 56) / count),
+        40.0 + i * ((x.width / 2 - 128) / count),
         9 + i / 6,
       );
     }
