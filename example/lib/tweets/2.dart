@@ -3,7 +3,7 @@ import 'dart:ui';
 
 import 'package:funvas/funvas.dart';
 
-/// todo(creativecreatorormaybenot): add tweet link.
+/// https://twitter.com/creativemaybeno/status/1326274769227046913?s=20
 class Two extends Funvas {
   @override
   void u(double t) {
@@ -77,5 +77,3 @@ class Two extends Funvas {
     }
   }
 }
-
-typedef G = void Function(String);
