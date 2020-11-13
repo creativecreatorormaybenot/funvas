@@ -39,3 +39,6 @@ app.*.symbols
 
 # Obfuscation related
 app.*.map.json
+
+# Animation export
+export/*/*.png
