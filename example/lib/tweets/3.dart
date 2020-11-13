@@ -9,7 +9,9 @@ class Three extends Funvas {
   @override
   void u(double t) {
     final backgroundPaint = Paint()..color = Color(0xffffc108),
-        foregroundPaint = Paint()..color = Color(0xee02569b);
+        foregroundPaint = Paint()
+          ..color = Color(0xee13b9fd)
+          ..strokeWidth = x.width / 250;
 
     c.drawPaint(backgroundPaint);
 
@@ -18,7 +20,7 @@ class Three extends Funvas {
     void drawBall(double radians, double distance, double radius) {
       final p = rect.center + Offset.fromDirection(-radians - pi / 2, distance);
 
-      c.drawLine(rect.center, p, foregroundPaint..strokeWidth = 1);
+      c.drawLine(rect.center, p, foregroundPaint);
       c.drawCircle(p, radius, foregroundPaint);
     }
 
@@ -34,11 +36,11 @@ class Three extends Funvas {
       drawBall(
         curve.transform((t - i / 12) / 2.5 % 1) * 2 * pi,
         40.0 + i * ((x.width / 2 - 128) / count),
-        9 + i / 6,
+        x.width / 62.5 + i / (x.width / 187.5),
       );
     }
 
     // Draw center dot.
-    c.drawCircle(rect.center, 5, foregroundPaint);
+    c.drawCircle(rect.center, 7, foregroundPaint);
   }
 }
