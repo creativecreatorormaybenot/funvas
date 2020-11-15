@@ -30,12 +30,51 @@ u(t) is called 60 times per second.
 You can of course use all of the `Canvas` functionality, the same way you can use them in a
 `CustomPainter`; the above is just in homage to Dwitter :)
 
-## Usage  
+## Usage
 
-USAGE to be inserted here (:  
-Will be added once `0.1.0` is around.
+You create funvas animations by extending `Funvas` and you can display the animations using a
+[FunvasContainer].
+Note that you have to size the animation from outside, e.g. using a [SizedBox].
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:funvas/funvas.dart';
+
+/// Example implementation of a funvas.
+///
+/// The animation is drawn in [u] based on [t] in seconds.
+class ExampleFunvas extends Funvas {
+  @override
+  void u(double t) {
+    c.drawCircle(
+      Offset(x.width / 2, x.height / 2),
+      S(t).abs() * x.height / 4 + 42,
+      Paint()..color = R(C(t) * 255, 42, 60 + T(t)),
+    );
+  }
+}
+
+/// Example widget that displays the [ExampleFunvas] animation.
+class ExampleFunvasWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 420,
+      height: 420,
+      child: FunvasContainer(
+        funvas: ExampleFunvas(),
+      ),
+    );
+  }
+}
+```
 
 See the [example package][example] for a complete example implementation.
+
+## Exporting animations
+
+In the [example package][example], there is also an exporter that can be used to export funvas
+animations directly to GIF. See the `example/README.md` file for an explanation.
 
 [Twitter]: https://twitter.com/creativemaybeno/status/1285343758247178240?s=20
 [Dwitter]: https://www.dwitter.net/about 

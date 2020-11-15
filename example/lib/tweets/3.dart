@@ -4,7 +4,7 @@ import 'dart:ui';
 import 'package:flutter/animation.dart';
 import 'package:funvas/funvas.dart';
 
-/// todo(creativecreatorormaybenot): add tweet link.
+/// https://twitter.com/creativemaybeno/status/1327309901270560769?s=20
 class Three extends Funvas {
   @override
   void u(double t) {
