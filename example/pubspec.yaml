@@ -22,4 +22,13 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  golden_toolkit: 0.8.0
+
   pedantic: ^1.9.2
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    # See https://github.com/eBay/flutter_glove_box/issues/31.
+    - assets/stub/
