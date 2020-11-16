@@ -1,10 +1,13 @@
+import 'dart:convert';
+
 import 'package:example/tweets/4.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_test/src/_matchers_io.dart';
 import 'package:funvas/src/painter.dart';
 
-void main() {
+void main() async {
   const fps = 50;
   const animationDuration = Duration(seconds: 10);
   const dimensions = Size(750, 750);

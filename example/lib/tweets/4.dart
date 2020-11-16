@@ -20,14 +20,14 @@ class Four extends Funvas {
 
     c.drawPaint(backgroundPaint);
 
-    const distance = 80.0;
+    const distance = 83.3;
 
     final arrowPainter = TextPainter(
       text: TextSpan(
         text: String.fromCharCode(0xe5b3),
         style: const TextStyle(
           fontFamily: 'MaterialIcons',
-          fontSize: 56,
+          fontSize: 69,
         ),
       ),
       textDirection: TextDirection.ltr,
@@ -267,7 +267,7 @@ class Four extends Funvas {
 
     // Delays the movements the further the arrows are away from the center.
     double outwardsDelayedT(int w, int h) {
-      return t - (w.abs() + h.abs()) / 25;
+      return t - (w.abs() + h.abs()) / 22;
     }
 
     Offset movementOffset(int w, int h) {
