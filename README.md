@@ -9,8 +9,7 @@ The name "funvas" is based on Flutter + fun + canvas. Let me know if you have an
 The idea of the package is to provide an easy way to create custom canvas animations based only
 on time and some math functions (sine, cosine, etc.) - like [this one][Twitter].
 
-GIFs to be inserted here (:
-Will be added once `0.1.0` is around.
+<div class="tenor-gif-embed" data-postid="19216687" data-share-method="host" data-width="100%" data-aspect-ratio="1.0"><a href="https://tenor.com/view/gif-19216687">GIF</a> </div><script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 
 *Inspired by Dwitter* ([check it out][Dwitter]). This is also the reason why
 the following shortcut functions and variables are available; they might be expanded upon in the 
