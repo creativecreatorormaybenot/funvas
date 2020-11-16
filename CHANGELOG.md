@@ -1,3 +1,7 @@
+## 0.0.3
+
+* Included example GIFs in the README.
+
 ## 0.0.2
 
 * Expanded example by adding funvas animations and an exporter for exporting funvas animations to
