@@ -1,3 +1,7 @@
+## 0.0.3+1
+
+* Removed unnecessary publish workflow badge from README.
+
 ## 0.0.3
 
 * Included example GIFs in the README.
