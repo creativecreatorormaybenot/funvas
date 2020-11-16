@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:funvas/funvas.dart';
 
-/// todo: add link.
+/// https://twitter.com/creativemaybeno/status/1328160824628834309?s=20
 class Four extends Funvas {
   // The movement curve should be harsher than the rotation curve because
   // the rotation should prepare for the movement.
