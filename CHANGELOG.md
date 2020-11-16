@@ -1,6 +1,7 @@
 ## 0.0.3
 
 * Included example GIFs in the README.
+* Use gifsicle optimization in exporter.
 
 ## 0.0.2
 
