@@ -9,7 +9,8 @@ The name "funvas" is based on Flutter + fun + canvas. Let me know if you have an
 The idea of the package is to provide an easy way to create custom canvas animations based only
 on time and some math functions (sine, cosine, etc.) - like [this one][Twitter].
 
-![](https://media1.tenor.com/images/644f3a816d7495cea7326a973a2beb09/tenor.gif?itemid=19216687)
+[![](https://s8.gifyu.com/images/animation-copy.gif)](https://twitter.com/creativemaybeno/status/1328261273922973696?s=20)
+[![](https://s8.gifyu.com/images/animation8709ccbbf7b20e6f.gif)](https://twitter.com/creativemaybeno/status/1327309901270560769?s=20)
 
 *Inspired by Dwitter* ([check it out][Dwitter]). This is also the reason why
 the following shortcut functions and variables are available; they might be expanded upon in the 
