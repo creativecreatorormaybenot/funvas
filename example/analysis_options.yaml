@@ -3,7 +3,3 @@ include: package:pedantic/analysis_options.yaml
 linter:
   rules:
     - public_member_api_docs
-
-analyzer:
-  exclude:
-    - pubspec.yaml
