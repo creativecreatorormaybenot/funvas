@@ -10,8 +10,8 @@ The idea of the package is to provide an easy way to create custom canvas animat
 on time and some math functions (sine, cosine, etc.) - like [this one][Twitter].
 
 <p float="left">
-<a href="https://twitter.com/creativemaybeno/status/1328261273922973696?s=20"><img src="https://s8.gifyu.com/images/animation-copy.gif" width="50%"></a>
-<a href="https://twitter.com/creativemaybeno/status/1327309901270560769?s=20"><img src="https://s8.gifyu.com/images/animation8709ccbbf7b20e6f.gif" width="50%"></a>
+<a href="https://twitter.com/creativemaybeno/status/1328261273922973696?s=20"><img src="https://s8.gifyu.com/images/animation-copy.gif" width="42%"></a>
+<a href="https://twitter.com/creativemaybeno/status/1327309901270560769?s=20"><img src="https://s8.gifyu.com/images/animation8709ccbbf7b20e6f.gif" width="42%"></a>
 </p>
 
 *Inspired by Dwitter* ([check it out][Dwitter]). This is also the reason why
