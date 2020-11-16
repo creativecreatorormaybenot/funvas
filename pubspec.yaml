@@ -1,6 +1,6 @@
 name: funvas
 description: >2-
-  Package that allows creating canvas animations based on time and math functions.
+  Package for creating canvas animations based on time and math functions.
 
   Fun + canvas -> funvas :)
 version: 0.0.3

@@ -2,6 +2,7 @@
 
 * Included example GIFs in the README.
 * Added gifsicle optimization in exporter.
+* Improved package description.
 
 ## 0.0.2
 
