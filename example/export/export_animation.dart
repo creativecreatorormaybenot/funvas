@@ -9,7 +9,7 @@ import 'package:funvas/src/painter.dart';
 
 void main() async {
   const fps = 50;
-  const animationDuration = Duration(seconds: 10);
+  const animationDuration = Duration(seconds: 8);
   const dimensions = Size(750, 750);
   // If you use a different animation name, you will have to also consider that
   // when exporting to GIF.
