@@ -66,7 +66,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.3+1"
+    version: "0.1.0-nullsafety.0"
   golden_toolkit:
     dependency: "direct dev"
     description:
