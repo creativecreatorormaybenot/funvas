@@ -28,10 +28,10 @@ class Two extends Funvas {
     void sequence(double progress) {
       c.drawRect(
           Rect.fromCircle(
-              center: Offset.lerp(startPosition, endPosition, progress),
-              radius: lerpDouble(startRadius, endRadius, progress)),
+              center: Offset.lerp(startPosition, endPosition, progress)!,
+              radius: lerpDouble(startRadius, endRadius, progress)!),
           outlinePaint
-            ..strokeWidth = lerpDouble(startStroke, endStroke, progress));
+            ..strokeWidth = lerpDouble(startStroke, endStroke, progress)!);
     }
 
     void centerRotation(double radians) {

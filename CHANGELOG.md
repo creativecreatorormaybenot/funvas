@@ -1,3 +1,7 @@
+## 0.0.4-nullsafety.1
+
+* Migrated to null safety.
+
 ## 0.0.3+1
 
 * Removed unnecessary publish workflow badge from README.

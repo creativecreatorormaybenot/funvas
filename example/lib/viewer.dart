@@ -7,10 +7,9 @@ import 'package:funvas/funvas.dart';
 class FunvasViewer extends StatefulWidget {
   /// Constructs [FunvasViewer].
   const FunvasViewer({
-    Key key,
-    @required this.funvases,
-  })  : assert(funvases != null),
-        super(key: key);
+    Key? key,
+    required this.funvases,
+  })  : super(key: key);
 
   /// The funvases to be shown in the viewer.
   final List<Funvas> funvases;
