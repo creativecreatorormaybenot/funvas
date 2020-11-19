@@ -1,3 +1,11 @@
+## 0.0.4-nullsafety.3
+
+* Ran `dart format` to format all files.
+
+## 0.0.4-nullsafety.2
+
+* Fixed changelog.
+
 ## 0.0.4-nullsafety.1
 
 * Migrated to null safety.

@@ -9,7 +9,7 @@ class FunvasViewer extends StatefulWidget {
   const FunvasViewer({
     Key? key,
     required this.funvases,
-  })  : super(key: key);
+  }) : super(key: key);
 
   /// The funvases to be shown in the viewer.
   final List<Funvas> funvases;

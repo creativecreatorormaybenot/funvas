@@ -19,7 +19,7 @@ class FunvasContainer extends StatefulWidget {
   const FunvasContainer({
     Key? key,
     required this.funvas,
-  })  : super(key: key);
+  }) : super(key: key);
 
   /// The [Funvas] that can draw in the container.
   final Funvas funvas;

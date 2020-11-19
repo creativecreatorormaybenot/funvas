@@ -74,7 +74,7 @@ class FunvasPainter extends CustomPainter {
   const FunvasPainter({
     required this.time,
     required this.delegate,
-  })  : super(repaint: time);
+  }) : super(repaint: time);
 
   /// The time managed by the funvas state.
   final ValueListenable<double> time;

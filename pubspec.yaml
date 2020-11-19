@@ -3,7 +3,7 @@ description: >2-
   Package for creating canvas animations based on time and math functions.
 
   Fun + canvas -> funvas :)
-version: 0.0.4-nullsafety.1
+version: 0.0.4-nullsafety.3
 repository: https://github.com/creativecreatorormaybenot/funvas
 
 environment:
