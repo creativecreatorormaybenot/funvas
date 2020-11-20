@@ -13,7 +13,7 @@ void main() async {
   const animationName = 'animation';
   final funvas = Five();
 
-  ValueNotifier<double> time;
+  late final ValueNotifier<double> time;
 
   setUpAll(() {
     time = ValueNotifier<double>(0);

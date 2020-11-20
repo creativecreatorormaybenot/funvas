@@ -13,7 +13,7 @@ void main() {
 /// [FunvasContainer].
 class ExampleApp extends StatelessWidget {
   /// Constructs [ExampleApp].
-  const ExampleApp({Key key}) : super(key: key);
+  const ExampleApp({Key? key}) : super(key: key);
 
   /// List of example funvas implementations.
   static final examples = <Funvas>[

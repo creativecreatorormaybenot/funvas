@@ -1,3 +1,22 @@
+## 0.1.0-nullsafety.0
+
+* Added breaking change version.
+  Of course, this is somewhat pointless now that the breaking change is already available
+  as `0.0.4`, however, we should be fine by not publishing that as a pre-release. And this is
+  especially fine as the migration was meant to be a demonstration :)
+
+## 0.0.4-nullsafety.3
+
+* Ran `dart format` to format all files.
+
+## 0.0.4-nullsafety.2
+
+* Fixed changelog.
+
+## 0.0.4-nullsafety.1
+
+* Migrated to null safety.
+
 ## 0.0.3+1
 
 * Removed unnecessary publish workflow badge from README.

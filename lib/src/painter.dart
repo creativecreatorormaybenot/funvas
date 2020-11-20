@@ -24,8 +24,8 @@ abstract class Funvas {
   double T(double radians) => tan(radians);
 
   /// Returns an RGB(O) color, shorthand for [Color.fromRGBO].
-  Color R(num r, num g, num b, [num o]) {
-    return Color.fromRGBO(r ~/ 1, g ~/ 1, b ~/ 1, o ?? 1);
+  Color R(num r, num g, num b, [num? o]) {
+    return Color.fromRGBO(r ~/ 1, g ~/ 1, b ~/ 1, (o ?? 1).toDouble());
   }
 
   /// The context for the funvas, providing the available size.
@@ -41,8 +41,8 @@ abstract class Funvas {
   /// seconds.
   void u(double t);
 
-  FunvasContext _x;
-  Canvas _c;
+  late FunvasContext _x;
+  late Canvas _c;
 }
 
 /// Context for a [Funvas], providing the available size.
@@ -72,11 +72,9 @@ class FunvasContext {
 class FunvasPainter extends CustomPainter {
   /// Creates a painter for a funvas using the delegate and time.
   const FunvasPainter({
-    @required this.time,
-    @required this.delegate,
-  })  : assert(time != null),
-        assert(delegate != null),
-        super(repaint: time);
+    required this.time,
+    required this.delegate,
+  }) : super(repaint: time);
 
   /// The time managed by the funvas state.
   final ValueListenable<double> time;

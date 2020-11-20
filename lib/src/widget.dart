@@ -17,10 +17,9 @@ class FunvasContainer extends StatefulWidget {
   /// If the [funvas] is changed for the same element in the element tree, the
   /// timer on the state will reset, restarting [Funvas.u] at `0` seconds.
   const FunvasContainer({
-    Key key,
-    @required this.funvas,
-  })  : assert(funvas != null),
-        super(key: key);
+    Key? key,
+    required this.funvas,
+  }) : super(key: key);
 
   /// The [Funvas] that can draw in the container.
   final Funvas funvas;
@@ -30,9 +29,9 @@ class FunvasContainer extends StatefulWidget {
 }
 
 class _FunvasContainerState extends State<FunvasContainer> {
-  ValueNotifier<double> _time;
-  Timer _timer;
-  DateTime _start;
+  late final ValueNotifier<double> _time;
+  late Timer _timer;
+  late DateTime _start;
 
   @override
   void initState() {
