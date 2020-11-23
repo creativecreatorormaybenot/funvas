@@ -91,6 +91,9 @@ class Six extends Funvas {
     _setupPolygons(center);
     // Time it takes for the outermost dot to travel its polygon (lap time).
     var T = 20;
+    c.translate(w / 2, h / 2);
+    c.rotate(2 * pi * t / T * 2);
+    c.translate(-w / 2, h / -2);
 
     for (var i = _polygons.length - 1; i >= 0; i--) {
       _polygons[i].draw(
@@ -113,7 +116,7 @@ class Six extends Funvas {
 
       final point = metric
           .getTangentForOffset(metric.length *
-              ((progress +
+              (1 - (progress -
                       // This aligns the dots at the bottom center at the start.
                       // The logic is that we want to move half the distance
                       // between each vertex. If the whole distance of the path
