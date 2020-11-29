@@ -4,12 +4,14 @@ import 'package:example/tweets/3.dart';
 import 'package:example/tweets/4.dart';
 import 'package:example/tweets/5.dart';
 import 'package:example/tweets/6.dart';
+import 'package:example/tweets/7.dart';
 import 'package:funvas/funvas.dart';
 
 /// This file contains funvases from creativecreatorormaybenot's tweets.
 /// You can find them in the timeline here: https://twitter.com/creativemaybeno.
 
 final creativecreatorormaybenotTweets = <Funvas>[
+  Seven(),
   Six(),
   Five(),
   Four(),
