@@ -53,5 +53,5 @@ void main() async {
           null);
       await matcher.matchAsync(find.byType(SizedBox));
     }
-  });
+  }, timeout: Timeout(const Duration(hours: 1)));
 }
