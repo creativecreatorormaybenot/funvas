@@ -60,7 +60,7 @@ class Seven extends Funvas {
         }
 
         c.drawRect(
-          Rect.fromCenter(center: Offset(x / 1, y / 1), width: 1, height: 1),
+          Rect.fromLTWH(x / 1, y / 1, 1, 1),
           Paint()
             ..color = n == _iterations
                 ? const Color(0xff000000)
