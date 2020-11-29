@@ -66,7 +66,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.1.0-nullsafety.0"
+    version: "0.1.0-nullsafety.1"
   golden_toolkit:
     dependency: "direct dev"
     description:
@@ -165,4 +165,3 @@ packages:
     version: "2.1.0-nullsafety.5"
 sdks:
   dart: ">=2.12.0-29.10.beta <3.0.0"
-  flutter: ">=1.17.0"
