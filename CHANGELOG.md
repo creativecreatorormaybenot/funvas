@@ -1,3 +1,7 @@
+## 0.1.0-nullsafety.1
+
+* Removed `flutter` SDK version constraint for PANA.
+
 ## 0.1.0-nullsafety.0
 
 * Added breaking change version.
