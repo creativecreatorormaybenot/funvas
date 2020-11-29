@@ -55,7 +55,7 @@ class Seven extends Funvas {
           zim = 2 * zre * zim + im;
           zre = tzre;
 
-          if (zre * zim > threshold) break;
+          if (zre.abs() + zim.abs() > threshold) break;
           n++;
         }
 
