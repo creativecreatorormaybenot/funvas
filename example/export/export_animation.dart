@@ -1,4 +1,4 @@
-import 'package:example/tweets/7.dart';
+import 'package:example/tweets/8.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_test/src/_matchers_io.dart';
@@ -11,7 +11,7 @@ void main() async {
   // If you use a different animation name, you will have to also consider that
   // when exporting to GIF.
   const animationName = 'animation';
-  final funvas = Seven();
+  final funvas = Eight();
 
   late final ValueNotifier<double> time;
 
