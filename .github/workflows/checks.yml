@@ -23,7 +23,8 @@ jobs:
         os:
           - ubuntu-latest
         channel:
-          - 'stable'
+          # Not using stable checks until NNBD is merged onto stable.
+#          - 'stable'
           - 'beta'
           - 'dev'
       fail-fast: false
