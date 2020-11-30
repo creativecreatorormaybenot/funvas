@@ -4,7 +4,7 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.12.0-29.10.beta <3.0.0'
+  sdk: '>=2.12.0-0 <3.0.0'
 
 dependencies:
   flutter:
@@ -22,9 +22,9 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  golden_toolkit: 0.8.0
+  golden_toolkit: ^0.9.0-nullsafety.0
 
-  pedantic: ^1.9.2
+  pedantic: ^1.10.0-nullsafety.3
 
 flutter:
   uses-material-design: true
