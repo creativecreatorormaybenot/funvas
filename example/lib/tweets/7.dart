@@ -10,7 +10,7 @@ class _ComplexNumber {
   final double im;
 }
 
-/// todo: add link.
+/// https://twitter.com/creativemaybeno/status/1333395101930942465?s=20
 class Seven extends Funvas {
   // The maximum number of iterations that we test for the threshold for a
   // given complex number.

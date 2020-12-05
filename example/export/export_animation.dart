@@ -1,4 +1,4 @@
-import 'package:example/tweets/8.dart';
+import 'package:example/tweets/9.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_test/src/_matchers_io.dart';
@@ -6,12 +6,12 @@ import 'package:funvas/src/painter.dart';
 
 void main() async {
   const fps = 50;
-  const animationDuration = Duration(seconds: 5);
-  const dimensions = Size(750, 750);
+  const animationDuration = Duration(seconds: 9);
+  const dimensions = Size(642, 642);
   // If you use a different animation name, you will have to also consider that
   // when exporting to GIF.
   const animationName = 'animation';
-  final funvas = Eight();
+  final funvas = Nine();
 
   late final ValueNotifier<double> time;
 
