@@ -1,6 +1,6 @@
+import 'dart:math';
 import 'dart:ui';
 
-import 'package:example/tweets/tweets.dart';
 import 'package:example/viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:funvas/funvas.dart';
@@ -25,25 +25,12 @@ class ExampleApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: DefaultTabController(
-        length: 2,
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text('creativecreatorormaybenot Funvas'),
-            bottom: TabBar(
-              isScrollable: true,
-              tabs: [
-                Tab(text: 'Examples'),
-                Tab(text: '@creativemaybeno tweets'),
-              ],
-            ),
-          ),
-          body: TabBarView(
-            children: [
-              FunvasViewer(funvases: ExampleApp.examples),
-              FunvasViewer(funvases: creativecreatorormaybenotTweets),
-            ],
-          ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Funvas examples'),
+        ),
+        body: FunvasViewer(
+          funvases: examples,
         ),
       ),
     );

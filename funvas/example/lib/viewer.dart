@@ -32,14 +32,18 @@ class _FunvasViewerState extends State<FunvasViewer> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 32,
-          ),
-          child: AspectRatio(
-            aspectRatio: 1,
-            child: FunvasContainer(
-              funvas: widget.funvases[_selectedIndex],
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 32,
+            ),
+            child: Center(
+              child: AspectRatio(
+                aspectRatio: 1,
+                child: FunvasContainer(
+                  funvas: widget.funvases[_selectedIndex],
+                ),
+              ),
             ),
           ),
         ),

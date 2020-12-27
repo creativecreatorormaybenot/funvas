@@ -73,11 +73,6 @@ class ExampleFunvasWidget extends StatelessWidget {
 
 See the [example package][example] for a complete example implementation.
 
-## Exporting animations
-
-In the [example package][example], there is also an exporter that can be used to export funvas
-animations directly to GIF. See the `example/README.md` file for an explanation.
-
 [Twitter]: https://twitter.com/creativemaybeno/status/1285343758247178240?s=20
-[Dwitter]: https://www.dwitter.net/about 
+[Dwitter]: https://www.dwitter.net/about
 [example]: https://github.com/creativecreatorormaybenot/funvas/tree/master/example

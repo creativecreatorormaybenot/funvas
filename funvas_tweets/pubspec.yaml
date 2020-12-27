@@ -4,13 +4,25 @@ version: 0.0.1
 publish_to: 'none'
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.12.0-0 <3.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
+  funvas:
+    path: ../funvas
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  golden_toolkit: ^0.9.0-nullsafety.0
+
+  pedantic: ^1.10.0-nullsafety.3
+
+flutter:
+  assets:
+    # See https://github.com/eBay/flutter_glove_box/issues/31.
+    - assets/stub/
