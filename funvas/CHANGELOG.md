@@ -1,3 +1,7 @@
+## 0.1.0-nullsafety.3
+
+* Improved the README.
+
 ## 0.1.0-nullsafety.2
 
 * Moved package location (adjusted homepage).
