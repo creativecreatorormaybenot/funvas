@@ -2,16 +2,13 @@ import 'dart:ui';
 
 import 'package:flutter/painting.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
-class _ComplexNumber {
-  const _ComplexNumber(this.re, this.im);
+class Seven extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1333395101930942465?s=20';
 
-  final double re;
-  final double im;
-}
-
-/// https://twitter.com/creativemaybeno/status/1333395101930942465?s=20
-class Seven extends Funvas {
   // The maximum number of iterations that we test for the threshold for a
   // given complex number.
   static const _iterations = 200;
@@ -69,4 +66,11 @@ class Seven extends Funvas {
       }
     }
   }
+}
+
+class _ComplexNumber {
+  const _ComplexNumber(this.re, this.im);
+
+  final double re;
+  final double im;
 }

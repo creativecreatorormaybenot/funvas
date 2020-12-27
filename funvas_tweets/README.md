@@ -1,6 +1,7 @@
 # funvas_tweets
 
-Collection of [`funvas`][funvas] animations tweeted [@creativemaybeno][Twitter].
+Collection of [`funvas`][funvas] animations tweeted [@creativemaybeno][Twitter].  
+You can find all of them in the timeline :)
 
 Additionally, this project contains code for exporting funvas animations to GIFs.
 

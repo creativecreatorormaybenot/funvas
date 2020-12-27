@@ -2,9 +2,13 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
-/// https://twitter.com/creativemaybeno/status/1326274769227046913?s=20
-class Two extends Funvas {
+class Two extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1326274769227046913?s=20';
+
   @override
   void u(double t) {
     // Black background (white square outlines).

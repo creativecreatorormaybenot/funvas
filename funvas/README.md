@@ -15,7 +15,7 @@ on time and some math functions (sine, cosine, etc.) - like [this one][Twitter].
 </p>
 
 *Inspired by Dwitter* ([check it out][Dwitter]). This is also the reason why
-the following shortcut functions and variables are available; they might be expanded upon in the 
+the following shortcut functions and variables are available; they might be expanded upon in the
 future given that there are a lot more possibilities:
 
 ```text
@@ -73,6 +73,13 @@ class ExampleFunvasWidget extends StatelessWidget {
 
 See the [example package][example] for a complete example implementation.
 
+## Demo & more
+
+Funvas is a package that I created for personal use. Because of that, I have created a lot around it.
+
+To see a live demo and many fun(vas) animations, please see the [main README on GitHub][repo].
+
 [Twitter]: https://twitter.com/creativemaybeno/status/1285343758247178240?s=20
 [Dwitter]: https://www.dwitter.net/about
 [example]: https://github.com/creativecreatorormaybenot/funvas/tree/master/example
+[repo]: https://github.com/creativecreatorormaybenot/funvas

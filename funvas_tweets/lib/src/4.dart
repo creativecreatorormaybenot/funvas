@@ -5,9 +5,13 @@ import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
-/// https://twitter.com/creativemaybeno/status/1328160824628834309?s=20
-class Four extends Funvas {
+class Four extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1328160824628834309?s=20';
+
   // The movement curve should be harsher than the rotation curve because
   // the rotation should prepare for the movement.
   static const _movementCurve = Cubic(.47, .04, .31, .98),

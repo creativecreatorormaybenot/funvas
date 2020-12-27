@@ -2,15 +2,18 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
-/// https://twitter.com/creativemaybeno/status/1328721811907948544?s=20
-///
-/// You can trace the full origin of this code using the link above, however,
+/// You can trace the full origin of this code from the linked tweet, however,
 /// I want to point out more clearly that the algorithm for this came from
 /// vinca initially and not from me. You an follow the remix origin of my dweet
 /// at https://www.dwitter.net/d/14681 in order to see the JavaScript origin
 /// of the code, even before I migrated it to Dart initially.
-class Five extends Funvas {
+class Five extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1328721811907948544?s=20';
+
   @override
   void u(double t) {
     final scaling = min(x.width, x.height) / 750;

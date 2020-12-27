@@ -3,9 +3,13 @@ import 'dart:ui';
 
 import 'package:flutter/animation.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
-/// https://twitter.com/creativemaybeno/status/1327309901270560769?s=20
-class Three extends Funvas {
+class Three extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1327309901270560769?s=20';
+
   @override
   void u(double t) {
     final backgroundPaint = Paint()..color = Color(0xffffc108),

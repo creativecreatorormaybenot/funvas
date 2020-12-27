@@ -3,9 +3,13 @@ import 'dart:ui';
 
 import 'package:flutter/painting.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
-/// todo: add link.
-class Nine extends Funvas {
+class Nine extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1335229935296925697?s=20';
+
   // The maximum number of iterations that we test for the threshold for a
   // given complex number.
   static const _iterations = 100;
@@ -55,13 +59,13 @@ class Nine extends Funvas {
         }
 
         this.c.drawRect(
-          Rect.fromLTWH(x / 1, y / 1, 1, 1),
-          Paint()
-            ..color = n == _iterations
-                ? const Color(0xff000000)
-                : HSVColor.fromAHSV(1, 360 * n / _iterations, .9, .6)
-                .toColor(),
-        );
+              Rect.fromLTWH(x / 1, y / 1, 1, 1),
+              Paint()
+                ..color = n == _iterations
+                    ? const Color(0xff000000)
+                    : HSVColor.fromAHSV(1, 360 * n / _iterations, .9, .6)
+                        .toColor(),
+            );
       }
     }
   }
