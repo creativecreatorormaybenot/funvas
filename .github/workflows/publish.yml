@@ -46,6 +46,7 @@ jobs:
           credential: ${{ secrets.PUB_CREDENTIALS }}
           flutter_package: true
           skip_test: true
+          package_directory: funvas
       - name: Create Release
         if: steps.pubspec.outputs.changed == 0
         id: create_release

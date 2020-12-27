@@ -4,7 +4,6 @@ description: >2-
 
   Fun + canvas -> funvas :)
 version: 0.1.0-nullsafety.2
-repository: https://github.com/creativecreatorormaybenot/funvas
 homepage: https://github.com/creativecreatorormaybenot/funvas/tree/master/funvas
 
 environment:
