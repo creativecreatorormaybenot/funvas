@@ -1,3 +1,8 @@
+## 0.1.0-nullsafety.2
+
+* Moved package location (adjusted homepage).
+* Moved tweets out of the example package.
+
 ## 0.1.0-nullsafety.1
 
 * Removed `flutter` SDK version constraint for PANA.

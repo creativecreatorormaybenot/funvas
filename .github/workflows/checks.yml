@@ -5,36 +5,45 @@ on:
     branches:
       - master
     paths:
+      - '.github/workflows/checks.yml'
       - '**/lib/**'
       - '**/android/**'
       - '**/ios/**'
+      - '**/web/**'
+      - '**/macos/**'
+      - '**/windows/**'
       - '**/pubspec.yaml'
       - '**/test/**'
-      - '**/test_driver/**'
       - '**/assets/**'
 
 jobs:
   analyze:
     timeout-minutes: 7
-    runs-on: ${{ matrix.os }}
-    name: Analysis of funvas (${{ matrix.channel }}; ${{ matrix.os }})
+    runs-on: ubuntu-latest
+    name: ${{ matrix.package }} analysis on ${{ matrix.channel }}
     strategy:
       matrix:
-        os:
-          - ubuntu-latest
         channel:
-          # Not using stable checks until NNBD is merged onto stable.
-#          - 'stable'
+          # Exlcuding stable until NNBD reaches the stable channel.
+          # - 'stable'
           - 'beta'
           - 'dev'
+        package:
+          - 'funvas'
+          - 'funvas_demo'
+          - 'funvas_tweets'
       fail-fast: false
 
     steps:
-      - uses: actions/checkout@v2.3.3
+      - uses: actions/checkout@v2.3.4
       - uses: subosito/flutter-action@v1.4.0
         with:
           channel: ${{ matrix.channel }}
-      - run: flutter pub get
-      - name: Check format
-        run: dart format . --set-exit-if-changed
-      - run: flutter analyze
+      - name: pub get
+        run: flutter pub get
+        working-directory: ${{ matrix.package }}
+      - name: dart format
+        working-directory: ${{ matrix.package }}
+        run: dart format . --fix --set-exit-if-changed
+      - run: dart analyze
+        working-directory: ${{ matrix.package }}

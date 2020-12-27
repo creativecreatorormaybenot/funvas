@@ -16,6 +16,7 @@ jobs:
       - uses: axel-op/dart-package-analyzer@v3
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
+          relativePath: funvas
 
   publish:
     needs: pana
@@ -32,13 +33,13 @@ jobs:
         id: pubspec
         run: |
           set +e
-          git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep 'pubspec.yaml' &> /dev/null
+          git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep 'funvas/pubspec.yaml' &> /dev/null
           echo ::set-output name=changed::$?
           set -e
       - name: Extract package version
         if: steps.pubspec.outputs.changed == 0
         run: |
-          echo "VERSION=$(awk '{if ($1 ~ /^version:/) print $2}' pubspec.yaml)" >> $GITHUB_ENV
+          echo "VERSION=$(awk '{if ($1 ~ /^version:/) print $2}' funvas/pubspec.yaml)" >> $GITHUB_ENV
       - uses: sakebook/actions-flutter-pub-publisher@v1.3.1
         if: steps.pubspec.outputs.changed == 0
         with:
