@@ -8,7 +8,7 @@ on:
       - 'funvas_demo/lib/**'
       - 'funvas_demo/web/**'
       - 'funvas_demo/pubspec.yaml'
-      - '.github/workflows/demo.yaml'
+      - '.github/workflows/deploy.yml'
 
 jobs:
   demo-deploy:
@@ -35,7 +35,7 @@ jobs:
           echo "funvas.creativemaybeno.dev" > CNAME
 
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@ v3.7.1
+        uses: JamesIves/github-pages-deploy-action@v3.7.1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
