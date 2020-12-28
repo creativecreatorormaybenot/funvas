@@ -8,6 +8,7 @@ on:
       - 'funvas_demo/lib/**'
       - 'funvas_demo/web/**'
       - 'funvas_demo/pubspec.yaml'
+      - 'funvas_tweets/lib/**'
       - '.github/workflows/deploy.yml'
 
 jobs:
