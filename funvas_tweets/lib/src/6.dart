@@ -112,13 +112,13 @@ class _RegularPolygon {
       // I want to position the polygons in a way where there are always two
       // vertices at the bottom in the exact same horizontal positions.
       final angle = 2 *
-          pi /
-          vertices *
-          (i -
-              // The half the angle of the difference between the vertices
-              // for initial rotation of each polygon (for i = 0) was just
-              // intuition when looking at the original animation.
-              1 / 2)
+              pi /
+              vertices *
+              (i -
+                  // The half the angle of the difference between the vertices
+                  // for initial rotation of each polygon (for i = 0) was just
+                  // intuition when looking at the original animation.
+                  1 / 2)
           // The quarter rotation just aligns it correctly.
           +
           pi / 2;

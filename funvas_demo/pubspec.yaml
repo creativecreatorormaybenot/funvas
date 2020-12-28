@@ -4,11 +4,19 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0-0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
+
+  funvas:
+    path: ../funvas
+  funvas_tweets:
+    path: ../funvas_tweets
+
+  # Cannot use url_launcher: ^6.0.0-nullsafety.1 because of missing web support.
+  url_launcher: ^5.7.10
 
 dev_dependencies:
   pedantic: ^1.10.0-nullsafety.3
