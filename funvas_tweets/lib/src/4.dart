@@ -290,8 +290,8 @@ class Four extends Funvas with FunvasTweetMixin {
       return _rotations.transform(t / _animationSeconds);
     }
 
-    for (var h = 0; h < (x.height / _distance / 2 + 1); h++) {
-      for (var w = 0; w < (x.width / _distance / 2 + 1); w++) {
+    for (var h = 0; h < (x.height / _distance / 2 + 2); h++) {
+      for (var w = 0; w < (x.width / _distance / 2 + 2); w++) {
         final base =
             Offset(x.width / 2 + (h.isOdd ? _distance / 2 : 0), x.height / 2);
 
