@@ -1,0 +1,45 @@
+name: Demo deployment
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'funvas_demo/lib/**'
+      - 'funvas_demo/web/**'
+      - 'funvas_demo/pubspec.yaml'
+      - '.github/workflows/demo.yaml'
+
+jobs:
+  demo-deploy:
+    timeout-minutes: 6
+    runs-on: ubuntu-latest
+    name: Funvas demo page
+
+    steps:
+      - uses: actions/checkout@v2.3.4
+        with:
+          persist-credentials: false
+      - uses: subosito/flutter-action@v1.4.0
+        with:
+          channel: 'beta'
+
+      - name: Build demo web app
+        run: |
+          cd funvas_demo
+          flutter pub get
+          flutter config --enable-web
+          flutter build web --no-sound-null-safety
+          cd build/web
+          touch ".nojekyll"
+          echo "funvas.creativemaybeno.dev" > CNAME
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@releases/v3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: funvas_demo/build/web
+          GIT_CONFIG_NAME: creativecreatorormaybenot
+          GIT_CONFIG_EMAIL: creativecreatorormaybenot@gmail.com
+          COMMIT_MESSAGE: Deploy funvas demo web page

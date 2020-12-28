@@ -10,7 +10,7 @@ import 'package:funvas_tweets/src/tweet_mixin.dart';
 class Four extends Funvas with FunvasTweetMixin {
   @override
   String get tweet =>
-      'https://twitter.com/creativemaybeno/status/1328160824628834309?s=20';
+      'https://twitter.com/creativemaybeno/status/1328261273922973696?s=20';
 
   // The movement curve should be harsher than the rotation curve because
   // the rotation should prepare for the movement.
@@ -290,8 +290,8 @@ class Four extends Funvas with FunvasTweetMixin {
       return _rotations.transform(t / _animationSeconds);
     }
 
-    for (var h = 0; h < 15; h++) {
-      for (var w = 0; w < 15; w++) {
+    for (var h = 0; h < (x.height / _distance / 2 + 1); h++) {
+      for (var w = 0; w < (x.width / _distance / 2 + 1); w++) {
         final base =
             Offset(x.width / 2 + (h.isOdd ? _distance / 2 : 0), x.height / 2);
 
