@@ -1,16 +1,15 @@
-import 'package:funvas_tweets/funvas_tweets.dart';
+import 'package:funvas/funvas.dart';
 
-/// A factory wrapper that instantiates a [FunvasTweetMixin] funvas and caches
-/// the result.
-class FunvasFactory {
+/// A factory wrapper that instantiates a [T] funvas and caches the result.
+class FunvasFactory<T extends Funvas> {
   FunvasFactory(this.factory);
 
-  final FunvasTweetMixin Function() factory;
+  final T Function() factory;
 
   /// The cached funvas instance of the factory.
-  FunvasTweetMixin get funvas {
+  T get funvas {
     return _funvas ?? (_funvas = factory());
   }
 
-  FunvasTweetMixin? _funvas;
+  T? _funvas;
 }

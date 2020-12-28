@@ -21,7 +21,7 @@ class FunvasDrawer {
   /// Global funvas drawer instance.
   static final instance = FunvasDrawer._();
 
-  final List<FunvasFactory> _factories;
+  final List<FunvasFactory<FunvasTweetMixin>> _factories;
   final Random _random;
 
   void shuffle() {

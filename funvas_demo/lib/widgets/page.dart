@@ -3,7 +3,6 @@ import 'package:flutter/rendering.dart';
 import 'package:funvas/funvas.dart';
 import 'package:funvas_demo/factories/drawer.dart';
 import 'package:funvas_demo/widgets/link.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class DemoPage extends StatefulWidget {
   const DemoPage({Key? key}) : super(key: key);
@@ -158,6 +157,7 @@ class _FunvasContainer extends StatelessWidget {
                 child: const Icon(
                   Icons.arrow_circle_down_outlined,
                   size: 72,
+                  color: Color(0xbbffffff),
                 ),
               ),
             ),
@@ -175,6 +175,7 @@ class _FunvasContainer extends StatelessWidget {
                 child: const Icon(
                   Icons.arrow_circle_down_outlined,
                   size: 72,
+                  color: Color(0xbbffffff),
                 ),
               ),
             ),
@@ -192,6 +193,7 @@ class _FunvasContainer extends StatelessWidget {
                 child: const Icon(
                   Icons.arrow_circle_down_outlined,
                   size: 72,
+                  color: Color(0xbbffffff),
                 ),
               ),
             ),
@@ -209,6 +211,7 @@ class _FunvasContainer extends StatelessWidget {
                 child: const Icon(
                   Icons.arrow_circle_down_outlined,
                   size: 72,
+                  color: Color(0xbbffffff),
                 ),
               ),
             ),
