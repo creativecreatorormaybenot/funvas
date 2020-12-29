@@ -90,23 +90,20 @@ class Ten extends Funvas {
     } else if (t < 5) {
       // Blur the SO avatar in the background.
       final sigma = Curves.decelerate.transform(t - 4) * blur;
-      soPaint.imageFilter = ImageFilter.blur(
-          sigmaX: sigma, sigmaY: sigma, tileMode: TileMode.mirror);
+      soPaint.imageFilter = ImageFilter.blur(sigmaX: sigma, sigmaY: sigma);
       soPosition = soCenter;
       ghPaint.blendMode = BlendMode.difference;
       ghPosition = ghCenter;
     } else if (t < 6) {
       // Do not do animate anything.
-      soPaint.imageFilter = ImageFilter.blur(
-          sigmaX: blur, sigmaY: blur, tileMode: TileMode.mirror);
+      soPaint.imageFilter = ImageFilter.blur(sigmaX: blur, sigmaY: blur);
       ghPaint.blendMode = BlendMode.difference;
       soPosition = soCenter;
       ghPosition = ghCenter;
     } else {
       // Fly out both avatars again in the last second.
       assert(t < 7);
-      soPaint.imageFilter = ImageFilter.blur(
-          sigmaX: blur, sigmaY: blur, tileMode: TileMode.mirror);
+      soPaint.imageFilter = ImageFilter.blur(sigmaX: blur, sigmaY: blur);
       ghPaint.blendMode = BlendMode.difference;
       final progress = Curves.easeIn.transform(t - 6) * 1.1;
       soPosition = soCenter + Offset(0, height * progress);
