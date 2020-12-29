@@ -108,7 +108,7 @@ class Ten extends Funvas {
       soPaint.imageFilter = ImageFilter.blur(
           sigmaX: blur, sigmaY: blur, tileMode: TileMode.mirror);
       ghPaint.blendMode = BlendMode.difference;
-      final progress = Curves.easeIn.transform(t - 9) * 1.1;
+      final progress = Curves.easeIn.transform(t - 6) * 1.1;
       soPosition = soCenter + Offset(0, height * progress);
       ghPosition = ghCenter - Offset(width * progress, 0);
     }
