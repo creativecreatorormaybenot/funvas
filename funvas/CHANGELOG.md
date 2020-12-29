@@ -1,3 +1,7 @@
+## 0.1.1-nullsafety.0
+
+* Switched to a `Ticker` instead of a `Timer` in the `FunvasContainer`.
+
 ## 0.1.0-nullsafety.3
 
 * Improved the README.
