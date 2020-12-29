@@ -24,34 +24,37 @@ void main() async {
   });
 
   testWidgets('export funvas animation', (tester) async {
-    await tester.binding.setSurfaceSize(dimensions);
-    tester.binding.window.physicalSizeTestValue = dimensions;
-    tester.binding.window.devicePixelRatioTestValue = 1;
+    // Use runAsync to enable e.g. HTTP calls (loading images).
+    await tester.runAsync(() async {
+      await tester.binding.setSurfaceSize(dimensions);
+      tester.binding.window.physicalSizeTestValue = dimensions;
+      tester.binding.window.devicePixelRatioTestValue = 1;
 
-    await tester.pumpWidget(SizedBox.fromSize(
-      size: dimensions,
-      child: CustomPaint(
-        painter: FunvasPainter(
-          time: time,
-          delegate: funvas,
+      await tester.pumpWidget(SizedBox.fromSize(
+        size: dimensions,
+        child: CustomPaint(
+          painter: FunvasPainter(
+            time: time,
+            delegate: funvas,
+          ),
         ),
-      ),
-    ));
+      ));
 
-    final microseconds = animationDuration.inMicroseconds,
-        goldensNeeded = fps * (microseconds / 1e6) ~/ 1;
+      final microseconds = animationDuration.inMicroseconds,
+          goldensNeeded = fps * (microseconds / 1e6) ~/ 1;
 
-    final fileNameWidth = (goldensNeeded - 1).toString().length;
+      final fileNameWidth = (goldensNeeded - 1).toString().length;
 
-    for (var i = 0; i < goldensNeeded; i++) {
-      time.value = microseconds / goldensNeeded * i / 1e6;
-      await tester.pump();
+      for (var i = 0; i < goldensNeeded; i++) {
+        time.value = microseconds / goldensNeeded * i / 1e6;
+        await tester.pump();
 
-      final matcher = MatchesGoldenFile.forStringPath(
-          '$animationName/${'$i'.padLeft(fileNameWidth, '0')}'
-          '.png',
-          null);
-      await matcher.matchAsync(find.byType(SizedBox));
-    }
+        final matcher = MatchesGoldenFile.forStringPath(
+            '$animationName/${'$i'.padLeft(fileNameWidth, '0')}'
+                '.png',
+            null);
+        await matcher.matchAsync(find.byType(SizedBox));
+      }
+    });
   }, timeout: Timeout(const Duration(hours: 1)));
 }
