@@ -11,7 +11,7 @@ void main() async {
   // If you use a different animation name, you will have to also consider that
   // when exporting to GIF.
   const animationName = 'animation';
-  final funvas = Three();
+  final funvas = Ten();
 
   late final ValueNotifier<double> time;
 
