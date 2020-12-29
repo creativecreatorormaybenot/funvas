@@ -1,6 +1,5 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:funvas/src/painter.dart';
 
 /// Widget that allows you to insert a [Funvas] into the widget tree.
@@ -28,18 +27,17 @@ class FunvasContainer extends StatefulWidget {
   _FunvasContainerState createState() => _FunvasContainerState();
 }
 
-class _FunvasContainerState extends State<FunvasContainer> {
+class _FunvasContainerState extends State<FunvasContainer>
+    with SingleTickerProviderStateMixin {
   late final ValueNotifier<double> _time;
-  late Timer _timer;
-  late DateTime _start;
+  late final Ticker _ticker;
 
   @override
   void initState() {
     super.initState();
 
     _time = ValueNotifier(0);
-    _start = DateTime.now();
-    _scheduleUpdate();
+    _ticker = createTicker(_update)..start();
   }
 
   @override
@@ -48,35 +46,28 @@ class _FunvasContainerState extends State<FunvasContainer> {
 
     if (oldWidget.funvas != widget.funvas) {
       _time.value = 0;
-      _start = DateTime.now();
+      _ticker
+        ..stop()
+        ..start();
     }
   }
 
   @override
   void dispose() {
-    _timer.cancel();
     _time.dispose();
+    _ticker.dispose();
 
     super.dispose();
   }
 
-  void _scheduleUpdate() {
-    _timer = Timer(
-      // Lock the update rate to 60 ticks per second, no matter the frame rate.
-      Duration(microseconds: 1e6 ~/ 60),
-      _update,
-    );
-  }
-
-  void _update() {
-    _time.value = DateTime.now().difference(_start).inMicroseconds / 1e6;
-    _scheduleUpdate();
+  void _update(Duration elapsed) {
+    _time.value = elapsed.inMicroseconds / 1e6;
   }
 
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      willChange: true,
+      willChange: _ticker.isActive,
       painter: FunvasPainter(
         time: _time,
         delegate: widget.funvas,
