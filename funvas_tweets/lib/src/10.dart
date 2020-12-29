@@ -51,8 +51,8 @@ class Ten extends Funvas {
     // White background.
     c.drawPaint(Paint()..color = const Color(0xffffffff));
 
-    // The whole animation should be 10 seconds long and then repeat every 10s.
-    t %= 10;
+    // The whole animation should be 7 seconds long and then repeat every 7s.
+    t %= 7;
 
     if (_soImage == null || _ghImage == null) {
       // Loading images.
@@ -95,7 +95,7 @@ class Ten extends Funvas {
       soPosition = soCenter;
       ghPaint.blendMode = BlendMode.difference;
       ghPosition = ghCenter;
-    } else if (t < 9) {
+    } else if (t < 6) {
       // Do not do animate anything.
       soPaint.imageFilter = ImageFilter.blur(
           sigmaX: blur, sigmaY: blur, tileMode: TileMode.mirror);
@@ -104,13 +104,13 @@ class Ten extends Funvas {
       ghPosition = ghCenter;
     } else {
       // Fly out both avatars again in the last second.
-      assert(t < 10);
+      assert(t < 7);
       soPaint.imageFilter = ImageFilter.blur(
           sigmaX: blur, sigmaY: blur, tileMode: TileMode.mirror);
       ghPaint.blendMode = BlendMode.difference;
-      soPosition =
-          soCenter + Offset(0, height * Curves.easeIn.transform(t - 9));
-      ghPosition = ghCenter - Offset(width * Curves.easeIn.transform(t - 9), 0);
+      final progress = Curves.easeIn.transform(t - 9) * 1.1;
+      soPosition = soCenter + Offset(0, height * progress);
+      ghPosition = ghCenter - Offset(width * progress, 0);
     }
 
     c.drawImage(_soImage!, soPosition, soPaint);
