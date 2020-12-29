@@ -15,6 +15,20 @@ The name "funvas" is based on Flutter + fun + canvas. Let me know if you have an
 I share my funvas creations [on Twitter][Twitter] and I have also create a [live demo][demo] that
 allows you to see the animations running right in Flutter web :)
 
+### Repo structure
+
+This repo currently contains the following packages:
+
+* [`funvas`][funvas], which is the actual `funvas` Flutter package that is also hosted on Pub.
+  Both `funvas_tweets` and `funvas_demo` (+ the `example` package inside of `funvas`) depend on this
+  package. It contains the basic widget for displaying funvas animations.
+* [`funvas_tweets`][funvas_tweets] is a collection of funvas animations I created and shared
+  [on Twitter][Twitter]. The package also contains the code I use to export my animations to GIF.
+* [`funvas_demo`][funvas_demo] is a Flutter web app showcasing some funvas animations that can be 
+  reached at [funvas.creativemaybeno.dev][demo]. It consists of a selection of funvas animations
+  from the `funvas_tweets` package. Not all animations are included because some of them might not
+  perform well enough in a live demo :)
+
 ### Inspiration
 
 The whole concept is *inspired by Dwitter* ([check it out][Dwitter]). That is mainly the way the
@@ -25,3 +39,6 @@ e.g. in [Processing] (and with that p5.js).
 [Dwitter]: https://www.dwitter.net/about
 [Processing]: https://processing.org
 [demo]: https://funvas.creativemaybeno.dev
+[funvas]: https://github.com/creativecreatorormaybenot/funvas/tree/master/funvas
+[funvas_tweets]: https://github.com/creativecreatorormaybenot/funvas/tree/master/funvas_tweets
+[funvas_demo]: https://github.com/creativecreatorormaybenot/funvas/tree/master/funvas_demo
