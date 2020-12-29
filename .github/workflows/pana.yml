@@ -5,14 +5,9 @@ on:
     branches:
       - master
     paths:
-      - '**/lib/**'
-      - '**/android/**'
-      - '**/ios/**'
-      - '**/pubspec.yaml'
-      - '**/test/**'
-      - '**/test_driver/**'
-      - '**/assets/**'
-      - '**/integration_test/**'
+      - 'funvas/lib/**'
+      - 'funvas/pubspec.yaml'
+      - '.github/workflows/pana.yml'
 
 jobs:
   configure:

@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+    paths:
+      - 'funvas/pubspec.yaml'
+      - '.github/workflows/publish.yml'
 
 jobs:
   pana:
