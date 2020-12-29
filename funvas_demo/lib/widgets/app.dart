@@ -13,6 +13,7 @@ class DemoApp extends StatelessWidget {
       title: 'Funvas demo',
       themeMode: ThemeMode.dark,
       darkTheme: ThemeData.dark(),
+      debugShowCheckedModeBanner: false,
       home: const _DebugWrapper(
         child: DemoPage(),
       ),
