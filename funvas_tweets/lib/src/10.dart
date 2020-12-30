@@ -5,8 +5,13 @@ import 'dart:ui';
 import 'package:flutter/animation.dart';
 import 'package:flutter/painting.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/funvas_tweets.dart';
 
-class Ten extends Funvas {
+class Ten extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1344066533417484291?s=20';
+
   Ten() {
     _loadImage(_soProvider).then((value) => _soImage = value);
     _loadImage(_ghProvider).then((value) => _ghImage = value);
