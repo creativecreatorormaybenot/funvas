@@ -21,18 +21,19 @@ class Eleven extends Funvas {
       final radius = outerRadius + step * i;
 
       c.drawCircle(
-          Offset.zero,
-          radius,
-          Paint()
-            ..color = foregroundColor
-            ..style = PaintingStyle.stroke
-            ..strokeWidth = 2);
+        Offset.zero,
+        radius,
+        Paint()
+          ..color = foregroundColor
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 3,
+      );
 
       c.save();
       c.rotate(sin((t + i * 2) / 2) * 2 * pi);
       c.drawCircle(
         Offset.fromDirection(-pi / 2, radius),
-        7,
+        11,
         Paint()..color = foregroundColor,
       );
       c.restore();
