@@ -2,8 +2,13 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
-class Eleven extends Funvas {
+class Eleven extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1346101868079042561?s=20';
+
   @override
   void u(double t) {
     final scaling = min(x.width, x.height) / 750;
