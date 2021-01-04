@@ -6,15 +6,15 @@ const RESOURCES = {
   "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "manifest.json": "186e866e684d676b4577045a6758cc2a",
-"assets/packages/funvas_tweets/assets/stub/stub": "d41d8cd98f00b204e9800998ecf8427e",
+"assets/packages/funvas_tweets/assets/0.stub": "e8f65fd8d973f9985dc7ea3cf1614ae1",
 "assets/NOTICES": "a6574c4c0e8932b728cf3c6f1cb5cb3b",
-"assets/AssetManifest.json": "e5047e4bdf2223a5c759ee4152b9003d",
+"assets/AssetManifest.json": "ac3b48d388deef6c9aab595319d7e911",
 "assets/FontManifest.json": "7b2a36307916a9721811788013e65289",
 "assets/fonts/MaterialIcons-Regular.otf": "1288c9e28052e028aba623321f7826ac",
-"index.html": "70c4316d6b55b851fa162b314a1db8e7",
-"/": "70c4316d6b55b851fa162b314a1db8e7",
+"index.html": "ff9534e1c9ae54fe2712fa78a73af918",
+"/": "ff9534e1c9ae54fe2712fa78a73af918",
 "version.json": "f3395245d1958ace9ec47388afc51dfa",
-"main.dart.js": "279be1ae54766c810c2aa38037336ea1",
+"main.dart.js": "a409a5d9046c2df1cbd45378e2e95c6e",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796"
 };
 
