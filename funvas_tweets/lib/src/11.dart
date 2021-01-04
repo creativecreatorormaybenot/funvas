@@ -30,7 +30,7 @@ class Eleven extends Funvas {
       );
 
       c.save();
-      c.rotate(sin((t + i * 2) / 2) * 2 * pi);
+      c.rotate(sin((t + i * 4.242424) * pi / 5) * 2 * pi);
       c.drawCircle(
         Offset.fromDirection(-pi / 2, radius),
         11,
