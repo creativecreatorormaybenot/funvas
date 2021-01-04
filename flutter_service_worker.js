@@ -11,10 +11,10 @@ const RESOURCES = {
 "assets/AssetManifest.json": "ac3b48d388deef6c9aab595319d7e911",
 "assets/FontManifest.json": "7b2a36307916a9721811788013e65289",
 "assets/fonts/MaterialIcons-Regular.otf": "1288c9e28052e028aba623321f7826ac",
-"index.html": "0489f19adefba8507a16a01df56e34bd",
-"/": "0489f19adefba8507a16a01df56e34bd",
+"index.html": "c82dc12d4abd0024a225b06da451228c",
+"/": "c82dc12d4abd0024a225b06da451228c",
 "version.json": "f3395245d1958ace9ec47388afc51dfa",
-"main.dart.js": "a409a5d9046c2df1cbd45378e2e95c6e",
+"main.dart.js": "092c102649429d0b2a69adf3feb03c43",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796"
 };
 
