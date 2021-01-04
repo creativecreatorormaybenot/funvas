@@ -31,7 +31,7 @@ packages:
       path: "../funvas"
       relative: true
     source: path
-    version: "0.1.0-nullsafety.3"
+    version: "0.1.1-nullsafety.0"
   funvas_tweets:
     dependency: "direct main"
     description:
