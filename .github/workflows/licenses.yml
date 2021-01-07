@@ -1,0 +1,25 @@
+name: Licenses
+
+on:
+  schedule:
+    - cron: '0 0 1 1 *'
+  workflow_dispatch:
+
+jobs:
+  years:
+    timeout-minutes: 11
+    runs-on: ubuntu-latest
+    name: Update copyright year(s)
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - uses: FantasticFiasco/action-update-license-year@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        path: '**/LICENSE'
+        commitTitle: Update copyright year in LICENSE file(s)
+        prTitle: Update copyright year in LICENSE file(s)
+        prBody: New Year is here and we want to keep up with time :)
+        assignees: creativecreatorormaybenot
