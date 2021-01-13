@@ -31,10 +31,7 @@ class Six extends Funvas with FunvasTweetMixin {
   @override
   void u(double t) {
     // Scale to match 750x750 as this is the export size and keep aspect ratio.
-    final scaling = min(x.height, x.width) / 750,
-        w = x.width / scaling,
-        h = x.height / scaling;
-    c.scale(scaling);
+    final s = s2q(750), w = s.width, h = s.height;
 
     c.drawPaint(Paint()..color = Color(0xffffffff));
     final paint = Paint()

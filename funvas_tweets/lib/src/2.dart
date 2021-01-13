@@ -11,6 +11,8 @@ class Two extends Funvas with FunvasTweetMixin {
 
   @override
   void u(double t) {
+    final s = s2q(420), w = s.width, h = s.height;
+
     // Black background (white square outlines).
     final backgroundPaint = Paint()..color = const Color(0xff000000),
         outlinePaint = Paint()
@@ -26,7 +28,7 @@ class Two extends Funvas with FunvasTweetMixin {
         padding = 16;
     final startPosition = Offset(startRadius / 2 + startStroke + padding,
             startRadius / 2 + startStroke + padding),
-        endPosition = Offset(x.width / 2, x.height / 2);
+        endPosition = Offset(w / 2, h / 2);
 
     // Draws a single square outline sequence from outside to inside.
     void sequence(double progress) {
@@ -39,9 +41,9 @@ class Two extends Funvas with FunvasTweetMixin {
     }
 
     void centerRotation(double radians) {
-      c.translate(x.width / 2, x.height / 2);
+      c.translate(w / 2, h / 2);
       c.rotate(radians);
-      c.translate(-x.width / 2, -x.height / 2);
+      c.translate(-w / 2, -h / 2);
     }
 
     centerRotation(t);

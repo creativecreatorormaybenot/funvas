@@ -11,15 +11,13 @@ class One extends Funvas with FunvasTweetMixin {
 
   @override
   void u(double t) {
-    final w = x.width,
-        h = x.height,
-        m = min(w, h),
-        center = Offset(w / 2, h / 2);
+    final s = s2q(750), w = s.width, h = s.height;
+    final center = Offset(w / 2, h / 2);
 
     // Draw background.
     c.drawPaint(Paint()..color = R(242, 227, 193));
 
-    final outer = m * (.42 + C(t / 3) * 5e-2);
+    final outer = 750 * (.42 + C(t / 3) * 5e-2);
 
     // Draw background circle.
     c.drawCircle(
