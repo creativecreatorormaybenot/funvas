@@ -4,8 +4,13 @@ import 'dart:ui';
 import 'package:flutter/animation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/funvas_tweets.dart';
 
-class Twelve extends Funvas {
+class Twelve extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1349343188247404548?s=20';
+
   @override
   void u(double t) {
     final s = s2q(750), w = s.width, h = s.height;
