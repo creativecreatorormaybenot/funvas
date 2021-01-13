@@ -1,11 +1,11 @@
 {
-    "name": "funvas_demo",
-    "short_name": "funvas_demo",
+    "name": "Funvas demo",
+    "short_name": "funvas",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Demonstration application for the funvas package, allowing to explore some animations.",
+    "description": "Demonstration of funvas animations.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
