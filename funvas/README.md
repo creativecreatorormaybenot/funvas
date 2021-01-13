@@ -13,6 +13,10 @@ on time and some math functions (sine, cosine, etc.) - like [this one][Twitter].
 <a target="_blank" href="https://twitter.com/creativemaybeno/status/1328261273922973696?s=20"><img src="https://s8.gifyu.com/images/animation8709ccbbf7b20e6e.gif" width="49%"></a>
 <a target="_blank" href="https://twitter.com/creativemaybeno/status/1327309901270560769?s=20"><img src="https://s8.gifyu.com/images/animation8709ccbbf7b20e6f.gif" width="49%"></a>
 </p>
+<p float="left">
+<a target="_blank" href="https://twitter.com/creativemaybeno/status/1346101868079042561?s=20"><img src="https://s2.gifyu.com/images/animation7182f28de17fe81f.gif" width="49%"></a>
+<a target="_blank" href="TODO"><img src="https://s2.gifyu.com/images/animationbfc096a486621405.gif" width="49%"></a>
+</p>
 
 *Inspired by Dwitter* ([check it out][Dwitter]). This is also the reason why
 the following shortcut functions and variables are available; they might be expanded upon in the

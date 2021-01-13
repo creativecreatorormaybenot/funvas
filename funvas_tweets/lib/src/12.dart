@@ -8,9 +8,7 @@ import 'package:funvas/funvas.dart';
 class Twelve extends Funvas {
   @override
   void u(double t) {
-    final scaling = min(x.width, x.height) / 750;
-    final w = x.width / scaling, h = x.height / scaling;
-    c.scale(scaling);
+    final s = s2q(750), w = s.width, h = s.height;
 
     // Background
     c.drawPaint(Paint()..color = const Color(0xffffffff));

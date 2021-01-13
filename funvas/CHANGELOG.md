@@ -1,3 +1,8 @@
+# 0.1.2-nullsafety.0
+
+* Added `s2q` method to `Funvas` for scaling the canvas to a square.
+* Added more example GIFs to the README.
+
 ## 0.1.1-nullsafety.0
 
 * Switched to a `Ticker` instead of a `Timer` in the `FunvasContainer`.
