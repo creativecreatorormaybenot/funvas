@@ -9,10 +9,10 @@ The name "funvas" is based on Flutter + fun + canvas. Let me know if you have an
 The idea of the package is to provide an easy way to create custom canvas animations based only
 on time and some math functions (sine, cosine, etc.) - like [this one][Twitter].
 
-<a target="_blank" href="https://twitter.com/creativemaybeno/status/1328261273922973696?s=20"><img src="https://s8.gifyu.com/images/animation8709ccbbf7b20e6e.gif" width="49%"></a>
-<a target="_blank" href="https://twitter.com/creativemaybeno/status/1327309901270560769?s=20"><img src="https://s8.gifyu.com/images/animation8709ccbbf7b20e6f.gif" width="49%"></a>
-<a target="_blank" href="https://twitter.com/creativemaybeno/status/1346101868079042561?s=20"><img src="https://s2.gifyu.com/images/animation053c9f614aad68ef.gif" width="49%"></a>
-<a target="_blank" href="TODO"><img src="https://s2.gifyu.com/images/animationbfc096a486621405.gif" width="49%"></a>
+<a target="_blank" href="https://twitter.com/creativemaybeno/status/1328261273922973696?s=20"><img src="https://s8.gifyu.com/images/animation8709ccbbf7b20e6e.gif" width="48.5%"></a>
+<a target="_blank" href="https://twitter.com/creativemaybeno/status/1327309901270560769?s=20"><img src="https://s8.gifyu.com/images/animation8709ccbbf7b20e6f.gif" width="48.5%"></a>
+<a target="_blank" href="https://twitter.com/creativemaybeno/status/1346101868079042561?s=20"><img src="https://s2.gifyu.com/images/animation053c9f614aad68ef.gif" width="48.5%"></a>
+<a target="_blank" href="TODO"><img src="https://s2.gifyu.com/images/animationbfc096a486621405.gif" width="48.5%"></a>
 
 *Inspired by Dwitter* ([check it out][Dwitter]). This is also the reason why
 the following shortcut functions and variables are available; they might be expanded upon in the
