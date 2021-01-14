@@ -5,7 +5,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_test/src/_matchers_io.dart';
 import 'package:funvas/src/painter.dart';
 import 'package:funvas_tweets/funvas_tweets.dart';
-import 'package:funvas_tweets/src/13.dart';
 
 void main() async {
   const fps = 50;
