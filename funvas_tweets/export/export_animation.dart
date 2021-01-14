@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_test/src/_matchers_io.dart';
 import 'package:funvas/src/painter.dart';
+import 'package:funvas_tweets/funvas_tweets.dart';
 import 'package:funvas_tweets/src/13.dart';
 
 void main() async {
@@ -14,7 +15,7 @@ void main() async {
   // when exporting to GIF.
   const animationName = 'animation';
   // Using a callback so that the constructor is run inside of the test.
-  final funvasFactory = () => Thirteen();
+  final funvasFactory = () => Fourteen();
 
   late final ValueNotifier<double> time;
 

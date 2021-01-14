@@ -58,8 +58,10 @@ class Fourteen extends Funvas {
 
     // We paint the scaffold relative to the center and go from there.
     c.translate(d / 2, d / 2);
-    c.scale(1.4 + cos(t) / 2);
-    c.rotate(2 * pi / animationDuration * t);
+    c.scale(1.4 + sin(pi * 2 / animationDuration * t) / 2);
+    c.rotate(2 * pi / animationDuration * t -
+        // I like the square coming from the top better.
+        pi / 2);
 
     // Background
     c.drawPaint(Paint()..color = const Color(0xffffffff));
