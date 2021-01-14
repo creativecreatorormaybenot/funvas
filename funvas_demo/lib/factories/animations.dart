@@ -16,4 +16,4 @@ final funvasFactories = <FunvasFactory<FunvasTweetMixin>>[
 /// Funvas factory for a WIP funvas that has no associated tweet yet.
 ///
 /// This one is viewable in debug mode only.
-final wipFunvas = FunvasFactory<Funvas>(() => Twelve());
+final wipFunvas = FunvasFactory<Funvas>(() => Thirteen());

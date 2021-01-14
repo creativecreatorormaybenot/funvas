@@ -4,17 +4,17 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_test/src/_matchers_io.dart';
 import 'package:funvas/src/painter.dart';
-import 'package:funvas_tweets/funvas_tweets.dart';
+import 'package:funvas_tweets/src/13.dart';
 
 void main() async {
   const fps = 50;
-  const animationDuration = Duration(seconds: 4);
+  const animationDuration = Duration(seconds: 8);
   const dimensions = Size(750, 750);
   // If you use a different animation name, you will have to also consider that
   // when exporting to GIF.
   const animationName = 'animation';
   // Using a callback so that the constructor is run inside of the test.
-  final funvasFactory = () => Twelve();
+  final funvasFactory = () => Thirteen();
 
   late final ValueNotifier<double> time;
 
