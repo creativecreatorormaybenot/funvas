@@ -2,8 +2,13 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
-class Thirteen extends Funvas {
+class Thirteen extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1350085831550148611?s=20';
+
   @override
   void u(double t) {
     final s = s2q(750), d = s.width;
