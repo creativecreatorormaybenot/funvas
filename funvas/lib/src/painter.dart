@@ -71,7 +71,7 @@ abstract class Funvas {
   ///
   /// ### Notes
   ///
-  /// "s2q" stands for "scale two square". I decided to not use "s2s" because
+  /// "s2q" stands for "scale to square". I decided to not use "s2s" because
   /// it sounded a bit weird.
   ///
   /// ---
