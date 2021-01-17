@@ -1,8 +1,8 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/painting.dart';
 import 'package:funvas/funvas.dart';
-import 'package:funvas_tweets/funvas_tweets.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
 /// The fourteenth funvas animation for a tweet :)
 ///
@@ -11,7 +11,11 @@ import 'package:funvas_tweets/funvas_tweets.dart';
 /// out might be a bit to crazy, so I want back with thirteen to have a simple
 /// version showcasing the very details of what I imagined in my head. This one
 /// shows what the you can make of the concept.
-class Fourteen extends Funvas {
+class Fourteen extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1350448219176615937?s=20';
+
   @override
   void u(double t) {
     final s = s2q(750), d = s.width;

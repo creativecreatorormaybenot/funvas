@@ -10,7 +10,7 @@ final funvasFactories = <FunvasFactory<FunvasTweetMixin>>[
   FunvasFactory(() => Eleven()),
   FunvasFactory(() => Thirteen()),
   FunvasFactory(() => Six()),
-  FunvasFactory(() => Two()),
+  FunvasFactory(() => Fourteen()),
 ];
 
 /// Funvas factory for a WIP funvas that has no associated tweet yet.
