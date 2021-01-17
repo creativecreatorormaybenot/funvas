@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/painting.dart';
 import 'package:funvas/funvas.dart';
 import 'package:funvas_tweets/src/tweet_mixin.dart';
 
