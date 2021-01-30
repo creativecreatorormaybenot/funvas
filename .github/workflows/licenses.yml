@@ -20,6 +20,8 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         path: '**/LICENSE'
         commitTitle: Update copyright year in LICENSE file(s)
+        commitAuthorName: creativecreatorormaybenot
+        commitAuthorEmail: creativecreatorormaybenot@gmail.com
         prTitle: Update copyright year in LICENSE file(s)
         prBody: New Year is here and we want to keep up with time :)
         assignees: creativecreatorormaybenot
