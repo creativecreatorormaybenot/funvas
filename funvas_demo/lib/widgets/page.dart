@@ -179,7 +179,7 @@ class _FunvasContainer extends StatelessWidget {
           Align(
             alignment: Alignment.topCenter,
             child: Padding(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(80),
               child: InkResponse(
                 onTap: onPrevious,
                 radius: 42,
@@ -215,7 +215,7 @@ class _FunvasContainer extends StatelessWidget {
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(80),
               child: InkResponse(
                 onTap: onNext,
                 radius: 42,
