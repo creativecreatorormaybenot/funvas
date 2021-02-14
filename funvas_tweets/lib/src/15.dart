@@ -2,8 +2,13 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
-class Fifteen extends Funvas {
+class Fifteen extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1360867891906830336?s=20';
+
   static const _depth = 11;
   late double _angle;
 
