@@ -18,7 +18,10 @@ class Fifteen extends Funvas {
     _branch(d / 2, Offset(d / 2, d), 0, _depth);
   }
 
-  double _cochleoidX(double t) => (sin(t) * cos(t)) / t;
+  double _cochleoidX(double t) {
+    if (t == 0) return 1;
+    return (sin(t) * cos(t)) / t;
+  }
 
   void _branch(double d1, Offset p1, double angle, int depth) {
     if (depth == 0) return;
