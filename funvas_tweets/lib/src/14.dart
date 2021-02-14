@@ -1,43 +1,93 @@
 import 'dart:math';
-import 'dart:ui';
 
+import 'package:flutter/painting.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
-class Fourteen extends Funvas {
-  static const _depth = 11;
-
-  late double _angle;
+/// The fourteenth funvas animation for a tweet :)
+///
+/// Note that this is very similar to [Thirteen].
+/// The reason they are similar is that I thought that the way this one turned
+/// out might be a bit to crazy, so I want back with thirteen to have a simple
+/// version showcasing the very details of what I imagined in my head. This one
+/// shows what the you can make of the concept.
+class Fourteen extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1350448219176615937?s=20';
 
   @override
   void u(double t) {
-    c.drawPaint(Paint()..color = const Color(0xfff0d9b5));
-
-    _angle = pi / 2 * _cochleoidX(-pi + 2 * pi * (t % 5) / 5);
-
     final s = s2q(750), d = s.width;
-    _branch(d / 2, Offset(d / 2, d), 0, _depth);
-  }
 
-  double _cochleoidX(double t) => (sin(t) * cos(t)) / t;
+    const squareDimension = 20.0;
+    const animationDuration = 10;
 
-  void _branch(double d1, Offset p1, double angle, int depth) {
-    if (depth == 0) return;
-    // Half branch distance.
-    final d2 = d1 * 2 / 3;
-    final p2 = Offset(
-      p1.dx + sin(angle) * d2,
-      p1.dy - cos(angle) * d2,
+    void drawSquare(double shift) {
+      c.save();
+      final progress = (t + shift) %
+          animationDuration *
+          // Make the squares cross the track exactly once (+ an extra width to
+          // make the entrance seamless) in the given duration.
+          ((d / squareDimension + 1) / animationDuration);
+      c.translate(progress.floor() * squareDimension, 0);
+      c.rotate(-pi / 2 * (progress % 1));
+      c.translate(-squareDimension, 0);
+      c.drawRRect(
+        RRect.fromRectAndRadius(
+          Offset.zero & Size.square(squareDimension),
+          Radius.circular(4),
+        ),
+        Paint()
+          ..color = const Color(0xffffffff)
+          ..blendMode = BlendMode.difference,
+      );
+      c.restore();
+    }
+
+    void drawTrack(double shift) {
+      c.save();
+      c.drawLine(
+        Offset(0, 0),
+        Offset(d, 0),
+        Paint()..color = const Color(0x66ffffff),
+      );
+
+      drawSquare(shift);
+      // Draw another square (mirrored) on the other side of the track.
+      c.scale(1, -1);
+      drawSquare(shift);
+      c.restore();
+    }
+
+    // We paint the scaffold relative to the center and go from there.
+    c.translate(d / 2, d / 2);
+    c.scale(1.4 + sin(pi * 2 / animationDuration * t) / 2);
+    c.rotate(2 * pi / animationDuration * t -
+        // I like the square coming from the top better.
+        pi / 2);
+
+    // Background
+    c.drawPaint(Paint()..color = const Color(0xffffffff));
+    c.drawCircle(Offset.zero, d / 2, Paint()..color = const Color(0xff000000));
+    // We clip to the background circle in order to ensure that the squares are
+    // not visible on the background when rolling in.
+    c.clipPath(
+      Path()..addOval(Rect.fromCircle(center: Offset.zero, radius: d / 2)),
     );
-    // Stroke based on depth.
-    final paint = Paint()
-      ..color = const Color(0xddb58863)
-      ..strokeCap = StrokeCap.round
-      ..strokeWidth = depth / _depth * 6;
-    c.drawLine(p1, p2, paint);
 
-    // Branch left.
-    _branch(d2, p2, angle - _angle, depth - 1);
-    // Branch right.
-    _branch(d2, p2, angle + _angle, depth - 1);
+    // We want to draw the tracks in a circle from start to end. There will be
+    // multiple rolling squares on each track. Because we go in a whole
+    const tracks = 40;
+    for (var i = 0; i < tracks; i++) {
+      c.save();
+      c.rotate(pi * 2 / tracks * i);
+      c.translate(-d / 2, 0);
+
+      final shift = animationDuration / tracks / 2 * i;
+      drawTrack(shift);
+      drawTrack(animationDuration / 2 + shift);
+      c.restore();
+    }
   }
 }
