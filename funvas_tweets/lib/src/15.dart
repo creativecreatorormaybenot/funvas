@@ -5,7 +5,6 @@ import 'package:funvas/funvas.dart';
 
 class Fifteen extends Funvas {
   static const _depth = 11;
-
   late double _angle;
 
   @override
