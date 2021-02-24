@@ -3,12 +3,17 @@ import 'dart:ui';
 
 import 'package:flutter/animation.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/funvas_tweets.dart';
 
 /// Funvas for a projected 3D rotating cube.
 ///
 /// Found some inspiration for the perspective transforms at https://stackoverflow.com/questions/701504/perspective-projection-determine-the-2d-screen-coordinates-x-y-of-points-in-3/701978#comment32917856_701978
 /// and https://github.com/gnomeby/canvas3D/blob/679d2a93bc88e78771ecc32979c0cacd621e396b/canvas-3d-cube.html.
-class Sixteen extends Funvas {
+class Sixteen extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1364560611435307008?s=20';
+
   @override
   void u(double t) {
     c.drawPaint(Paint()..color = const Color(0xff333333));
@@ -48,7 +53,7 @@ class Sixteen extends Funvas {
     }
 
     _Vertex3 rotate(_Vertex3 vertex) {
-      final radians = Curves.fastOutSlowIn.transform(slowedT % 1) * 2 * pi;
+      final radians = Curves.linear.transform(slowedT % 1) * 2 * pi;
       final _Vertex3 preRotated;
       switch (sectionedT) {
         case 0:

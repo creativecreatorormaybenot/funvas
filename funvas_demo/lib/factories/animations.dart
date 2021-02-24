@@ -5,16 +5,18 @@ import 'package:funvas_tweets/funvas_tweets.dart';
 final funvasFactories = <FunvasFactory<FunvasTweetMixin>>[
   FunvasFactory(() => Three()),
   FunvasFactory(() => Four()),
+  FunvasFactory(() => Fifteen()),
   FunvasFactory(() => Twelve()),
   FunvasFactory(() => One()),
-  FunvasFactory(() => Fifteen()),
   FunvasFactory(() => Eleven()),
   FunvasFactory(() => Thirteen()),
+  FunvasFactory(() => Sixteen()),
   FunvasFactory(() => Six()),
   FunvasFactory(() => Fourteen()),
 ];
 
-/// Funvas factory for a WIP funvas that has no associated tweet yet.
+/// Funvas factory for a WIP funvas that does not need to have an associated
+/// tweet yet.
 ///
 /// This one is viewable in debug mode only.
 final wipFunvas = FunvasFactory<Funvas>(() => Sixteen());
