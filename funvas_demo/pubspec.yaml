@@ -15,12 +15,11 @@ dependencies:
   funvas_tweets:
     path: ../funvas_tweets
 
-  # Cannot use url_launcher: ^6.0.0-nullsafety.1 because of missing web support.
-  url_launcher: ^5.7.10
-  url_strategy: ^0.2.0-nullsafety.0
+  url_launcher: ^6.0.0
+  url_strategy: ^0.2.0
 
 dev_dependencies:
-  pedantic: ^1.10.0-nullsafety.3
+  pedantic: ^1.10.0
 
 flutter:
   uses-material-design: true

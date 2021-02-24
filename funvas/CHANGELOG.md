@@ -1,3 +1,7 @@
+## 0.1.2
+
+* Bumped to stable null safety version.
+
 ## 0.1.2-nullsafety.2
 
 * Corrected typo in docs.
