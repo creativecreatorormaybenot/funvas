@@ -3,7 +3,7 @@
 Collection of [`funvas`][funvas] animations tweeted [@creativemaybeno][Twitter].  
 You can find all of them in the timeline :)
 
-Additionally, this project contains code for exporting funvas animations to GIFs.
+Additionally, this project contains code for exporting funvas animations to GIFs (and mp4).
 
 ## Exporting animations
 
@@ -31,6 +31,11 @@ saved at `export/<animation name>/<frame number>.gif`. gifsicle will then assemb
 frames. Note that you will also need to adjust the bash script (`export/export_gif.sh`) to use your
 frames (the path) and also your frame rate (the delay is given in hundredths of a second, i.e. the
 delay between two frames - you will have to calculate that yourself).
+
+### MP4
+
+The process is essentially the same for mp4, just that the tool used is `ffmpeg`
+(`brew install ffmpeg`) and the bash script is `export/export_mp4.sh` :)
 
 [Twitter]: https://twitter.com/creativemaybeno
 [funvas]: https://pub.dev/packages/funvas

@@ -77,3 +77,4 @@ build/
 # Animation export
 export/*/*.png
 export/*.gif
+export/*.mp4
