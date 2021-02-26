@@ -1,13 +1,18 @@
 import 'dart:math';
 import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/painting.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
 /// Rotating dots connected by lines.
 ///
 /// Mostly inspired by https://www.reddit.com/r/oddlysatisfying/comments/lqnj0c/dots_spiraling_out_in_a_nice_loop.
-class Seventeen extends Funvas {
+class Seventeen extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1365335653823754245?s=20';
+
   @override
   void u(double t) {
     c.drawPaint(Paint()..color = const Color(0xffdddddd));
