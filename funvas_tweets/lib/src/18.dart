@@ -3,8 +3,13 @@ import 'dart:ui';
 
 import 'package:flutter/animation.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
-class Eighteen extends Funvas {
+class Eighteen extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1367842836817866757?s=20';
+
   Eighteen() {
     final random = Random();
     _sides = List.generate(_n, (index) => random.nextInt(5) + 3);
