@@ -1,3 +1,7 @@
+## 0.1.3
+
+* Upgraded to latest dependencies.
+
 ## 0.1.2
 
 * Bumped to stable null safety version.
