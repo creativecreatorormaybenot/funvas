@@ -11,8 +11,8 @@ const RESOURCES = {
 "assets/AssetManifest.json": "ac3b48d388deef6c9aab595319d7e911",
 "assets/packages/funvas_tweets/assets/0.stub": "e8f65fd8d973f9985dc7ea3cf1614ae1",
 "assets/FontManifest.json": "7b2a36307916a9721811788013e65289",
-"index.html": "9b82db3168d05a9f5d930c0e608eba2e",
-"/": "9b82db3168d05a9f5d930c0e608eba2e",
+"index.html": "6c2c135b000e0cdddef7a563d6efcada",
+"/": "6c2c135b000e0cdddef7a563d6efcada",
 "main.dart.js": "f28a6d7c3ac00dca9f22594861e0b00e",
 "version.json": "f3395245d1958ace9ec47388afc51dfa",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796"
