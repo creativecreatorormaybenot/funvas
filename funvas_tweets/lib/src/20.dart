@@ -1,22 +1,36 @@
 import 'dart:math';
 import 'dart:ui';
 
-import 'package:flutter/animation.dart';
 import 'package:funvas/funvas.dart';
-import 'package:funvas_tweets/funvas_tweets.dart';
 
-class Nineteen extends Funvas with FunvasTweetMixin {
-  @override
-  String get tweet =>
-      'https://twitter.com/creativemaybeno/status/1369749942080839680?s=20';
-
+class Twenty extends Funvas {
   @override
   void u(double t) {
-    final s = s2q(750), w = s.width, h = s.height;
+    c.save();
+    _drawFrame(t);
+    c.restore();
+    c.saveLayer(
+      Offset.zero & Size(x.width, x.height),
+      Paint()..blendMode = BlendMode.difference,
+    );
+    c.save();
+    _drawFrame(t + 1 / 3);
+    c.restore();
+    c.restore();
+    c.saveLayer(
+      Offset.zero & Size(x.width, x.height),
+      Paint()..blendMode = BlendMode.difference,
+    );
+    c.save();
+    _drawFrame(t + 2 / 3);
+    c.restore();
+    c.restore();
+  }
 
+  void _drawFrame(double t) {
     final diagonal = 125.0, side = diagonal / sqrt2;
-    final rotation =
-        -(Curves.bounceInOut.transform(t / 4 % 1) + 1 / 4) % 1 * pi;
+    final s = s2q(750), w = s.width, h = s.height;
+    final rotation = ((t / 4 % 1) + 1 / 4) % 1 * pi;
 
     const white = Color(0xffffffff), black = Color(0xff000000);
 
