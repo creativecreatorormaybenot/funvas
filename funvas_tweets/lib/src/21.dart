@@ -13,7 +13,8 @@ class TwentyOne extends Funvas {
         diameter = sideLength / cos(pi / 6),
         radius = diameter / 2,
         height = radius + radius * sin(pi / 6);
-    final rotation = Curves.slowMiddle.transform(t / 4 % 1) * pi * 4 / 3;
+    final rotation =
+        ((Curves.slowMiddle.transform(t / 4 % 1) + 1 / 2) % 1) * pi * 4 / 3;
 
     void drawTriangles(Color color, bool shift) {
       for (var i = 0; i < w / sideLength + 1; i++) {
