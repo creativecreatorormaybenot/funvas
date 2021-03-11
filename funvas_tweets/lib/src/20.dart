@@ -2,8 +2,13 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
-class Twenty extends Funvas {
+class Twenty extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1369754059826212869?s=20';
+
   @override
   void u(double t) {
     c.save();
