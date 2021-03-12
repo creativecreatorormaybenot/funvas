@@ -19,6 +19,7 @@ export 'package:funvas_tweets/src/18.dart';
 export 'package:funvas_tweets/src/19.dart';
 export 'package:funvas_tweets/src/20.dart';
 export 'package:funvas_tweets/src/21.dart';
+export 'package:funvas_tweets/src/22.dart';
 export 'package:funvas_tweets/src/tweet_mixin.dart';
 
 /// This package contains funvas animations from @creativemaybeno's tweets.
