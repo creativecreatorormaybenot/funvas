@@ -4,11 +4,7 @@ import 'dart:ui';
 import 'package:flutter/animation.dart';
 import 'package:funvas/funvas.dart';
 
-class TwentyOne extends Funvas {
-  @override
-  String get tweet =>
-      'https://twitter.com/creativemaybeno/status/1370120214789156868?s=20';
-
+class TwentyTwo extends Funvas {
   @override
   void u(double t) {
     final s = s2q(750), w = s.width, h = s.height;
@@ -17,24 +13,36 @@ class TwentyOne extends Funvas {
         diameter = sideLength / cos(pi / 6),
         radius = diameter / 2,
         height = radius + radius * sin(pi / 6);
-    final rotation =
-        ((Curves.slowMiddle.transform(t / 4 % 1) + 1 / 2) % 1) * pi * 4 / 3;
+    final rotation = ((t / 5 % 1) * pi * 2 + pi / 6) % (pi * 2);
 
-    void drawTriangles(Color color, bool shift) {
+    void drawTriangles(Color color) {
       for (var i = 0; i < w / sideLength + 1; i++) {
-        for (var j = 0; j < h / height + 1; j++) {
-          var x = i * sideLength, y = j * height;
+        for (var j = 0; j < h / height + 2; j++) {
+          var x = i * sideLength, y = j * height, angle = rotation;
           if (j % 2 != 0) {
             x += sideLength / 2;
           }
-          if (shift) {
+
+          if (rotation >= pi * 5 / 3) {
             x -= sideLength / 2;
+            angle += pi;
             y += radius / 2;
+          } else if (rotation >= pi * 4 / 3) {
+            x -= sideLength / 2;
+            y -= radius / 2;
+          } else if (rotation >= pi) {
+            angle += pi;
+          } else if (rotation >= pi * 2 / 3) {
+            y -= radius;
+          } else if (rotation >= pi * 1 / 3) {
+            angle += pi;
+            x -= sideLength / 2;
+            y -= radius / 2;
           }
 
           _drawTriangle(
             center: Offset(x, y),
-            rotation: rotation + (shift ? pi : 0),
+            rotation: angle,
             paint: Paint()..color = color,
             radius: radius,
           );
@@ -42,13 +50,13 @@ class TwentyOne extends Funvas {
       }
     }
 
-    const light = Color(0xfff0d9b5), dark = Color(0xffb58863);
-    if (rotation < pi * 2 / 3) {
+    const light = Color(0xffffeac6), dark = Color(0xffa47752);
+    if ((rotation % (pi * 2 / 3)) < pi * 1 / 3) {
       c.drawColor(dark, BlendMode.srcOver);
-      drawTriangles(light, true);
+      drawTriangles(light);
     } else {
       c.drawColor(light, BlendMode.srcOver);
-      drawTriangles(dark, false);
+      drawTriangles(dark);
     }
   }
 
