@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/funvas_tweets.dart';
 
 /// Recreation of original work by Dave Whyte.
 ///
@@ -10,7 +11,11 @@ import 'package:funvas/funvas.dart';
 /// the inspiration.
 /// All code and concepts in the code are mine - I have no idea how Dave thought
 /// about this problem.
-class TwentyThree extends Funvas {
+class TwentyThree extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1377705763402039303?s=20';
+
   /// The total number of boxes and tiles visible on the screen when fully
   /// zoomed out.
   ///
@@ -54,7 +59,7 @@ class TwentyThree extends Funvas {
     c.translate(_d / 2, _d / 2);
     c.scale(1 +
         ((_boxCount + 1) / 2) * Curves.easeInQuad.transform((t % _ld) / _ld));
-    // c.rotate(-pi / 2 * ((t % _ld) / _ld));
+    c.rotate(-pi / 2 * ((t % _ld) / _ld));
     c.save();
     _drawBox(t, 0);
     c.restore();
@@ -107,7 +112,7 @@ class TwentyThree extends Funvas {
     final dt = db / _tileCount;
     final dtf = dt * _tileFraction;
 
-    final timePerTile = (_ld - 2) / (_tileCount + 2);
+    final timePerTile = _ld / (_tileCount + 2);
     final timeInRun = t % _ld;
 
     while (loop < _tileCount) {
@@ -132,7 +137,7 @@ class TwentyThree extends Funvas {
 
       final progress = min(
           1.0,
-          max(0.0, timeInRun - 2 - delay / 2 - timePerTile * i / _tileCount) /
+          max(0.0, timeInRun - delay / 2 - timePerTile * i / _tileCount) /
               timePerTile);
       final transformed = Curves.easeOutSine.transform(progress);
 
