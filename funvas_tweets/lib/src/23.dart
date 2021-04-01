@@ -106,7 +106,7 @@ class TwentyThree extends Funvas {
     final dt = db / _tileCount;
     final dtf = dt * _tileFraction;
 
-    final timePerTile = _ld / (_tileCount + 2);
+    final timePerTile = (_ld - 2) / (_tileCount + 2);
     final timeInRun = t % _ld;
 
     while (loop < _tileCount) {
@@ -132,7 +132,7 @@ class TwentyThree extends Funvas {
 
       final progress = min(
           1.0,
-          max(0.0, timeInRun - delay / 2 - timePerTile * i / _tileCount) /
+          max(0.0, timeInRun - 2 - delay / 2 - timePerTile * i / _tileCount) /
               timePerTile);
       final transformed = Curves.easeOutSine.transform(progress);
 
