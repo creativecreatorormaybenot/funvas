@@ -1,4 +1,4 @@
-name: Demo deployment
+name: demo
 
 on:
   push:
@@ -15,7 +15,7 @@ jobs:
   demo-deploy:
     timeout-minutes: 6
     runs-on: ubuntu-latest
-    name: Funvas demo page
+    name: deployment
 
     steps:
       - uses: actions/checkout@v2.3.4

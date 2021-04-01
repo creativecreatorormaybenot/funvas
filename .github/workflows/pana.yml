@@ -1,4 +1,4 @@
-name: Pana
+name: pana
 
 on:
   pull_request:
@@ -13,7 +13,7 @@ jobs:
   configure:
     timeout-minutes: 9
     runs-on: ubuntu-latest
-    name: Configuration of funvas
+    name: funvas configuration
     strategy:
       fail-fast: false
 
