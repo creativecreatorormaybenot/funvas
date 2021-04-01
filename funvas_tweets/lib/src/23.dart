@@ -16,9 +16,7 @@ class TwentyThree extends Funvas {
   ///
   /// Where a box refers to a square that splits itself up into smaller tiles
   /// during the animation and a tile being the moving part.
-  ///
-  /// Note that these have to be odd numbers for the logic to work.
-  static const _boxCount = 19, _tileCount = 5;
+  static const _boxCount = 15, _tileCount = 9;
 
   /// The stable color for all tiles.
   ///
@@ -26,7 +24,7 @@ class TwentyThree extends Funvas {
   /// color wheel. The stable color is shown statically during some parts
   /// of the animation. In some other parts, we lerp to a color on the color
   /// wheel (to be precise, HSL colors with changing hue).
-  static const _stableColor = Color(0xff000000);
+  static const _stableColor = Color(0xffe1c699);
 
   /// The dimension of our animation.
   ///
@@ -113,11 +111,16 @@ class TwentyThree extends Funvas {
           packedOffset,
           spreadOffset,
           Curves.elasticInOut.transform(
-              Curves.slowMiddle.transform(1 - (t - delay / _boxCount) % 1)))!;
+              Curves.slowMiddle.transform(1 - (t - delay / 20) % 1)))!;
 
-      c.drawCircle(
-        offset,
-        dtf / 2,
+      c.drawRect(
+        Rect.fromCenter(
+          center: offset,
+          // We add a tiny bit to the rect size in order to make any gaps
+          // disappear.
+          width: dtf + 1 / 99,
+          height: dtf + 1 / 99,
+        ),
         paint,
       );
 
