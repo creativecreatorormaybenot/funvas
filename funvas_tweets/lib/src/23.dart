@@ -16,6 +16,8 @@ class TwentyThree extends Funvas {
   ///
   /// Where a box refers to a square that splits itself up into smaller tiles
   /// during the animation and a tile being the moving part.
+  ///
+  /// Note that these have to be odd numbers for the logic to work.
   static const _boxCount = 15, _tileCount = 9;
 
   /// The stable color for all tiles.
