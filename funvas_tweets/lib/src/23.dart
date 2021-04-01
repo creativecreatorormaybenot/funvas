@@ -48,7 +48,7 @@ class TwentyThree extends Funvas {
     s2q(_d);
 
     // Set a nice thumbnail.
-    t += 2;
+    t += 2 + 3 / 10;
 
     // Our center box.
     c.translate(_d / 2, _d / 2);
@@ -115,7 +115,6 @@ class TwentyThree extends Funvas {
         // We have reached the center point.
         break;
       }
-      i++;
 
       final packedOffset = Offset(
         dtf * (-_tileCount / 2 + position.x + 1 / 2),
@@ -136,6 +135,22 @@ class TwentyThree extends Funvas {
           max(0.0, timeInRun - 2 - delay / 2 - timePerTile * i / _tileCount) /
               timePerTile);
       final transformed = Curves.easeOutSine.transform(progress);
+
+      if (i == 0 && progress == 0) {
+        // Optimization for reducing non-anti-alias artifacts.
+        c.drawRect(
+          Rect.fromCenter(
+            center: Offset.zero,
+            width: db * _tileFraction,
+            height: db * _tileFraction,
+          ),
+          Paint()
+            // We can use anti alias when drawing a single rect without gaps.
+            ..isAntiAlias = true
+            ..color = _stableColor,
+        );
+        break;
+      }
 
       final offset = Offset.lerp(
         packedOffset,
@@ -198,6 +213,8 @@ class TwentyThree extends Funvas {
           position = Point(position.x, position.y - 1);
           break;
       }
+
+      i++;
     }
   }
 }
