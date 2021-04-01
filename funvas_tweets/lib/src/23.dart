@@ -110,10 +110,10 @@ class TwentyThree extends Funvas {
         (db - dt / 2) * (position.y / _tileCount + 1 / _tileCount / 2 - 1 / 2),
       );
       final offset = Offset.lerp(
-          packedOffset,
-          spreadOffset,
-          Curves.elasticInOut.transform(
-              Curves.slowMiddle.transform(1 - (t - delay / 20) % 1)))!;
+        packedOffset,
+        spreadOffset,
+        0,
+      )!;
 
       c.drawRect(
         Rect.fromCenter(
