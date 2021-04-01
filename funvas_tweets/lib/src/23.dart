@@ -39,6 +39,9 @@ class TwentyThree extends Funvas {
   /// What fraction of one box one tile takes up in one dimension.
   static const _tileFraction = 1 / 3;
 
+  /// The loop duration in seconds.
+  static const _ld = 8.0;
+
   @override
   void u(double t) {
     c.drawColor(const Color(0xffffffff), BlendMode.srcOver);
@@ -48,7 +51,12 @@ class TwentyThree extends Funvas {
 
     // Our center box.
     c.translate(_d / 2, _d / 2);
-    _drawBox(t, boxPaint, 0);
+    c.scale(1 +
+        ((_boxCount + 1) / 2) * Curves.easeInQuad.transform((t % _ld) / _ld));
+    // c.rotate(-pi / 2 * ((t % _ld) / _ld));
+    c.save();
+    _drawBox(t, 0);
+    c.restore();
 
     // The box extent is how many boxes we go outwards from the center.
     const boe = _boxCount ~/ 2 + 1;
@@ -66,7 +74,8 @@ class TwentyThree extends Funvas {
           for (var s = -1; s <= 1; s += 2) {
             c.save();
             c.translate(_d / 2 / boe * o * s, 0);
-            _drawBox(t, boxPaint, m * 2 - 1 + o);
+            c.rotate(-i * pi / 2);
+            _drawBox(t, m * 2 - 1 + o);
             c.restore();
 
             // We do not need to mirror the boxes on the symmetry axes.
@@ -78,7 +87,10 @@ class TwentyThree extends Funvas {
     }
   }
 
-  void _drawBox(double t, Paint paint, int delay) {
+  void _drawBox(double t, int delay) {
+    // Turn the spiral upside down.
+    c.rotate(pi);
+
     // I am not sure how to loop through the positions in a spiral in a good
     // way, so I am just going to do it visually on a 9x9 grid.
     var position = Point(0, 0);
@@ -93,6 +105,10 @@ class TwentyThree extends Funvas {
     final db = _d / _boxCount;
     final dt = db / _tileCount;
     final dtf = dt * _tileFraction;
+
+    final timePerTile = _ld / (_tileCount + 2);
+    final timeInRun = t % _ld;
+
     while (loop < _tileCount) {
       if (i == _tileCount * _tileCount) {
         // We have reached the center point.
@@ -106,13 +122,24 @@ class TwentyThree extends Funvas {
       );
       final spreadOffset = Offset(
         // We add -dt / 2 as a margin in order to tile the boxes seamlessly.
-        (db - dt / 2) * (position.x / _tileCount + 1 / _tileCount / 2 - 1 / 2),
-        (db - dt / 2) * (position.y / _tileCount + 1 / _tileCount / 2 - 1 / 2),
+        // The -.42 I have no idea why. It is needed to make the zoom transition
+        // seamless - seriously no clue :shrug:
+        (db - dt / 2 - .42) *
+            (position.x / _tileCount + 1 / _tileCount / 2 - 1 / 2),
+        (db - dt / 2 - .42) *
+            (position.y / _tileCount + 1 / _tileCount / 2 - 1 / 2),
       );
+
+      final progress = min(
+          1.0,
+          max(0.0, timeInRun - delay / 2 - timePerTile * i / _tileCount) /
+              timePerTile);
+      final transformed = Curves.easeOutSine.transform(progress);
+
       final offset = Offset.lerp(
         packedOffset,
         spreadOffset,
-        0,
+        transformed,
       )!;
 
       c.drawRect(
@@ -120,10 +147,16 @@ class TwentyThree extends Funvas {
           center: offset,
           // We add a tiny bit to the rect size in order to make any gaps
           // disappear.
-          width: dtf + 1 / 99,
-          height: dtf + 1 / 99,
+          width: dtf + 1 / 15 * (1 - progress),
+          height: dtf + 1 / 15 * (1 - progress),
         ),
-        paint,
+        Paint()
+          ..color = Color.lerp(
+              _stableColor,
+              HSLColor.fromAHSL(
+                      1, 360 * (1 - i / _tileCount / _tileCount), .8, .7)
+                  .toColor(),
+              max(0, progress - timeInRun / _ld))!,
       );
 
       switch (direction) {
