@@ -47,7 +47,8 @@ class TwentyThree extends Funvas {
     c.drawColor(const Color(0xffffffff), BlendMode.srcOver);
     s2q(_d);
 
-    final boxPaint = Paint()..color = _stableColor;
+    // Set a nice thumbnail.
+    t += 2;
 
     // Our center box.
     c.translate(_d / 2, _d / 2);
@@ -145,12 +146,13 @@ class TwentyThree extends Funvas {
       c.drawRect(
         Rect.fromCenter(
           center: offset,
-          // We add a tiny bit to the rect size in order to make any gaps
-          // disappear.
-          width: dtf + 1 / 15 * (1 - progress),
-          height: dtf + 1 / 15 * (1 - progress),
+          width: dtf,
+          height: dtf,
         ),
         Paint()
+          // If we allow anti alias in the collapsed state, there are weird
+          // gaps that probably also screw up the GIF export.
+          ..isAntiAlias = progress == 0 ? false : true
           ..color = Color.lerp(
               _stableColor,
               HSLColor.fromAHSL(
