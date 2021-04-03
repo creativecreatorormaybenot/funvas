@@ -3,7 +3,7 @@ name: publish
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - 'funvas/pubspec.yaml'
       - '.github/workflows/publish.yml'
