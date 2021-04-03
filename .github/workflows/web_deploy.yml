@@ -3,7 +3,7 @@ name: demo
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - 'funvas_demo/lib/**'
       - 'funvas_demo/web/**'
