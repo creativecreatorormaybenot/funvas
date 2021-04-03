@@ -3,7 +3,7 @@ name: checks
 on:
   pull_request:
     branches:
-      - master
+      - main
     paths:
       - '.github/workflows/checks.yml'
       - '**/lib/**'
