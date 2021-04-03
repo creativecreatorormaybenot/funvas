@@ -16,7 +16,6 @@ The name "funvas" is based on Flutter + fun + canvas. Let me know if you have an
 <a target="_blank" href="https://twitter.com/creativemaybeno/status/1350085831550148611?s=20"><img src="https://user-images.githubusercontent.com/19204050/113479488-f01aa400-947e-11eb-81c4-e4394ec20b01.gif" width="49%"></a>
 <a target="_blank" href="https://twitter.com/creativemaybeno/status/1364560611435307008?s=20"><img src="https://user-images.githubusercontent.com/19204050/113479491-f1e46780-947e-11eb-9bb2-f43748651700.gif" width="49%"></a>
 
-
 ## [Demo][demo]
 
 I share my funvas creations [on Twitter][Twitter] and I have also create a [live demo][demo] that
