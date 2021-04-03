@@ -11,8 +11,14 @@ on time and some math functions (sine, cosine, etc.) - like [this one][Twitter].
 
 <a target="_blank" href="https://twitter.com/creativemaybeno/status/1328261273922973696?s=20"><img src="https://s8.gifyu.com/images/animation8709ccbbf7b20e6e.gif" width="49%"></a>
 <a target="_blank" href="https://twitter.com/creativemaybeno/status/1327309901270560769?s=20"><img src="https://s8.gifyu.com/images/animation8709ccbbf7b20e6f.gif" width="49%"></a>
+<a target="_blank" href="https://twitter.com/creativemaybeno/status/1377705763402039303?s=20"><img src="https://user-images.githubusercontent.com/19204050/113479453-b9dd2480-947e-11eb-88b6-4ef3835e0a29.gif" width="49%"></a>
+<a target="_blank" href="https://twitter.com/creativemaybeno/status/1360867891906830336?s=20"><img src="https://user-images.githubusercontent.com/19204050/113479456-bfd30580-947e-11eb-9a3a-f807299a289a.gif" width="49%"></a>
 <a target="_blank" href="https://twitter.com/creativemaybeno/status/1346101868079042561?s=20"><img src="https://s2.gifyu.com/images/animation053c9f614aad68ef.gif" width="49%"></a>
 <a target="_blank" href="https://twitter.com/creativemaybeno/status/1349343188247404548?s=20"><img src="https://s2.gifyu.com/images/animationbfc096a486621405.gif" width="49%"></a>
+<a target="_blank" href="https://twitter.com/creativemaybeno/status/1369749942080839680?s=20"><img src="https://user-images.githubusercontent.com/19204050/113479483-e8f39600-947e-11eb-858b-ec3fe980f2b2.gif" width="49%"></a>
+<a target="_blank" href="https://twitter.com/creativemaybeno/status/1370328227479191553?s=20"><img src="https://user-images.githubusercontent.com/19204050/113479485-ec871d00-947e-11eb-863b-4dac2a92c6e4.gif" width="49%"></a>
+<a target="_blank" href="https://twitter.com/creativemaybeno/status/1350085831550148611?s=20"><img src="https://user-images.githubusercontent.com/19204050/113479488-f01aa400-947e-11eb-81c4-e4394ec20b01.gif" width="49%"></a>
+<a target="_blank" href="https://twitter.com/creativemaybeno/status/1364560611435307008?s=20"><img src="https://user-images.githubusercontent.com/19204050/113479491-f1e46780-947e-11eb-9bb2-f43748651700.gif" width="49%"></a>
 
 *Inspired by Dwitter* ([check it out][Dwitter]). This is also the reason why
 the following shortcut functions and variables are available; they might be expanded upon in the
