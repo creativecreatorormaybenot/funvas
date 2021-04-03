@@ -3,7 +3,7 @@ name: pana
 on:
   pull_request:
     branches:
-      - master
+      - main
     paths:
       - 'funvas/lib/**'
       - 'funvas/pubspec.yaml'
