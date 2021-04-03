@@ -1,3 +1,7 @@
+## 0.1.3+1
+
+* Added new GIFs to README.
+
 ## 0.1.3
 
 * Upgraded to latest dependencies.
