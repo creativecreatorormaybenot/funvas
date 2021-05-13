@@ -4,11 +4,11 @@ import 'package:funvas_tweets/funvas_tweets.dart';
 
 final funvasFactories = <FunvasFactory<FunvasTweetMixin>>[
   FunvasFactory(() => TwentyFour()),
-  FunvasFactory(() => TwentyThree()),
   FunvasFactory(() => Three()),
   FunvasFactory(() => Four()),
   FunvasFactory(() => Fifteen()),
   FunvasFactory(() => Twelve()),
+  FunvasFactory(() => TwentyThree()),
   FunvasFactory(() => One()),
   FunvasFactory(() => Eleven()),
   FunvasFactory(() => Thirteen()),
