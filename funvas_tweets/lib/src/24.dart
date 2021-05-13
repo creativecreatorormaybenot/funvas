@@ -12,14 +12,22 @@ class TwentyFour extends Funvas {
     final d = s2q(750).width;
     c.drawColor(const Color(0xffffffff), BlendMode.srcOver);
 
-    var r = d / 12;
-    drawTrack(t, (d - r * 2 * pi) / 2, (d - r * 2) / 2, r, 1);
+    t += 1;
+    t /= 8 / 6;
+    t %= 6;
+
+    c.translate(d / 2, d / 2);
+    c.rotate(-(t / 3 * pi) % (2 * pi));
+    c.translate(-d / 2, -d / 2);
+
+    final r = d / 10.5;
+    drawTrack(t, (d - r * 2 * pi) / 2, d / 2, r, 12, -15);
   }
 
   void drawTrack(double t, double x, double y, double r, int n, [int co = 0]) {
     final bp = Paint()
       ..color = const Color(0xff000000)
-      ..strokeWidth = 1
+      ..strokeWidth = 1.5
       ..style = PaintingStyle.stroke;
 
     c.drawLine(Offset(x, y), Offset(x + 2 * pi * r, y), bp);
@@ -62,7 +70,8 @@ class TwentyFour extends Funvas {
     }
 
     Color l(double i) =>
-        HSLColor.fromAHSL(1, (i / 2 / pi * 360 + co) % 360, .7, .5).toColor();
+        HSLColor.fromAHSL(1, (i / 2 / pi * 360 + co) % 360, 3 / 4, 1 / 2)
+            .toColor();
 
     final oc = t - 3 * pi;
 
@@ -94,7 +103,7 @@ class TwentyFour extends Funvas {
       Paint()
         ..color = color
         ..blendMode = BlendMode.srcOver
-        ..strokeWidth = 2
+        ..strokeWidth = 2.5
         ..style = PaintingStyle.stroke,
     );
   }
