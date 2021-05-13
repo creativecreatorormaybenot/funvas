@@ -12,12 +12,8 @@ class TwentyFour extends Funvas {
     final d = s2q(750).width;
     c.drawColor(const Color(0xffffffff), BlendMode.srcOver);
 
-    final r = d / 20;
-    drawTrack(t, r * 3, r * 3, r, 1);
-    drawTrack(t + 4 * pi, r * 3, r * 7.75, r, 2);
-    drawTrack(t + 2 * pi, r * 3, r * 12.25, r, 3, 90);
-    drawTrack(t + 3 * pi, r * 3, r * 17, r, 4, 90);
-    // drawTrack(t, d / 8, d / 2, d / 8, 16);
+    var r = d / 12;
+    drawTrack(t, (d - r * 2 * pi) / 2, (d - r * 2) / 2, r, 1);
   }
 
   void drawTrack(double t, double x, double y, double r, int n, [int co = 0]) {
@@ -69,12 +65,13 @@ class TwentyFour extends Funvas {
         HSLColor.fromAHSL(1, (i / 2 / pi * 360 + co) % 360, .7, .5).toColor();
 
     final oc = t - 3 * pi;
-    c.drawCircle(cc(t), radius, paint);
-    c.drawCircle(cc(oc), radius, paint);
 
     for (var i = 0.0; i < pi * 2; i += pi * 2 / n) {
       drawPath(v(i), radius, t, oc, l(i));
     }
+
+    c.drawCircle(cc(t), radius, paint);
+    c.drawCircle(cc(oc), radius, paint);
     // Make sure the dots are all on top of the lines.
     for (var i = 0.0; i < pi * 2; i += pi * 2 / n) {
       c.drawCircle(v(i)(t), 5, Paint()..color = l(i));
@@ -96,7 +93,7 @@ class TwentyFour extends Funvas {
       path,
       Paint()
         ..color = color
-        ..blendMode = BlendMode.multiply
+        ..blendMode = BlendMode.srcOver
         ..strokeWidth = 2
         ..style = PaintingStyle.stroke,
     );
