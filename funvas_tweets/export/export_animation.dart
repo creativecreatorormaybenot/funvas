@@ -14,7 +14,7 @@ void main() async {
   // when exporting to GIF.
   const animationName = 'animation';
   // Using a callback so that the constructor is run inside of the test.
-  final funvasFactory = () => TwentyThree();
+  final funvasFactory = () => TwentyFour();
 
   late final ValueNotifier<double> time;
 
