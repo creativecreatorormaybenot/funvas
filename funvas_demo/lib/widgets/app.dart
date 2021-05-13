@@ -10,7 +10,7 @@ class DemoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Funvas demo',
+      title: 'funvas demo',
       themeMode: ThemeMode.dark,
       darkTheme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
