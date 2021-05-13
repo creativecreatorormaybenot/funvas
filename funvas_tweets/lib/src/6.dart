@@ -89,7 +89,7 @@ class _RegularPolygon {
     required this.center,
     required this.radius,
     required this.vertices,
-  })   : assert(radius > 0),
+  })  : assert(radius > 0),
         assert(vertices > 2) {
     _init();
   }
