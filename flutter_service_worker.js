@@ -5,8 +5,8 @@ const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
   "version.json": "f3395245d1958ace9ec47388afc51dfa",
 "main.dart.js": "a19358b24882b056a314863bb5ce16e6",
-"index.html": "40141555ac191081aca2c509b1ec2343",
-"/": "40141555ac191081aca2c509b1ec2343",
+"index.html": "9ecba20bb57a4d2073186c9b202e997d",
+"/": "9ecba20bb57a4d2073186c9b202e997d",
 "assets/packages/funvas_tweets/assets/0.stub": "e8f65fd8d973f9985dc7ea3cf1614ae1",
 "assets/AssetManifest.json": "ac3b48d388deef6c9aab595319d7e911",
 "assets/NOTICES": "84f22f515aea66faef5dda4fc915d1e8",
