@@ -14,17 +14,13 @@ dependencies:
   funvas:
     path: ../funvas
 
+  google_fonts: ^2.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  golden_toolkit: ^0.9.0
 
   pedantic: ^1.11.0
 
 flutter:
   uses-material-design: true
-
-  assets:
-    # See https://github.com/eBay/flutter_glove_box/issues/31.
-    - assets/0.stub
