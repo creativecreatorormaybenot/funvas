@@ -78,3 +78,4 @@ build/
 export/*/*.png
 export/*.gif
 export/*.mp4
+export/google_fonts/*
