@@ -3,9 +3,14 @@ import 'dart:ui';
 
 import 'package:flutter/painting.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TwentySeven extends Funvas {
+class TwentySeven extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1401116585960644609?s=20';
+
   @override
   void u(double t) {
     final d = s2q(750).width;
