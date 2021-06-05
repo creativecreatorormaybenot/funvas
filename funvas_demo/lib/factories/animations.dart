@@ -10,6 +10,7 @@ final funvasFactories = <FunvasFactory<FunvasTweetMixin>>[
   FunvasFactory(() => Twelve()),
   FunvasFactory(() => TwentyThree()),
   FunvasFactory(() => One()),
+  FunvasFactory(() => TwentySeven()),
   FunvasFactory(() => Eleven()),
   FunvasFactory(() => Thirteen()),
   FunvasFactory(() => Sixteen()),
