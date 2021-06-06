@@ -165,9 +165,9 @@ class _FunvasContainer extends StatelessWidget {
               child: InkResponse(
                 onTap: onPrevious,
                 radius: 42,
-                child: RotatedBox(
+                child: const RotatedBox(
                   quarterTurns: 1,
-                  child: const Icon(
+                  child: Icon(
                     Icons.arrow_circle_down_outlined,
                     size: 72,
                     color: Color(0xbbffffff),
@@ -183,9 +183,9 @@ class _FunvasContainer extends StatelessWidget {
               child: InkResponse(
                 onTap: onPrevious,
                 radius: 42,
-                child: RotatedBox(
+                child: const RotatedBox(
                   quarterTurns: -2,
-                  child: const Icon(
+                  child: Icon(
                     Icons.arrow_circle_down_outlined,
                     size: 72,
                     color: Color(0xbbffffff),
@@ -201,9 +201,9 @@ class _FunvasContainer extends StatelessWidget {
               child: InkResponse(
                 onTap: onNext,
                 radius: 42,
-                child: RotatedBox(
+                child: const RotatedBox(
                   quarterTurns: -1,
-                  child: const Icon(
+                  child: Icon(
                     Icons.arrow_circle_down_outlined,
                     size: 72,
                     color: Color(0xbbffffff),
@@ -219,9 +219,9 @@ class _FunvasContainer extends StatelessWidget {
               child: InkResponse(
                 onTap: onNext,
                 radius: 42,
-                child: RotatedBox(
+                child: const RotatedBox(
                   quarterTurns: 0,
-                  child: const Icon(
+                  child: Icon(
                     Icons.arrow_circle_down_outlined,
                     size: 72,
                     color: Color(0xbbffffff),
@@ -267,7 +267,7 @@ class _PageHeader extends StatelessWidget {
               Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: const [
                   Link(
                     text: '@creativemaybeno',
                     url: 'https://twitter.com/creativemaybeno',
@@ -275,7 +275,7 @@ class _PageHeader extends StatelessWidget {
                   SelectableText('\'s funvas collection'),
                 ],
               ),
-              SelectableText(
+              const SelectableText(
                 'follow for new animations :)',
                 textAlign: TextAlign.center,
               ),
@@ -290,9 +290,9 @@ class _PageHeader extends StatelessWidget {
                 Icons.shuffle_outlined,
                 color: Color(0xffffffff),
               ),
-              label: Text(
+              label: const Text(
                 'shuffle animations',
-                style: TextStyle(color: const Color(0xffffffff)),
+                style: TextStyle(color: Color(0xffffffff)),
               ),
             ),
           ),

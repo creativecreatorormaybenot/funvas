@@ -33,7 +33,7 @@ class Six extends Funvas with FunvasTweetMixin {
     // Scale to match 750x750 as this is the export size and keep aspect ratio.
     final s = s2q(750), w = s.width, h = s.height;
 
-    c.drawPaint(Paint()..color = Color(0xffffffff));
+    c.drawPaint(Paint()..color = const Color(0xffffffff));
     final paint = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = 3.5;

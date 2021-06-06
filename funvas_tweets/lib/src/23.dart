@@ -99,7 +99,7 @@ class TwentyThree extends Funvas with FunvasTweetMixin {
 
     // I am not sure how to loop through the positions in a spiral in a good
     // way, so I am just going to do it visually on a 9x9 grid.
-    var position = Point(0, 0);
+    var position = const Point(0, 0);
     var loop = 0, i = 0;
     // The visual aspect is moving in 4 directions. I am sure doing it radially
     // would be smarter (and not doing it visually even more than that), but I
@@ -108,11 +108,11 @@ class TwentyThree extends Funvas with FunvasTweetMixin {
 
     // These are the box dimensions, tile dimension, and tile dimension
     // according to the width fraction of its potential size.
-    final db = _d / _boxCount;
-    final dt = db / _tileCount;
-    final dtf = dt * _tileFraction;
+    const db = _d / _boxCount;
+    const dt = db / _tileCount;
+    const dtf = dt * _tileFraction;
 
-    final timePerTile = _ld / (_tileCount + 2);
+    const timePerTile = _ld / (_tileCount + 2);
     final timeInRun = t % _ld;
 
     while (loop < _tileCount) {

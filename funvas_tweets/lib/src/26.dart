@@ -10,7 +10,7 @@ class TwentySix extends Funvas {
   @override
   void u(double t) {
     final d = s2q(750).width;
-    c.drawColor(Color(0xff000000), BlendMode.srcOver);
+    c.drawColor(const Color(0xff000000), BlendMode.srcOver);
     c.translate(d / 2, d / 2);
 
     drawFrame(t, d, 1);

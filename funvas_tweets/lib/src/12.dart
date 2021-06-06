@@ -38,7 +38,7 @@ class Twelve extends Funvas with FunvasTweetMixin {
         c.save();
         c.rotate(pi / 2 * i + spin);
         c.drawRect(
-          Offset.zero & Size(sideLength, sideLength),
+          Offset.zero & const Size(sideLength, sideLength),
           Paint()
             ..color = color
             ..style = PaintingStyle.stroke

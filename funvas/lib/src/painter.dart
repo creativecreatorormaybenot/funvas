@@ -161,7 +161,7 @@ class FunvasPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(FunvasPainter oldPainter) {
-    return oldPainter.delegate != delegate;
+  bool shouldRepaint(FunvasPainter oldDelegate) {
+    return oldDelegate.delegate != delegate;
   }
 }

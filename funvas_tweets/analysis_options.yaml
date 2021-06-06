@@ -1,1 +1,6 @@
-include: package:pedantic/analysis_options.yaml
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    # Allow numbers in file names for the funvas tweet files :)
+    file_names: false

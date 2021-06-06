@@ -15,12 +15,12 @@ void main() {
   // when exporting to GIF.
   const animationName = 'animation';
   // Using a callback so that the constructor is run inside of the test.
-  final funvasFactory = () => TwentyEight();
+  Funvas funvasFactory() => TwentyEight();
 
   late final ValueNotifier<double> time;
 
   TestWidgetsFlutterBinding.ensureInitialized();
-  MethodChannel('plugins.flutter.io/path_provider')
+  const MethodChannel('plugins.flutter.io/path_provider')
       // Allow google_fonts to download fonts to this directory during tests.
       .setMockMethodCallHandler((call) async => 'export/google_fonts');
 
@@ -79,5 +79,5 @@ void main() {
           null);
       await matcher.matchAsync(find.byType(SizedBox));
     }
-  }, timeout: Timeout(const Duration(hours: 1)));
+  }, timeout: const Timeout(Duration(hours: 1)));
 }

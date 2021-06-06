@@ -14,9 +14,9 @@ class Three extends Funvas with FunvasTweetMixin {
   void u(double t) {
     final s = s2q(750), w = s.width, h = s.height;
 
-    final backgroundPaint = Paint()..color = Color(0xffffc108),
+    final backgroundPaint = Paint()..color = const Color(0xffffc108),
         foregroundPaint = Paint()
-          ..color = Color(0xee0175c2)
+          ..color = const Color(0xee0175c2)
           ..strokeWidth = 2;
 
     c.drawPaint(backgroundPaint);
@@ -33,7 +33,7 @@ class Three extends Funvas with FunvasTweetMixin {
     const count = 12;
 
     c.translate(w / 2, h / 2);
-    c.rotate(Cubic(.4, 0, .4, 1).transform(t / 10 % 1) * 2 * pi);
+    c.rotate(const Cubic(.4, 0, .4, 1).transform(t / 10 % 1) * 2 * pi);
     c.translate(-w / 2, -h / 2);
 
     for (var i = 0; i < count; i++) {

@@ -14,7 +14,7 @@ class TwentySeven extends Funvas with FunvasTweetMixin {
   @override
   void u(double t) {
     final d = s2q(750).width;
-    c.drawColor(Color(0xff000000), BlendMode.srcOver);
+    c.drawColor(const Color(0xff000000), BlendMode.srcOver);
     c.translate(d / 2, d / 2);
 
     t %= 20;
@@ -67,7 +67,7 @@ class TwentySeven extends Funvas with FunvasTweetMixin {
 
       final margin = d / 11;
       final distance = d / 11 * 4;
-      final r = 10.0;
+      const r = 10.0;
 
       final center = Offset.fromDirection(
         pi * 2 / n * i,

@@ -1,3 +1,7 @@
+## 0.1.3+2
+
+* Switched to `flutter_lints`.
+
 ## 0.1.3+1
 
 * Added new GIFs to README.

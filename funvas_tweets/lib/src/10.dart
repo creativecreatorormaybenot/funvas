@@ -17,7 +17,7 @@ class Ten extends Funvas with FunvasTweetMixin {
   }
 
   /// [ImageProvider] for my StackOverflow avatar image.
-  late final _soProvider = ResizeImage(
+  late final _soProvider = const ResizeImage(
     NetworkImage('https://www.gravatar.com/avatar/'
         '260caa996ae8ac9fcee35487aa8d7c81?s=420&d=identicon&r=PG&f=1'),
     width: 420,
@@ -25,7 +25,7 @@ class Ten extends Funvas with FunvasTweetMixin {
   );
 
   /// [ImageProvider] for my GitHub avatar image.
-  late final _ghProvider = ResizeImage(
+  late final _ghProvider = const ResizeImage(
     NetworkImage('https://avatars3.githubusercontent.com/u/19204050?s=245&v=4'),
     width: 245,
     height: 245,
@@ -39,7 +39,7 @@ class Ten extends Funvas with FunvasTweetMixin {
       completer.complete(info.image);
     });
 
-    final stream = provider.resolve(ImageConfiguration())
+    final stream = provider.resolve(const ImageConfiguration())
       ..addListener(listener);
     final result = await completer.future;
     stream.removeListener(listener);
@@ -62,7 +62,7 @@ class Ten extends Funvas with FunvasTweetMixin {
     }
     final soCenter =
         Offset((w - _soImage!.width) / 2, (h - _soImage!.height) / 2);
-    final blur = 11.0;
+    const blur = 11.0;
     final ghCenter =
         Offset((w - _ghImage!.width) / 2, (h - _ghImage!.height) / 2);
 

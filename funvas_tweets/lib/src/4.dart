@@ -36,87 +36,87 @@ class Four extends Funvas with FunvasTweetMixin {
     TweenSequenceItem(
       tween: Tween(
         begin: Offset.zero,
-        end: Offset(_distance, 0),
+        end: const Offset(_distance, 0),
       ).chain(CurveTween(curve: _movementCurve)),
       weight: 1,
     ),
     // Wait.
     TweenSequenceItem(
       tween: Tween(
-        begin: Offset(_distance, 0),
-        end: Offset(_distance, 0),
+        begin: const Offset(_distance, 0),
+        end: const Offset(_distance, 0),
       ),
       weight: 1 / 2,
     ),
     // Stay put.
     TweenSequenceItem(
       tween: Tween(
-        begin: Offset(_distance, 0),
-        end: Offset(_distance, 0),
+        begin: const Offset(_distance, 0),
+        end: const Offset(_distance, 0),
       ),
       weight: 1,
     ),
     // Move top right.
     TweenSequenceItem(
       tween: Tween(
-        begin: Offset(_distance, 0),
-        end: Offset(_distance + _distance / 2, -_distance),
+        begin: const Offset(_distance, 0),
+        end: const Offset(_distance + _distance / 2, -_distance),
       ).chain(CurveTween(curve: _movementCurve)),
       weight: 1,
     ),
     // Wait.
     TweenSequenceItem(
       tween: Tween(
-        begin: Offset(_distance + _distance / 2, -_distance),
-        end: Offset(_distance + _distance / 2, -_distance),
+        begin: const Offset(_distance + _distance / 2, -_distance),
+        end: const Offset(_distance + _distance / 2, -_distance),
       ),
       weight: 1 / 2,
     ),
     // Stay put.
     TweenSequenceItem(
       tween: Tween(
-        begin: Offset(_distance + _distance / 2, -_distance),
-        end: Offset(_distance + _distance / 2, -_distance),
+        begin: const Offset(_distance + _distance / 2, -_distance),
+        end: const Offset(_distance + _distance / 2, -_distance),
       ),
       weight: 1,
     ),
     // Move left.
     TweenSequenceItem(
       tween: Tween(
-        begin: Offset(_distance + _distance / 2, -_distance),
-        end: Offset(_distance / 2, -_distance),
+        begin: const Offset(_distance + _distance / 2, -_distance),
+        end: const Offset(_distance / 2, -_distance),
       ).chain(CurveTween(curve: _movementCurve)),
       weight: 1,
     ),
     // Wait.
     TweenSequenceItem(
       tween: Tween(
-        begin: Offset(_distance / 2, -_distance),
-        end: Offset(_distance / 2, -_distance),
+        begin: const Offset(_distance / 2, -_distance),
+        end: const Offset(_distance / 2, -_distance),
       ),
       weight: 1 / 2,
     ),
     // Stay put.
     TweenSequenceItem(
       tween: Tween(
-        begin: Offset(_distance / 2, -_distance),
-        end: Offset(_distance / 2, -_distance),
+        begin: const Offset(_distance / 2, -_distance),
+        end: const Offset(_distance / 2, -_distance),
       ),
       weight: 1,
     ),
     // Move bottom left.
     TweenSequenceItem(
       tween: Tween(
-        begin: Offset(_distance / 2, -_distance),
-        end: Offset(0, 0),
+        begin: const Offset(_distance / 2, -_distance),
+        end: const Offset(0, 0),
       ).chain(CurveTween(curve: _movementCurve)),
       weight: 1,
     ),
     // Wait.
     TweenSequenceItem(
       tween: Tween(
-        begin: Offset(0, 0),
-        end: Offset(0, 0),
+        begin: const Offset(0, 0),
+        end: const Offset(0, 0),
       ),
       weight: 1 / 2,
     ),
@@ -237,7 +237,7 @@ class Four extends Funvas with FunvasTweetMixin {
 
   @override
   void u(double t) {
-    c.drawPaint(Paint()..color = Color(0xff000000));
+    c.drawPaint(Paint()..color = const Color(0xff000000));
 
     _arrowPainter.layout();
 
