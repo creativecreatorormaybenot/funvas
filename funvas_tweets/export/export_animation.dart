@@ -15,7 +15,7 @@ void main() {
   // when exporting to GIF.
   const animationName = 'animation';
   // Using a callback so that the constructor is run inside of the test.
-  final funvasFactory = () => TwentySeven();
+  final funvasFactory = () => TwentyEight();
 
   late final ValueNotifier<double> time;
 
