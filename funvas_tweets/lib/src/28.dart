@@ -7,7 +7,7 @@ import 'package:funvas/funvas.dart';
 
 class TwentyEight extends Funvas {
   static const _pointsN = 50000;
-  static const double _pointDiameter = 1, _frameDimension = 750;
+  static const double _pointDiameter = 2, _frameDimension = 750;
 
   @override
   void u(double t) {
@@ -22,7 +22,7 @@ class TwentyEight extends Funvas {
 
     final progress = (t % 3) / 3;
     for (var i = 0; i < 6; i++) {
-      _drawPoints(p1, p2, _ms.transform(min(1, progress + i / 1e2)));
+      _drawPoints(p1, p2, _ms.transform(min(1, progress + i / 69)));
     }
   }
 
@@ -33,7 +33,7 @@ class TwentyEight extends Funvas {
         Offset.lerp(
           p1[i],
           p2[i],
-          min(1, progress + random.nextDouble() * min(progress, .1)),
+          min(1, progress + random.nextDouble() * min(progress, .2)),
         )!,
     ];
 
@@ -41,7 +41,7 @@ class TwentyEight extends Funvas {
       PointMode.points,
       points,
       Paint()
-        ..color = const Color(0xffffffff).withOpacity(min(1, 5e3 / _pointsN))
+        ..color = const Color(0xffffffff).withOpacity(min(1, 2e3 / _pointsN))
         // We want to draw circles.
         ..strokeCap = StrokeCap.round
         ..strokeWidth = _pointDiameter,
