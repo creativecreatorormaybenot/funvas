@@ -33,7 +33,7 @@ class TwentyEight extends Funvas {
         Offset.lerp(
           p1[i],
           p2[i],
-          min(1, progress + random.nextDouble() * .1),
+          min(1, progress + random.nextDouble() * min(progress, .1)),
         )!,
     ];
 
