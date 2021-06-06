@@ -14,6 +14,7 @@ class TwentyEight extends Funvas {
     final d = s2q(_frameDimension).width;
     c.drawColor(const Color(0xff000000), BlendMode.srcOver);
     c.translate(d / 2, d / 2);
+    t += 3;
 
     final paths = [_cp, _sp, _cp, _hxp, _hrp, _tp];
     final p1 = _pointsFromPath(paths[(t ~/ 3 - 1) % paths.length]);
