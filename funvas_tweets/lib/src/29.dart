@@ -4,8 +4,13 @@ import 'dart:ui';
 import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
-class TwentyNine extends Funvas {
+class TwentyNine extends Funvas with FunvasTweetMixin {
+  @override
+  // todo: add link to tweet.
+  String get tweet => 'https://creativemaybeno.dev';
+
   static const _pointsN = 420, _pN = 5;
   static const double _pointDiameter = 15, _frameDimension = 750;
 

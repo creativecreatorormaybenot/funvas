@@ -5,6 +5,9 @@ import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:funvas/funvas.dart';
 
+/// Animation inspired by https://twitter.com/beesandbombs/status/1400816068252291073?s=20.
+///
+/// All code is mine, written from scratch.
 class TwentyEight extends Funvas {
   static const _pointsN = 50000;
   static const double _pointDiameter = 2, _frameDimension = 750;
