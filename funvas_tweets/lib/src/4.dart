@@ -225,7 +225,7 @@ class Four extends Funvas with FunvasTweetMixin {
 
   final _arrowPainter = TextPainter(
     text: TextSpan(
-      text: String.fromCharCode(Icons.arrow_right.codePoint),
+      text: String.fromCharCode(Icons.arrow_right_alt.codePoint),
       style: const TextStyle(
         fontFamily: 'MaterialIcons',
         fontSize: 60,
