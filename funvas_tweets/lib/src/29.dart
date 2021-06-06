@@ -39,8 +39,8 @@ class TwentyNine extends Funvas {
       points,
       Paint()
         ..color =
-        HSVColor.fromAHSV(min(1, 1.5 / _pN), 360 / _pN * i, 1, 1).toColor()
-      // We want to draw circles.
+            HSVColor.fromAHSV(min(1, 1.5 / _pN), 360 / _pN * i, 1, 1).toColor()
+        // We want to draw circles.
         ..strokeCap = StrokeCap.round
         ..strokeWidth = _pointDiameter
         ..blendMode = BlendMode.plus,
