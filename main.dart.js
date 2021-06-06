@@ -25818,7 +25818,7 @@ P.YD.prototype={
 vD:function(a){if(a<=0||a>4294967296)throw H.a(P.kl(u.E+a))
 return Math.random()*a>>>0}}
 P.ZE.prototype={
-M7:function(a){var s,r,q,p,o,n,m,l=this,k=4294967296
+M7:function(a){var s,r,q,p,o,n,m,l=this,k=4294967296,j=a<0?-1:0
 do{s=a>>>0
 a=C.f.bk(a-s,k)
 r=a>>>0
@@ -25844,7 +25844,7 @@ l.b=m
 n=(n^p)>>>0
 l.a=n
 o=(m^r+((r<<31|s>>>1)>>>0)+o>>>0)>>>0
-l.b=o}while(a!==0)
+l.b=o}while(a!==j)
 if(o===0&&n===0)l.a=23063
 l.jJ()
 l.jJ()
