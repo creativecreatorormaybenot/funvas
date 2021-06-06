@@ -9,13 +9,13 @@ import 'package:funvas_tweets/funvas_tweets.dart';
 
 void main() {
   const fps = 50;
-  const animationDuration = Duration(seconds: 20);
+  const animationDuration = Duration(seconds: 18);
   const dimensions = Size(750, 750);
   // If you use a different animation name, you will have to also consider that
   // when exporting to GIF.
   const animationName = 'animation';
   // Using a callback so that the constructor is run inside of the test.
-  final funvasFactory = () => TwentySeven();
+  final funvasFactory = () => TwentyEight();
 
   late final ValueNotifier<double> time;
 
