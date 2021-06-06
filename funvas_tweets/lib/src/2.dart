@@ -26,7 +26,7 @@ class Two extends Funvas with FunvasTweetMixin {
         startRadius = 19,
         endRadius = 1,
         padding = 16;
-    final startPosition = Offset(startRadius / 2 + startStroke + padding,
+    final startPosition = const Offset(startRadius / 2 + startStroke + padding,
             startRadius / 2 + startStroke + padding),
         endPosition = Offset(w / 2, h / 2);
 

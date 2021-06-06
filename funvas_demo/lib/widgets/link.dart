@@ -31,9 +31,9 @@ class Link extends StatelessWidget {
           child: Text(
             text,
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
               decoration: TextDecoration.underline,
-              color: const Color(0xffddddff),
+              color: Color(0xffddddff),
             ),
           ),
         ),

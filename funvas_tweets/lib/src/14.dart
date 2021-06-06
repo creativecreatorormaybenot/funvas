@@ -35,8 +35,8 @@ class Fourteen extends Funvas with FunvasTweetMixin {
       c.translate(-squareDimension, 0);
       c.drawRRect(
         RRect.fromRectAndRadius(
-          Offset.zero & Size.square(squareDimension),
-          Radius.circular(4),
+          Offset.zero & const Size.square(squareDimension),
+          const Radius.circular(4),
         ),
         Paint()
           ..color = const Color(0xffffffff)
@@ -48,7 +48,7 @@ class Fourteen extends Funvas with FunvasTweetMixin {
     void drawTrack(double shift) {
       c.save();
       c.drawLine(
-        Offset(0, 0),
+        const Offset(0, 0),
         Offset(d, 0),
         Paint()..color = const Color(0x66ffffff),
       );

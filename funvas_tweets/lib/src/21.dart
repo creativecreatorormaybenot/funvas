@@ -3,8 +3,9 @@ import 'dart:ui';
 
 import 'package:flutter/animation.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
-class TwentyOne extends Funvas {
+class TwentyOne extends Funvas with FunvasTweetMixin {
   @override
   String get tweet =>
       'https://twitter.com/creativemaybeno/status/1370120214789156868?s=20';

@@ -17,7 +17,7 @@ class Five extends Funvas with FunvasTweetMixin {
   @override
   void u(double t) {
     final s = s2q(750), w = s.width, h = s.height;
-    c.drawPaint(Paint()..color = Color(0xffffffff));
+    c.drawPaint(Paint()..color = const Color(0xffffffff));
 
     for (var A = .0, q = 123, j = .0, i = 756;
         i-- > 0;
