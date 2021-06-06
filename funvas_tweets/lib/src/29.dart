@@ -30,7 +30,7 @@ class TwentyNine extends Funvas with FunvasTweetMixin {
 
     final progress = (t % 3) / 3;
     for (var i = 0; i < _pN; i++) {
-      _drawPoints(p1, p2, _ms.transform(min(1, progress + i / 100)), i);
+      _drawPoints(p1, p2, _ms.transform(min(1, progress + i / 80)), i);
     }
   }
 
