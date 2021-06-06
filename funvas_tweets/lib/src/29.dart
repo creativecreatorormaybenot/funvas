@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:funvas/funvas.dart';
 
 class TwentyNine extends Funvas {
-  static const _pointsN = 420, _pN = 50;
+  static const _pointsN = 420, _pN = 5;
   static const double _pointDiameter = 15, _frameDimension = 750;
 
   late final List<Path> _paths = <Path>[_cp, _sp, _cp, _hxp, _hrp, _tp];
@@ -25,7 +25,7 @@ class TwentyNine extends Funvas {
 
     final progress = (t % 3) / 3;
     for (var i = 0; i < _pN; i++) {
-      _drawPoints(p1, p2, _ms.transform(min(1, progress + i / 250)), i);
+      _drawPoints(p1, p2, _ms.transform(min(1, progress + i / 100)), i);
     }
   }
 
