@@ -67,15 +67,15 @@ class _DemoPageState extends State<DemoPage> {
         ),
       },
       actions: {
-        DirectionalFocusIntent: CallbackAction<DirectionalFocusIntent>(
+        ScrollIntent: CallbackAction<ScrollIntent>(
           onInvoke: (intent) {
             switch (intent.direction) {
-              case TraversalDirection.up:
-              case TraversalDirection.right:
+              case AxisDirection.up:
+              case AxisDirection.right:
                 _goNext();
                 break;
-              case TraversalDirection.down:
-              case TraversalDirection.left:
+              case AxisDirection.down:
+              case AxisDirection.left:
                 _goPrevious();
                 break;
             }
