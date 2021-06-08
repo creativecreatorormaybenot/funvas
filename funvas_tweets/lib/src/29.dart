@@ -8,8 +8,8 @@ import 'package:funvas_tweets/src/tweet_mixin.dart';
 
 class TwentyNine extends Funvas with FunvasTweetMixin {
   @override
-  // todo: add link to tweet.
-  String get tweet => 'https://creativemaybeno.dev';
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1402203754036871169?s=20';
 
   static const _pointsN = 420, _pN = 5;
   static const double _pointDiameter = 15, _frameDimension = 750;
