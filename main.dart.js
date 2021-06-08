@@ -48622,7 +48622,7 @@ o.sbE(0,C.b3)
 s.cm(0,h,o)}}}
 G.HZ.prototype={}
 O.nv.prototype={
-gcO:function(){return"https://creativemaybeno.dev"},
+gcO:function(){return"https://twitter.com/creativemaybeno/status/1402203754036871169?s=20"},
 gtu:function(){var s=this,r=s.c
 if(r===$){r=s.e
 r=H.b([r,s.f,r,s.x,s.y,s.r],t.h1)
