@@ -44,6 +44,13 @@ class _DebugWrapper extends StatelessWidget {
           LogicalKeyboardKey.control,
           LogicalKeyboardKey.keyW,
         ): _DebugWIPIntent(),
+        // Also allow alt + control + w on Windows as otherwise the tab will
+        // be closed on web :)
+        LogicalKeySet(
+          LogicalKeyboardKey.control,
+          LogicalKeyboardKey.alt,
+          LogicalKeyboardKey.keyW,
+        ): _DebugWIPIntent(),
       },
       child: Actions(
         actions: {
