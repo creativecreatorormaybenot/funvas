@@ -3,8 +3,12 @@ import 'dart:ui';
 
 import 'package:flutter/animation.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
-class Thirty extends Funvas {
+class Thirty extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet => 'https://twitter.com/creativemaybeno';
+
   static const _blobCount = 6, _blobSpeed = 5.0;
 
   // The max resolution is 8190 (min is 1). I have no idea why, but the logic
@@ -15,7 +19,7 @@ class Thirty extends Funvas {
   // * 01111111111111 works (8191).
   // * 10000000000000 does not work (8192).
   // 8190 is 1ffe in hex.
-  static const _shaderResolution = 0x1ffe;
+  static const _shaderResolution = 0x400;
 
   final _blobs = <Blob>[];
   final _colors = <Color>[];
