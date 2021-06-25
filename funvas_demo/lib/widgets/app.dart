@@ -16,7 +16,7 @@ class _DemoAppState extends State<DemoApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'funvas demo',
+      title: 'funvas gallery',
       themeMode: ThemeMode.dark,
       darkTheme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
