@@ -9,8 +9,6 @@ class ThirtyOne extends Funvas with FunvasTweetMixin {
   @override
   String get tweet => 'https://twitter.com/creativemaybeno';
 
-  static const _depth = 9;
-
   @override
   void u(double t) {
     c.drawColor(const Color(0xffffffff), BlendMode.srcOver);
@@ -19,38 +17,44 @@ class ThirtyOne extends Funvas with FunvasTweetMixin {
     final s = cos(pi / 6) * r;
     final h = s * sqrt(3);
 
-    t %= 5;
+    c.translate(d / 2, d / 2);
+    c.rotate(-pi * 2 / 3 * t / 10);
+    c.translate(-d / 2, -d / 2);
 
-    final center = Offset(d / 2, d / 2 + d / 8);
+    t %= 5;
+    final center = Offset(d / 2, d / 2 + d / 32);
     c.translate(center.dx, center.dy + h / 12);
-    c.scale(1 + Curves.bounceOut.transform(t / 5));
-    c.scale(1.2);
+    c.scale(1 + Curves.easeIn.transform(Curves.fastOutSlowIn.transform(t / 5)));
+    c.scale(1.1);
     c.translate(-center.dx, -center.dy - h / 12);
 
     final one = center - Offset(s / 2 + s / 20 * t, h / 2 - h / 40 * t);
     final two = center + Offset(s, -h / 40 * t);
     final three = center + Offset(-s / 2 + s / 20 * t, h / 2 + h / 40 * t);
 
-    _drawTriangle(_Triangle.fromCenter(one, r));
-    _drawTriangle(_Triangle.fromCenter(two, r));
-    _drawTriangle(_Triangle.fromCenter(three, r));
+    const depth = 9;
+    final max = t > 4 ? depth + 1 : depth;
+    _drawTriangle(_Triangle.fromCenter(one, r), max);
+    _drawTriangle(_Triangle.fromCenter(two, r), max);
+    _drawTriangle(_Triangle.fromCenter(three, r), max);
   }
 
   void _drawTriangle(
-    _Triangle triangle, [
+    _Triangle triangle,
+    int max, [
     Color color = const Color(0xff000000),
   ]) {
     triangle.draw(c, Paint()..color = color);
-    _draw4(triangle);
+    _draw4(triangle, max);
   }
 
-  void _draw4(_Triangle triangle, [int depth = 0]) {
-    if (depth == _depth) return;
+  void _draw4(_Triangle triangle, int max, [int depth = 0]) {
+    if (depth == max) return;
 
     final sub4 = triangle.sub4();
     sub4.first.draw(c, Paint()..color = const Color(0xffffffff));
     for (final triangle in sub4.sublist(1)) {
-      _draw4(triangle, depth + 1);
+      _draw4(triangle, max, depth + 1);
     }
   }
 }
