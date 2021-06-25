@@ -38,12 +38,9 @@ class DebugWrapper extends StatelessWidget {
         actions: {
           _DebugWIPIntent: CallbackAction(
             onInvoke: (_) {
-              // The transition animation for the page is a bit weird on web..
-              // But hey: it is only in debug mode :D
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) {
-                  return const WIPFunvasPage();
-                },
+              Overlay.of(context)!.insert(OverlayEntry(
+                opaque: true,
+                builder: (context) => const WIPFunvasPage(),
               ));
               return null;
             },
