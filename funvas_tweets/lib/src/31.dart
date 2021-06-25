@@ -13,10 +13,11 @@ class ThirtyOne extends Funvas {
     final s = cos(pi / 6) * r;
     final h = s * sqrt(3);
 
+    t *= 5 / 4;
     t %= 5;
     final center = Offset(d / 2, d / 2 + d / 32);
     c.translate(center.dx, center.dy + h / 12);
-    c.scale(1 + Curves.easeIn.transform(Curves.fastOutSlowIn.transform(t / 5)));
+    c.scale(1 + Curves.bounceOut.transform(t / 5));
     c.scale(1.1);
     c.translate(-center.dx, -center.dy - h / 12);
 
