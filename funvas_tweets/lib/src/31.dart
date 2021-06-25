@@ -3,7 +3,6 @@ import 'dart:ui';
 
 import 'package:flutter/animation.dart';
 import 'package:funvas/funvas.dart';
-import 'package:funvas_tweets/src/tweet_mixin.dart';
 
 class ThirtyOne extends Funvas {
   @override
@@ -13,10 +12,6 @@ class ThirtyOne extends Funvas {
     final r = d / 2;
     final s = cos(pi / 6) * r;
     final h = s * sqrt(3);
-
-    c.translate(d / 2, d / 2);
-    c.rotate(-pi * 2 / 3 * t / 10);
-    c.translate(-d / 2, -d / 2);
 
     t %= 5;
     final center = Offset(d / 2, d / 2 + d / 32);
