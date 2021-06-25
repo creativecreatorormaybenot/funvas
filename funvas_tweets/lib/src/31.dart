@@ -5,10 +5,7 @@ import 'package:flutter/animation.dart';
 import 'package:funvas/funvas.dart';
 import 'package:funvas_tweets/src/tweet_mixin.dart';
 
-class ThirtyOne extends Funvas with FunvasTweetMixin {
-  @override
-  String get tweet => 'https://twitter.com/creativemaybeno';
-
+class ThirtyOne extends Funvas {
   @override
   void u(double t) {
     c.drawColor(const Color(0xffffffff), BlendMode.srcOver);
