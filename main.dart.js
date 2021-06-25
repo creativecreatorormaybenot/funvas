@@ -47478,7 +47478,7 @@ return s==null?this.b=this.a.$0():s}}
 S.pf.prototype={
 az:function(){return new S.Do(new Z.ph(H.b([],t.t),new P.aV(t.V)),new Z.L0(),C.l)}}
 S.Do.prototype={
-S:function(a,b){return new S.qm(this.e,this.d,"funvas demo",X.a3z(C.aa),C.ji,!1,null)}}
+S:function(a,b){return new S.qm(this.e,this.d,"funvas gallery",X.a3z(C.aa),C.ji,!1,null)}}
 D.qc.prototype={
 S:function(a,b){var s=null
 return S.ai5(new T.ei(s,s,s,C.dG,!0,D.pN(s,L.a8_(this.c,s,C.Aq,C.ct),C.aA,!1,s,s,s,s,s,s,s,s,s,s,s,new D.P1(this),s,s,s,s,s,s),s),this.d)},
