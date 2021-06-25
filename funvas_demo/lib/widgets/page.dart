@@ -4,44 +4,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:funvas/funvas.dart';
-import 'package:funvas_demo/factories/drawer.dart';
 import 'package:funvas_demo/widgets/link.dart';
+import 'package:funvas_tweets/funvas_tweets.dart';
 
 class DemoPage extends StatefulWidget {
-  const DemoPage({Key? key}) : super(key: key);
+  const DemoPage({
+    Key? key,
+    required this.funvas,
+    required this.onNext,
+    required this.onPrevious,
+    required this.onShuffle,
+  }) : super(key: key);
+
+  final FunvasTweetMixin funvas;
+
+  final VoidCallback onNext;
+  final VoidCallback onPrevious;
+  final VoidCallback onShuffle;
 
   @override
   _DemoPageState createState() => _DemoPageState();
 }
 
 class _DemoPageState extends State<DemoPage> {
-  var _funvasIndex = 0;
   var _overlayEnabled = true;
-
-  void _shuffle() {
-    FunvasDrawer.instance.shuffle();
-
-    setState(() {
-      _funvasIndex = 0;
-    });
-  }
-
-  void _goNext() {
-    setState(() {
-      _funvasIndex++;
-    });
-  }
-
-  void _goPrevious() {
-    setState(() {
-      _funvasIndex--;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
-    final funvas = FunvasDrawer.instance[_funvasIndex];
-
     return FocusableActionDetector(
       autofocus: true,
       shortcuts: {
@@ -72,11 +61,11 @@ class _DemoPageState extends State<DemoPage> {
             switch (intent.direction) {
               case AxisDirection.up:
               case AxisDirection.right:
-                _goNext();
+                widget.onNext();
                 break;
               case AxisDirection.down:
               case AxisDirection.left:
-                _goPrevious();
+                widget.onPrevious();
                 break;
             }
           },
@@ -95,9 +84,9 @@ class _DemoPageState extends State<DemoPage> {
               children: [
                 SizedBox.expand(
                   child: _FunvasContainer(
-                    funvas: funvas,
-                    onNext: _goNext,
-                    onPrevious: _goPrevious,
+                    funvas: widget.funvas,
+                    onNext: widget.onNext,
+                    onPrevious: widget.onPrevious,
                     overlayEnabled: _overlayEnabled,
                   ),
                 ),
@@ -105,13 +94,13 @@ class _DemoPageState extends State<DemoPage> {
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: _PageFooter(
-                      tweetUrl: funvas.tweet,
+                      tweetUrl: widget.funvas.tweet,
                     ),
                   ),
                   Align(
                     alignment: Alignment.topCenter,
                     child: _PageHeader(
-                      onShuffle: _shuffle,
+                      onShuffle: widget.onShuffle,
                     ),
                   ),
                 ],

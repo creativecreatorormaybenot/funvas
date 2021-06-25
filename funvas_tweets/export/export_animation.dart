@@ -79,5 +79,5 @@ void main() {
           null);
       await matcher.matchAsync(find.byType(SizedBox));
     }
-  }, timeout: const Timeout(Duration(hours: 1)));
+  }, timeout: const Timeout(Duration(hours: 3)));
 }
