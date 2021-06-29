@@ -59,11 +59,11 @@ class _DemoPageState extends State<DemoPage> {
         ScrollIntent: CallbackAction<ScrollIntent>(
           onInvoke: (intent) {
             switch (intent.direction) {
-              case AxisDirection.up:
+              case AxisDirection.down:
               case AxisDirection.right:
                 widget.onNext();
                 break;
-              case AxisDirection.down:
+              case AxisDirection.up:
               case AxisDirection.left:
                 widget.onPrevious();
                 break;
