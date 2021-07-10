@@ -44,8 +44,8 @@ class Link extends StatelessWidget {
         target: targetBlank == null
             ? LinkTarget.defaultTarget
             : targetBlank!
-            ? LinkTarget.blank
-            : LinkTarget.self,
+                ? LinkTarget.blank
+                : LinkTarget.self,
         builder: (context, followLink) {
           return GestureDetector(
             onTap: followLink,
