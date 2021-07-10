@@ -18,6 +18,7 @@ class _DemoAppState extends State<DemoApp> {
     return MaterialApp.router(
       title: 'funvas gallery',
       themeMode: ThemeMode.dark,
+      theme: ThemeData(),
       darkTheme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
       routerDelegate: _routerDelegate,
