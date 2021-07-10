@@ -258,7 +258,7 @@ class _PageHeader extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
                   Link(
-                    text: '@creativemaybeno',
+                    body: Text('@creativemaybeno'),
                     url: 'https://twitter.com/creativemaybeno',
                   ),
                   SelectableText('\'s funvas collection'),
@@ -305,7 +305,7 @@ class _PageFooter extends StatelessWidget {
     return _Bar(
       children: [
         Link(
-          text: 'view tweet (w/ source code)',
+          body: const Text('view tweet (w/ source code)'),
           url: tweetUrl,
         ),
       ],
