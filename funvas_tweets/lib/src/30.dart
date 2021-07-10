@@ -56,7 +56,7 @@ class Thirty extends Funvas with FunvasTweetMixin {
             0xff,
             0xff,
             0xff,
-            Cubic(1, 1, 0, 1)
+            const Cubic(1, 1, 0, 1)
                 .transform(pow(i / _shaderResolution, 2).toDouble()),
           ),
       ]);
