@@ -26,6 +26,8 @@ class DemoPage extends StatefulWidget {
   _DemoPageState createState() => _DemoPageState();
 }
 
+const _kOverlayTransitionDuration = Duration(milliseconds: 150);
+
 class _DemoPageState extends State<DemoPage> {
   var _overlayEnabled = true;
 
@@ -82,28 +84,34 @@ class _DemoPageState extends State<DemoPage> {
           child: Scaffold(
             body: Stack(
               children: [
-                SizedBox.expand(
-                  child: _FunvasContainer(
-                    funvas: widget.funvas,
-                    onNext: widget.onNext,
+                AnimatedOpacity(
+                  opacity: _overlayEnabled ? 1 : 0,
+                  duration: _kOverlayTransitionDuration,
+                  child: _Buttons(
                     onPrevious: widget.onPrevious,
-                    overlayEnabled: _overlayEnabled,
+                    onNext: widget.onNext,
                   ),
                 ),
-                if (_overlayEnabled) ...[
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: _PageFooter(
-                      tweetUrl: widget.funvas.tweet,
-                    ),
+                Positioned.fill(
+                  child: _FunvasContainer(
+                    funvas: widget.funvas,
                   ),
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: _PageHeader(
-                      onShuffle: widget.onShuffle,
-                    ),
+                ),
+                AnimatedOpacity(
+                  opacity: _overlayEnabled ? 1 : 0,
+                  duration: _kOverlayTransitionDuration,
+                  child: Column(
+                    children: [
+                      _PageHeader(
+                        onShuffle: widget.onShuffle,
+                      ),
+                      const Spacer(),
+                      _PageFooter(
+                        tweetUrl: widget.funvas.tweet,
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ],
             ),
           ),
@@ -119,113 +127,108 @@ class _FunvasContainer extends StatelessWidget {
   const _FunvasContainer({
     Key? key,
     required this.funvas,
-    required this.onNext,
-    required this.onPrevious,
-    required this.overlayEnabled,
   }) : super(key: key);
 
   /// The funvas animation to be displayed in the row.
   final Funvas funvas;
 
-  /// Action that will be executed when the next button is tapped.
-  final VoidCallback onNext;
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: AspectRatio(
+        aspectRatio: 1,
+        child: FunvasContainer(
+          funvas: funvas,
+        ),
+      ),
+    );
+  }
+}
 
-  /// Action that will be executed when the previous button is tapped.
+class _Buttons extends StatelessWidget {
+  const _Buttons({
+    Key? key,
+    required this.onPrevious,
+    required this.onNext,
+  }) : super(key: key);
+
   final VoidCallback onPrevious;
-
-  /// Whether the button actions should be shown.
-  final bool overlayEnabled;
+  final VoidCallback onNext;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        if (overlayEnabled) ...[
-          // We add buttons in all four directions in the stack below the funvas
-          // animation. This is a smart way of supporting both mobile and
-          // desktop layouts ;)
-          // This way, I do not need to even check the current dimensions. If
-          // the layout is vertical, the funvas animation will cover the
-          // horizontally aligned buttons and vice versa :)
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: InkResponse(
-                onTap: onPrevious,
-                radius: 42,
-                child: const RotatedBox(
-                  quarterTurns: 1,
-                  child: Icon(
-                    Icons.arrow_circle_down_outlined,
-                    size: 72,
-                    color: Color(0xbbffffff),
-                  ),
+        // We add buttons in all four directions in the stack below the funvas
+        // animation. This is a smart way of supporting both mobile and
+        // desktop layouts ;)
+        // This way, I do not need to even check the current dimensions. If
+        // the layout is vertical, the funvas animation will cover the
+        // horizontally aligned buttons and vice versa :)
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: InkResponse(
+              onTap: onPrevious,
+              radius: 42,
+              child: Icon(
+                Icons.arrow_left_outlined,
+                size: 72,
+                color: Theme.of(context).colorScheme.onSurface.withAlpha(0xbb),
+              ),
+            ),
+          ),
+        ),
+        Align(
+          alignment: Alignment.topCenter,
+          child: Padding(
+            padding: const EdgeInsets.all(80),
+            child: InkResponse(
+              onTap: onPrevious,
+              radius: 42,
+              child: RotatedBox(
+                quarterTurns: 1,
+                child: Icon(
+                  Icons.arrow_left_outlined,
+                  size: 72,
+                  color:
+                      Theme.of(context).colorScheme.onSurface.withAlpha(0xbb),
                 ),
               ),
             ),
           ),
-          Align(
-            alignment: Alignment.topCenter,
-            child: Padding(
-              padding: const EdgeInsets.all(80),
-              child: InkResponse(
-                onTap: onPrevious,
-                radius: 42,
-                child: const RotatedBox(
-                  quarterTurns: -2,
-                  child: Icon(
-                    Icons.arrow_circle_down_outlined,
-                    size: 72,
-                    color: Color(0xbbffffff),
-                  ),
-                ),
+        ),
+        Align(
+          alignment: Alignment.centerRight,
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: InkResponse(
+              onTap: onNext,
+              radius: 42,
+              child: Icon(
+                Icons.arrow_right_outlined,
+                size: 72,
+                color: Theme.of(context).colorScheme.onSurface.withAlpha(0xbb),
               ),
             ),
           ),
-          Align(
-            alignment: Alignment.centerRight,
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: InkResponse(
-                onTap: onNext,
-                radius: 42,
-                child: const RotatedBox(
-                  quarterTurns: -1,
-                  child: Icon(
-                    Icons.arrow_circle_down_outlined,
-                    size: 72,
-                    color: Color(0xbbffffff),
-                  ),
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Padding(
+            padding: const EdgeInsets.all(80),
+            child: InkResponse(
+              onTap: onNext,
+              radius: 42,
+              child: RotatedBox(
+                quarterTurns: 1,
+                child: Icon(
+                  Icons.arrow_right_outlined,
+                  size: 72,
+                  color:
+                      Theme.of(context).colorScheme.onSurface.withAlpha(0xbb),
                 ),
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.all(80),
-              child: InkResponse(
-                onTap: onNext,
-                radius: 42,
-                child: const RotatedBox(
-                  quarterTurns: 0,
-                  child: Icon(
-                    Icons.arrow_circle_down_outlined,
-                    size: 72,
-                    color: Color(0xbbffffff),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
-        SizedBox.expand(
-          child: Center(
-            child: AspectRatio(
-              aspectRatio: 1,
-              child: FunvasContainer(
-                funvas: funvas,
               ),
             ),
           ),
@@ -249,39 +252,55 @@ class _PageHeader extends StatelessWidget {
     return _Bar(
       children: [
         Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Link(
-                    body: Text('@creativemaybeno'),
-                    url: 'https://twitter.com/creativemaybeno',
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16,
+            ),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: const [
+                      Link(
+                        body: Text('@creativemaybeno'),
+                        url: 'https://twitter.com/creativemaybeno',
+                      ),
+                      SelectableText('\'s funvas collection'),
+                    ],
                   ),
-                  SelectableText('\'s funvas collection'),
+                  const SelectableText(
+                    'follow for new animations :)',
+                    textAlign: TextAlign.center,
+                  ),
                 ],
               ),
-              const SelectableText(
-                'follow for new animations :)',
-                textAlign: TextAlign.center,
-              ),
-            ],
+            ),
           ),
         ),
         Expanded(
-          child: Center(
-            child: OutlinedButton.icon(
-              onPressed: onShuffle,
-              icon: const Icon(
-                Icons.shuffle_outlined,
-                color: Color(0xffffffff),
-              ),
-              label: const Text(
-                'shuffle animations',
-                style: TextStyle(color: Color(0xffffffff)),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16,
+            ),
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: OutlinedButton.icon(
+                onPressed: onShuffle,
+                icon: Icon(
+                  Icons.shuffle_outlined,
+                  color: Theme.of(context).colorScheme.onSurface,
+                ),
+                label: Text(
+                  'shuffle animations',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onSurface,
+                  ),
+                ),
               ),
             ),
           ),
@@ -335,7 +354,7 @@ class _Bar extends StatelessWidget {
         ),
         child: Container(
           height: 64,
-          color: const Color(0x66666666),
+          color: Theme.of(context).colorScheme.surface.withAlpha(0xa1),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
