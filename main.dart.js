@@ -48470,7 +48470,7 @@ q.gK().by(0,r,c,p)},
 $S:379}
 Q.HX.prototype={}
 S.nu.prototype={
-gcv:function(){return"https://twitter.com/creativemaybeno"},
+gcv:function(){return"https://twitter.com/creativemaybeno/status/1414180416760651780?s=20"},
 cw:function(a){var s,r,q,p,o,n,m,l,k,j,i,h,g,f=this,e=f.cB(750)
 f.gK().dw(C.m,C.a5)
 s=f.c
