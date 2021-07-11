@@ -7,7 +7,8 @@ import 'package:funvas_tweets/src/tweet_mixin.dart';
 
 class Thirty extends Funvas with FunvasTweetMixin {
   @override
-  String get tweet => 'https://twitter.com/creativemaybeno';
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1414180416760651780?s=20';
 
   static const _blobCount = 6, _blobSpeed = 5.0;
 
