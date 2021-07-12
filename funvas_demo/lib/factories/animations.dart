@@ -3,14 +3,14 @@ import 'package:funvas_demo/factories/factory.dart';
 import 'package:funvas_tweets/funvas_tweets.dart';
 
 final funvasFactories = <int, FunvasFactory<FunvasTweetMixin>>{
-  30: FunvasFactory(() => Thirty()),
-  29: FunvasFactory(() => TwentyNine()),
   24: FunvasFactory(() => TwentyFour()),
+  30: FunvasFactory(() => Thirty()),
   3: FunvasFactory(() => Three()),
   4: FunvasFactory(() => Four()),
   15: FunvasFactory(() => Fifteen()),
   12: FunvasFactory(() => Twelve()),
   23: FunvasFactory(() => TwentyThree()),
+  29: FunvasFactory(() => TwentyNine()),
   1: FunvasFactory(() => One()),
   27: FunvasFactory(() => TwentySeven()),
   11: FunvasFactory(() => Eleven()),
@@ -28,4 +28,4 @@ final funvasFactories = <int, FunvasFactory<FunvasTweetMixin>>{
 /// tweet yet.
 ///
 /// This one is viewable in debug mode only.
-final wipFunvas = FunvasFactory<Funvas>(() => ThirtyOne());
+final wipFunvas = FunvasFactory<Funvas>(() => ThirtyTwo());
