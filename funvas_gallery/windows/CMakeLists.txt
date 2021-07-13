@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
-project(funvas_demo LANGUAGES CXX)
+project(funvas_gallery LANGUAGES CXX)
 
-set(BINARY_NAME "funvas_demo")
+set(BINARY_NAME "funvas_gallery")
 
 cmake_policy(SET CMP0063 NEW)
 

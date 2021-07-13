@@ -1,4 +1,4 @@
-# funvas_demo
+# funvas_gallery
 
 Demonstration application for the [`funvas` package][funvas], allowing to explore some animations.
 
