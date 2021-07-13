@@ -1,5 +1,5 @@
 import 'package:funvas/funvas.dart';
-import 'package:funvas_demo/factories/factory.dart';
+import 'package:funvas_gallery/factories/factory.dart';
 import 'package:funvas_tweets/funvas_tweets.dart';
 
 final funvasFactories = <int, FunvasFactory<FunvasTweetMixin>>{
@@ -8,6 +8,7 @@ final funvasFactories = <int, FunvasFactory<FunvasTweetMixin>>{
   3: FunvasFactory(() => Three()),
   4: FunvasFactory(() => Four()),
   15: FunvasFactory(() => Fifteen()),
+  32: FunvasFactory(() => ThirtyTwo()),
   12: FunvasFactory(() => Twelve()),
   23: FunvasFactory(() => TwentyThree()),
   29: FunvasFactory(() => TwentyNine()),

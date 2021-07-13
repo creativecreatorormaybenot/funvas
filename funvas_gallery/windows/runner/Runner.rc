@@ -92,10 +92,10 @@ BEGIN
             VALUE "CompanyName", "creativemaybeno" "\0"
             VALUE "FileDescription", "Demonstration application for the funvas package, allowing to explore some animations." "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "funvas_demo" "\0"
+            VALUE "InternalName", "funvas_gallery" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2020 creativemaybeno. All rights reserved." "\0"
-            VALUE "OriginalFilename", "funvas_demo.exe" "\0"
-            VALUE "ProductName", "funvas_demo" "\0"
+            VALUE "OriginalFilename", "funvas_gallery.exe" "\0"
+            VALUE "ProductName", "funvas_gallery" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

@@ -1,17 +1,17 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:funvas_demo/widgets/router.dart';
+import 'package:funvas_gallery/widgets/router.dart';
 
-class DemoApp extends StatefulWidget {
-  const DemoApp({Key? key}) : super(key: key);
+class GalleryApp extends StatefulWidget {
+  const GalleryApp({Key? key}) : super(key: key);
 
   @override
-  _DemoAppState createState() => _DemoAppState();
+  _GalleryAppState createState() => _GalleryAppState();
 }
 
-class _DemoAppState extends State<DemoApp> {
-  final _routerDelegate = DemoRouterDelegate();
-  final _routerInformationParser = DemoRouteInformationParser();
+class _GalleryAppState extends State<GalleryApp> {
+  final _routerDelegate = GalleryRouterDelegate();
+  final _routerInformationParser = GalleryRouteInformationParser();
 
   @override
   Widget build(BuildContext context) {

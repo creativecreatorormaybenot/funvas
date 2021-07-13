@@ -1,8 +1,8 @@
 import 'dart:math';
 
 import 'package:funvas/funvas.dart';
-import 'package:funvas_demo/factories/animations.dart';
-import 'package:funvas_demo/factories/factory.dart';
+import 'package:funvas_gallery/factories/animations.dart';
+import 'package:funvas_gallery/factories/factory.dart';
 import 'package:funvas_tweets/funvas_tweets.dart';
 
 /// Handler for drawing funvas animations.

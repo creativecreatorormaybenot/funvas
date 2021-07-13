@@ -1,5 +1,6 @@
-name: funvas_demo
-description: Demonstration application for the funvas package, allowing to explore some animations.
+name: funvas_gallery
+description: >2-
+  Gallery application for the funvas package, allowing to explore some animations.
 publish_to: 'none'
 version: 1.0.0+1
 

@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:funvas/funvas.dart';
-import 'package:funvas_demo/widgets/link.dart';
+import 'package:funvas_gallery/widgets/link.dart';
 import 'package:funvas_tweets/funvas_tweets.dart';
 
-class DemoPage extends StatefulWidget {
-  const DemoPage({
+class GalleryPage extends StatefulWidget {
+  const GalleryPage({
     Key? key,
     required this.funvas,
     required this.onNext,
@@ -23,12 +23,12 @@ class DemoPage extends StatefulWidget {
   final VoidCallback onShuffle;
 
   @override
-  _DemoPageState createState() => _DemoPageState();
+  _GalleryPageState createState() => _GalleryPageState();
 }
 
 const _kOverlayTransitionDuration = Duration(milliseconds: 150);
 
-class _DemoPageState extends State<DemoPage> {
+class _GalleryPageState extends State<GalleryPage> {
   var _overlayEnabled = true;
 
   @override

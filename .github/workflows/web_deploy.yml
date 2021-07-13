@@ -1,18 +1,18 @@
-name: demo
+name: gallery
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'funvas_demo/lib/**'
-      - 'funvas_demo/web/**'
-      - 'funvas_demo/pubspec.yaml'
+      - 'funvas_gallery/lib/**'
+      - 'funvas_gallery/web/**'
+      - 'funvas_gallery/pubspec.yaml'
       - 'funvas_tweets/lib/**'
       - '.github/workflows/deploy.yml'
 
 jobs:
-  demo-deploy:
+  deploy:
     timeout-minutes: 6
     runs-on: ubuntu-latest
     name: deployment
@@ -25,9 +25,9 @@ jobs:
         with:
           channel: 'beta'
 
-      - name: Build demo web app
+      - name: Build gallery web app
         run: |
-          cd funvas_demo
+          cd funvas_gallery
           flutter pub get
           flutter config --enable-web
           flutter build web --no-sound-null-safety --web-renderer canvaskit
@@ -40,7 +40,7 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: funvas_demo/build/web
+          FOLDER: funvas_gallery/build/web
           GIT_CONFIG_NAME: creativecreatorormaybenot
           GIT_CONFIG_EMAIL: creativecreatorormaybenot@gmail.com
-          COMMIT_MESSAGE: Deploy funvas demo web page
+          COMMIT_MESSAGE: Deploy funvas gallery app

@@ -10,7 +10,16 @@ class TwentyFour extends Funvas with FunvasTweetMixin {
   String get tweet =>
       'https://twitter.com/creativemaybeno/status/1392781785302544384?s=20';
 
-  static const _l = 1e-2;
+  /// Length of each path segment.
+  ///
+  /// Lower values will deliver greater fidelity but decreased performance.
+  /// I think that `0.1` or lower delivers good results but going for `0.09`
+  /// for safety :) `0.2` makes it visibly choppy around the corners (the large
+  /// almost semi circles).
+  ///
+  /// For an export to GIF, I would use a way lower value to ensure best
+  /// possible quality, but for the gallery `0.01` should be good enough.
+  static const _l = 9e-2;
 
   @override
   void u(double t) {

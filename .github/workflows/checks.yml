@@ -30,7 +30,7 @@ jobs:
           - 'dev'
         package:
           - 'funvas'
-          - 'funvas_demo'
+          - 'funvas_gallery'
           - 'funvas_tweets'
       fail-fast: false
 
