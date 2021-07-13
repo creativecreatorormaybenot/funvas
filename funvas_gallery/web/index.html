@@ -20,7 +20,7 @@
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Funvas gallery">
+  <meta name="apple-mobile-web-app-title" content="funvas gallery">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
@@ -30,6 +30,22 @@
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
+  <script>
+    // This prevents zooming in using CTRL + mouse wheel.
+    // See https://stackoverflow.com/a/67039291/6509751.
+    document.addEventListener('wheel', function(e) {
+      e.ctrlKey && e.preventDefault();
+    }, {
+      passive: false,
+    });
+  </script>
+
+  <script>
+    // This sets the Flutter web renderer in auto detect mode.
+    // See https://stackoverflow.com/a/64583462/6509751.
+    window.flutterWebRenderer = 'canvaskit';
+  </script>
+
   <!--
     This script installs service_worker.js to provide PWA functionality to
     application.

@@ -29,8 +29,7 @@ jobs:
         run: |
           cd funvas_gallery
           flutter pub get
-          flutter config --enable-web
-          flutter build web --no-sound-null-safety --web-renderer canvaskit
+          flutter build web
           cd build/web
           touch ".nojekyll"
           echo "funvas.creativemaybeno.dev" > CNAME
