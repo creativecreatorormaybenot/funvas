@@ -6,5 +6,5 @@ void main() {
   // We need to use the hash URL strategy because GitHub pages does not support
   // single page apps.
   setHashUrlStrategy();
-  runApp(const DemoApp());
+  runApp(const GalleryApp());
 }

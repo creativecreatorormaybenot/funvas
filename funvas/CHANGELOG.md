@@ -1,3 +1,7 @@
+## 0.1.3+3
+
+* Updated README to reflect new gallery naming.
+
 ## 0.1.3+2
 
 * Switched to `flutter_lints`.

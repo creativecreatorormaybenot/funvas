@@ -1,11 +1,11 @@
 {
-    "name": "funvas demo",
+    "name": "funvas gallery",
     "short_name": "funvas",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Demonstration of funvas animations.",
+    "description": "Gallery of funvas animations.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:funvas_gallery/widgets/wip.dart';
 
-/// Wraps the WIP feature in debug mode and returns the demo page as is
+/// Wraps the WIP feature in debug mode and returns the gallery page as is
 /// otherwise.
 class DebugWrapper extends StatelessWidget {
   const DebugWrapper({
@@ -19,7 +19,7 @@ class DebugWrapper extends StatelessWidget {
 
     return Shortcuts(
       // We do not need to include a focus node for these shortcuts because
-      // we know that the demo page will auto focus and we only need *some*
+      // we know that the gallery page will auto focus and we only need *some*
       // child node to have focus.
       shortcuts: {
         LogicalKeySet(

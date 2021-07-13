@@ -79,12 +79,15 @@ class ExampleFunvasWidget extends StatelessWidget {
 
 See the [example package][example] for a complete example implementation.
 
-## Demo & more
+## Gallery & more
 
-Funvas is a package that I wrote because I wanted to create some Dwitter-like animations in Flutter myself.
-Because of that, I have created a lot surrounding it, which you might not discover when looking only at the package :)
+Funvas is a package that I wrote because I wanted to create some Dwitter-like animations in Flutter
+myself.
+Because of that, I have created a lot surrounding it, which you might not discover when looking only
+at the package :)
 
-To see a live demo and many fun(vas) animations, you can see the [main README on GitHub][repo] :)
+To see a live demo (gallery app) and many fun(vas) animations, you can see the
+[main README on GitHub][repo] :)
 
 [Twitter]: https://twitter.com/creativemaybeno/status/1285343758247178240?s=20
 [Dwitter]: https://www.dwitter.net/about
