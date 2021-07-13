@@ -11,7 +11,7 @@ class ThirtyTwo extends Funvas {
     c.translate(h, h);
     int i, j, s;
     for (i = 9; i > 0; i--) {
-      // The piece of code responsible for the angle is inspired by
+      // The piece of code responsible for the angle is taken from / inspired by
       // https://www.dwitter.net/d/20577, which was created by pavel.
       // That animation is inspired by Dave Whyte (beesandbombs).
       for (j = s = 3 << (i ~/ 3) + 1; j > 0; j--) {
