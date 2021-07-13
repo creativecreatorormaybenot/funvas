@@ -24,8 +24,7 @@ jobs:
     strategy:
       matrix:
         channel:
-          # Exlcuding stable until NNBD reaches the stable channel.
-          # - 'stable'
+          - 'stable'
           - 'beta'
           - 'dev'
         package:
