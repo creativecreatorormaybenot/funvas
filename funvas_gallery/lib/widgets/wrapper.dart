@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:funvas_demo/widgets/wip.dart';
+import 'package:funvas_gallery/widgets/wip.dart';
 
 /// Wraps the WIP feature in debug mode and returns the demo page as is
 /// otherwise.

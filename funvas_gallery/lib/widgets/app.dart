@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:funvas_demo/widgets/router.dart';
+import 'package:funvas_gallery/widgets/router.dart';
 
 class DemoApp extends StatefulWidget {
   const DemoApp({Key? key}) : super(key: key);

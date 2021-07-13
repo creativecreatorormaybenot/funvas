@@ -1,5 +1,5 @@
 import 'package:funvas/funvas.dart';
-import 'package:funvas_demo/factories/factory.dart';
+import 'package:funvas_gallery/factories/factory.dart';
 import 'package:funvas_tweets/funvas_tweets.dart';
 
 final funvasFactories = <int, FunvasFactory<FunvasTweetMixin>>{

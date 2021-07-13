@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:funvas/funvas.dart';
-import 'package:funvas_demo/widgets/link.dart';
+import 'package:funvas_gallery/widgets/link.dart';
 import 'package:funvas_tweets/funvas_tweets.dart';
 
 class DemoPage extends StatefulWidget {

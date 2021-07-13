@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-import 'package:funvas_demo/factories/animations.dart';
-import 'package:funvas_demo/factories/drawer.dart';
-import 'package:funvas_demo/widgets/page.dart';
-import 'package:funvas_demo/widgets/wrapper.dart';
+import 'package:funvas_gallery/factories/animations.dart';
+import 'package:funvas_gallery/factories/drawer.dart';
+import 'package:funvas_gallery/widgets/page.dart';
+import 'package:funvas_gallery/widgets/wrapper.dart';
 
 class DemoRouterDelegate extends RouterDelegate<int> with ChangeNotifier {
   /// The funvas keys in the order of the stack, where the last key is the
