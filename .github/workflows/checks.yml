@@ -4,17 +4,6 @@ on:
   pull_request:
     branches:
       - main
-    paths:
-      - '.github/workflows/checks.yml'
-      - '**/lib/**'
-      - '**/android/**'
-      - '**/ios/**'
-      - '**/web/**'
-      - '**/macos/**'
-      - '**/windows/**'
-      - '**/pubspec.yaml'
-      - '**/test/**'
-      - '**/assets/**'
 
 jobs:
   analyze:
@@ -27,22 +16,57 @@ jobs:
           - 'stable'
           - 'beta'
           - 'dev'
+          - 'master'
         package:
           - 'funvas'
           - 'funvas_gallery'
           - 'funvas_tweets'
+          - 'open_simplex_2'
       fail-fast: false
+    env:
+      working-directory: 'frontend/${{ matrix.package }}'
 
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: subosito/flutter-action@v1.4.0
+      - uses: subosito/flutter-action@v1.5.1
         with:
           channel: ${{ matrix.channel }}
       - name: pub get
         run: flutter pub get
-        working-directory: ${{ matrix.package }}
+        working-directory: ${{ env.working-directory }}
       - name: dart format
-        working-directory: ${{ matrix.package }}
         run: dart format . --fix --set-exit-if-changed
-      - run: dart analyze
-        working-directory: ${{ matrix.package }}
+        working-directory: ${{ env.working-directory }}
+      - run: flutter analyze
+        working-directory: ${{ env.working-directory }}
+
+  test:
+    timeout-minutes: 11
+    runs-on: ubuntu-latest
+    name: ${{ matrix.package }} testing on ${{ matrix.channel }}
+    strategy:
+      matrix:
+        channel:
+          - 'stable'
+          - 'beta'
+          - 'dev'
+          - 'master'
+        package:
+          #          todo: add test coverage to funvas packages.
+          #          - 'funvas'
+          #          - 'funvas_gallery'
+          #          - 'funvas_tweets'
+          - 'open_simplex_2'
+      fail-fast: false
+    env:
+      working-directory: 'frontend/${{ matrix.package }}'
+
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - uses: subosito/flutter-action@v1.5.1
+        with:
+          channel: ${{ matrix.channel }}
+      - run: flutter pub get
+        working-directory: ${{ env.working-directory }}
+      - run: flutter test
+        working-directory: ${{ env.working-directory }}

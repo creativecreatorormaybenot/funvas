@@ -91,7 +91,7 @@ To see a live demo (gallery app) and many fun(vas) animations, you can see the
 
 [Twitter]: https://twitter.com/creativemaybeno/status/1285343758247178240?s=20
 [Dwitter]: https://www.dwitter.net/about
-[example]: https://github.com/creativecreatorormaybenot/funvas/tree/master/example
+[example]: https://github.com/creativecreatorormaybenot/funvas/tree/main/funvas/example
 [repo]: https://github.com/creativecreatorormaybenot/funvas
 [SizedBox]: https://api.flutter.dev/flutter/widgets/SizedBox-class.html
 [FunvasContainer]: https://pub.dev/documentation/funvas/latest/funvas/FunvasContainer-class.html

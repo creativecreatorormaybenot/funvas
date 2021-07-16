@@ -5,21 +5,25 @@ on:
     branches:
       - main
     paths:
-      - 'funvas/lib/**'
+      - '.github/workflows/publish.yml'
       - 'funvas/pubspec.yaml'
-      - '.github/workflows/pana.yml'
+      - 'open_simplex_2/pubspec.yaml'
 
 jobs:
   configure:
     timeout-minutes: 9
     runs-on: ubuntu-latest
-    name: funvas configuration
+    name: ${{ matrix.package }} configuration
     strategy:
+      matrix:
+        package:
+          - 'funvas'
+          - 'open_simplex_2'
       fail-fast: false
 
     steps:
-      - uses: actions/checkout@v2.3.3
+      - uses: actions/checkout@v2.3.4
       - uses: axel-op/dart-package-analyzer@v3
         with:
+          relativePath: ${{ matrix.package }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          relativePath: funvas

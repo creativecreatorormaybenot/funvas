@@ -4,31 +4,40 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'funvas/pubspec.yaml'
-      - '.github/workflows/publish.yml'
 
 jobs:
   pana:
     timeout-minutes: 9
     runs-on: ubuntu-latest
-    name: funvas configuration
+    name: ${{ matrix.package }} configuration
+    strategy:
+      matrix:
+        package:
+          - 'funvas'
+          - 'open_simplex_2'
+      fail-fast: false
 
     steps:
-      - uses: actions/checkout@v2.3.3
+      - uses: actions/checkout@v2.3.4
       - uses: axel-op/dart-package-analyzer@v3
         with:
+          relativePath: ${{ matrix.package }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          relativePath: funvas
 
   publish:
     needs: pana
     timeout-minutes: 4
     runs-on: ubuntu-latest
-    name: funvas publishing
+    name: ${{ matrix.package }} publishing
+    strategy:
+      matrix:
+        package:
+          - 'funvas'
+          - 'open_simplex_2'
+      fail-fast: false
 
     steps:
-      - uses: actions/checkout@v2.3.3
+      - uses: actions/checkout@v2.3.4
         with:
           fetch-depth: 2
 
@@ -36,20 +45,21 @@ jobs:
         id: pubspec
         run: |
           set +e
-          git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep 'funvas/pubspec.yaml' &> /dev/null
+          git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep '${{ matrix.package }}/pubspec.yaml' &> /dev/null
           echo ::set-output name=changed::$?
           set -e
       - name: Extract package version
         if: steps.pubspec.outputs.changed == 0
         run: |
-          echo "VERSION=$(awk '{if ($1 ~ /^version:/) print $2}' funvas/pubspec.yaml)" >> $GITHUB_ENV
+          cd ${{ matrix.package }}
+          echo "VERSION=$(awk '{if ($1 ~ /^version:/) print $2}' pubspec.yaml)" >> $GITHUB_ENV
       - uses: sakebook/actions-flutter-pub-publisher@v1.3.1
         if: steps.pubspec.outputs.changed == 0
         with:
+          package_directory: ${{ matrix.package }}
           credential: ${{ secrets.PUB_CREDENTIALS }}
           flutter_package: true
           skip_test: true
-          package_directory: funvas
       - name: Create Release
         if: steps.pubspec.outputs.changed == 0
         id: create_release
@@ -57,7 +67,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${{ env.VERSION }}
-          release_name: funvas v${{ env.VERSION }}
+          tag_name: ${{ matrix.package }}-v${{ env.VERSION }}
+          release_name: ${{ matrix.package }} v${{ env.VERSION }}
           draft: false
           prerelease: false

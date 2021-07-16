@@ -1,3 +1,7 @@
+## 0.1.3+4
+
+* Fixed homepage URL.
+
 ## 0.1.3+3
 
 * Updated README to reflect new gallery naming.
