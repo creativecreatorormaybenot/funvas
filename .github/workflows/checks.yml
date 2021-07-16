@@ -24,7 +24,7 @@ jobs:
           - 'open_simplex_2'
       fail-fast: false
     env:
-      working-directory: 'frontend/${{ matrix.package }}'
+      working-directory: ${{ matrix.package }}
 
     steps:
       - uses: actions/checkout@v2.3.4
@@ -59,7 +59,7 @@ jobs:
           - 'open_simplex_2'
       fail-fast: false
     env:
-      working-directory: 'frontend/${{ matrix.package }}'
+      working-directory: ${{ matrix.package }}
 
     steps:
       - uses: actions/checkout@v2.3.4
