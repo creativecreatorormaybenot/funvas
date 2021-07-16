@@ -45,6 +45,6 @@ e.g. in [Processing] (and with that p5.js).
 [Dwitter]: https://www.dwitter.net/about
 [Processing]: https://processing.org
 [gallery]: https://funvas.creativemaybeno.dev
-[funvas]: https://github.com/creativecreatorormaybenot/funvas/tree/master/funvas
-[funvas_tweets]: https://github.com/creativecreatorormaybenot/funvas/tree/master/funvas_tweets
-[funvas_gallery]: https://github.com/creativecreatorormaybenot/funvas/tree/master/funvas_gallery
+[funvas]: https://github.com/creativecreatorormaybenot/funvas/tree/main/funvas
+[funvas_tweets]: https://github.com/creativecreatorormaybenot/funvas/tree/main/funvas_tweets
+[funvas_gallery]: https://github.com/creativecreatorormaybenot/funvas/tree/main/funvas_gallery

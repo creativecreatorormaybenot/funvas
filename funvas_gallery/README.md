@@ -14,4 +14,4 @@ in the web app.
 
 [funvas]: https://pub.dev/packages/funvas
 [gallery]: https://funvas.creativemaybeno.dev
-[funvas_tweets]: https://github.com/creativecreatorormaybenot/funvas/tree/master/funvas_tweets
+[funvas_tweets]: https://github.com/creativecreatorormaybenot/funvas/tree/main/funvas_tweets
