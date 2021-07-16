@@ -111,7 +111,7 @@ class OpenSimplex2F {
 	 * Proper substitute for 3D Simplex in light of Forbidden Formulae.
 	 * Use noise3_XYBeforeZ or noise3_XZBeforeY instead, wherever appropriate.
 	 */
-	public double noise3_Classic(double x, double y, double z) {
+	double noise3_Classic(double x, double y, double z) {
 
 		// Re-orient the cubic lattices via rotation, to produce the expected look on cardinal planar slices.
 		// If texturing objects that don't tend to have cardinal plane faces, you could even remove this.
@@ -131,7 +131,7 @@ class OpenSimplex2F {
 	 * If Z is vertical in world coordinates, call noise3_XYBeforeZ(x, y, Z).
 	 * For a time varied animation, call noise3_XYBeforeZ(x, y, T).
 	 */
-	public double noise3_XYBeforeZ(double x, double y, double z) {
+	double noise3_XYBeforeZ(double x, double y, double z) {
 
 		// Re-orient the cubic lattices without skewing, to make X and Y triangular like 2D.
 		// Orthonormal rotation. Not a skew transform.
@@ -153,7 +153,7 @@ class OpenSimplex2F {
 	 * If Z is vertical in world coordinates, call noise3_XZBeforeY(x, Z, y) or use noise3_XYBeforeZ.
 	 * For a time varied animation, call noise3_XZBeforeY(x, T, y) or use noise3_XYBeforeZ.
 	 */
-	public double noise3_XZBeforeY(double x, double y, double z) {
+	double noise3_XZBeforeY(double x, double y, double z) {
 
 		// Re-orient the cubic lattices without skewing, to make X and Z triangular like 2D.
 		// Orthonormal rotation. Not a skew transform.
@@ -172,8 +172,9 @@ class OpenSimplex2F {
 	 * Lookup table implementation inspired by DigitalShadow.
 	 * It was actually faster to narrow down the points in the loop itself,
 	 * than to build up the index with enough info to isolate 4 points.
+	 * todo: private
 	 */
-	private double noise3_BCC(double xr, double yr, double zr) {
+	double noise3_BCC(double xr, double yr, double zr) {
 
 		// Get base and offsets inside cube of first lattice.
 		int xrb = fastFloor(xr), yrb = fastFloor(yr), zrb = fastFloor(zr);
@@ -208,7 +209,7 @@ class OpenSimplex2F {
 	/**
 	 * 4D OpenSimplex2F noise, classic lattice orientation.
 	 */
-	public double noise4_Classic(double x, double y, double z, double w) {
+	double noise4_Classic(double x, double y, double z, double w) {
 
 		// Get points for A4 lattice
 		double s = -0.138196601125011 * (x + y + z + w);
@@ -222,7 +223,7 @@ class OpenSimplex2F {
 	 * Recommended for 3D terrain, where X and Y (or Z and W) are horizontal.
 	 * Recommended for noise(x, y, sin(time), cos(time)) trick.
 	 */
-	public double noise4_XYBeforeZW(double x, double y, double z, double w) {
+	double noise4_XYBeforeZW(double x, double y, double z, double w) {
 
 		double s2 = (x + y) * -0.178275657951399372 + (z + w) * 0.215623393288842828;
 		double t2 = (z + w) * -0.403949762580207112 + (x + y) * -0.375199083010075342;
@@ -235,7 +236,7 @@ class OpenSimplex2F {
 	 * 4D OpenSimplex2F noise, with XZ and YW forming orthogonal triangular-based planes.
 	 * Recommended for 3D terrain, where X and Z (or Y and W) are horizontal.
 	 */
-	public double noise4_XZBeforeYW(double x, double y, double z, double w) {
+	double noise4_XZBeforeYW(double x, double y, double z, double w) {
 
 		double s2 = (x + z) * -0.178275657951399372 + (y + w) * 0.215623393288842828;
 		double t2 = (y + w) * -0.403949762580207112 + (x + z) * -0.375199083010075342;
@@ -249,7 +250,7 @@ class OpenSimplex2F {
 	 * and W for an extra degree of freedom. W repeats eventually.
 	 * Recommended for time-varied animations which texture a 3D object (W=time)
 	 */
-	public double noise4_XYZBeforeW(double x, double y, double z, double w) {
+	double noise4_XYZBeforeW(double x, double y, double z, double w) {
 
 		double xyz = x + y + z;
 		double ww = w * 0.2236067977499788;
@@ -263,8 +264,9 @@ class OpenSimplex2F {
 	 * 4D OpenSimplex2F noise base.
 	 * Current implementation not fully optimized by lookup tables.
 	 * But still comes out slightly ahead of Gustavson's Simplex in tests.
+	 * todo: private
 	 */
-	private double noise4_Base(double xs, double ys, double zs, double ws) {
+	double noise4_Base(double xs, double ys, double zs, double ws) {
 		double value = 0;
 
 		// Get base points and offsets
@@ -372,12 +374,11 @@ class OpenSimplex2F {
 		return value;
 	}
 
-	/*
-	 * Utility
-	 */
+	// Utility
 
-	private static int fastFloor(double x) {
-		int xi = (int)x;
+	static int fastFloor(double x) {
+		// todo: Is this really faster than just flooring in Dart?
+		final xi = x.toInt();
 		return x < xi ? xi - 1 : xi;
 	}
 
@@ -719,53 +720,40 @@ class LatticePoint2D {
   final double dx, dy;
 }
 
-// todo: wip
-private static class LatticePoint3D {
-  public double dxr, dyr, dzr;
-  public int xrv, yrv, zrv;
-  LatticePoint3D nextOnFailure, nextOnSuccess;
-  public LatticePoint3D(int xrv, int yrv, int zrv, int lattice) {
-    this.dxr = -xrv + lattice * 0.5; this.dyr = -yrv + lattice * 0.5; this.dzr = -zrv + lattice * 0.5;
-    this.xrv = xrv + lattice * 1024; this.yrv = yrv + lattice * 1024; this.zrv = zrv + lattice * 1024;
-  }
+class LatticePoint3D {
+  LatticePoint3D(int xrv, int yrv, int zrv, int lattice): dxr = -xrv + lattice * 0.5, dyr = -yrv + lattice * 0.5,
+    dzr = -zrv + lattice * 0.5,
+    xrv = xrv + lattice * 1024,
+    yrv = yrv + lattice * 1024,
+    zrv = zrv + lattice * 1024;
+
+	final double dxr, dyr, dzr;
+	final int xrv, yrv, zrv;
+
+	LatticePoint3D? nextOnFailure, nextOnSuccess;
 }
 
-private static class LatticePoint4D {
-int xsv, ysv, zsv, wsv;
-double dx, dy, dz, dw;
-double xsi, ysi, zsi, wsi;
-double ssiDelta;
-public LatticePoint4D(int xsv, int ysv, int zsv, int wsv) {
-this.xsv = xsv + 409; this.ysv = ysv + 409; this.zsv = zsv + 409; this.wsv = wsv + 409;
-double ssv = (xsv + ysv + zsv + wsv) * 0.309016994374947;
-this.dx = -xsv - ssv;
-this.dy = -ysv - ssv;
-this.dz = -zsv - ssv;
-this.dw = -wsv - ssv;
-this.xsi = 0.2 - xsv;
-this.ysi = 0.2 - ysv;
-this.zsi = 0.2 - zsv;
-this.wsi = 0.2 - wsv;
-this.ssiDelta = (0.8 - xsv - ysv - zsv - wsv) * 0.309016994374947;
-}
-}
+class LatticePoint4D {
+	LatticePoint4D(int xsv, int ysv, int zsv, int wsv) :
+xsv = xsv + 409,
+ysv = ysv + 409,
+zsv = zsv + 409,
+wsv = wsv + 409,
+xsi = 0.2 - xsv,
+ysi = 0.2 - ysv,
+zsi = 0.2 - zsv,
+wsi = 0.2 - wsv
+{
+		final ssv = (xsv + ysv + zsv + wsv) * 0.309016994374947;
+		dx = -xsv - ssv;
+		dy = -ysv - ssv;
+		dz = -zsv - ssv;
+		dw = -wsv - ssv;
+		ssiDelta = (0.8 - xsv - ysv - zsv - wsv) * 0.309016994374947;
+	}
 
-// Gradients
-
-class Grad2 {
-  const Grad2(this.dx, this.dy);
-
-  final double dx, dy;
-}
-
-class Grad3 {
-  const Grad3(this.dx, this.dy, this.dz);
-
-  final double dx, dy, dz;
-}
-
-class Grad4 {
-  const Grad4(this.dx, this.dy, this.dz, this.dw);
-
-  final double dx, dy, dz, dw;
+	final int xsv, ysv, zsv, wsv;
+	late final double dx, dy, dz, dw;
+	final double xsi, ysi, zsi, wsi;
+	late final double ssiDelta;
 }
