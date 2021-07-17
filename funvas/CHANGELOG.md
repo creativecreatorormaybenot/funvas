@@ -1,3 +1,7 @@
+## 0.1.3+5
+
+* Updated example app to use `flutter_lints`.
+
 ## 0.1.3+4
 
 * Fixed homepage URL.

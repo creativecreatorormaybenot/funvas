@@ -26,7 +26,7 @@ class ExampleApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Funvas examples'),
+          title: const Text('funvas examples'),
         ),
         body: FunvasViewer(
           funvases: examples,
