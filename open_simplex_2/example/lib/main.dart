@@ -30,7 +30,7 @@ class ExampleApp extends StatelessWidget {
 
 /// Example funvas using the `open_simplex_2` package.
 ///
-/// The code is ported from one of  Etienne Jacob's tutorials on his personal
+/// Part of this code is ported from one of  Etienne Jacob's tutorials on his personal
 /// website (https://bleuje.github.io/tutorial3/).
 /// You can find it here: https://gist.githubusercontent.com/Bleuje/0ee88547c273b6ae49ae69527c13e611/raw/a28fb770ab6586a11cda227c44af0ac57f45e8d7/tuto3_entirecode.pde.
 class _OpenSimplex2Funvas extends Funvas {
@@ -43,17 +43,39 @@ class _OpenSimplex2Funvas extends Funvas {
     s2q(dimension);
     c.drawColor(const Color(0xff000000), BlendMode.srcOver);
 
-    t /= 2;
+    drawPropagation(t);
+    draw2dOverlay(t);
+  }
 
-    const m = 90;
+  void draw2dOverlay(double t) {
+    for (var x = 0.0; x < dimension; x++) {
+      for (var y = 0.0; y < dimension; y++) {
+        c.drawRect(
+          Rect.fromLTWH(x, y, 1, 1),
+          Paint()
+            ..color = Color.fromRGBO(
+              255,
+              255,
+              255,
+              1 / 2 + 1 / 2 * noise.noise3XYBeforeZ(x / 1e2, y / 1e2, t / 3),
+            )
+            ..blendMode = BlendMode.plus,
+        );
+      }
+    }
+  }
+
+  void drawPropagation(double t) {
+    // This and below is the code ported from https://gist.githubusercontent.com/Bleuje/0ee88547c273b6ae49ae69527c13e611.
+    const m = 45;
     for (int i = 0; i < m; i++) {
       for (int j = 0; j < m; j++) {
         const margin = dimension / 10;
         final x = (dimension - margin * 2) * i / (m - 1) + margin;
         final y = (dimension - margin * 2) * j / (m - 1) + margin;
 
-        final dx = 20.0 * periodicFunction(t - offset(x, y), 0, x, y);
-        final dy = 20.0 * periodicFunction(t - offset(x, y), 123, x, y);
+        final dx = 20.0 * periodicFunction(t / 3 - offset(x, y), 0, x, y);
+        final dy = 20.0 * periodicFunction(t / 3 - offset(x, y), 123, x, y);
 
         c.drawCircle(
           Offset(x + dx, y + dy),
