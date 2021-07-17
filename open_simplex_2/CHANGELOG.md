@@ -1,3 +1,8 @@
+## 0.0.1+1
+
+* Improved public API.
+* Validated `fastFloor` performance.
+
 ## 0.0.1
 
 * Implemented `OpenSimplex2F`.
