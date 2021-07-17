@@ -1,3 +1,4 @@
 # open_simplex_2
 
-This is currently a placeholder. An update with the implemented functionality will follow shortly.
+Work in progress port of KdotJPG's OpenSimplex2 to Dart.
+[Follow for updates](https://twitter.com/creativemaybeno).

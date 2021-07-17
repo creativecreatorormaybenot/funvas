@@ -522,11 +522,11 @@ class OpenSimplex2F {
       Grad2(-0.38268343236509, 0.923879532511287),
       Grad2(-0.130526192220052, 0.99144486137381)
     ];
-    for (int i = 0; i < grad2.length; i++) {
-      grad2[i] = Grad2(grad2[i].dx / _kN2, grad2[i].dy / _kN2);
-    }
+    final grad2Adjusted = [
+      for (final grad in grad2) Grad2(grad.dx / _kN2, grad.dy / _kN2),
+    ];
     for (int i = 0; i < _kSize; i++) {
-      _gradients2d.add(grad2[i % grad2.length]);
+      _gradients2d.add(grad2Adjusted[i % grad2.length]);
     }
 
     const grad3 = [
@@ -579,12 +579,16 @@ class OpenSimplex2F {
       Grad3(3.0862664687972017, 1.1721513422464978, 0.0),
       Grad3(1.1721513422464978, 3.0862664687972017, 0.0)
     ];
-    for (int i = 0; i < grad3.length; i++) {
-      grad3[i] =
-          Grad3(grad3[i].dx / _kN3, grad3[i].dy / _kN3, grad3[i].dz / _kN3);
-    }
+    final grad3Adjusted = [
+      for (final grad in grad3)
+        Grad3(
+          grad.dx / _kN3,
+          grad.dy / _kN3,
+          grad.dz / _kN3,
+        ),
+    ];
     for (int i = 0; i < _kSize; i++) {
-      _gradients3d[i] = grad3[i % grad3.length];
+      _gradients3d.add(grad3Adjusted[i % grad3.length]);
     }
 
     const grad4 = [
@@ -909,16 +913,17 @@ class OpenSimplex2F {
       Grad4(0.753341017856078, 0.37968289875261624, 0.37968289875261624,
           0.37968289875261624)
     ];
-    for (int i = 0; i < grad4.length; i++) {
-      grad4[i] = Grad4(
-        grad4[i].dx / _kN4,
-        grad4[i].dy / _kN4,
-        grad4[i].dz / _kN4,
-        grad4[i].dw / _kN4,
-      );
-    }
+    final grad4Adjusted = [
+      for (final grad in grad4)
+        Grad4(
+          grad.dx / _kN4,
+          grad.dy / _kN4,
+          grad.dz / _kN4,
+          grad.dw / _kN4,
+        ),
+    ];
     for (int i = 0; i < _kSize; i++) {
-      _gradients4d[i] = grad4[i % grad4.length];
+      _gradients4d.add(grad4Adjusted[i % grad4.length]);
     }
   }
 }

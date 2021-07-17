@@ -1,3 +1,3 @@
-## 0.0.0
+## 0.0.1
 
-* Placeholder version.
+* Implemented `OpenSimplex2F`.
