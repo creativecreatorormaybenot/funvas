@@ -2,6 +2,7 @@
 
 import 'dart:typed_data';
 
+import 'package:open_simplex_2/src/fast_floor.dart';
 import 'package:open_simplex_2/src/grad.dart';
 
 const _kN2 = 0.01001634121365712;
@@ -61,7 +62,7 @@ class OpenSimplex2F {
     final s = 0.366025403784439 * (x + y);
     final xs = x + s, ys = y + s;
 
-    return noise2Base(xs, ys);
+    return _noise2Base(xs, ys);
   }
 
   /// 2D Simplex noise, with Y pointing down the main diagonal.
@@ -73,17 +74,17 @@ class OpenSimplex2F {
     final xx = x * 0.7071067811865476;
     final yy = y * 1.224744871380249;
 
-    return noise2Base(yy + xx, yy - xx);
+    return _noise2Base(yy + xx, yy - xx);
   }
 
   /// 2D Simplex noise base.
   ///
   /// Lookup table implementation inspired by DigitalShadow.
-  double noise2Base(double xs, double ys) {
+  double _noise2Base(double xs, double ys) {
     double value = 0;
 
     // Get base points and offsets
-    int xsb = _fastFloor(xs), ysb = _fastFloor(ys);
+    int xsb = fastFloor(xs), ysb = fastFloor(ys);
     double xsi = xs - xsb, ysi = ys - ysb;
 
     // Index to point list
@@ -174,7 +175,7 @@ class OpenSimplex2F {
   /// than to build up the index with enough info to isolate 4 points.
   double _noise3BCC(double xr, double yr, double zr) {
     // Get base and offsets inside cube of first lattice.
-    int xrb = _fastFloor(xr), yrb = _fastFloor(yr), zrb = _fastFloor(zr);
+    int xrb = fastFloor(xr), yrb = fastFloor(yr), zrb = fastFloor(zr);
     double xri = xr - xrb, yri = yr - yrb, zri = zr - zrb;
 
     // Identify which octant of the cube we're in. This determines which cell
@@ -213,7 +214,7 @@ class OpenSimplex2F {
     double s = -0.138196601125011 * (x + y + z + w);
     double xs = x + s, ys = y + s, zs = z + s, ws = w + s;
 
-    return noise4Base(xs, ys, zs, ws);
+    return _noise4Base(xs, ys, zs, ws);
   }
 
   /// 4D OpenSimplex2F noise, with XY and ZW forming orthogonal triangular-based
@@ -228,7 +229,7 @@ class OpenSimplex2F {
         (z + w) * -0.403949762580207112 + (x + y) * -0.375199083010075342;
     double xs = x + s2, ys = y + s2, zs = z + t2, ws = w + t2;
 
-    return noise4Base(xs, ys, zs, ws);
+    return _noise4Base(xs, ys, zs, ws);
   }
 
   /// 4D OpenSimplex2F noise, with XZ and YW forming orthogonal triangular-based
@@ -242,7 +243,7 @@ class OpenSimplex2F {
         (y + w) * -0.403949762580207112 + (x + z) * -0.375199083010075342;
     double xs = x + s2, ys = y + t2, zs = z + s2, ws = w + t2;
 
-    return noise4Base(xs, ys, zs, ws);
+    return _noise4Base(xs, ys, zs, ws);
   }
 
   /// 4D OpenSimplex2F noise, with XYZ oriented like noise3Classic,
@@ -255,21 +256,21 @@ class OpenSimplex2F {
     double s2 = xyz * -0.16666666666666666 + ww;
     double xs = x + s2, ys = y + s2, zs = z + s2, ws = -0.5 * xyz + ww;
 
-    return noise4Base(xs, ys, zs, ws);
+    return _noise4Base(xs, ys, zs, ws);
   }
 
   /// 4D OpenSimplex2F noise base.
+  ///
   /// Current implementation not fully optimized by lookup tables.
   /// But still comes out slightly ahead of Gustavson's Simplex in tests.
-  /// todo: private
-  double noise4Base(double xs, double ys, double zs, double ws) {
+  double _noise4Base(double xs, double ys, double zs, double ws) {
     double value = 0;
 
     // Get base points and offsets
-    int xsb = _fastFloor(xs),
-        ysb = _fastFloor(ys),
-        zsb = _fastFloor(zs),
-        wsb = _fastFloor(ws);
+    int xsb = fastFloor(xs),
+        ysb = fastFloor(ys),
+        zsb = fastFloor(zs),
+        wsb = fastFloor(ws);
     double xsi = xs - xsb, ysi = ys - ysb, zsi = zs - zsb, wsi = ws - wsb;
 
     // If we're in the lower half, flip so we can repeat the code for the upper half. We'll flip back later.
@@ -414,14 +415,6 @@ class OpenSimplex2F {
     }
 
     return value;
-  }
-
-  // Utility
-
-  static int _fastFloor(double x) {
-    // todo: Is this really faster than just flooring in Dart?
-    final xi = x.toInt();
-    return x < xi ? xi - 1 : xi;
   }
 
   // Definitions
