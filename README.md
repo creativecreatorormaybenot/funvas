@@ -1,4 +1,4 @@
-# funvas [![Pub version](https://img.shields.io/pub/v/funvas.svg)](https://pub.dev/packages/funvas) [![gallery badge](https://img.shields.io/badge/funvas-gallery-yellow)][gallery] [![Twitter Follow](https://img.shields.io/twitter/follow/creativemaybeno?label=Follow&style=social)](https://twitter.com/creativemaybeno)
+# funvas [![Pub version][pub shield]][pub] [![gallery badge]][gallery] [![Twitter Follow][twitter badge]][twitter]
 
 Flutter package that allows creating canvas animations based on time and math (mostly trigonometric)
 functions.
@@ -16,35 +16,36 @@ The name "funvas" is based on Flutter + fun + canvas. Let me know if you have an
 <a target="_blank" href="https://twitter.com/creativemaybeno/status/1350085831550148611?s=20"><img src="https://user-images.githubusercontent.com/19204050/113479488-f01aa400-947e-11eb-81c4-e4394ec20b01.gif" width="49%"></a>
 <a target="_blank" href="https://twitter.com/creativemaybeno/status/1364560611435307008?s=20"><img src="https://user-images.githubusercontent.com/19204050/113479491-f1e46780-947e-11eb-9bb2-f43748651700.gif" width="49%"></a>
 
-## [Gallery][gallery]
+## Gallery [![gallery badge]][gallery]
 
-I share my funvas creations [on Twitter][Twitter] and I have also created a [live demo][gallery]
-that allows you to explore some of the animations running right in Flutter web :)
+I share my funvas creations [on Twitter][twitter] and I have also created a [live demo][gallery],
+a gallery that allows you to explore some of the animations running right in Flutter web :)
 
 ### Repo structure
 
 This repo currently contains the following packages:
 
-* [`funvas`][funvas], which is the actual `funvas` Flutter package that is also hosted on Pub.
-  Both `funvas_tweets` and `funvas_gallery` (+ the `example` package inside of `funvas`) depend on this
-  package. It contains the basic widget for displaying funvas animations.
-* [`funvas_tweets`][funvas_tweets] is a collection of funvas animations I created and shared
-  [on Twitter][Twitter]. The package also contains the code I use to export my animations to GIF.
-* [`funvas_gallery`][funvas_gallery] is a Flutter web app showcasing some funvas animations that can be
-  reached at [funvas.creativemaybeno.dev][gallery]. It consists of a selection of funvas animations
-  from the `funvas_tweets` package. Not all animations are included because some of them might not
-  perform well enough in a live demo :)
+| Package                                                                                          | Contents                                                                                                                                                                                         |
+| :----------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`funvas`](https://github.com/creativecreatorormaybenot/funvas/tree/main/funvas)                 | The actual `funvas` Flutter package that is also hosted on Pub. Both `funvas_tweets` and `funvas_gallery` depend on this package. It contains the basic widget for displaying funvas animations. |
+| [`funvas_gallery`](https://github.com/creativecreatorormaybenot/funvas/tree/main/funvas_gallery) | Collection of funvas animations I created and shared [on Twitter][twitter]. The package also contains the code I use to export my animations to GIF and mp4.                                     |
+| [`funvas_tweets`](https://github.com/creativecreatorormaybenot/funvas/tree/main/funvas_tweets)   | Flutter web app (gallery) showcasing a selection of `funvas_tweets` funvas animations that can be reached at [funvas.creativemaybeno.dev][gallery].                                              |
+| [`open_simplex_2`](https://github.com/creativecreatorormaybenot/funvas/tree/main/open_simplex_2) | Package that makes OpenSimplex2 noise generation available to everyone in Dart :) I use this for my own funvas animations (`funvas_tweets`) but it is also hosted for anyone to use on Pub.      |
 
 ### Inspiration
 
-The whole concept is *inspired by Dwitter* ([check it out][Dwitter]). That is mainly the way the
+The whole concept is *inspired by Dwitter* ([check it out][dtwitter]). That is mainly the way the
 API is built. These kinds of animations (especially in GIF form) can be found in many communities,
-e.g. in [Processing] (and with that p5.js). 
+e.g. in [processing] (and with that p5.js).
 
-[Twitter]: https://twitter.com/creativemaybeno
-[Dwitter]: https://www.dwitter.net/about
-[Processing]: https://processing.org
+[twitter]: https://twitter.com/creativemaybeno
+[twitter badge]: https://img.shields.io/twitter/follow/creativemaybeno?label=Follow&style=social
+[dtwitter]: https://www.dwitter.net/about
+[processing]: https://processing.org
 [gallery]: https://funvas.creativemaybeno.dev
+[gallery badge]: https://img.shields.io/badge/funvas-gallery-yellow
 [funvas]: https://github.com/creativecreatorormaybenot/funvas/tree/main/funvas
 [funvas_tweets]: https://github.com/creativecreatorormaybenot/funvas/tree/main/funvas_tweets
 [funvas_gallery]: https://github.com/creativecreatorormaybenot/funvas/tree/main/funvas_gallery
+[pub]: https://pub.dev/packages/funvas
+[pub shield]: https://img.shields.io/pub/v/funvas.svg
