@@ -33,6 +33,8 @@ class ThirtyThree extends Funvas {
     TextStyle style(int x, int y) {
       final z = sin(t / period * pi * 2);
       final w = cos(t / period * pi * 2);
+      // Could have used noise4XYBeforeZW, but the classic implementation looked
+      // good :)
       final value = noise.noise4Classic(
         x / 99,
         y * columns / rows / 99 + 42,
