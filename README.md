@@ -18,8 +18,8 @@ The name "funvas" is based on Flutter + fun + canvas. Let me know if you have an
 
 ## Gallery [![gallery badge]][gallery]
 
-I share my funvas creations [on Twitter][twitter] and I have also created a [live demo][gallery]
-that allows you to explore some of the animations running right in Flutter web :)
+I share my funvas creations [on Twitter][twitter] and I have also created a [live demo][gallery],
+a gallery that allows you to explore some of the animations running right in Flutter web :)
 
 ### Repo structure
 
