@@ -1,3 +1,7 @@
+## 0.1.0+1
+
+* Improved references in README.
+
 ## 0.1.0
 
 * Released initial stable version.

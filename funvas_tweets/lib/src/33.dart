@@ -2,10 +2,15 @@ import 'dart:math';
 
 import 'package:flutter/painting.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:open_simplex_2/open_simplex_2.dart';
 
-class ThirtyThree extends Funvas {
+class ThirtyThree extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1416807999176388611?s=20';
+
   final noise = OpenSimplex2F(42);
 
   @override

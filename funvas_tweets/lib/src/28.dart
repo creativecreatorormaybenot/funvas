@@ -4,11 +4,16 @@ import 'dart:ui';
 import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
 /// Animation inspired by https://twitter.com/beesandbombs/status/1400816068252291073?s=20.
 ///
 /// All code is mine, written from scratch.
-class TwentyEight extends Funvas {
+class TwentyEight extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1401841363079995396?s=20';
+
   static const _pointsN = 50000;
   static const double _pointDiameter = 2, _frameDimension = 750;
 

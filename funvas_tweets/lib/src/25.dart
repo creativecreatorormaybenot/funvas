@@ -3,8 +3,13 @@ import 'dart:ui';
 
 import 'package:flutter/painting.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
-class TwentyFive extends Funvas {
+class TwentyFive extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1400391812125184001?s=20';
+
   static const _n = 32;
 
   @override
