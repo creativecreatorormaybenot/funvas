@@ -64,23 +64,37 @@ class _OpenSimplex2Funvas extends Funvas {
     s2q(dimension);
     c.drawColor(const Color(0xff000000), BlendMode.srcOver);
 
+    draw2dNoise(t);
     drawPropagation(t);
-    draw2dOverlay(t);
+    final textPainter = TextPainter(
+      text: TextSpan(
+        text: noise is OpenSimplex2S
+            ? 'OpenSimplex2S (smoother)'
+            : 'OpenSimplex2F (faster)',
+        style: const TextStyle(
+          fontSize: 3,
+          color: Color(0xffffffff),
+          backgroundColor: Color(0xff000000),
+        ),
+      ),
+      textDirection: TextDirection.ltr,
+    );
+    textPainter.layout();
+    textPainter.paint(c, Offset.zero);
   }
 
-  void draw2dOverlay(double t) {
+  void draw2dNoise(double t) {
     for (var x = 0.0; x < dimension; x++) {
       for (var y = 0.0; y < dimension; y++) {
         c.drawRect(
           Rect.fromLTWH(x, y, 1, 1),
           Paint()
-            ..color = Color.fromRGBO(
-              255,
-              255,
-              255,
+            ..color = HSLColor.fromAHSL(
               1 / 2 + 1 / 2 * noise.noise3XYBeforeZ(x / 1e2, y / 1e2, t / 3),
-            )
-            ..blendMode = BlendMode.plus,
+              noise.noise2(x / 100, y / 100) * 180 + 180,
+              3 / 4,
+              3 / 4,
+            ).toColor(),
         );
       }
     }
