@@ -4,6 +4,7 @@ import 'dart:typed_data';
 
 import 'package:open_simplex_2/src/fast_floor.dart';
 import 'package:open_simplex_2/src/grad.dart';
+import 'package:open_simplex_2/src/open_simplex_2.dart';
 
 const _kN2 = 0.01001634121365712;
 const _kN3 = 0.030485933181293584;
@@ -21,7 +22,7 @@ const _kMask = 2047;
 ///
 /// Multiple versions of each function are provided. See the documentation for
 /// each for more info.
-class OpenSimplex2F {
+class OpenSimplex2F implements OpenSimplex2 {
   /// Creates a seeded [OpenSimplex2F] that can be used to evaluate noise.
   OpenSimplex2F(int seed) {
     if (!_staticInitialized) {
@@ -57,6 +58,7 @@ class OpenSimplex2F {
   // Noise evaluators
 
   /// 2D Simplex noise, standard lattice orientation.
+  @override
   double noise2(double x, double y) {
     // Get points for A2* lattice
     final s = 0.366025403784439 * (x + y);
@@ -69,6 +71,7 @@ class OpenSimplex2F {
   ///
   /// Might be better for a 2D sandbox style game, where Y is vertical.
   /// Probably slightly less optimal for heightmaps or continent maps.
+  @override
   double noise2XBeforeY(double x, double y) {
     // Skew transform and rotation baked into one.
     final xx = x * 0.7071067811865476;
@@ -116,6 +119,7 @@ class OpenSimplex2F {
   ///
   /// Proper substitute for 3D Simplex in light of Forbidden Formulae.
   /// Use noise3XYBeforeZ or noise3XZBeforeY instead, wherever appropriate.
+  @override
   double noise3Classic(double x, double y, double z) {
     // Re-orient the cubic lattices via rotation, to produce the expected look on cardinal planar slices.
     // If texturing objects that don't tend to have cardinal plane faces, you could even remove this.
@@ -134,6 +138,7 @@ class OpenSimplex2F {
   /// If Y is vertical in world coordinates, call noise3XYBeforeZ(x, z, Y) or use noise3XZBeforeY.
   /// If Z is vertical in world coordinates, call noise3XYBeforeZ(x, y, Z).
   /// For a time varied animation, call noise3XYBeforeZ(x, y, T).
+  @override
   double noise3XYBeforeZ(double x, double y, double z) {
     // Re-orient the cubic lattices without skewing, to make X and Y triangular like 2D.
     // Orthonormal rotation. Not a skew transform.
@@ -154,6 +159,7 @@ class OpenSimplex2F {
   /// If Y is vertical in world coordinates, call noise3XZBeforeY(x, Y, z).
   /// If Z is vertical in world coordinates, call noise3XZBeforeY(x, Z, y) or use noise3XYBeforeZ.
   /// For a time varied animation, call noise3XZBeforeY(x, T, y) or use noise3XYBeforeZ.
+  @override
   double noise3XZBeforeY(double x, double y, double z) {
     // Re-orient the cubic lattices without skewing, to make X and Z triangular like 2D.
     // Orthonormal rotation. Not a skew transform.
@@ -209,6 +215,7 @@ class OpenSimplex2F {
   }
 
   /// 4D OpenSimplex2F noise, classic lattice orientation.
+  @override
   double noise4Classic(double x, double y, double z, double w) {
     // Get points for A4 lattice
     double s = -0.138196601125011 * (x + y + z + w);
@@ -222,6 +229,7 @@ class OpenSimplex2F {
   ///
   /// Recommended for 3D terrain, where X and Y (or Z and W) are horizontal.
   /// Recommended for noise(x, y, sin(time), cos(time)) trick.
+  @override
   double noise4XYBeforeZW(double x, double y, double z, double w) {
     double s2 =
         (x + y) * -0.178275657951399372 + (z + w) * 0.215623393288842828;
@@ -236,6 +244,7 @@ class OpenSimplex2F {
   /// planes.
   ///
   /// Recommended for 3D terrain, where X and Z (or Y and W) are horizontal.
+  @override
   double noise4XZBeforeYW(double x, double y, double z, double w) {
     double s2 =
         (x + z) * -0.178275657951399372 + (y + w) * 0.215623393288842828;
@@ -250,6 +259,7 @@ class OpenSimplex2F {
   /// and W for an extra degree of freedom. W repeats eventually.
   ///
   /// Recommended for time-varied animations which texture a 3D object (W=time)
+  @override
   double noise4XYZBeforeW(double x, double y, double z, double w) {
     double xyz = x + y + z;
     double ww = w * 0.2236067977499788;
