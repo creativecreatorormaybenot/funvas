@@ -10,17 +10,30 @@ void main() {
 }
 
 /// Example app showcasing how to use the `open_simplex_2` package.
-class ExampleApp extends StatelessWidget {
+class ExampleApp extends StatefulWidget {
   const ExampleApp({Key? key}) : super(key: key);
+
+  @override
+  State<ExampleApp> createState() => _ExampleAppState();
+}
+
+class _ExampleAppState extends State<ExampleApp> {
+  final _funvas = _OpenSimplex2Funvas()..initializeNoise(fast: true);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'open_simplex_2 example',
       home: Scaffold(
-        body: SizedBox.expand(
-          child: FunvasContainer(
-            funvas: _OpenSimplex2Funvas(),
+        body: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            _funvas.initializeNoise(fast: _funvas.noise is OpenSimplex2S);
+          },
+          child: SizedBox.expand(
+            child: FunvasContainer(
+              funvas: _funvas,
+            ),
           ),
         ),
       ),
@@ -36,7 +49,15 @@ class ExampleApp extends StatelessWidget {
 class _OpenSimplex2Funvas extends Funvas {
   static const dimension = 100.0;
 
-  final noise = OpenSimplex2F(12345);
+  late OpenSimplex2 noise;
+
+  void initializeNoise({required bool fast}) {
+    if (fast) {
+      noise = OpenSimplex2F(12345);
+    } else {
+      noise = OpenSimplex2S(12345);
+    }
+  }
 
   @override
   void u(double t) {
