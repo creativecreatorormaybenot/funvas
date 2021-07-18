@@ -25,12 +25,12 @@ class OpenSimplex2F {
   /// Creates a seeded [OpenSimplex2F] that can be used to evaluate noise.
   OpenSimplex2F(int seed) {
     if (!_staticInitialized) {
-      _statInit();
+      _staticInit();
       _staticInitialized = true;
     }
 
     final source = Int16List(_kSize);
-    for (int i = 0; i < _kSize; i++) {
+    for (var i = 0; i < _kSize; i++) {
       source[i] = i;
     }
     for (int i = _kSize - 1; i >= 0; i--) {
@@ -434,11 +434,11 @@ class OpenSimplex2F {
 
   static var _staticInitialized = false;
 
-  /// Performs the initilization of all static lookup members.
+  /// Performs the initialization of all static lookup members.
   ///
   /// This function as well as [_staticInitialized] exist because there is
   /// no comparable concept to static blocks (from Java) in Dart.
-  static void _statInit() {
+  static void _staticInit() {
     for (int i = 0; i < 8; i++) {
       int i1, j1, k1, i2, j2, k2;
       i1 = (i >> 0) & 1;
