@@ -11,6 +11,9 @@ class Ten extends Funvas with FunvasTweetMixin {
   String get tweet =>
       'https://twitter.com/creativemaybeno/status/1344066533417484291?s=20';
 
+  @override
+  String get creationProcess => 'https://youtu.be/7DC_ZcqMOUk';
+
   Ten() {
     _loadImage(_soProvider).then((value) => _soImage = value);
     _loadImage(_ghProvider).then((value) => _ghImage = value);

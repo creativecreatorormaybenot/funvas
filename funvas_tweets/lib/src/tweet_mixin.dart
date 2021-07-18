@@ -4,4 +4,7 @@ import 'package:funvas/funvas.dart';
 mixin FunvasTweetMixin on Funvas {
   /// The URL to the tweet the funvas animation was created for.
   String get tweet;
+
+  /// Link to the creation process of the funvas animation.
+  String? get creationProcess => null;
 }

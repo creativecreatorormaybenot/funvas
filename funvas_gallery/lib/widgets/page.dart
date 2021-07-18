@@ -4,19 +4,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_gallery/factories/animations.dart';
+import 'package:funvas_gallery/factories/drawer.dart';
+import 'package:funvas_gallery/factories/factory.dart';
 import 'package:funvas_gallery/widgets/link.dart';
-import 'package:funvas_tweets/funvas_tweets.dart';
 
 class GalleryPage extends StatefulWidget {
   const GalleryPage({
     Key? key,
-    required this.funvas,
+    required this.funvasKey,
     required this.onNext,
     required this.onPrevious,
     required this.onShuffle,
   }) : super(key: key);
 
-  final FunvasTweetMixin funvas;
+  /// The key to the funvas in [funvasFactories] to retrieve the funvas animation
+  /// from the [FunvasDrawer] instance.
+  ///
+  /// The [FunvasFactory.funvas] getter ensures that we always retrieve a cached
+  /// instance.
+  final int funvasKey;
 
   final VoidCallback onNext;
   final VoidCallback onPrevious;
@@ -94,7 +101,7 @@ class _GalleryPageState extends State<GalleryPage> {
                 ),
                 Positioned.fill(
                   child: _FunvasContainer(
-                    funvas: widget.funvas,
+                    funvas: FunvasDrawer.instance[widget.funvasKey],
                   ),
                 ),
                 AnimatedOpacity(
@@ -107,7 +114,7 @@ class _GalleryPageState extends State<GalleryPage> {
                       ),
                       const Spacer(),
                       _PageFooter(
-                        tweetUrl: widget.funvas.tweet,
+                        funvasKey: widget.funvasKey,
                       ),
                     ],
                   ),
@@ -313,19 +320,55 @@ class _PageHeader extends StatelessWidget {
 class _PageFooter extends StatelessWidget {
   const _PageFooter({
     Key? key,
-    required this.tweetUrl,
+    required this.funvasKey,
   }) : super(key: key);
 
-  /// The URL for the tweet for the currently displayed funvas animation.
-  final String tweetUrl;
+  /// The key to the funvas animation, i.e. the running number.
+  final int funvasKey;
 
   @override
   Widget build(BuildContext context) {
+    final funvas = FunvasDrawer.instance[funvasKey];
     return _Bar(
       children: [
-        Link(
-          body: const Text('view tweet (w/ source code)'),
-          url: tweetUrl,
+        Expanded(
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 4,
+              ),
+              child: Link(
+                body: const Text('view tweet'),
+                url: funvas.tweet,
+              ),
+            ),
+          ),
+        ),
+        if (funvas.creationProcess != null)
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 4,
+            ),
+            child: Link(
+              body: const Text('creation process'),
+              url: funvas.creationProcess!,
+            ),
+          ),
+        Expanded(
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 4,
+              ),
+              child: Link(
+                body: const Text('source code'),
+                url: 'https://github.com/creativecreatorormaybenot/funvas/'
+                    'blob/main/funvas_tweets/lib/src/$funvasKey.dart',
+              ),
+            ),
+          ),
         ),
       ],
     );
