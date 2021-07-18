@@ -39,8 +39,7 @@ class GalleryRouterDelegate extends RouterDelegate<int> with ChangeNotifier {
           builder: (context) {
             return DebugWrapper(
               child: GalleryPage(
-                funvas: FunvasDrawer.instance[
-                    currentConfiguration ?? FunvasDrawer.instance.key],
+                funvasKey: currentConfiguration ?? FunvasDrawer.instance.key,
                 onNext: () {
                   _keys.add(FunvasDrawer.instance.next());
                   notifyListeners();

@@ -10,6 +10,9 @@ class Thirty extends Funvas with FunvasTweetMixin {
   String get tweet =>
       'https://twitter.com/creativemaybeno/status/1414180416760651780?s=20';
 
+  @override
+  String get creationProcess => 'https://youtu.be/N8o4bC8GouY';
+
   static const _blobCount = 6, _blobSpeed = 5.0;
 
   // The max resolution is 8190 (min is 1). I have no idea why, but the logic
