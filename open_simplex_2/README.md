@@ -1,4 +1,4 @@
-# open_simplex_2 [![Pub version](https://img.shields.io/pub/v/open_simplex_2.svg)](https://pub.dev/packages/open_simplex_2) [![GitHub stars](https://img.shields.io/github/stars/creativecreatorormaybenot/open_simplex_2.svg)](https://github.com/creativecreatorormaybenot/open_simplex_2) [![Twitter Follow](https://img.shields.io/twitter/follow/creativemaybeno?label=Follow&style=social)](https://twitter.com/creativemaybeno)
+# open_simplex_2 [![Pub version](https://img.shields.io/pub/v/open_simplex_2.svg)](https://pub.dev/packages/open_simplex_2) [![GitHub stars](https://img.shields.io/github/stars/creativecreatorormaybenot/open_simplex_2.svg)](https://github.com/creativecreatorormaybenot/funvas) [![Twitter Follow](https://img.shields.io/twitter/follow/creativemaybeno?label=Follow&style=social)](https://twitter.com/creativemaybeno)
 
 Dart implementation of [KdotJPG's OpenSimplex2](https://github.com/KdotJPG/OpenSimplex2) noise
 algorithms.
@@ -16,7 +16,7 @@ The package currently offers two OpenSimplex 2 noise implementations:
 * [`OpenSimplex2S`](https://pub.dev/documentation/open_simplex_2/latest/open_simplex_2/OpenSimplex2S-class.html),
   which is the *smoother* version of OpenSimplex 2.
 
-Both of them are used in the same way. You initialize an instance using a seed:
+Both of them are used in the same way. You initialize an instance with a seed:
 
 ```dart
 final noise = OpenSimplex2F(42);
