@@ -1,4 +1,4 @@
-# open_simplex_2 [![Pub version](https://img.shields.io/pub/v/open_simplex_2.svg)](https://pub.dev/packages/open_simplex_2) [![GitHub stars](https://img.shields.io/github/stars/creativecreatorormaybenot/open_simplex_2.svg)](https://github.com/creativecreatorormaybenot/funvas) [![Twitter Follow](https://img.shields.io/twitter/follow/creativemaybeno?label=Follow&style=social)](https://twitter.com/creativemaybeno)
+# open_simplex_2 [![Pub version](https://img.shields.io/pub/v/open_simplex_2.svg)](https://pub.dev/packages/open_simplex_2) [![GitHub stars](https://img.shields.io/github/stars/creativecreatorormaybenot/funvas.svg)](https://github.com/creativecreatorormaybenot/funvas) [![Twitter Follow](https://img.shields.io/twitter/follow/creativemaybeno?label=Follow&style=social)](https://twitter.com/creativemaybeno)
 
 Dart implementation of [KdotJPG's OpenSimplex2](https://github.com/KdotJPG/OpenSimplex2) noise
 algorithms.
