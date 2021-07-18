@@ -1,4 +1,4 @@
-# open_simplex_2 [![Pub version](https://img.shields.io/pub/v/open_simplex_2.svg)](https://pub.dev/packages/open_simplex_2) [![GitHub stars](https://img.shields.io/github/stars/creativecreatorormaybenot/funvas.svg)](https://github.com/creativecreatorormaybenot/funvas) [![Twitter Follow](https://img.shields.io/twitter/follow/creativemaybeno?label=Follow&style=social)](https://twitter.com/creativemaybeno)
+# open_simplex_2 [![Pub version](https://img.shields.io/pub/v/open_simplex_2.svg)](https://pub.dev/packages/open_simplex_2) [![GitHub stars](https://img.shields.io/github/stars/creativecreatorormaybenot/funvas.svg)](https://github.com/creativecreatorormaybenot/funvas/tree/main/open_simplex_2) [![Twitter Follow](https://img.shields.io/twitter/follow/creativemaybeno?label=Follow&style=social)](https://twitter.com/creativemaybeno)
 
 Dart implementation of [KdotJPG's OpenSimplex2](https://github.com/KdotJPG/OpenSimplex2) noise
 algorithms.
@@ -59,9 +59,10 @@ If you are interested, you can view [the gallery](https://funvas.creativemaybeno
 [on Twitter](https://twitter.com/creativemaybeno) (where I regularly post animations), or view some
 of the example integrations I wrote :)
 
-Here are two examples to start:
+Here are some examples to start:
 
-* [funvas animation no. 33](https://github.com/creativecreatorormaybenot/funvas/blob/main/funvas_tweets/lib/src/33.dart)
+* funvas animation no. 33 [tweet with video](https://twitter.com/creativemaybeno/status/1416807999176388611?s=20)
+* funvas animation no. 33 [source code](https://github.com/creativecreatorormaybenot/funvas/blob/main/funvas_tweets/lib/src/33.dart)
 * [open_simplex_2 example app](https://github.com/creativecreatorormaybenot/funvas/blob/main/open_simplex_2/example/lib/main.dart)
 
 ## Background
