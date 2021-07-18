@@ -28,8 +28,8 @@ This instance now allows you to evaluate noise. Here are some example calls:
 noise.noise2(x, y);
 noise.noise3Classic(x, y, z);
 noise.noise3XYBeforeZ(x, y, z);
-noise.noise4Classic(x, y, z);
-noise.noise4XYBeforeZW(x, y, z);
+noise.noise4Classic(x, y, z, w);
+noise.noise4XYBeforeZW(x, y, z, w);
 ```
 
 ### Common interface
