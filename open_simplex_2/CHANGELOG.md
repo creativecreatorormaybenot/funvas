@@ -1,3 +1,8 @@
+## 0.1.0
+
+* Released initial stable version.
+* Updated README to indicate stable status.
+
 ## 0.0.2
 
 * Implemented `OpenSimplex2F`.
