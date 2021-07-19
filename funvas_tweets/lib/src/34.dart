@@ -27,7 +27,7 @@ class ThirtyFour extends Funvas {
   /// The larger the faster the circles grow.
   static const _revolutions = 2;
 
-  static const _dimension = 750.0, _period = 7, _n = 21, _seed = 42;
+  static const _dimension = 750.0, _period = 6.6, _n = 19, _seed = 42;
 
   final _noise = OpenSimplex2S(_seed);
 
@@ -73,7 +73,7 @@ class ThirtyFour extends Funvas {
         path.lineTo(x, y);
       }
     }
-    final o = (to * r / _dimension * sqrt2).clamp(0.0, to);
+    final o = (to * r / _dimension * sqrt2 * 2).clamp(0.0, to);
     c.drawPath(
       path..close(),
       Paint()
