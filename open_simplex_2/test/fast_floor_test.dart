@@ -16,8 +16,6 @@ void main() {
     floorBenchmark.report();
     fastFloorBenchmark.report();
 
-    print(fastFloorRuntime);
-    print(floorRuntime);
     expect(fastFloorRuntime, lessThan(floorRuntime));
   });
 }
