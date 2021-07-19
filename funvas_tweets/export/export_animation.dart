@@ -9,7 +9,7 @@ import 'package:funvas_tweets/funvas_tweets.dart';
 
 void main() {
   const fps = 50;
-  const animationDuration = Duration(milliseconds: 6600);
+  const animationDuration = Duration(seconds: 6);
   const dimensions = Size(750, 750);
   // If you use a different animation name, you will have to also consider that
   // when exporting to GIF.
