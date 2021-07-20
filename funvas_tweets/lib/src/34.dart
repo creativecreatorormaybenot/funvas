@@ -2,9 +2,14 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 import 'package:open_simplex_2/open_simplex_2.dart';
 
-class ThirtyFour extends Funvas {
+class ThirtyFour extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1417424043934818305?s=20';
+
   /// Base precision for the paths being drawn.
   ///
   /// A value of `2` will result in twice as many path segments per circle
@@ -27,9 +32,9 @@ class ThirtyFour extends Funvas {
   /// The larger the faster the circles grow.
   static const _revolutions = 2;
 
-  static const _dimension = 750.0, _period = 6, _n = 21, _seed = 42;
+  static const _dimension = 750.0, _period = 15, _n = 21, _seed = 42;
 
-  final _noise = OpenSimplex2S(_seed);
+  final _noise = OpenSimplex2F(_seed);
 
   @override
   void u(double t) {
