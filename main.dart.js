@@ -54947,7 +54947,7 @@ r.scJ(0,C.J)
 s.bD(0,a1,r)}}
 L.K2.prototype={}
 V.ou.prototype={
-gcj:function(){return"https://twitter.com/creativemaybeno"},
+gcj:function(){return"https://twitter.com/creativemaybeno/status/1417532500096782341?s=20"},
 ck:function(a){var s,r,q,p=this
 p.gK().cr(C.l,C.O)
 s=p.cl(750)
