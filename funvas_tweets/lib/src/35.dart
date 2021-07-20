@@ -33,7 +33,7 @@ class ThirtyFive extends Funvas with FunvasTweetMixin {
   /// The larger the faster the circles grow.
   static const _revolutions = 2;
 
-  static const _dimension = 750.0, _period = 7, _n = 30, _seed = 42;
+  static const _dimension = 750.0, _period = 6.7, _n = 30, _seed = 42;
 
   final _noise = OpenSimplex2S(_seed);
 
