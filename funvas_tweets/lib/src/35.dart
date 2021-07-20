@@ -25,24 +25,24 @@ class ThirtyFive extends Funvas with FunvasTweetMixin {
   ///
   /// This is similar to [_disturbance] but only affects the relative speed of
   /// the distortions, where bigger is faster.
-  static const _wobbliness = 1 / 4;
+  static const _wobbliness = 1 / 8;
 
   /// How many times a circle should reappear (from the center) within the
   /// [_period].
   ///
   /// The larger the faster the circles grow.
-  static const _revolutions = 2;
+  static const _revolutions = 4;
 
-  static const _dimension = 750.0, _period = 6.7, _n = 30, _seed = 42;
+  static const _dimension = 750.0, _period = 16, _n = 30, _seed = 42;
 
-  final _noise = OpenSimplex2S(_seed);
+  final _noise = OpenSimplex2F(_seed);
 
   @override
   void u(double t) {
     c.drawColor(const Color(0xff000000), BlendMode.srcOver);
     final s = s2q(_dimension);
     c.translate(s.width / 2, s.height / 2);
-    c.scale(2 + sin(t * 2 * pi / _period));
+    c.scale(2 + sin(t * 4 * pi / _period));
     for (var i = 0; i < _n; i++) {
       _drawStep(i, t);
     }
