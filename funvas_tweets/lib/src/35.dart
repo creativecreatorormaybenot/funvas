@@ -10,7 +10,8 @@ import 'package:open_simplex_2/open_simplex_2.dart';
 /// Based on [ThirtyFour] with some slight adjustments.
 class ThirtyFive extends Funvas with FunvasTweetMixin {
   @override
-  String get tweet => 'https://twitter.com/creativemaybeno';
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1417532500096782341?s=20';
 
   /// Disturbance for the roundness of the circles drawn (= how much the noise
   /// distorts the circle paths).
