@@ -84,6 +84,7 @@ class ThirtyFour extends Funvas with FunvasTweetMixin {
       Paint()
         ..color = const Color(0xffffffff).withOpacity(o)
         ..strokeWidth = 4.2
+        ..isAntiAlias = false
         ..style = PaintingStyle.stroke,
     );
   }
