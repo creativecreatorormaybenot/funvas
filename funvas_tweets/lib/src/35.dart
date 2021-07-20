@@ -60,7 +60,7 @@ class ThirtyFive extends Funvas with FunvasTweetMixin {
 
   void _drawCircle(double ta, double r, Offset so) {
     const to = 0.7;
-    final precision = 2 * pi / _precision;
+    const precision = 2 * pi / _precision;
     final tx = sin(ta) * _wobbliness, ty = cos(ta) * _wobbliness;
 
     final path = Path();
