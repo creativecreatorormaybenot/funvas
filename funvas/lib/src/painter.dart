@@ -14,13 +14,24 @@ import 'package:meta/meta.dart';
 /// [x] using the canvas [c].
 /// All drawing happens in [u].
 abstract class Funvas {
+  /// The canvas for the funvas.
+  Canvas get c => _c;
+  late Canvas _c;
+
   /// The context for the funvas, providing the available size.
   FunvasContext get x => _x;
   late FunvasContext _x;
 
-  /// The canvas for the funvas.
-  Canvas get c => _c;
-  late Canvas _c;
+  @visibleForTesting
+  set x(FunvasContext context) {
+    assert(() {
+      _x = context;
+      return true;
+    }());
+  }
+
+  /// Available size which is a shortcut for `x.size`.
+  Size get s => x.size;
 
   /// The update function for the funvas based on time [t].
   ///
@@ -114,14 +125,17 @@ abstract class Funvas {
 /// Context for a [Funvas], providing the available size.
 @immutable
 class FunvasContext {
-  /// Constructs a context based on the size values.
-  const FunvasContext(this.width, this.height);
+  /// Constructs a context based on the available size.
+  const FunvasContext(this.size);
+
+  /// The size available to the funvas.
+  final Size size;
 
   /// The width available to the canvas.
-  final double width;
+  double get width => size.width;
 
   /// The height available to the canvas.
-  final double height;
+  double get height => size.height;
 
   @override
   String toString() {
@@ -154,7 +168,7 @@ class FunvasPainter extends CustomPainter {
     canvas.clipRect(Offset.zero & size);
 
     delegate._c = canvas;
-    delegate._x = FunvasContext(size.width, size.height);
+    delegate._x = FunvasContext(size);
     delegate.u(time.value);
 
     canvas.restore();
