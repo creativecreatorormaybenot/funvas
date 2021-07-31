@@ -84,14 +84,19 @@ See the [example package][example] for a complete example implementation.
 Funvas is a package that I wrote because I wanted to create some Dwitter-like animations in Flutter
 myself.
 Because of that, I have created a lot surrounding it, which you might not discover when looking only
-at the package :)
+at the package :)  
+And not only me - the community has also created some amazing projects with it ✨
 
-To see a live demo (gallery app) and many fun(vas) animations, you can see the
-[main README on GitHub][repo] :)
+In the [main README on GitHub][repo] you can find:
+
+* [Gallery][gallery] - live demo showcasing some of my funvas animations.
+* [Community projects][community] - list of projects created by the community using the `funvas` package.
 
 [Twitter]: https://twitter.com/creativemaybeno/status/1285343758247178240?s=20
 [Dwitter]: https://www.dwitter.net/about
 [example]: https://github.com/creativecreatorormaybenot/funvas/tree/main/funvas/example
 [repo]: https://github.com/creativecreatorormaybenot/funvas
+[gallery]: https://github.com/creativecreatorormaybenot/funvas#user-content-gallery-
+[community]: https://github.com/creativecreatorormaybenot/funvasuser-content-community-projects
 [SizedBox]: https://api.flutter.dev/flutter/widgets/SizedBox-class.html
 [FunvasContainer]: https://pub.dev/documentation/funvas/latest/funvas/FunvasContainer-class.html
