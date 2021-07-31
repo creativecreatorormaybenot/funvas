@@ -21,6 +21,12 @@ The name "funvas" is based on Flutter + fun + canvas. Let me know if you have an
 I share my funvas creations [on Twitter][twitter] and I have also created a [live demo][gallery],
 a gallery that allows you to explore some of the animations running right in Flutter web :)
 
+## Community projects
+
+Here are some awesome community projects made using the [`funvas` package][pub] to create some 🔥✨
+
+* **[Square Shooter](https://github.com/namzug16/square-shooter)** game by [namzug16](https://github.com/namzug16)
+
 ### Repo structure
 
 This repo currently contains the following packages:
