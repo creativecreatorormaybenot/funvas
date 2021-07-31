@@ -1,3 +1,7 @@
+## 0.1.4+1
+
+* Mentioned community projects in README.
+
 ## 0.1.4
 
 * Added the member `s` to `Funvas`, which is a shortcut for the available size (that is also
