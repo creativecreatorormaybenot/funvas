@@ -26,7 +26,11 @@ class ThirtySix extends Funvas {
     final n = pow(2, order) ~/ 1, l = n * n;
 
     final repeat = l * 5 ~/ 8, rd = repeat / l;
-    final progress = t / 4 / D % rd + rd, lp = l * progress;
+    // Perfect loop duration is rd * 4 * D.
+    t /= 4;
+    t += rd / 2;
+
+    final progress = t / D % rd + rd, lp = l * progress;
     final sw = 256 / n, s = (d - sw) / (n - 1);
     final p = Path()..moveTo(sw / 2, sw / 2);
 
