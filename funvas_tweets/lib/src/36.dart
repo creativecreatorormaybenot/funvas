@@ -58,7 +58,7 @@ class ThirtySix extends Funvas {
       ..strokeJoin = StrokeJoin.miter
       ..strokeWidth = sw;
 
-    c.translate(d / 1.85, d / 4);
+    c.translate(d / 1.85, d / 3.33);
     c.scale(1.15);
     final cam = Curves.linear.transform(lp / repeat % 1) + lp ~/ repeat;
     c.translate(-s * 24 * cam, -s * 24 * cam);
