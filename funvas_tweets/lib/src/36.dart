@@ -22,13 +22,14 @@ class ThirtySix extends Funvas {
     c.translate(0, d);
     c.scale(1, -1);
 
+    // Max smooth (real time) order is 7 (n=128). Current cam only handles 5.
     const D = 9, order = 5;
     final n = pow(2, order) ~/ 1, l = n * n;
 
     final repeat = l * 5 ~/ 8, rd = repeat / l;
     // Perfect loop duration is rd * 4 * D.
     t /= 4;
-    t += rd / 2;
+    t += rd / 3;
 
     final progress = t / D % rd + rd, lp = l * progress;
     final sw = 256 / n, s = (d - sw) / (n - 1);
@@ -49,21 +50,32 @@ class ThirtySix extends Funvas {
     }
     // Animate the curve path going to the next node until we reach it.
     final origin = pos(lp.floor(), n), target = pos(lp.ceil(), n);
-    line(Offset.lerp(origin, target, lp - lp.floor())!);
+    final segmentProgress = lp - lp.floor();
+    final tip = Offset.lerp(origin, target, segmentProgress)!;
 
-    final paint = Paint()
-      ..color = const Color(0xffffffff)
-      ..style = PaintingStyle.stroke
-      ..strokeCap = StrokeCap.square
-      ..strokeJoin = StrokeJoin.miter
-      ..strokeWidth = sw;
-
+    // Adjust the camera frame.
     c.translate(d / 1.85, d / 3.33);
     c.scale(1.15);
     final cam = Curves.linear.transform(lp / repeat % 1) + lp ~/ repeat;
     c.translate(-s * 24 * cam, -s * 24 * cam);
-    c.drawPath(p, paint);
-    c.translate(s * 24, s * 24);
+
+    // Not all of these assignments need to happen every frame, but we are
+    // performant enough (:
+    const col = Color(0xffffffff);
+    final pathPaint = Paint()
+      ..color = col
+      ..style = PaintingStyle.stroke
+      ..strokeCap = StrokeCap.square
+      ..strokeJoin = StrokeJoin.miter
+      ..strokeWidth = sw;
+    final segPaint = Paint()
+      ..color = Color.lerp(const Color(0xfff00000), col, segmentProgress)!
+      ..style = PaintingStyle.stroke
+      ..strokeCap = StrokeCap.square
+      ..strokeWidth = sw;
+
+    c.drawPath(p, pathPaint);
+    c.drawLine(origin, tip, segPaint);
   }
 }
 
