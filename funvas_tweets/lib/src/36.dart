@@ -10,44 +10,49 @@ import 'package:funvas/funvas.dart';
 /// coordinate system is based on the following blog post.
 /// http://blog.marcinchwedczuk.pl/iterative-algorithm-for-drawing-hilbert-curve
 class ThirtySix extends Funvas {
+  static const d = 750.0;
+
   @override
   void u(double t) {
     c.drawColor(const Color(0xff000000), BlendMode.srcOver);
 
-    const d = 750.0;
     s2q(d);
     // Flip coordinate space vertically to let (0, 0) be the bottom left corner.
     c.translate(0, d);
     c.scale(1, -1);
 
-    // Minimum order is first order. 7 is the last smooth (real time) order.
-    const order = 4;
-    final n = pow(2, order) ~/ 1, sw = 256 / n, s = (d - sw) / (n - 1);
-    final p = Path()..moveTo(sw / 2, sw / 2);
-
     // D is the duration of the animation in seconds.
     const D = 18;
-    final r = t / D % 1;
-    final l = n * n, lp = l * r;
-    Offset transform(_Crd c) => Offset(c.x * s + sw / 2, c.y * s + sw / 2);
+    final r = t / D % 1 + 1 / 2;
+
+    c.translate(-r * d + d / 2, 0);
+    _drawHilbertCurve(4, r);
+  }
+
+  /// Returns a path that draws the [order] order Hilbert curve but only draws
+  /// [nodes] nodes.
+  ///
+  /// Minimum order is first order. 7 is the last smooth (real time) order.
+  void _drawHilbertCurve(int order, double progress) {
+    final n = pow(2, order) ~/ 1, l = n * n, lp = l * progress;
+    final sw = 256 / n, s = (d - sw) / (n - 1);
+    final p = Path()..moveTo(sw / 2, sw / 2);
+
+    Offset pos(int i, int n) {
+      final c = _hni2cc(i % l, n);
+      final pos = Offset(c.x * s + sw / 2, c.y * s + sw / 2);
+      return pos + const Offset(d, 0) * (i ~/ l / 1);
+    }
+
     void line(Offset o) => p.lineTo(o.dx, o.dy);
 
     // Draw the Hilbert curve up to a certain node based on time.
     for (var i = 0; i < lp; i++) {
-      line(transform(_hni2cc(i, n)));
+      line(pos(i, n));
     }
     // Animate the curve path going to the next node until we reach it.
-    if (lp < l - 1) {
-      final origin = _hni2cc(lp.floor(), n), target = _hni2cc(lp.ceil(), n);
-      final p = lp - lp.floor();
-      final cn = transform(Point(
-        lerpDouble(origin.x, target.x, p)!,
-        lerpDouble(origin.y, target.y, p)!,
-      ));
-      line(cn);
-    }
-
-    c.translate(-r * d + d / 2, 0);
+    final origin = pos(lp.floor(), n), target = pos(lp.ceil(), n);
+    line(Offset.lerp(origin, target, lp - lp.floor())!);
 
     final paint = Paint()
       ..color = const Color(0xffffffff)
