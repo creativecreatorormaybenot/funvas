@@ -23,7 +23,8 @@ jobs:
           persist-credentials: false
       - uses: subosito/flutter-action@v1.4.0
         with:
-          channel: 'beta'
+          # Deploy using dev channel until Dart 2.14 hits beta.
+          channel: 'dev'
 
       - name: Build gallery web app
         run: |
