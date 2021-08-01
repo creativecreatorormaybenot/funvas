@@ -22,32 +22,19 @@ class ThirtySix extends Funvas {
     c.translate(0, d);
     c.scale(1, -1);
 
-    // D is the duration of the animation in seconds.
-    const D = 9;
-    final r = t / D % 2;
+    const D = 9, order = 5;
+    final n = pow(2, order) ~/ 1, l = n * n;
 
-    final n = pow(2, 5) ~/ 1;
-    final sw = 256 / n, s = (d - sw) / (n - 1);
-    final cr = Curves.easeInQuad.transform(r) * 2;
-    c.translate(-cr * s * 24, -cr * s * 24);
-    _drawHilbertCurve(5, r, const Color(0xffffffff));
-    c.translate(s * 24, s * 24);
-    _drawHilbertCurve(5, r - 1 / 2, const Color(0xddff0000));
-  }
-
-  /// Returns a path that draws the [order] order Hilbert curve but only draws
-  /// [nodes] nodes.
-  ///
-  /// Minimum order is first order. 7 is the last smooth (real time) order.
-  void _drawHilbertCurve(int order, double progress, Color color) {
-    final n = pow(2, order) ~/ 1, l = n * n, lp = l * progress;
+    final repeat = l * 5 ~/ 8, rd = repeat / l;
+    final progress = t / 4 / D % rd + rd, lp = l * progress;
     final sw = 256 / n, s = (d - sw) / (n - 1);
     final p = Path()..moveTo(sw / 2, sw / 2);
 
     Offset pos(int i, int n) {
-      final c = _hni2cc(i % l, n);
+      final c = _hni2cc(i % repeat, n);
       final pos = Offset(c.x * s + sw / 2, c.y * s + sw / 2);
-      return pos + const Offset(d, 0) * (i ~/ l / 1);
+      final offset = Offset(s * 24, s * 24) * (i ~/ repeat / 1);
+      return pos + offset;
     }
 
     void line(Offset o) => p.lineTo(o.dx, o.dy);
@@ -61,12 +48,18 @@ class ThirtySix extends Funvas {
     line(Offset.lerp(origin, target, lp - lp.floor())!);
 
     final paint = Paint()
-      ..color = color
+      ..color = const Color(0xffffffff)
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.square
       ..strokeJoin = StrokeJoin.miter
       ..strokeWidth = sw;
+
+    c.translate(d / 1.85, d / 4);
+    c.scale(1.15);
+    final cam = Curves.linear.transform(lp / repeat % 1) + lp ~/ repeat;
+    c.translate(-s * 24 * cam, -s * 24 * cam);
     c.drawPath(p, paint);
+    c.translate(s * 24, s * 24);
   }
 }
 
