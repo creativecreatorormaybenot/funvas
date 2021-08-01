@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'dart:ui';
 
+import 'package:flutter/animation.dart';
 import 'package:funvas/funvas.dart';
 
 /// Funvas animation that draws the Hilbert curve (limited to an order that
@@ -22,18 +23,23 @@ class ThirtySix extends Funvas {
     c.scale(1, -1);
 
     // D is the duration of the animation in seconds.
-    const D = 18;
-    final r = t / D % 1 + 1 / 2;
+    const D = 9;
+    final r = t / D % 2;
 
-    c.translate(-r * d + d / 2, 0);
-    _drawHilbertCurve(4, r);
+    final n = pow(2, 5) ~/ 1;
+    final sw = 256 / n, s = (d - sw) / (n - 1);
+    final cr = Curves.easeInQuad.transform(r) * 2;
+    c.translate(-cr * s * 24, -cr * s * 24);
+    _drawHilbertCurve(5, r, const Color(0xffffffff));
+    c.translate(s * 24, s * 24);
+    _drawHilbertCurve(5, r - 1 / 2, const Color(0xddff0000));
   }
 
   /// Returns a path that draws the [order] order Hilbert curve but only draws
   /// [nodes] nodes.
   ///
   /// Minimum order is first order. 7 is the last smooth (real time) order.
-  void _drawHilbertCurve(int order, double progress) {
+  void _drawHilbertCurve(int order, double progress, Color color) {
     final n = pow(2, order) ~/ 1, l = n * n, lp = l * progress;
     final sw = 256 / n, s = (d - sw) / (n - 1);
     final p = Path()..moveTo(sw / 2, sw / 2);
@@ -55,9 +61,10 @@ class ThirtySix extends Funvas {
     line(Offset.lerp(origin, target, lp - lp.floor())!);
 
     final paint = Paint()
-      ..color = const Color(0xffffffff)
+      ..color = color
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.square
+      ..strokeJoin = StrokeJoin.miter
       ..strokeWidth = sw;
     c.drawPath(p, paint);
   }
