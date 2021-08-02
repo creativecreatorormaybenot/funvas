@@ -23,6 +23,7 @@ final funvasFactories = <int, FunvasFactory<FunvasTweetMixin>>{
   18: FunvasFactory(() => Eighteen()),
   19: FunvasFactory(() => Nineteen()),
   22: FunvasFactory(() => TwentyTwo()),
+  36: FunvasFactory(() => ThirtySix()),
   34: FunvasFactory(() => ThirtyFour()),
   35: FunvasFactory(() => ThirtyFive()),
 };

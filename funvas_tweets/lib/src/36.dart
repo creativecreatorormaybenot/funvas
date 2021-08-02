@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/animation.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
 /// Funvas animation that draws the Hilbert curve (limited to an order that
 /// looks nice).
@@ -10,7 +11,11 @@ import 'package:funvas/funvas.dart';
 /// The iterative algorithm for translating the node indices to the Cartesian
 /// coordinate system is based on the following blog post.
 /// http://blog.marcinchwedczuk.pl/iterative-algorithm-for-drawing-hilbert-curve
-class ThirtySix extends Funvas {
+class ThirtySix extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1422135090654687237?s=20';
+
   static const d = 750.0;
 
   @override
