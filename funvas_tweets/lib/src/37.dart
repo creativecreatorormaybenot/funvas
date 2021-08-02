@@ -19,12 +19,12 @@ class ThirtySeven extends Funvas {
     c.scale(1, -1);
 
     // Max smooth (real time) order is 7 (n=128). Current cam only handles 5.
-    const D = 9, order = 5;
+    const D = 8, order = 5;
     final n = pow(2, order) ~/ 1, l = n * n;
 
     final rp = l * 5 ~/ 8, rd = rp / l;
-    // Perfect loop duration is rd * 4 * D.
-    t /= 4;
+    // Perfect loop duration is rd * 3 * D.
+    t /= 3;
     t += rd / 3;
 
     final progress = t / D % rd + rd, lp = l * progress;
