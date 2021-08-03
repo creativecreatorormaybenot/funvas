@@ -3,10 +3,14 @@ import 'dart:ui';
 
 import 'package:flutter/animation.dart';
 import 'package:funvas/funvas.dart';
-import 'package:funvas_tweets/funvas_tweets.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
 /// Variation of [ThirtySix].
-class ThirtySeven extends Funvas {
+class ThirtySeven extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1422497471339634690?s=20';
+
   static const d = 750.0;
 
   @override
