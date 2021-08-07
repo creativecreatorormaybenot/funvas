@@ -11,15 +11,15 @@ class ThirtySeven extends Funvas with FunvasTweetMixin {
   String get tweet =>
       'https://twitter.com/creativemaybeno/status/1422497471339634690?s=20';
 
-  static const d = 750.0;
+  static const _d = 750.0;
 
   @override
   void u(double t) {
     c.drawColor(const Color(0xff000000), BlendMode.srcOver);
 
-    s2q(d);
+    s2q(_d);
     // Flip coordinate space vertically to let (0, 0) be the bottom left corner.
-    c.translate(0, d);
+    c.translate(0, _d);
     c.scale(1, -1);
 
     // Max smooth (real time) order is 7 (n=128). Current cam only handles 5.
@@ -32,10 +32,10 @@ class ThirtySeven extends Funvas with FunvasTweetMixin {
     t += rd / 3;
 
     final progress = t / D % rd + rd, lp = l * progress;
-    final sw = 256 / n, s = (d - sw) / (n - 1);
+    final sw = 256 / n, s = (_d - sw) / (n - 1);
 
     // Adjust the camera frame.
-    c.translate(d / 1.85, d / 3.33);
+    c.translate(_d / 1.85, _d / 3.33);
     c.scale(1.15);
     final cam = Curves.linear.transform(lp / rp % 1) + lp ~/ rp;
     c.translate(-s * 24 * cam, -s * 24 * cam);
