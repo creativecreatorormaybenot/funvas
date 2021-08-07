@@ -11,7 +11,7 @@ class ThirtyEight extends Funvas {
     _loadImage();
   }
 
-  static const _d = 750.0, _ps = 42, _duration = 11.0, _n = 4200, _sn = 12;
+  static const _d = 750.0, _ps = 42, _duration = 5.0, _n = 20000, _sn = 42;
 
   static const _particleProvider = ResizeImage(
     NetworkImage(
@@ -91,9 +91,9 @@ class ThirtyEight extends Funvas {
     c.drawAtlas(
       _particle!,
       [
-        for (final particle in _particles.reversed)
+        for (final particle in _particles)
           RSTransform.fromComponents(
-            rotation: particle.v.direction - pi / 4,
+            rotation: particle.v.direction + pi / 4,
             scale: particle.scale,
             anchorX: _ps / 2,
             anchorY: _ps / 2,
@@ -106,10 +106,15 @@ class ThirtyEight extends Funvas {
         const Rect.fromLTWH(0, 0, _ps / 1, _ps / 1),
       ),
       [
-        for (final particle in _particles.reversed)
-          HSLColor.fromAHSL(1, particle.hue, 3 / 4, 3 / 4).toColor(),
+        for (final particle in _particles)
+          HSLColor.fromAHSL(
+            min(0.5, particle.p.distanceSquared / (_d * 3e2)),
+            particle.hue,
+            3 / 4,
+            3 / 4,
+          ).toColor(),
       ],
-      BlendMode.luminosity,
+      BlendMode.modulate,
       const Rect.fromLTWH(-_d / 2, -_d / 2, _d, _d),
       Paint(),
     );
@@ -127,13 +132,14 @@ class _Particle {
   ) {
     final tp = t / D % 1 * pi * 2;
 
+    final pn = noise.noise2(sin(tp) - o, cos(tp) + o);
     final vn = noise.noise2(4.2 + cos(tp), sin(tp) - 4.2);
     final cn = noise.noise2(-6.9 + cos(tp * 5), sin(tp * 5) + 6.9);
     final sn = noise.noise2(cos(tp * 5) + o, sin(tp * 5) - o);
     return _Particle(
-      Offset.fromDirection((tp + o) % (2 * pi), 1.5 + vn),
+      Offset.fromDirection(pn * pi * 4, 2.25 + vn * 2),
       180 + 180 * cn,
-      1.5 + sn,
+      1.1 + sn * 2,
     );
   }
 
@@ -146,7 +152,7 @@ class _Particle {
   var p = Offset.zero;
 
   void advance(double dt, double d) {
-    p += v * dt * d / 2;
+    p += v * dt * d / 9;
   }
 
   bool oob(double d, double s) {
