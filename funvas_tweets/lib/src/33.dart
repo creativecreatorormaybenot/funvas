@@ -11,7 +11,7 @@ class ThirtyThree extends Funvas with FunvasTweetMixin {
   String get tweet =>
       'https://twitter.com/creativemaybeno/status/1416807999176388611?s=20';
 
-  final noise = OpenSimplex2F(42);
+  final _noise = OpenSimplex2F(42);
 
   @override
   void u(double t) {
@@ -40,7 +40,7 @@ class ThirtyThree extends Funvas with FunvasTweetMixin {
       final w = cos(t / period * pi * 2);
       // Could have used noise4XYBeforeZW, but the classic implementation looked
       // good :)
-      final value = noise.noise4Classic(
+      final value = _noise.noise4Classic(
         x / 99,
         y * columns / rows / 99 + 42,
         z,
