@@ -11,12 +11,11 @@ class ThirtyEight extends Funvas {
     _loadImage();
   }
 
-  static const _d = 750.0, _ps = 42, _duration = 5.0, _n = 20000, _sn = 42;
+  static const _d = 750.0, _ps = 42, _duration = 5.0, _n = 9999, _sn = 99;
 
   static const _particleProvider = ResizeImage(
     NetworkImage(
-      'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/'
-      'thumbs/160/apple/96/rocket_1f680.png',
+      'https://i.imgur.com/skxsba4.png',
     ),
     width: _ps,
     height: _ps,
@@ -57,7 +56,7 @@ class ThirtyEight extends Funvas {
     stream.removeListener(listener);
   }
 
-  final _noise = OpenSimplex2S(42);
+  final _noise = OpenSimplex2F(42);
   final _particles = <_Particle>[];
 
   void _init(double t) {
@@ -86,8 +85,9 @@ class ThirtyEight extends Funvas {
   void _draw() {
     s2q(_d);
     c.drawColor(const Color(0xff3a3a3a), BlendMode.srcOver);
-    c.translate(_d / 2, _d / 2);
 
+    c.save();
+    c.translate(_d / 2, _d / 2);
     c.drawAtlas(
       _particle!,
       [
@@ -118,6 +118,25 @@ class ThirtyEight extends Funvas {
       const Rect.fromLTWH(-_d / 2, -_d / 2, _d, _d),
       Paint(),
     );
+    c.restore();
+
+    final textPainter = TextPainter(
+      text: TextSpan(
+        text: '${_particles.length} rockets',
+        style: const TextStyle(
+          fontSize: 24,
+          backgroundColor: Color(0xff000000),
+          letterSpacing: 2,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      textDirection: TextDirection.ltr,
+    );
+    textPainter.layout();
+    textPainter.paint(
+      c,
+      Offset(_d - textPainter.width, _d - textPainter.height),
+    );
   }
 }
 
@@ -137,7 +156,7 @@ class _Particle {
     final cn = noise.noise2(-6.9 + cos(tp * 5), sin(tp * 5) + 6.9);
     final sn = noise.noise2(cos(tp * 5) + o, sin(tp * 5) - o);
     return _Particle(
-      Offset.fromDirection(pn * pi * 4, 2.25 + vn * 2),
+      Offset.fromDirection(pn * pi * 4, 3 + vn * 2),
       180 + 180 * cn,
       1.1 + sn * 2,
     );
