@@ -8,19 +8,12 @@ import 'package:flutter/painting.dart';
 import 'package:funvas/funvas.dart';
 import 'package:open_simplex_2/open_simplex_2.dart';
 
-const EMITTERS = 9;
-const MAX_ROCKETS = 999;
-
 class ThirtyEight extends Funvas {
   ThirtyEight() {
     _loadImage();
   }
 
-  static const _d = 750.0,
-      _ps = 42,
-      _duration = 5.0,
-      _n = MAX_ROCKETS,
-      _sn = EMITTERS;
+  static const _d = 750.0, _ps = 42, _duration = 2.0, _n = 4200, _sn = 64;
 
   static const _particleProvider = ResizeImage(
     NetworkImage(
@@ -118,7 +111,7 @@ class ThirtyEight extends Funvas {
         for (final particle in _particles)
           HSLColor.fromAHSL(
             min(
-              min(1, max(.1, 169 / _particles.length)),
+              min(1, max(.75, 169 / _particles.length)),
               particle.p.distanceSquared / (_d * 1e2),
             ),
             particle.hue,
@@ -128,27 +121,27 @@ class ThirtyEight extends Funvas {
       ],
       BlendMode.modulate,
       const Rect.fromLTWH(-_d / 2, -_d / 2, _d, _d),
-      Paint()..blendMode = BlendMode.plus,
+      Paint(),
     );
     c.restore();
 
-    final textPainter = TextPainter(
-      text: TextSpan(
-        text: '${_particles.length} rockets',
-        style: const TextStyle(
-          fontSize: 24,
-          backgroundColor: Color(0xff000000),
-          letterSpacing: 2,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      textDirection: TextDirection.ltr,
-    );
-    textPainter.layout();
-    textPainter.paint(
-      c,
-      Offset(_d - textPainter.width, _d - textPainter.height),
-    );
+    // final textPainter = TextPainter(
+    //   text: TextSpan(
+    //     text: '${_particles.length} rockets',
+    //     style: const TextStyle(
+    //       fontSize: 24,
+    //       backgroundColor: Color(0xff000000),
+    //       letterSpacing: 2,
+    //       fontWeight: FontWeight.bold,
+    //     ),
+    //   ),
+    //   textDirection: TextDirection.ltr,
+    // );
+    // textPainter.layout();
+    // textPainter.paint(
+    //   c,
+    //   Offset(_d - textPainter.width, _d - textPainter.height),
+    // );
   }
 }
 
@@ -168,7 +161,7 @@ class _Particle {
     final cn = noise.noise2(-6.9 + cos(tp * 5), sin(tp * 5) + 6.9);
     final sn = noise.noise2(cos(tp * 5) + o, sin(tp * 5) - o);
     return _Particle(
-      Offset.fromDirection(pn * pi * 4, 3 + vn * 2),
+      Offset.fromDirection(pn * pi * 4, 5 + vn / 2),
       180 + 180 * cn,
       1.1 + sn * 2,
     );
