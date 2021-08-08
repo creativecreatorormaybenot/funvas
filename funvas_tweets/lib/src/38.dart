@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'dart:async';
 import 'dart:math';
 import 'dart:ui';
@@ -6,12 +8,19 @@ import 'package:flutter/painting.dart';
 import 'package:funvas/funvas.dart';
 import 'package:open_simplex_2/open_simplex_2.dart';
 
+const EMITTERS = 1;
+const MAX_ROCKETS = 1;
+
 class ThirtyEight extends Funvas {
   ThirtyEight() {
     _loadImage();
   }
 
-  static const _d = 750.0, _ps = 42, _duration = 5.0, _n = 9999, _sn = 99;
+  static const _d = 750.0,
+      _ps = 42,
+      _duration = 5.0,
+      _n = MAX_ROCKETS,
+      _sn = EMITTERS;
 
   static const _particleProvider = ResizeImage(
     NetworkImage(
@@ -108,7 +117,10 @@ class ThirtyEight extends Funvas {
       [
         for (final particle in _particles)
           HSLColor.fromAHSL(
-            min(0.5, particle.p.distanceSquared / (_d * 3e2)),
+            min(
+              min(1, max(.1, 169 / _particles.length)),
+              particle.p.distanceSquared / (_d * 1e2),
+            ),
             particle.hue,
             3 / 4,
             3 / 4,
@@ -116,7 +128,7 @@ class ThirtyEight extends Funvas {
       ],
       BlendMode.modulate,
       const Rect.fromLTWH(-_d / 2, -_d / 2, _d, _d),
-      Paint(),
+      Paint()..blendMode = BlendMode.plus,
     );
     c.restore();
 
