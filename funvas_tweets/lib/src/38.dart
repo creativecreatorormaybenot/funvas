@@ -8,8 +8,8 @@ import 'package:flutter/painting.dart';
 import 'package:funvas/funvas.dart';
 import 'package:open_simplex_2/open_simplex_2.dart';
 
-const EMITTERS = 1;
-const MAX_ROCKETS = 1;
+const EMITTERS = 9;
+const MAX_ROCKETS = 999;
 
 class ThirtyEight extends Funvas {
   ThirtyEight() {
