@@ -2,6 +2,7 @@
 
 import 'dart:typed_data';
 
+import 'package:fixnum/fixnum.dart';
 import 'package:open_simplex_2/src/fast_floor.dart';
 import 'package:open_simplex_2/src/grad.dart';
 import 'package:open_simplex_2/src/open_simplex_2.dart';
@@ -35,13 +36,22 @@ class OpenSimplex2S implements OpenSimplex2 {
     for (var i = 0; i < _kSize; i++) {
       source[i] = i;
     }
+    // KdotJPG's implementation uses Java's long here. Long in Java is a
+    // 64-bit two's complement integer. int in Dart is also a 64-bit two's
+    // complement integer, however, *only on native* (see https://dart.dev/guides/language/numbers).
+    // However, we want to support web, i.e. JavaScript, as well with this
+    // package and therefore we have to use the fixnum Int64 type. See
+    // https://github.com/dart-lang/sdk/issues/46852#issuecomment-894888740.
+    var seed64 = Int64(seed);
     for (int i = _kSize - 1; i >= 0; i--) {
-      // KdotJPG's implementation uses Java's long here. int in Dart has the
-      // same size, however, JavaScript (when running on web) does not allow for
-      // int literals this big, which is why we need to use int.parse.
-      seed = seed * int.parse('6364136223846793005') +
+      // KdotJPG's implementation uses long literals here. We can use int
+      // literals of this size as well in Dart, however, these are too big for
+      // JavaScript and therefore we have to use int.parse instead.
+      seed64 = seed64 * int.parse('6364136223846793005') +
           int.parse('1442695040888963407');
-      var r = (seed + 31) % (i + 1);
+      // We know r cannot be bigger than 2047, so we can convert it back to an
+      // int.
+      var r = ((seed64 + 31) % (i + 1)).toInt();
       if (r < 0) r += i + 1;
       _perm[i] = source[r];
       _permGrad2[i] = _gradients2d[_perm[i]];

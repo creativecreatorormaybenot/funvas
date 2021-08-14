@@ -1,10 +1,13 @@
 name: open_simplex_2
 description: Dart implementation of KdotJPG's OpenSimplex2 noise algorithms.
-version: 0.1.0+1
+version: 0.2.0
 homepage: https://github.com/creativecreatorormaybenot/funvas/tree/main/open_simplex_2
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
+
+dependencies:
+  fixnum: ^1.0.0
 
 dev_dependencies:
   benchmark_harness: ^2.0.0
