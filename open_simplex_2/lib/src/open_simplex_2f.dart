@@ -46,8 +46,8 @@ class OpenSimplex2F implements OpenSimplex2 {
       // KdotJPG's implementation uses long literals here. We can use int
       // literals of this size as well in Dart, however, these are too big for
       // JavaScript and therefore we have to use int.parse instead.
-      seed64 = seed64 * int.parse('6364136223846793005') +
-          int.parse('1442695040888963407');
+      seed64 = seed64 * Int64.parseInt('6364136223846793005') +
+          Int64.parseInt('1442695040888963407');
       // We know r cannot be bigger than 2047, so we can convert it back to an
       // int.
       var r = ((seed64 + 31) % (i + 1)).toInt();
