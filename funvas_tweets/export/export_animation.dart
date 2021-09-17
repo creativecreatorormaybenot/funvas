@@ -9,13 +9,13 @@ import 'package:funvas_tweets/funvas_tweets.dart';
 
 void main() {
   const fps = 50;
-  const animationDuration = Duration(seconds: 6);
+  const animationDuration = Duration(seconds: 8);
   const dimensions = Size(750, 750);
   // If you use a different animation name, you will have to also consider that
   // when exporting to GIF.
   const animationName = 'animation';
   // Using a callback so that the constructor is run inside of the test.
-  Funvas funvasFactory() => ThirtyEight();
+  Funvas funvasFactory() => ThirtyNine();
 
   late final ValueNotifier<double> time;
 
@@ -69,6 +69,7 @@ void main() {
 
     final fileNameWidth = (goldensNeeded - 1).toString().length;
 
+    final watch = Stopwatch()..start();
     for (var i = 0; i < goldensNeeded; i++) {
       time.value = microseconds / goldensNeeded * i / 1e6;
       await tester.pump();
@@ -78,6 +79,15 @@ void main() {
           '.png',
           null);
       await matcher.matchAsync(find.byType(SizedBox));
+
+      final frame = i + 1;
+      final elapsedTime = watch.elapsed;
+      final estimatedRemaining = Duration(
+          microseconds:
+              elapsedTime.inMicroseconds ~/ frame * (goldensNeeded - frame));
+      // ignore: avoid_print
+      print('$frame/$goldensNeeded, $elapsedTime, -$estimatedRemaining');
     }
+    watch.stop();
   }, timeout: const Timeout(Duration(hours: 3)));
 }
