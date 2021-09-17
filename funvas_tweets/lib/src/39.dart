@@ -14,38 +14,16 @@ class ThirtyNine extends Funvas {
     const d = 1500.0;
     s2q(d);
 
-    final p = 1 - t / 8 % 1;
-
     c.translate(d / 2, d / 2);
 
     final paint = Paint()
       ..strokeWidth = 6
-      ..style = PaintingStyle.stroke;
+      ..style = PaintingStyle.stroke
+      ..color = const Color(0xffffffff);
 
-    _draw(
-      d,
-      t,
-      Curves.easeIn.transform((1 - p + 1 / 2) % 1),
-      paint..color = const Color(0xffffff69),
-    );
-    _draw(
-      d,
-      t,
-      Curves.easeIn.transform((p + 1 / 2) % 1),
-      paint..color = const Color(0xffffff69),
-    );
-    _draw(
-      d,
-      t,
-      Curves.easeIn.transform((1 - p) % 1),
-      paint..color = const Color(0xffffffff),
-    );
-    _draw(
-      d,
-      t,
-      Curves.easeIn.transform(p),
-      paint..color = const Color(0xffffffff),
-    );
+    final p = 1 - (t / 11 + 1 / 2) % 1;
+    _draw(d, t, Curves.easeIn.transform((1 - p) % 1), paint);
+    _draw(d, t, Curves.easeIn.transform(p), paint);
   }
 
   void _draw(double d, double t, double p, Paint paint) {
