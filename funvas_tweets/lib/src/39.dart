@@ -21,7 +21,7 @@ class ThirtyNine extends Funvas {
       ..style = PaintingStyle.stroke
       ..color = const Color(0xffffffff);
 
-    final p = 1 - t / 8 % 1;
+    final p = 1 - t / 9 % 1;
     _draw(d, t, Curves.easeIn.transform((1 - p) % 1), paint);
     _draw(d, t, Curves.easeIn.transform(p), paint);
   }
