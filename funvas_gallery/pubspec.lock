@@ -136,7 +136,7 @@ packages:
       path: "../open_simplex_2"
       relative: true
     source: path
-    version: "0.2.0"
+    version: "0.2.0+1"
   path:
     dependency: transitive
     description:
