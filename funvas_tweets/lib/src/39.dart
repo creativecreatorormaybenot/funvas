@@ -14,7 +14,7 @@ class ThirtyNine extends Funvas {
     const d = 1500.0;
     s2q(d);
 
-    final p = 1 - t / 9 % 1;
+    final p = 1 - t / 8 % 1;
 
     c.translate(d / 2, d / 2);
 
