@@ -1,6 +1,8 @@
 import 'dart:math';
 import 'dart:ui';
 
+import 'package:flutter/animation.dart';
+import 'package:flutter/material.dart';
 import 'package:funvas/funvas.dart';
 import 'package:open_simplex_2/open_simplex_2.dart';
 
@@ -9,7 +11,8 @@ import 'package:open_simplex_2/open_simplex_2.dart';
 /// The code is fully novel, only the idea is inspired by the dweet.
 class Forty extends Funvas {
   static const _d = 750.0, _r = 50.0;
-  static const _nl = 5, _dpl = 2;
+  static const _nl = 6, _dpl = 3;
+  static const _curve = Curves.fastOutSlowIn;
 
   late final _noise = OpenSimplex2F(42);
 
@@ -22,9 +25,8 @@ class Forty extends Funvas {
 
     final layers = <_Layer>[];
     for (var i = 0; i < _nl; i++) {
-      final paint = Paint()
-        ..color =
-            i % 2 == 0 ? const Color(0xffffffff) : const Color(0xff000000);
+      final color =
+          i % 2 == 0 ? const Color(0xffffffff) : const Color(0xff000000);
 
       final layer = <_TimedRegularHexagon>[];
       var y = .0, alt = false;
@@ -35,7 +37,7 @@ class Forty extends Funvas {
             y / _d * 10,
             i / 1,
           );
-          layer.add(_TimedRegularHexagon(x, y, time, paint));
+          layer.add(_TimedRegularHexagon(x, y, (time - 1) / 2, color));
         }
         alt = !alt;
         y += _r * 3 / 2;
@@ -46,15 +48,32 @@ class Forty extends Funvas {
 
     final ct = t % (_nl * _dpl);
     final n = (ct / _dpl).floor();
+    final st = ct / _dpl % 1;
 
-    final nextLayer = layers[(n + 1) % _nl];
     final currentLayer = layers[n];
+    final nextLayer = layers[(n + 1) % _nl];
+    final nextNextLayer = layers[(n + 2) % _nl];
+
+    // Optimization of drawing the next next layer is simply taking the color
+    // of that layer and drawing that since the layer should completely tile
+    // the screen.
+    c.drawColor(nextNextLayer.first.color, BlendMode.srcOver);
 
     for (final hexagon in nextLayer) {
-      hexagon.draw(c, _r / 2 + _r / 2 * hexagon.time);
+      var p = 2 - (-hexagon.time + st);
+      if (p >= 1) {
+        // Fully-sized hexagon without anti-aliasing for perfect tiling.
+        hexagon.draw(c, _r, false);
+        continue;
+      }
+      p = 1 - _curve.transform(1 - p);
+      hexagon.draw(c, _r * p, true);
     }
     for (final hexagon in currentLayer) {
-      hexagon.draw(c, _r / 2 + _r / 2 * hexagon.time);
+      var p = 1 - (-hexagon.time + st);
+      if (p <= 0) continue;
+      p = 1 - _curve.transform(1 - p);
+      hexagon.draw(c, _r * p, true);
     }
   }
 }
@@ -64,15 +83,14 @@ typedef _Layer = List<_TimedRegularHexagon>;
 final _sqrt3 = sqrt(3);
 
 class _TimedRegularHexagon {
-  _TimedRegularHexagon(this.x, this.y, this.time, this.paint);
+  _TimedRegularHexagon(this.x, this.y, this.time, this.color);
 
   final double x, y;
   final double time;
-  final Paint paint;
+  final Color color;
 
-  void draw(Canvas canvas, double radius) {
-    if (radius == 0) return;
-    assert(radius > 0);
+  void draw(Canvas canvas, double radius, bool isAntiAlias) {
+    if (radius <= 0) return;
 
     final points = <Offset>[];
     for (var i = 0; i < 6; i++) {
@@ -83,6 +101,12 @@ class _TimedRegularHexagon {
         y + radius * sin(angle),
       ));
     }
-    canvas.drawPath(Path()..addPolygon(points, true), paint);
+    canvas.drawPath(
+      Path()..addPolygon(points, true),
+      Paint()
+        ..color = color
+        // For perfect tiling, anti-aliasing needs to be turned off.
+        ..isAntiAlias = isAntiAlias,
+    );
   }
 }
