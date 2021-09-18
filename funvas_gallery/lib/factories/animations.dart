@@ -28,6 +28,7 @@ final funvasFactories = <int, FunvasFactory<FunvasTweetMixin>>{
   34: FunvasFactory(() => ThirtyFour()),
   35: FunvasFactory(() => ThirtyFive()),
   39: FunvasFactory(() => ThirtyNine()),
+  40: FunvasFactory(() => Forty()),
 };
 
 /// Funvas factory for a WIP funvas that does not need to have an associated
