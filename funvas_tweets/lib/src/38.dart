@@ -6,9 +6,14 @@ import 'dart:ui';
 
 import 'package:flutter/painting.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 import 'package:open_simplex_2/open_simplex_2.dart';
 
-class ThirtyEight extends Funvas {
+class ThirtyEight extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1424374731000717312?s=20';
+
   ThirtyEight() {
     _loadImage();
   }
