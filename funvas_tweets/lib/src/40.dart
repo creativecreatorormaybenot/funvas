@@ -58,9 +58,9 @@ class Forty extends Funvas with FunvasTweetMixin {
     final n = (ct / _dpl).floor();
     final st = ct / _dpl % 1;
 
-    final currentLayer = layers[n];
-    final nextLayer = layers[(n + 1) % _nl];
-    final nextNextLayer = layers[(n + 2) % _nl];
+    final currentLayer = _layers[n];
+    final nextLayer = _layers[(n + 1) % _nl];
+    final nextNextLayer = _layers[(n + 2) % _nl];
 
     // Optimization of drawing the next next layer is simply taking the color
     // of that layer and drawing that since the layer should completely tile
