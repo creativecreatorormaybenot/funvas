@@ -4,9 +4,14 @@ import 'dart:ui';
 import 'package:flutter/animation.dart';
 import 'package:flutter/painting.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
 /// Remix of https://www.dwitter.net/d/17835, original idea by pavel.
-class ThirtyNine extends Funvas {
+class ThirtyNine extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1438952839917752328?s=20';
+
   @override
   void u(double t, [bool recurse = true]) {
     c.drawColor(const Color(0xff000000), BlendMode.srcOver);
