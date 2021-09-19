@@ -4,7 +4,7 @@ import 'dart:ui';
 import 'package:flutter/animation.dart';
 import 'package:funvas/funvas.dart';
 
-class FortyTwo extends Funvas {
+class FortyThree extends Funvas {
   @override
   void u(double t) {
     const d = 750.0;
