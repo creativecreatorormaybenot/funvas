@@ -14,12 +14,10 @@ final funvasFactories = <int, FunvasFactory<FunvasTweetMixin>>{
   23: FunvasFactory(() => TwentyThree()),
   29: FunvasFactory(() => TwentyNine()),
   1: FunvasFactory(() => One()),
-  27: FunvasFactory(() => TwentySeven()),
   11: FunvasFactory(() => Eleven()),
   13: FunvasFactory(() => Thirteen()),
   16: FunvasFactory(() => Sixteen()),
   17: FunvasFactory(() => Seventeen()),
-  6: FunvasFactory(() => Six()),
   14: FunvasFactory(() => Fourteen()),
   18: FunvasFactory(() => Eighteen()),
   19: FunvasFactory(() => Nineteen()),
@@ -35,4 +33,4 @@ final funvasFactories = <int, FunvasFactory<FunvasTweetMixin>>{
 /// tweet yet.
 ///
 /// This one is viewable in debug mode only.
-final wipFunvas = FunvasFactory<Funvas>(() => FortyOne());
+final wipFunvas = FunvasFactory<Funvas>(() => FortyTwo());

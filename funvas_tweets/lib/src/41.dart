@@ -2,8 +2,12 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
-class FortyOne extends Funvas {
+class FortyOne extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet => 'https://twitter.com/creativemaybeno';
+
   @override
   void u(double t) {
     c.drawColor(const Color(0xff000000), BlendMode.srcOver);
