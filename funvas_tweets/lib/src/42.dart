@@ -2,12 +2,11 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/animation.dart';
-import 'package:flutter/material.dart';
 import 'package:funvas/funvas.dart';
-import 'package:funvas_tweets/funvas_tweets.dart';
+import 'package:funvas_tweets/src/40.dart';
 import 'package:open_simplex_2/open_simplex_2.dart';
 
-/// Variation of [FortyOne].
+/// Variation of [Forty].
 class FortyTwo extends Funvas {
   late final _noise = OpenSimplex2F(69);
   final _layers = <_Layer>[];
