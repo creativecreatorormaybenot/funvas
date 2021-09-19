@@ -6,18 +6,22 @@ import 'package:funvas/funvas.dart';
 class FortyOne extends Funvas {
   @override
   void u(double t) {
-    c.drawColor(const Color(0xffffffff), BlendMode.srcOver);
-    const d = 750.0;
-    final tt = t / 2.5;
+    c.drawColor(const Color(0xff000000), BlendMode.srcOver);
+    const d = 500.0;
     s2q(d);
     c.translate(d / 2, d / 2);
 
-    _drawWheel(tt / 4, 55, 215);
-    _drawWheel(-tt / 2, 50, 125);
-    _drawWheel(tt, 45, 45);
+    _drawChromaticWheel(-t / 4, 50, 125, -99);
+    _drawChromaticWheel(t / 2, 45, 45, 42);
   }
 
-  void _drawWheel(double p, double r, double d) {
+  void _drawChromaticWheel(double p, double r, double d, double td) {
+    _drawWheel(p, r, d, 0xffff0000);
+    _drawWheel(p - 1 / td, r, d, 0xff00ff00);
+    _drawWheel(p - 1 / td * 2, r, d, 0xff0000ff);
+  }
+
+  void _drawWheel(double p, double r, double d, int color) {
     c.save();
     c.rotate(pi * p * 2);
 
@@ -44,11 +48,17 @@ class FortyOne extends Funvas {
     c.drawPath(
       lp,
       Paint()
-        ..color = const Color(0xff000000)
+        ..color = Color(0xddffffff & color)
         ..style = PaintingStyle.stroke
+        ..blendMode = BlendMode.screen
         ..strokeWidth = 1,
     );
-    c.drawPath(tp, Paint()..color = const Color(0xff000000));
+    c.drawPath(
+      tp,
+      Paint()
+        ..color = Color(0xffffffff & color)
+        ..blendMode = BlendMode.screen,
+    );
     c.restore();
   }
 }
