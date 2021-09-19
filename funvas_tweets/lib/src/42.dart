@@ -9,13 +9,13 @@ import 'package:open_simplex_2/open_simplex_2.dart';
 
 /// Variation of [FortyOne].
 class FortyTwo extends Funvas {
-  late final _noise = OpenSimplex2F(420);
+  late final _noise = OpenSimplex2F(69);
   final _layers = <_Layer>[];
 
   @override
   void u(double t) {
     t = -t;
-    const d = 750.0, r = 50.0;
+    const d = 750.0, r = 61.8;
     const nl = 2, dpl = 3;
     s2q(d);
 
