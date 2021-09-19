@@ -35,4 +35,4 @@ final funvasFactories = <int, FunvasFactory<FunvasTweetMixin>>{
 /// tweet yet.
 ///
 /// This one is viewable in debug mode only.
-final wipFunvas = FunvasFactory<Funvas>(() => Forty());
+final wipFunvas = FunvasFactory<Funvas>(() => FortyOne());
