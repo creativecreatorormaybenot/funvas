@@ -11,7 +11,7 @@ class FortyOne extends Funvas {
     s2q(d);
     c.translate(d / 2, d / 2);
 
-    _drawChromaticWheel(-t / 4, 50, 125, -99);
+    _drawChromaticWheel(-t / 4, 35, 125, -99);
     _drawChromaticWheel(t / 2, 45, 45, 42);
   }
 
