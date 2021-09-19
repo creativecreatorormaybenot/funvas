@@ -46,3 +46,4 @@ export 'package:funvas_tweets/src/39.dart';
 export 'package:funvas_tweets/src/40.dart';
 export 'package:funvas_tweets/src/41.dart';
 export 'package:funvas_tweets/src/42.dart';
+export 'package:funvas_tweets/src/43.dart';
