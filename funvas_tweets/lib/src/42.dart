@@ -16,7 +16,7 @@ class FortyTwo extends Funvas {
   void u(double t) {
     t = -t;
     const d = 750.0, r = 50.0;
-    const nl = 4, dpl = 3;
+    const nl = 2, dpl = 3;
     s2q(d);
 
     const vLim = d + r;
