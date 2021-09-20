@@ -8,14 +8,13 @@ class FortyThree extends Funvas {
   @override
   void u(double t) {
     const d = 750.0;
+    const r = 120.0, sr = r / 2;
     s2q(d);
     c.translate(d / 2, d / 2);
 
-    const r = 120.0;
-    const sr = r / 2;
-
+    t += 2;
     final dt = t % 8;
-    final sh = dt > 4;
+    final sh = dt >= 4;
     final ct = t % 4;
 
     c.rotate(-pi / 4 * dt);
