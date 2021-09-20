@@ -11,12 +11,14 @@ class FortyThree extends Funvas {
     s2q(d);
     c.translate(d / 2, d / 2);
 
-    const r = 90.0;
+    const r = 120.0;
     const sr = r / 2;
 
     final dt = t % 8;
     final sh = dt > 4;
     final ct = t % 4;
+
+    c.rotate(-pi / 4 * dt);
 
     final bgc = Color.lerp(
       sh ? const Color(0xffffffff) : const Color(0xff000000),
@@ -24,7 +26,7 @@ class FortyThree extends Funvas {
       ct > 2.5
           ? 1
           : ct > 2
-              ? (ct - 2) * 2
+              ? Curves.ease.transform((ct - 2) * 2)
               : 0,
     )!;
     c.drawColor(bgc, BlendMode.srcOver);
