@@ -14,22 +14,22 @@ class FortyThree extends Funvas {
     const r = 90.0;
     const sr = r / 2;
 
-    final dt = t % 12;
-    final sh = dt > 6;
-    final ct = t % 6;
+    final dt = t % 8;
+    final sh = dt > 4;
+    final ct = t % 4;
 
     final bgc = Color.lerp(
       sh ? const Color(0xffffffff) : const Color(0xff000000),
       sh ? const Color(0xff000000) : const Color(0xffffffff),
-      ct > 4
+      ct > 2.5
           ? 1
-          : ct > 3
-              ? ct - 3
+          : ct > 2
+              ? (ct - 2) * 2
               : 0,
     )!;
     c.drawColor(bgc, BlendMode.srcOver);
 
-    final mp = ct / 3 > 1 ? 1 : Curves.easeOutQuad.transform(ct / 3);
+    final mp = ct / 2 > 1 ? 1 : Curves.easeInOutQuad.transform(ct / 2);
 
     const co = Offset.zero;
     final to = Offset.lerp(const Offset(0, -r), co, mp - 1 / 2)!;
@@ -46,55 +46,37 @@ class FortyThree extends Funvas {
       Paint()..color = sh ? const Color(0xff000000) : const Color(0xffffffff),
     );
 
-    if (ct > 5) {
-      final st = Offset.lerp(
-        const Offset(0, -sr),
-        const Offset(0, -r) * 1.5,
-        ct - 5,
+    if (ct > 2) {
+      final sp = Curves.fastOutSlowIn.transform(max(.0, (ct - 2.5) / 3 * 2));
+      final xa = -sp * pi;
+      final rp = lerpDouble(sr, r, sp)!;
+
+      c.rotate(pi * sp);
+
+      final sb = Offset.lerp(
+        const Offset(0, sr),
+        const Offset(0, 1.5 * r),
+        sp,
       )!;
-      final sbl = Offset.lerp(
-        Offset(-sr * _sqrt3 / 2, sr / 2),
-        Offset(-r * _sqrt3 / 2, r / 2) * 1.5,
-        ct - 5,
+      final stl = Offset.lerp(
+        Offset(-sr * _sqrt3 / 2, -sr / 2),
+        Offset(-1.5 * r * _sqrt3 / 2, -1.5 * r / 2),
+        sp,
       )!;
-      final sbr = Offset.lerp(
-        Offset(sr * _sqrt3 / 2, sr / 2),
-        Offset(r * _sqrt3 / 2, r / 2) * 1.5,
-        ct - 5,
+      final str = Offset.lerp(
+        Offset(sr * _sqrt3 / 2, -sr / 2),
+        Offset(1.5 * r * _sqrt3 / 2, -1.5 * r / 2),
+        sp,
       )!;
 
-      final rp = lerpDouble(sr, r, ct - 5)!;
       final smallPath = Path()
-        ..addPolygon(_buildTriangleVertices(st, rp), false)
-        ..addPolygon(_buildTriangleVertices(sbl, rp), false)
-        ..addPolygon(_buildTriangleVertices(sbr, rp), false);
+        ..addPolygon(_buildTriangleVertices(sb, rp, xa), false)
+        ..addPolygon(_buildTriangleVertices(stl, rp, xa), false)
+        ..addPolygon(_buildTriangleVertices(str, rp, xa), false);
       c.drawPath(
         smallPath,
         Paint()..color = sh ? const Color(0xffffffff) : const Color(0xff000000),
       );
-    } else {
-      if (ct > 4) {
-        // todo: merge rotation and morphing into bigger ones.
-        c.rotate(pi * (ct - 4));
-      }
-
-      if (ct > 3) {
-        const sb = Offset(0, sr);
-        final stl = Offset(-sr * _sqrt3 / 2, -sr / 2);
-        final str = Offset(sr * _sqrt3 / 2, -sr / 2);
-
-        final xa = -max(0, ct - 4) * pi;
-
-        final smallPath = Path()
-          ..addPolygon(_buildTriangleVertices(sb, sr, xa), false)
-          ..addPolygon(_buildTriangleVertices(stl, sr, xa), false)
-          ..addPolygon(_buildTriangleVertices(str, sr, xa), false);
-        c.drawPath(
-          smallPath,
-          Paint()
-            ..color = sh ? const Color(0xffffffff) : const Color(0xff000000),
-        );
-      }
     }
   }
 }
