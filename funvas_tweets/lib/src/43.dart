@@ -74,6 +74,7 @@ class FortyThree extends Funvas {
       );
     } else {
       if (ct > 4) {
+        // todo: merge rotation and morphing into bigger ones.
         c.rotate(pi * (ct - 4));
       }
 
