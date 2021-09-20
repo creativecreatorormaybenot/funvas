@@ -14,8 +14,7 @@ class FortyThree extends Funvas {
     const r = 90.0;
     const sr = r / 2;
 
-    // final ct = min(5, t % 12);
-    final ct = 4 + t % 2;
+    final ct = t % 6;
 
     final bgc = Color.lerp(
       const Color(0xff000000),
@@ -23,8 +22,8 @@ class FortyThree extends Funvas {
       ct > 4
           ? 1
           : ct > 3
-          ? ct - 3
-          : 0,
+              ? ct - 3
+              : 0,
     )!;
     c.drawColor(bgc, BlendMode.srcOver);
 
@@ -42,22 +41,47 @@ class FortyThree extends Funvas {
       ..addPolygon(_buildTriangleVertices(bro, r), false);
     c.drawPath(bigPath, Paint()..color = const Color(0xffffffff));
 
-    if (ct > 4) {
-      c.rotate(pi * (ct - 4));
-    }
+    if (ct > 5) {
+      final st = Offset.lerp(
+        const Offset(0, -sr),
+        const Offset(0, -r) * 1.5,
+        ct - 5,
+      )!;
+      final sbl = Offset.lerp(
+        Offset(-sr * _sqrt3 / 2, sr / 2),
+        Offset(-r * _sqrt3 / 2, r / 2) * 1.5,
+        ct - 5,
+      )!;
+      final sbr = Offset.lerp(
+        Offset(sr * _sqrt3 / 2, sr / 2),
+        Offset(r * _sqrt3 / 2, r / 2) * 1.5,
+        ct - 5,
+      )!;
 
-    if (ct > 3) {
-      final sb = Offset.lerp(const Offset(0, sr), co, 0)!;
-      final stl = Offset.lerp(Offset(-sr * _sqrt3 / 2, -sr / 2), co, 0)!;
-      final str = Offset.lerp(Offset(sr * _sqrt3 / 2, -sr / 2), co, 0)!;
-
-      final xa = -max(0, ct - 4) * pi;
-
+      final rp = lerpDouble(sr, r, ct - 5)!;
       final smallPath = Path()
-        ..addPolygon(_buildTriangleVertices(sb, sr, xa), false)
-        ..addPolygon(_buildTriangleVertices(stl, sr, xa), false)
-        ..addPolygon(_buildTriangleVertices(str, sr, xa), false);
+        ..addPolygon(_buildTriangleVertices(st, rp), false)
+        ..addPolygon(_buildTriangleVertices(sbl, rp), false)
+        ..addPolygon(_buildTriangleVertices(sbr, rp), false);
       c.drawPath(smallPath, Paint()..color = const Color(0xff000000));
+    } else {
+      if (ct > 4) {
+        c.rotate(pi * (ct - 4));
+      }
+
+      if (ct > 3) {
+        const sb = Offset(0, sr);
+        final stl = Offset(-sr * _sqrt3 / 2, -sr / 2);
+        final str = Offset(sr * _sqrt3 / 2, -sr / 2);
+
+        final xa = -max(0, ct - 4) * pi;
+
+        final smallPath = Path()
+          ..addPolygon(_buildTriangleVertices(sb, sr, xa), false)
+          ..addPolygon(_buildTriangleVertices(stl, sr, xa), false)
+          ..addPolygon(_buildTriangleVertices(str, sr, xa), false);
+        c.drawPath(smallPath, Paint()..color = const Color(0xff000000));
+      }
     }
   }
 }
