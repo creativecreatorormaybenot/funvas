@@ -6,7 +6,8 @@ import 'package:funvas_tweets/src/tweet_mixin.dart';
 
 class FortyOne extends Funvas with FunvasTweetMixin {
   @override
-  String get tweet => 'https://twitter.com/creativemaybeno';
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1439599340088135681?s=20';
 
   @override
   void u(double t) {
