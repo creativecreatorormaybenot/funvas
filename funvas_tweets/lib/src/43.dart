@@ -14,11 +14,13 @@ class FortyThree extends Funvas {
     const r = 90.0;
     const sr = r / 2;
 
+    final dt = t % 12;
+    final sh = dt > 6;
     final ct = t % 6;
 
     final bgc = Color.lerp(
-      const Color(0xff000000),
-      const Color(0xffffffff),
+      sh ? const Color(0xffffffff) : const Color(0xff000000),
+      sh ? const Color(0xff000000) : const Color(0xffffffff),
       ct > 4
           ? 1
           : ct > 3
@@ -39,7 +41,10 @@ class FortyThree extends Funvas {
       ..addPolygon(_buildTriangleVertices(to, r), false)
       ..addPolygon(_buildTriangleVertices(blo, r), false)
       ..addPolygon(_buildTriangleVertices(bro, r), false);
-    c.drawPath(bigPath, Paint()..color = const Color(0xffffffff));
+    c.drawPath(
+      bigPath,
+      Paint()..color = sh ? const Color(0xff000000) : const Color(0xffffffff),
+    );
 
     if (ct > 5) {
       final st = Offset.lerp(
@@ -63,7 +68,10 @@ class FortyThree extends Funvas {
         ..addPolygon(_buildTriangleVertices(st, rp), false)
         ..addPolygon(_buildTriangleVertices(sbl, rp), false)
         ..addPolygon(_buildTriangleVertices(sbr, rp), false);
-      c.drawPath(smallPath, Paint()..color = const Color(0xff000000));
+      c.drawPath(
+        smallPath,
+        Paint()..color = sh ? const Color(0xffffffff) : const Color(0xff000000),
+      );
     } else {
       if (ct > 4) {
         c.rotate(pi * (ct - 4));
@@ -80,7 +88,11 @@ class FortyThree extends Funvas {
           ..addPolygon(_buildTriangleVertices(sb, sr, xa), false)
           ..addPolygon(_buildTriangleVertices(stl, sr, xa), false)
           ..addPolygon(_buildTriangleVertices(str, sr, xa), false);
-        c.drawPath(smallPath, Paint()..color = const Color(0xff000000));
+        c.drawPath(
+          smallPath,
+          Paint()
+            ..color = sh ? const Color(0xffffffff) : const Color(0xff000000),
+        );
       }
     }
   }
