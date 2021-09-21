@@ -3,8 +3,13 @@ import 'dart:ui';
 
 import 'package:flutter/animation.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
-class FortyThree extends Funvas {
+class FortyThree extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1440254478981091330?s=20';
+
   @override
   void u(double t) {
     const d = 750.0;

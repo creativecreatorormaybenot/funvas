@@ -4,10 +4,15 @@ import 'dart:ui';
 import 'package:flutter/animation.dart';
 import 'package:funvas/funvas.dart';
 import 'package:funvas_tweets/src/40.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 import 'package:open_simplex_2/open_simplex_2.dart';
 
 /// Variation of [Forty].
-class FortyTwo extends Funvas {
+class FortyTwo extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1439892093175017472?s=20';
+
   late final _noise = OpenSimplex2F(69);
   final _layers = <_Layer>[];
 
@@ -15,7 +20,7 @@ class FortyTwo extends Funvas {
   void u(double t) {
     t = -t;
     const d = 750.0, r = 61.8;
-    const nl = 2, dpl = 3;
+    const nl = 6, dpl = 3;
     s2q(d);
 
     const vLim = d + r;
