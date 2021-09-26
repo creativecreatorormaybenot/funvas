@@ -9,7 +9,7 @@ on:
       - 'funvas_gallery/web/**'
       - 'funvas_gallery/pubspec.yaml'
       - 'funvas_tweets/lib/**'
-      - '.github/workflows/deploy.yml'
+      - '.github/workflows/web_deploy.yml'
 
 jobs:
   deploy:
@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v2.3.4
         with:
           persist-credentials: false
-      - uses: subosito/flutter-action@v1.4.0
+      - uses: subosito/flutter-action@v1.5.3
         with:
           # Deploy using dev channel until Dart 2.14 hits beta.
           channel: 'dev'
