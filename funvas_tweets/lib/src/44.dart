@@ -3,11 +3,16 @@ import 'dart:ui';
 
 import 'package:flutter/rendering.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
 /// Animation inspired by https://www.dwitter.net/d/21012.
 ///
 /// The code still has some golfing artifacts.
-class FortyFour extends Funvas {
+class FortyFour extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1444288546609770506?s=20';
+
   @override
   void u(double t) {
     const d = 750.0, n = 1420 / 2;
