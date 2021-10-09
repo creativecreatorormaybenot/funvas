@@ -9,13 +9,13 @@ import 'package:funvas_tweets/funvas_tweets.dart';
 
 void main() {
   const fps = 50;
-  const animationDuration = Duration(seconds: 5);
+  const animationDuration = Duration(seconds: 2);
   const dimensions = Size(500, 500);
   // If you use a different animation name, you will have to also consider that
   // when exporting to GIF.
   const animationName = 'animation';
   // Using a callback so that the constructor is run inside of the test.
-  Funvas funvasFactory() => FortyFour();
+  Funvas funvasFactory() => FortyFive();
 
   late final ValueNotifier<double> time;
 
@@ -42,6 +42,10 @@ void main() {
       tester.binding.window.devicePixelRatioTestValue = 1;
 
       final funvas = funvasFactory();
+      if (funvas is FunvasFutureMixin) {
+        await funvas.future;
+      }
+
       await tester.pumpWidget(SizedBox.fromSize(
         size: dimensions,
         child: CustomPaint(
