@@ -1,8 +1,6 @@
 import 'dart:async';
-import 'dart:math';
 import 'dart:ui';
 
-import 'package:flutter/animation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:funvas/funvas.dart';
 
@@ -31,39 +29,49 @@ class FortyFive extends Funvas {
 
     const d = 750.0;
     s2q(d);
-    const scale = d / _h, smallerScale = scale / 142;
-    const scaledH = _h * scale, scaledW = _w * scale;
 
-    const relativeX = -0.0954, relativeY = 0.2345;
+    const scale = d / _h;
+    const scaledH = _h * scale, scaledW = _w * scale;
+    const scaleFactor = 142;
+
+    const relativeX = 0.4015, relativeY = 0.2293;
     const relativeWidthGap = (_h - _w) / _h / 2;
 
-    const dx = relativeWidthGap * d +
-            scaledW / 2 +
-            scaledW * relativeX +
-            _w * smallerScale * relativeX * 0.25,
-        dy = scaledH * relativeY - _h * smallerScale * relativeY * 2.25;
-    c.translate(dx, dy);
-    c.scale(1 + pow(t / 10 % 1, 4) * 1e3);
-    c.translate(-dx, -dy);
+    // final zoom = 1 + pow(t / 10 % 1, 4) * 1e3;
+    final zoom = 29999.0;
+    var zoomDx = relativeWidthGap * d, zoomDy = .0;
 
-    final monaLisas = <RSTransform>[
-      RSTransform.fromComponents(
+    final monaLisas = <RSTransform>[];
+
+    var monaLisaScale = scale;
+    var translateX = .0, translateY = .0;
+    do {
+      monaLisas.add(RSTransform.fromComponents(
         rotation: 0,
-        scale: scale,
-        anchorX: _w / 2,
+        scale: monaLisaScale,
+        anchorX: 0,
         anchorY: 0,
-        translateX: d / 2,
-        translateY: 0,
-      ),
-      RSTransform.fromComponents(
-        rotation: 0,
-        scale: smallerScale,
-        anchorX: _w / 2 + _w * relativeX,
-        anchorY: _h / 2 + _h * relativeY,
-        translateX: d / 2 + scaledW * relativeX,
-        translateY: scaledH * relativeY,
-      ),
-    ];
+        translateX: translateX,
+        translateY: translateY,
+      ));
+
+      zoomDx += _w * monaLisaScale * relativeX;
+      zoomDy += _h * monaLisaScale * relativeY;
+      translateX += _w * monaLisaScale * relativeX;
+      translateY += _h * monaLisaScale * relativeY;
+      monaLisaScale /= scaleFactor;
+
+      if (monaLisaScale / scaleFactor * zoom * _w > d) {
+        // Remove this entry because the one after the next one already covers
+        // the whole screen.
+        monaLisas.removeLast();
+      }
+    } // Only draw a mona lisa if it takes up at least 1 pixel on the screen.
+    while (monaLisaScale * zoom * _h > 1);
+
+    c.translate(zoomDx, zoomDy);
+    c.scale(zoom);
+    c.translate(-zoomDx + relativeWidthGap * d, -zoomDy);
 
     c.drawAtlas(
       monaLisa,
@@ -77,16 +85,14 @@ class FortyFive extends Funvas {
       null,
       Paint(),
     );
+    // c.drawRect(Rect.fromLTWH(translateX, translateY, 1, 1),
+    //     Paint()..color = Color(0xffff0000));
   }
 
   Future<void> _loadImage() async {
     final completer = Completer<Image>();
     final listener = ImageStreamListener((info, _) {
       completer.complete(info.image);
-    }, onError: (e, s) {
-      print(e);
-    }, onChunk: (chunk) {
-      print(chunk.cumulativeBytesLoaded);
     });
 
     final stream = _monaLisaProvider.resolve(const ImageConfiguration())
