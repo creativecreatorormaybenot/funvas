@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 import 'dart:ui';
 
+import 'package:flutter/animation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:funvas/funvas.dart';
 
@@ -38,7 +39,11 @@ class FortyFive extends Funvas {
     const relativeX = 0.4015, relativeY = 0.2293;
     const relativeWidthGap = (_h - _w) / _h / 2;
 
-    final zoom = 1 + pow(t / 20 % 1, 4) * 1e4;
+    final zoom = lerpDouble(
+      scaleFactor,
+      scaleFactor * scaleFactor,
+      const Cubic(0.825, 0.04, 0.81, 0.09).transform(t / 5 % 1),
+    )!;
     // The zoom precision determines how many iterations we perform in the
     // integral in order to get a more and more precise zoom location.
     // We could use the loop below that computes the transforms below since it
