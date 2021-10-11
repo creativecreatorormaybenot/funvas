@@ -5,8 +5,9 @@ import 'dart:ui';
 import 'package:flutter/animation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/future_mixin.dart';
 
-class FortyFive extends Funvas {
+class FortyFive extends Funvas with FunvasFutureMixin {
   FortyFive() {
     _loadImage();
   }
@@ -22,7 +23,11 @@ class FortyFive extends Funvas {
     height: _h,
   );
 
+  final Completer<Image> _monaLisaCompleter = Completer();
   Image? _monaLisa;
+
+  @override
+  Future get future => _monaLisaCompleter.future;
 
   @override
   void u(double t) {
@@ -42,7 +47,7 @@ class FortyFive extends Funvas {
     final zoom = lerpDouble(
       scaleFactor,
       scaleFactor * scaleFactor,
-      const Cubic(0.825, 0.04, 0.81, 0.09).transform(t / 5 % 1),
+      Curves.easeInQuint.transform((t + 1 / 7) / 2 % 1),
     )!;
     // The zoom precision determines how many iterations we perform in the
     // integral in order to get a more and more precise zoom location.
@@ -105,19 +110,16 @@ class FortyFive extends Funvas {
       null,
       Paint(),
     );
-    // c.drawRect(Rect.fromLTWH(translateX, translateY, 1, 1),
-    //     Paint()..color = Color(0xffff0000));
   }
 
   Future<void> _loadImage() async {
-    final completer = Completer<Image>();
     final listener = ImageStreamListener((info, _) {
-      completer.complete(info.image);
+      _monaLisaCompleter.complete(info.image);
     });
 
     final stream = _monaLisaProvider.resolve(const ImageConfiguration())
       ..addListener(listener);
-    _monaLisa = await completer.future;
+    _monaLisa = await _monaLisaCompleter.future;
     stream.removeListener(listener);
   }
 }

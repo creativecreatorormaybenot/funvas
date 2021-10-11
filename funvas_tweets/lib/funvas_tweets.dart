@@ -3,6 +3,7 @@
 /// You can find them in the timeline here: https://twitter.com/creativemaybeno.
 library funvas_tweets;
 
+export 'package:funvas_tweets/src/future_mixin.dart';
 export 'package:funvas_tweets/src/tweet_mixin.dart';
 export 'package:funvas_tweets/src/1.dart';
 export 'package:funvas_tweets/src/2.dart';
