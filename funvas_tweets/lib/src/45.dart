@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/rendering.dart';
@@ -30,16 +31,32 @@ class FortyFive extends Funvas {
     const d = 750.0;
     s2q(d);
 
+    // We assume that the height is bigger than the width since we know it is ;)
     const scale = d / _h;
-    const scaledH = _h * scale, scaledW = _w * scale;
     const scaleFactor = 142;
 
     const relativeX = 0.4015, relativeY = 0.2293;
     const relativeWidthGap = (_h - _w) / _h / 2;
 
-    // final zoom = 1 + pow(t / 10 % 1, 4) * 1e3;
-    final zoom = 29999.0;
+    final zoom = 1 + pow(t / 20 % 1, 4) * 1e4;
+    // The zoom precision determines how many iterations we perform in the
+    // integral in order to get a more and more precise zoom location.
+    // We could use the loop below that computes the transforms below since it
+    // does exactly the same for the translation (which is the zoom location),
+    // however, we want more precision, i.e. more iterations here :)
+    // Since we never zoom in farther than 4 times, this precision is
+    // technically unnecessary, i.e. you do not see it at that zoom level (:
+    // So the real reason is that we optimize in the loop below to never draw
+    // what you cannot see and that is why the zoom location would jump if we
+    // computed it there.
+    const zoomPrecision = 11;
     var zoomDx = relativeWidthGap * d, zoomDy = .0;
+    for (var i = 0; i < zoomPrecision; i++) {
+      final integralScale = scale / pow(scaleFactor, i);
+
+      zoomDx += _w * integralScale * relativeX;
+      zoomDy += _h * integralScale * relativeY;
+    }
 
     final monaLisas = <RSTransform>[];
 
@@ -55,8 +72,6 @@ class FortyFive extends Funvas {
         translateY: translateY,
       ));
 
-      zoomDx += _w * monaLisaScale * relativeX;
-      zoomDy += _h * monaLisaScale * relativeY;
       translateX += _w * monaLisaScale * relativeX;
       translateY += _h * monaLisaScale * relativeY;
       monaLisaScale /= scaleFactor;
