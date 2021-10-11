@@ -91,7 +91,7 @@ class FortyFive extends Funvas with FunvasFutureMixin {
         // the whole screen.
         monaLisas.removeLast();
       }
-    } // Only draw a mona lisa if it takes up at least 1 pixel on the screen.
+    } // Only draw a Mona Lisa if it takes up at least 1 pixel on the screen.
     while (monaLisaScale * zoom * _h > 1);
 
     c.translate(zoomDx, zoomDy);
