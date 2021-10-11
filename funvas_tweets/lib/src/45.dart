@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:math';
 import 'dart:ui';
 
+import 'package:flutter/animation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:funvas/funvas.dart';
 
@@ -41,7 +43,7 @@ class FortyFive extends Funvas {
             _w * smallerScale * relativeX * 0.25,
         dy = scaledH * relativeY - _h * smallerScale * relativeY * 2.25;
     c.translate(dx, dy);
-    c.scale(1);
+    c.scale(1 + pow(t / 10 % 1, 4) * 1e3);
     c.translate(-dx, -dy);
 
     final monaLisas = <RSTransform>[
