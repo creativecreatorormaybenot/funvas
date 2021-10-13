@@ -68,6 +68,9 @@ class FortySix extends Funvas {
   /// The logo takes up 166x202 pixels and is drawn centered.
   void _drawFlutterLogo(Canvas canvas, [bool invert = false]) {
     canvas.save();
+
+    // todo: live demo
+
     // We translate so that the top right of the triangle shadow is at (0, 0).
     canvas.translate(-107.4, -142.8);
 
