@@ -9,7 +9,7 @@ on:
       - 'funvas_gallery/web/**'
       - 'funvas_gallery/pubspec.yaml'
       - 'funvas_tweets/lib/**'
-      - '.github/workflows/web_deploy.yml'
+      - '.github/workflows/hosting.yml'
 
 jobs:
   deploy:
