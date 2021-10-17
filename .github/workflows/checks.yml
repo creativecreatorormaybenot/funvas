@@ -27,7 +27,7 @@ jobs:
       working-directory: ${{ matrix.package }}
 
     steps:
-      - uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v2.3.5
       - uses: subosito/flutter-action@v1.5.3
         with:
           channel: ${{ matrix.channel }}
@@ -62,7 +62,7 @@ jobs:
       working-directory: ${{ matrix.package }}
 
     steps:
-      - uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v2.3.5
       - uses: subosito/flutter-action@v1.5.3
         with:
           channel: ${{ matrix.channel }}
