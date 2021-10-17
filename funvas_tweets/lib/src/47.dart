@@ -5,7 +5,7 @@ import 'dart:ui';
 import 'package:flutter/rendering.dart' hide Gradient;
 import 'package:funvas/funvas.dart';
 
-class FortySix extends Funvas {
+class FortySeven extends Funvas {
   @override
   void u(double t) {
     c.drawColor(const Color(0xffffffff), BlendMode.srcOver);
