@@ -1,3 +1,7 @@
+## 0.1.6+1
+
+* Improved documentation for container pausing behavior.
+
 ## 0.1.6
 
 * Improved container pausing behavior by muting the active ticker.

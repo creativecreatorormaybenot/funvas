@@ -23,7 +23,15 @@ class FunvasContainer extends StatefulWidget {
 
   /// Whether the [funvas] animation should be paused or not.
   ///
-  /// This is implemented using [Ticker.muted].
+  /// This is implemented using [Ticker.muted], which means that pausing the
+  /// container will stop the animation from being redrawn. However, the time
+  /// in the ticker will still elapse. This means that disabling [paused] again
+  /// will cause the animation to jump to the point it would have been at if it
+  /// had never been paused.
+  ///
+  /// To display a funvas animation that never ticks, i.e. displays only a
+  /// single frame without any side effects, one should instead use a
+  /// [CustomPaint] with a [FunvasPainter] that is passed a static time instead.
   ///
   /// Defaults to false.
   final bool paused;
