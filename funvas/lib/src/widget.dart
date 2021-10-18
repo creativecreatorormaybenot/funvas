@@ -28,6 +28,10 @@ class FunvasContainer extends StatefulWidget {
   /// means that disabling [paused] again will cause the animation to jump to
   /// the point it would have been at if it had never been paused.
   ///
+  /// If you want to display a funvas animation that never ticks, i.e. displays
+  /// only a single frame without any side effects, you should just use a
+  /// [CustomPaint] with a [FunvasPainter] that is passed a static time instead.
+  ///
   /// Defaults to false.
   final bool paused;
 
