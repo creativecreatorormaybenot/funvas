@@ -23,14 +23,7 @@ class FunvasContainer extends StatefulWidget {
 
   /// Whether the [funvas] animation should be paused or not.
   ///
-  /// When true, the animation will not be redrawn, i.e. the time in the
-  /// [funvas] will not advance. However, the container will still tick, which
-  /// means that disabling [paused] again will cause the animation to jump to
-  /// the point it would have been at if it had never been paused.
-  ///
-  /// If you want to display a funvas animation that never ticks, i.e. displays
-  /// only a single frame without any side effects, you should just use a
-  /// [CustomPaint] with a [FunvasPainter] that is passed a static time instead.
+  /// This is implemented using [Ticker.muted].
   ///
   /// Defaults to false.
   final bool paused;
@@ -65,6 +58,8 @@ class _FunvasContainerState extends State<FunvasContainer>
         ..stop()
         ..start();
     }
+
+    _ticker.muted = widget.paused;
   }
 
   @override
@@ -76,7 +71,6 @@ class _FunvasContainerState extends State<FunvasContainer>
   }
 
   void _update(Duration elapsed) {
-    if (widget.paused) return;
     _time.value = elapsed.inMicroseconds / 1e6;
   }
 
