@@ -1,11 +1,15 @@
+## 0.1.5
+
+* Added ability to pause a `FunvasContainer`.
+
 ## 0.1.4+1
 
 * Mentioned community projects in README.
 
 ## 0.1.4
 
-* Added the member `s` to `Funvas`, which is a shortcut for the available size (that is also
-  available through `x.width` and `x.height`).
+* Added the member `s` to `Funvas`, which is a shortcut for the available size
+  (that is also available through `x.width` and `x.height`).
 
 ## 0.1.3+5
 
