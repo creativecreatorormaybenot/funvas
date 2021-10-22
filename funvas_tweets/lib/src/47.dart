@@ -4,8 +4,13 @@ import 'dart:ui';
 
 import 'package:flutter/rendering.dart' hide Gradient;
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
-class FortySeven extends Funvas {
+class FortySeven extends Funvas with FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1451601351318941702?s=20';
+
   @override
   void u(double t) {
     c.drawColor(const Color(0xffffffff), BlendMode.srcOver);
