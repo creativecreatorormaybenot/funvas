@@ -80,7 +80,7 @@ packages:
       path: "../funvas"
       relative: true
     source: path
-    version: "0.1.4+1"
+    version: "0.1.6+1"
   funvas_tweets:
     dependency: "direct main"
     description:

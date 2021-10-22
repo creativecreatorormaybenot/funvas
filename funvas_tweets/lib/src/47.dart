@@ -15,12 +15,12 @@ class FortySeven extends Funvas {
     const scaleFactor = 24.0;
     const targetZoom = scaleFactor * scaleFactor;
 
-    const time = 2;
+    const zoomTime = 2, rotationTime = 3 * zoomTime;
 
     // Taking the log_2(targetZoom) gives us the exponent we need to achieve
     // our target zoom when zooming at an exponential rate.
     final exponentNeeded = log(targetZoom) / log(2);
-    final exponent = exponentNeeded / time * (t % time);
+    final exponent = exponentNeeded / zoomTime * (t % zoomTime);
 
     // We need to zoom in at an exponential rate in order to make it *look
     // like* we are zooming in at a linear rate. This is because changing the
@@ -30,9 +30,8 @@ class FortySeven extends Funvas {
 
     // Center the origin.
     c.translate(d / 2, d / 2);
-    // Center the logo (given the translation we do below to zoom to the
-    // triangle).
-    c.translate(107.4 - 166.0 / 2, 142.8 - 202.0 / 2);
+    c.rotate(t / rotationTime * pi * 2);
+    c.translate(d / 4, 0);
     c.scale(zoom);
 
     var inverted = false;
@@ -58,7 +57,7 @@ class FortySeven extends Funvas {
 
       c.save();
       c.scale(scale);
-      _drawFlutterLogo(c, inverted);
+      _drawFlutterLogo(t, inverted);
       c.restore();
     } while (zoom * scale * 166 > 1);
   }
@@ -66,13 +65,13 @@ class FortySeven extends Funvas {
   /// Paints the Flutter logo based on the code from [FlutterLogo].
   ///
   /// The logo takes up 166x202 pixels and is drawn centered.
-  void _drawFlutterLogo(Canvas canvas, [bool invert = false]) {
-    canvas.save();
+  void _drawFlutterLogo(double t, [bool invert = false]) {
+    c.save();
 
     // todo: live demo
 
     // We translate so that the top right of the triangle shadow is at (0, 0).
-    canvas.translate(-107.4, -142.8);
+    c.translate(-107.4, -142.8);
 
     final lightPaint = Paint()
       ..color = invert ? const Color(0xffab3a07) : const Color(0xFF54C5F8);
@@ -96,38 +95,38 @@ class FortySeven extends Funvas {
       ..lineTo(9.8, 101.0)
       ..lineTo(100.4, 10.4)
       ..lineTo(156.2, 10.4);
-    canvas.drawPath(topBeam, lightPaint);
+    c.drawPath(topBeam, lightPaint);
 
     final middleBeam = Path()
       ..moveTo(156.2, 94.0)
       ..lineTo(100.4, 94.0)
       ..lineTo(78.5, 115.9)
       ..lineTo(106.4, 143.8);
-    canvas.drawPath(middleBeam, lightPaint);
+    c.drawPath(middleBeam, lightPaint);
 
     final bottomBeam = Path()
       ..moveTo(79.5, 170.7)
       ..lineTo(100.4, 191.6)
       ..lineTo(156.2, 191.6)
       ..lineTo(107.4, 142.8);
-    canvas.drawPath(bottomBeam, darkPaint);
+    c.drawPath(bottomBeam, darkPaint);
 
-    canvas.save();
-    canvas.transform(Float64List.fromList(const <double>[
+    c.save();
+    c.transform(Float64List.fromList(const <double>[
       // careful, this is in _column_-major order
       0.7071, -0.7071, 0.0, 0.0,
       0.7071, 0.7071, 0.0, 0.0,
       0.0, 0.0, 1.0, 0.0,
       -77.697, 98.057, 0.0, 1.0,
     ]));
-    canvas.drawRect(const Rect.fromLTWH(59.8, 123.1, 39.4, 39.4), mediumPaint);
-    canvas.restore();
+    c.drawRect(const Rect.fromLTWH(59.8, 123.1, 39.4, 39.4), mediumPaint);
+    c.restore();
 
     final triangle = Path()
       ..moveTo(79.5, 170.7)
       ..lineTo(120.9, 156.4)
       ..lineTo(107.4, 142.8);
-    if (!invert) canvas.drawPath(triangle, trianglePaint);
-    canvas.restore();
+    if (!invert) c.drawPath(triangle, trianglePaint);
+    c.restore();
   }
 }

@@ -4,9 +4,16 @@ import 'dart:ui';
 
 import 'package:flutter/rendering.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/45.dart';
 import 'package:funvas_tweets/src/future_mixin.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
-class FortySix extends Funvas with FunvasFutureMixin {
+/// Variation of [FortyFive].
+class FortySix extends Funvas with FunvasFutureMixin, FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1448639724487335950?s=20';
+
   FortySix() {
     _loadImage();
   }
