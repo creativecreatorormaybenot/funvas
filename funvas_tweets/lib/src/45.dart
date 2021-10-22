@@ -6,8 +6,13 @@ import 'package:flutter/animation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:funvas/funvas.dart';
 import 'package:funvas_tweets/src/future_mixin.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
-class FortyFive extends Funvas with FunvasFutureMixin {
+class FortyFive extends Funvas with FunvasTweetMixin, FunvasFutureMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1447668842281451526?s=20';
+
   FortyFive() {
     _loadImage();
   }
