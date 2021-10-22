@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:example/viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:funvas/funvas.dart';

@@ -9,7 +9,7 @@ on:
       - 'funvas_gallery/web/**'
       - 'funvas_gallery/pubspec.yaml'
       - 'funvas_tweets/lib/**'
-      - '.github/workflows/web_deploy.yml'
+      - '.github/workflows/hosting.yml'
 
 jobs:
   deploy:
@@ -39,7 +39,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
           branch: gh-pages
-          folder: performance/example/build/web
+          folder: funvas_gallery/build/web
           git-config-name: creativecreatorormaybenot
           git-config-email: creativecreatorormaybenot@gmail.com
           commit-message: Deploy funvas gallery app
