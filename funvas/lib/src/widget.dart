@@ -53,7 +53,9 @@ class _FunvasContainerState extends State<FunvasContainer>
     super.initState();
 
     _time = ValueNotifier(0);
-    _ticker = createTicker(_update)..start();
+    _ticker = createTicker(_update)
+      ..muted = widget.paused
+      ..start();
   }
 
   @override
