@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:funvas/src/painter.dart';
@@ -41,6 +42,17 @@ class FunvasContainer extends StatefulWidget {
 
   @override
   _FunvasContainerState createState() => _FunvasContainerState();
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+
+    properties.add(DiagnosticsProperty(
+      'paused',
+      paused,
+      description: 'Whether the animation ticker is muted or not.',
+    ));
+  }
 }
 
 class _FunvasContainerState extends State<FunvasContainer>
@@ -54,8 +66,8 @@ class _FunvasContainerState extends State<FunvasContainer>
 
     _time = ValueNotifier(0);
     _ticker = createTicker(_update)
-      ..muted = widget.paused
-      ..start();
+      ..start()
+      ..muted = widget.paused;
   }
 
   @override
