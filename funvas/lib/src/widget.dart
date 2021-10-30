@@ -47,11 +47,7 @@ class FunvasContainer extends StatefulWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
 
-    properties.add(DiagnosticsProperty(
-      'paused',
-      paused,
-      description: 'Whether the animation ticker is muted or not.',
-    ));
+    properties.add(FlagProperty('paused', value: paused));
   }
 }
 
@@ -65,9 +61,11 @@ class _FunvasContainerState extends State<FunvasContainer>
     super.initState();
 
     _time = ValueNotifier(0);
-    _ticker = createTicker(_update)
-      ..start()
-      ..muted = widget.paused;
+    _ticker = createTicker(_update);
+
+    if (!widget.paused) {
+      _ticker.start();
+    }
   }
 
   @override
@@ -81,7 +79,11 @@ class _FunvasContainerState extends State<FunvasContainer>
         ..start();
     }
 
-    _ticker.muted = widget.paused;
+    if (oldWidget.paused && !widget.paused && !_ticker.isActive) {
+      _ticker.start();
+    } else {
+      _ticker.muted = widget.paused;
+    }
   }
 
   @override
