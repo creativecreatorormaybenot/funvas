@@ -1,3 +1,7 @@
+## 0.1.6+2
+
+* Fixed `paused` value not being respected on init.
+
 ## 0.1.6+1
 
 * Improved documentation for container pausing behavior.
