@@ -1,3 +1,7 @@
+## 0.1.6+3
+
+* Added diagnostics property for `paused`.
+
 ## 0.1.6+2
 
 * Fixed `paused` value not being respected on init.
