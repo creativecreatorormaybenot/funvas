@@ -1,3 +1,7 @@
+## 0.1.6+5
+
+* Fixed `muted` state.
+
 ## 0.1.6+4
 
 * Fixed `paused` and diagnostics property.

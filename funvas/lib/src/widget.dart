@@ -79,8 +79,10 @@ class _FunvasContainerState extends State<FunvasContainer>
         ..start();
     }
 
-    if (oldWidget.paused && !widget.paused && !_ticker.isActive) {
-      _ticker.start();
+    if (!widget.paused && oldWidget.paused && !_ticker.isActive) {
+      _ticker
+        ..muted = false
+        ..start();
     } else {
       _ticker.muted = widget.paused;
     }
