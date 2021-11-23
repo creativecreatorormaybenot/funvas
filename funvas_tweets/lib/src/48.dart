@@ -6,6 +6,8 @@ import 'package:funvas/funvas.dart';
 class FortyEight extends Funvas {
   @override
   void u(double t) {
+    t /= 2;
+    t *= pi / 2;
     c.drawColor(const Color(0xff000000), BlendMode.srcOver);
     const d = 750.0, r = d / 2.1;
     s2q(d);
