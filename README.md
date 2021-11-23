@@ -5,7 +5,6 @@ functions.
 
 The name "funvas" is based on Flutter + fun + canvas. Let me know if you have any better ideas :)
 
-
 <a target="_blank" href="https://twitter.com/creativemaybeno/status/1328261273922973696?s=20"><img src="https://user-images.githubusercontent.com/19204050/143094392-7be15fd8-dd09-40a0-a9b2-137b3605e0e5.gif" width="49%"></a>
 <a target="_blank" href="https://twitter.com/creativemaybeno/status/1327309901270560769?s=20"><img src="https://user-images.githubusercontent.com/19204050/143094636-1c60aa9d-03bf-4f3a-896e-d645bf55fb1b.gif" width="49%"></a>
 <a target="_blank" href="https://twitter.com/creativemaybeno/status/1377705763402039303?s=20"><img src="https://user-images.githubusercontent.com/19204050/113479453-b9dd2480-947e-11eb-88b6-4ef3835e0a29.gif" width="49%"></a>
