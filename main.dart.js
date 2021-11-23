@@ -54021,15 +54021,18 @@ s=A.a5(0,null,!1,t.Z)
 A.bB(r.d,"_time")
 r.d=new A.eo(0,s)
 s=r.mD(r.gWm(r))
-s.k6(0)
 A.bB(r.e,"_ticker")
-r.e=s},
+r.e=s
+r.a.toString
+s=A.b(s,"_ticker")
+s.k6(0)},
 bc(a){var s,r=this
 r.bX(a)
 if(a.d!==r.a.d){A.b(r.d,"_time").sn(0,0)
 s=A.b(r.e,"_ticker")
 s.dM(0)
-s.k6(0)}s=A.b(r.e,"_ticker")
+s.k6(0)}r.a.toString
+s=A.b(r.e,"_ticker")
 r.a.toString
 s.sdv(0,!1)},
 p(a){A.b(this.d,"_time")
