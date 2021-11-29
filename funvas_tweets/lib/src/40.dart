@@ -2,7 +2,6 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/animation.dart';
-import 'package:flutter/material.dart';
 import 'package:funvas/funvas.dart';
 import 'package:funvas_tweets/src/tweet_mixin.dart';
 import 'package:open_simplex_2/open_simplex_2.dart';
