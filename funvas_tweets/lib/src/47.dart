@@ -2,7 +2,6 @@ import 'dart:math';
 import 'dart:typed_data';
 import 'dart:ui';
 
-import 'package:flutter/rendering.dart' hide Gradient;
 import 'package:funvas/funvas.dart';
 import 'package:funvas_tweets/src/tweet_mixin.dart';
 
