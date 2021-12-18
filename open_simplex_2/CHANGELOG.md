@@ -1,3 +1,8 @@
+## 0.2.1
+
+* Switched from `fastFloor` to `num.floor` as https://github.com/dart-lang/sdk/commit/16e8dc257e51d48669ce8d5d91ac094325faa5b5
+  has landed on stable.
+
 ## 0.2.0+1
 
 * Fixed seeding constant on web.
