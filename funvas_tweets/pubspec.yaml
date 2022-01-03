@@ -14,7 +14,7 @@ dependencies:
   funvas:
     path: ../funvas
 
-  google_fonts: ^2.1.0
+  google_fonts: ^2.2.0
   open_simplex_2:
     path: ../open_simplex_2
 

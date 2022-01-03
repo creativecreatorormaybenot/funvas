@@ -19,6 +19,9 @@ dependencies:
   url_launcher: ^6.0.9
   url_strategy: ^0.2.0
 
+  # Temporary fix for missing packageRoot.
+  platform: ^3.1.0
+
 dev_dependencies:
   flutter_lints: ^1.0.3
 

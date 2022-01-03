@@ -13,7 +13,9 @@ class FortyNine extends Funvas {
   FragmentProgram? _fragmentProgram;
 
   Future<void> _init() async {
-    final byteData = await rootBundle.load('shaders/spir-v/water_lights.sprv');
+    final byteData = await rootBundle.load(
+      'packages/funvas_tweets/shaders/spir-v/water_lights.sprv',
+    );
     _fragmentProgram = await FragmentProgram.compile(
       spirv: byteData.buffer,
     );
