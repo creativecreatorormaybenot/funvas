@@ -1,3 +1,7 @@
+## 0.1.6+6
+
+* Fixed images in README.
+
 ## 0.1.6+5
 
 * Fixed `muted` state.
