@@ -80,7 +80,7 @@ packages:
       path: "../funvas"
       relative: true
     source: path
-    version: "0.1.6+5"
+    version: "0.1.6+6"
   funvas_tweets:
     dependency: "direct main"
     description:
@@ -123,6 +123,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
+  material_color_utilities:
+    dependency: transitive
+    description:
+      name: material_color_utilities
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.3"
   meta:
     dependency: transitive
     description:
@@ -136,7 +143,7 @@ packages:
       path: "../open_simplex_2"
       relative: true
     source: path
-    version: "0.2.0+1"
+    version: "0.2.1"
   path:
     dependency: transitive
     description:
