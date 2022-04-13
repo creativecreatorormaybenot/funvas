@@ -15,17 +15,25 @@ class FortyNine extends Funvas {
     c.rotate(pi * t / 9 * 2);
 
     const n = 3e3;
-    for (var i = .0; i < n; i++) {
-      c.drawCircle(
-        Offset.fromDirection(
+    Offset oo(int i) => Offset.fromDirection(
           S(i + t / 9).abs() * pi * 2,
           d / n * (n - i) / 1.25,
-        ),
-        5,
-        Paint()
-          ..blendMode = BlendMode.plus
-          ..color = HSVColor.fromAHSV(1, 360 / n * i, 3 / 4, 3 / 4).toColor(),
-      );
+        );
+
+    c.rotate(-t / 9 * pi * 2 - pi / 2);
+    for (var i = 0; i < n; i++) {
+      final o = oo(i), no = oo(i + 1);
+      final p = Path()
+        ..moveTo(o.dx, o.dy)
+        ..lineTo(no.dx, no.dy);
+
+      final paint = Paint()
+        ..style = PaintingStyle.stroke
+        ..blendMode = BlendMode.plus
+        ..color = HSVColor.fromAHSV(1, 360 / n * i, 3 / 4, 3 / 4).toColor();
+
+      if (p.computeMetrics().first.length > 420) continue;
+      c.drawPath(p, paint);
     }
   }
 }
