@@ -1,12 +1,11 @@
 import 'dart:typed_data';
 import 'dart:ui';
 
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:funvas/funvas.dart';
 
-class FortyNine extends Funvas {
-  FortyNine() {
+class Fifty extends Funvas {
+  Fifty() {
     _init();
   }
 
@@ -14,7 +13,7 @@ class FortyNine extends Funvas {
 
   Future<void> _init() async {
     final byteData = await rootBundle.load(
-      'packages/funvas_tweets/shaders/spir-v/49.sprv',
+      'packages/funvas_tweets/shaders/spir-v/50.sprv',
     );
     _fragmentProgram = await FragmentProgram.compile(
       spirv: byteData.buffer,
