@@ -16,7 +16,7 @@ dependencies:
   funvas_tweets:
     path: ../funvas_tweets
 
-  url_launcher: ^6.0.9
+  url_launcher: ^6.0.20
   url_strategy: ^0.2.0
 
   # Temporary fix for missing packageRoot.

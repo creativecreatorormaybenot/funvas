@@ -4,7 +4,7 @@ import 'package:benchmark_harness/benchmark_harness.dart';
 import 'package:test/test.dart';
 
 void main() {
-  test('fast floor beats floor', () {
+  test('floor beats fast floor', () {
     late final double fastFloorRuntime, floorRuntime;
     final fastFloorEmitter = _TestEmitter((value) => fastFloorRuntime = value);
     final fastFloorBenchmark = _FastFloorBenchmark(fastFloorEmitter);
@@ -15,6 +15,9 @@ void main() {
     floorBenchmark.report();
     fastFloorBenchmark.report();
 
+    // This is a sanity check to ensure that https://github.com/dart-lang/sdk/issues/46650
+    // has really been resolved.
+    // This used to ensure the opposite (see https://github.com/creativecreatorormaybenot/funvas/pull/194).
     expect(fastFloorRuntime, greaterThan(floorRuntime));
   });
 }
