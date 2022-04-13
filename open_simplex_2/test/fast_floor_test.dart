@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:benchmark_harness/benchmark_harness.dart';
-import 'package:open_simplex_2/src/fast_floor.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -16,8 +15,24 @@ void main() {
     floorBenchmark.report();
     fastFloorBenchmark.report();
 
-    expect(fastFloorRuntime, lessThan(floorRuntime));
+    expect(fastFloorRuntime, greaterThan(floorRuntime));
   });
+}
+
+/// Floors the given [double] towards negative infinity faster than [floor]
+/// does.
+///
+/// There is a test case validating that this is indeed (if only slightly)
+/// faster than [floor], always.
+///
+/// Note that this is **not** part of the main package anymore since the testing
+/// in this package lead to [num.floor] being improved to be faster than this
+/// function. See https://github.com/dart-lang/sdk/issues/46650.
+int _fastFloor(double x) {
+  // We cannot simply return x.toInt() because casting to an integer floors
+  // towards zero (truncates) and we want to floor towards negative infinity.
+  final xi = x.toInt();
+  return x < xi ? xi - 1 : xi;
 }
 
 class _TestEmitter extends ScoreEmitter {
@@ -38,10 +53,10 @@ class _FastFloorBenchmark extends BenchmarkBase {
   @override
   void run() {
     for (var n = pi; n < 1e7; n *= e) {
-      fastFloor(n);
+      _fastFloor(n);
     }
     for (var n = -pi; n > -1e7; n *= e) {
-      fastFloor(n);
+      _fastFloor(n);
     }
   }
 }

@@ -15,7 +15,6 @@ jobs:
         channel:
           - 'stable'
           - 'beta'
-          - 'dev'
           - 'master'
         package:
           - 'funvas'
@@ -49,7 +48,6 @@ jobs:
         channel:
           - 'stable'
           - 'beta'
-          - 'dev'
           - 'master'
         package:
           #          todo: add test coverage to funvas packages.
