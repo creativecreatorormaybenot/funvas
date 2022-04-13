@@ -76,6 +76,7 @@ class _GalleryPageState extends State<GalleryPage> {
                 widget.onPrevious();
                 break;
             }
+            return null;
           },
         ),
       },
