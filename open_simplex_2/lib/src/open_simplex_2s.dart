@@ -3,7 +3,6 @@
 import 'dart:typed_data';
 
 import 'package:fixnum/fixnum.dart';
-import 'package:open_simplex_2/src/fast_floor.dart';
 import 'package:open_simplex_2/src/grad.dart';
 import 'package:open_simplex_2/src/open_simplex_2.dart';
 
@@ -98,7 +97,7 @@ class OpenSimplex2S implements OpenSimplex2 {
     double value = 0;
 
     // Get base points and offsets
-    int xsb = fastFloor(xs), ysb = fastFloor(ys);
+    int xsb = xs.floor(), ysb = ys.floor();
     double xsi = xs - xsb, ysi = ys - ysb;
 
     // Index to point list
@@ -196,7 +195,7 @@ class OpenSimplex2S implements OpenSimplex2 {
   /// than to build up the index with enough info to isolate 8 points.
   double _noise3BCC(double xr, double yr, double zr) {
     // Get base and offsets inside cube of first lattice.
-    int xrb = fastFloor(xr), yrb = fastFloor(yr), zrb = fastFloor(zr);
+    int xrb = xr.floor(), yrb = yr.floor(), zrb = zr.floor();
     double xri = xr - xrb, yri = yr - yrb, zri = zr - zrb;
 
     // Identify which octant of the cube we're in. This determines which cell
@@ -291,20 +290,17 @@ class OpenSimplex2S implements OpenSimplex2 {
     double value = 0;
 
     // Get base points and offsets
-    int xsb = fastFloor(xs),
-        ysb = fastFloor(ys),
-        zsb = fastFloor(zs),
-        wsb = fastFloor(ws);
+    int xsb = xs.floor(), ysb = ys.floor(), zsb = zs.floor(), wsb = ws.floor();
     double xsi = xs - xsb, ysi = ys - ysb, zsi = zs - zsb, wsi = ws - wsb;
 
     // Unskewed offsets
     double ssi = (xsi + ysi + zsi + wsi) * -0.138196601125011;
     double xi = xsi + ssi, yi = ysi + ssi, zi = zsi + ssi, wi = wsi + ssi;
 
-    int index = ((fastFloor(xs * 4) & 3) << 0) |
-        ((fastFloor(ys * 4) & 3) << 2) |
-        ((fastFloor(zs * 4) & 3) << 4) |
-        ((fastFloor(ws * 4) & 3) << 6);
+    int index = (((xs * 4).floor() & 3) << 0) |
+        (((ys * 4).floor() & 3) << 2) |
+        (((zs * 4).floor() & 3) << 4) |
+        (((ws * 4).floor() & 3) << 6);
 
     // Point contributions
     for (final c in _lookup4d[index]) {

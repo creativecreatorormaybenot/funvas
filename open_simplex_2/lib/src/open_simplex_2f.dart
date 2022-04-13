@@ -3,7 +3,6 @@
 import 'dart:typed_data';
 
 import 'package:fixnum/fixnum.dart';
-import 'package:open_simplex_2/src/fast_floor.dart';
 import 'package:open_simplex_2/src/grad.dart';
 import 'package:open_simplex_2/src/open_simplex_2.dart';
 
@@ -97,7 +96,7 @@ class OpenSimplex2F implements OpenSimplex2 {
     double value = 0;
 
     // Get base points and offsets
-    int xsb = fastFloor(xs), ysb = fastFloor(ys);
+    int xsb = xs.floor(), ysb = ys.floor();
     double xsi = xs - xsb, ysi = ys - ysb;
 
     // Index to point list
@@ -191,7 +190,7 @@ class OpenSimplex2F implements OpenSimplex2 {
   /// than to build up the index with enough info to isolate 4 points.
   double _noise3BCC(double xr, double yr, double zr) {
     // Get base and offsets inside cube of first lattice.
-    int xrb = fastFloor(xr), yrb = fastFloor(yr), zrb = fastFloor(zr);
+    int xrb = xr.floor(), yrb = yr.floor(), zrb = zr.floor();
     double xri = xr - xrb, yri = yr - yrb, zri = zr - zrb;
 
     // Identify which octant of the cube we're in. This determines which cell
@@ -287,10 +286,7 @@ class OpenSimplex2F implements OpenSimplex2 {
     double value = 0;
 
     // Get base points and offsets
-    int xsb = fastFloor(xs),
-        ysb = fastFloor(ys),
-        zsb = fastFloor(zs),
-        wsb = fastFloor(ws);
+    int xsb = xs.floor(), ysb = ys.floor(), zsb = zs.floor(), wsb = ws.floor();
     double xsi = xs - xsb, ysi = ys - ysb, zsi = zs - zsb, wsi = ws - wsb;
 
     // If we're in the lower half, flip so we can repeat the code for the upper half. We'll flip back later.
