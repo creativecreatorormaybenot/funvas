@@ -5,13 +5,13 @@ layout(location = 0) out vec4 fragColor;
 layout(location = 0) uniform vec2 iResolution;
 layout(location = 1) uniform float t;
 
+const float iterations = 100;
+const float rotationDuration = 9;
+const float threshold = 16;
+
+const float pi = 3.14159265359;
+
 void main() {
-  float iterations = 100;
-  float rotationDuration = 9;
-  float threshold = 16;
-
-  float pi = 3.14159265359;
-
   float zoom = cos(mod(t, rotationDuration) / rotationDuration * 2 * pi) * .5;
   vec2 reRange = vec2(-1.65 + .65 - zoom, 1.65 - .65 + zoom);
   vec2 imRange = vec2(-1.65 + .65 - zoom, 1.65 - .65 + zoom);
