@@ -3,18 +3,42 @@
 precision mediump float;
 layout(location = 0) out vec4 fragColor;
 layout(location = 0) uniform vec2 iResolution;
-layout(location = 1) uniform float iTime;
-
-//simulating if conditions for greater than
-//if x greater than or equal k to return 1
-//else return 0
-float isGt(float x, float k) {
-    return ceil(((sign(x - k)) + 1.0) / 2.0);
-}
+layout(location = 1) uniform float t;
 
 void main() {
-    vec2 p = gl_FragCoord.xy / iResolution.xy;
-    vec3 horColour = vec3(p.x, p.y, p.x);
+  int iterations = 100;
+  int rotationDuration = 9;
+  int threshold = 16;
 
-    fragColor = vec4(horColour, 1.0);
+  float pi = 3.14159265359;
+
+  float zoom = cos(t % rotationDuration / rotationDuration * 2 * pi) * .5;
+  vec2 reRange = vec2(-1.65 + .65 - zoom, 1.65 - .65 + zoom);
+  vec2 imRange = vec2(-1.65 + .65 - zoom, 1.65 - .65 + zoom);
+
+  vec2 centerPoint = vec2(-0.75, 0);
+  vec2 c = vec2(
+    centerPoint.x + cos(t % rotationDuration / rotationDuration * 2 * pi) * .05,
+    centerPoint.y + sin(t % rotationDuration / rotationDuration * 2 * pi) * .1
+  );
+
+  float re = (reRange.y - reRange.x) * (gl_FragCoord.x / iResolution.x);
+  float im = (imRange.y - imRange.x) * (gl_FragCoord.y / iResolution.y);
+
+  int n = 0;
+  float zre = re, zim = im;
+  while (n < iterations) {
+    float tzre = zre * zre - zim * zim + c.x;
+    zim = 2 * zre * zim + c.y;
+    zre = tzre;
+
+    if (abs(zre) + abs(zim) > threshold) break;
+    n++;
+  }
+
+  if (n == iterations) {
+    fragColor = vec4(0, 0, 0, 1);
+  } else {
+    fragColor = vec4(n / iterations, n / iterations, n / iterations, 1);
+  }
 }
