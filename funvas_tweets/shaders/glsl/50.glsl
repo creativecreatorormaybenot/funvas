@@ -9,7 +9,9 @@ const float iterations = 100;
 const float rotationDuration = 9;
 const float threshold = 16;
 
-const float pi = 3.14159265359;
+const vec2 zoomPoint = vec2(-1.74999841099374081749002483162428393452822172335808534616943930976364725846655540417646727085571962736578151132907961927190726789896685696750162524460775546580822744596887978637416593715319388030232414667046419863755743802804780843375, -0.00000000000000165712469295418692325810961981279189026504290127375760405334498110850956047368308707050735960323397389547038231194872482690340369921750514146922400928554011996123112902000856666847088788158433995358406779259404221904755);
+const vec2 reRange = vec2(-2.1, 0.55);
+const vec2 imRange = vec2(-1.2, 1.2);
 
 // HSL conversion from https://www.shadertoy.com/view/XljGzV.
 vec3 hsl2rgb(in vec3 c) {
@@ -18,21 +20,20 @@ vec3 hsl2rgb(in vec3 c) {
 }
 
 void main() {
-  float zoom = cos(mod(t, rotationDuration) / rotationDuration * 2 * pi) * .5;
-  vec2 reRange = vec2(-1.65 + .65 - zoom, 1.65 - .65 + zoom);
-  vec2 imRange = vec2(-1.65 + .65 - zoom, 1.65 - .65 + zoom);
+  float width = reRange.y - reRange.x;
+  float height = imRange.y - imRange.x;
+  float zoomedWidth = width / (1 + t);
+  float zoomedHeight = height / (1 + t);
+  vec4 window = vec4(zoomPoint.x - zoomedWidth / 2, zoomPoint.y - zoomedHeight / 2, zoomPoint.x + zoomedWidth / 2, zoomPoint.y + zoomedHeight / 2);
 
-  vec2 centerPoint = vec2(-0.75, 0);
-  vec2 c = vec2(centerPoint.x + cos(mod(t, rotationDuration) / rotationDuration * 2 * pi) * .05, centerPoint.y + sin(mod(t, rotationDuration) / rotationDuration * 2 * pi) * .1);
-
-  float re = (reRange.y - reRange.x) * (gl_FragCoord.x / res.x);
-  float im = (imRange.y - imRange.x) * (gl_FragCoord.y / res.y);
+  float re = (window.x - window.z) * (gl_FragCoord.x / res.x);
+  float im = (window.y - window.w) * (gl_FragCoord.y / res.y);
 
   float n = 0;
   float zre = re, zim = im;
   for(float tn = 0; tn < iterations; tn++) {
-    float tzre = zre * zre - zim * zim + c.x;
-    zim = 2 * zre * zim + c.y;
+    float tzre = zre * zre - zim * zim + re;
+    zim = 2 * zre * zim + im;
     zre = tzre;
 
     n = tn;
@@ -43,7 +44,7 @@ void main() {
   if (n == iterations) {
     fragColor = vec4(0, 0, 0, 1);
   } else {
-    vec3 hsl = vec3(1 - n / iterations, .9, .6);
+    vec3 hsl = vec3(1 - n / iterations + 0.5, .9, .6);
     vec3 rgb = hsl2rgb(hsl);
     fragColor = vec4(rgb, 1);
   }
