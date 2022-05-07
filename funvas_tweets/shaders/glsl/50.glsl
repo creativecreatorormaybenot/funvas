@@ -27,13 +27,13 @@ void main() {
 
   float n = 0;
   float zre = re, zim = im;
-  while (n < iterations) {
+  for (float tn = 0; tn < iterations; tn++) {
     float tzre = zre * zre - zim * zim + c.x;
     zim = 2 * zre * zim + c.y;
     zre = tzre;
 
+    n = tn;
     if (abs(zre) + abs(zim) > threshold) break;
-    n++;
   }
 
   if (n == iterations) {
