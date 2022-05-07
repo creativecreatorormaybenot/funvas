@@ -41,3 +41,13 @@ The process is essentially the same for mp4, just that the tool used is `ffmpeg`
 [funvas]: https://pub.dev/packages/funvas
 [gifsicle]: http://www.lcdf.org/gifsicle
 [ImageMagick]: https://imagemagick.org/index.php
+
+## Shaders
+
+All shaders for animations live in the `shaders/` subdirectory and are named according to their
+corresponding animation (e.g. `50.dart`, `50.glsl`, and `50.sprv`). Shaders are written in GLSL
+in `shaders/glsl/` and then compiled to SPRV in `shaders/spir-v/` using the following command:
+
+```sh
+glslc --target-env=opengl -fshader-stage=frag -o shaders/spir-v/42.sprv shaders/glsl/42.glsl
+```

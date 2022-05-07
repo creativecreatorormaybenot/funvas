@@ -1,0 +1,114 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "funvas",
+      "cwd": "funvas",
+      "request": "launch",
+      "type": "dart"
+    },
+    {
+      "name": "funvas (profile mode)",
+      "cwd": "funvas",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile"
+    },
+    {
+      "name": "funvas (release mode)",
+      "cwd": "funvas",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release"
+    },
+    {
+      "name": "funvas_gallery",
+      "cwd": "funvas_gallery",
+      "request": "launch",
+      "type": "dart"
+    },
+    {
+      "name": "funvas_gallery (profile mode)",
+      "cwd": "funvas_gallery",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile"
+    },
+    {
+      "name": "funvas_gallery (release mode)",
+      "cwd": "funvas_gallery",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release"
+    },
+    {
+      "name": "funvas_tweets",
+      "cwd": "funvas_tweets",
+      "request": "launch",
+      "type": "dart"
+    },
+    {
+      "name": "funvas_tweets (profile mode)",
+      "cwd": "funvas_tweets",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile"
+    },
+    {
+      "name": "funvas_tweets (release mode)",
+      "cwd": "funvas_tweets",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release"
+    },
+    {
+      "name": "open_simplex_2",
+      "cwd": "open_simplex_2",
+      "request": "launch",
+      "type": "dart"
+    },
+    {
+      "name": "example",
+      "cwd": "funvas/example",
+      "request": "launch",
+      "type": "dart"
+    },
+    {
+      "name": "example (profile mode)",
+      "cwd": "funvas/example",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile"
+    },
+    {
+      "name": "example (release mode)",
+      "cwd": "funvas/example",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release"
+    },
+    {
+      "name": "example",
+      "cwd": "open_simplex_2/example",
+      "request": "launch",
+      "type": "dart"
+    },
+    {
+      "name": "example (profile mode)",
+      "cwd": "open_simplex_2/example",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile"
+    },
+    {
+      "name": "example (release mode)",
+      "cwd": "open_simplex_2/example",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release"
+    }
+  ]
+}

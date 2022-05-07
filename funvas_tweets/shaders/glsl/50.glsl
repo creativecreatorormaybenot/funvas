@@ -1,4 +1,4 @@
-#version 320 es
+#version 460
 
 precision mediump float;
 layout(location = 0) out vec4 fragColor;
