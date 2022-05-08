@@ -44,7 +44,9 @@ Future<void> main() async {
     ..setSurfaceSize(dimensions)
     ..attachRootWidget(rootWidget)
     // Schedule and render a warm-up frame.
-    ..scheduleWarmUpFrame();
+    ..scheduleWarmUpFrame()
+    ..handleBeginFrame(Duration.zero)
+    ..handleDrawFrame();
   await _renderFrame();
 
   final microseconds = animationDuration.inMicroseconds,
