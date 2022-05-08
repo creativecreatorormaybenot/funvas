@@ -20,16 +20,16 @@ const dimensions = Size(750, 750);
 const animationName = 'animation';
 const exportPath = 'export';
 
-// Using a callback so that the constructor is run inside of the test.
+// Using a callback so that the constructor is executed after initializing the
+// binding.
 Funvas funvasFactory() => Fifty();
 
 Future<void> main() async {
+  _RenderingFlutterBinding.ensureInitialized();
+
   final time = ValueNotifier(.0);
   final funvas = funvasFactory();
-  if (funvas is FunvasFutureMixin) {
-    await funvas.future;
-  }
-
+  if (funvas is FunvasFutureMixin) await funvas.future;
   final rootWidget = SizedBox.fromSize(
     size: dimensions,
     child: CustomPaint(
@@ -39,7 +39,8 @@ Future<void> main() async {
       ),
     ),
   );
-  final binding = _RenderingFlutterBinding.ensureInitialized()
+
+  _RenderingFlutterBinding.instance
     ..setSurfaceSize(dimensions)
     ..attachRootWidget(rootWidget)
     ..scheduleWarmUpFrame();
