@@ -81,7 +81,7 @@ Future<void> main() async {
 
   await Future.wait(futures);
   time.dispose();
-  exit(0);
+  SystemChannels.platform.invokeMethod('SystemNavigator.pop');
 }
 
 Future<void> _exportFrame(Future<ui.Image> imageFuture, String fileName) async {
