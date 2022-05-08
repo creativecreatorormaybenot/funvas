@@ -48,13 +48,6 @@ Future<void> main() async {
     ..handleBeginFrame(Duration.zero)
     ..handleDrawFrame();
   await _renderFrame();
-  _RenderingFlutterBinding.instance
-    // Schedule and render another frame as shaders will otherwise not draw on
-    // the first frame (don't ask me why).
-    ..scheduleFrame()
-    ..handleBeginFrame(Duration.zero)
-    ..handleDrawFrame();
-  await _renderFrame();
 
   final microseconds = animationDuration.inMicroseconds,
       framesToRender = fps * (microseconds / 1e6) ~/ 1;
