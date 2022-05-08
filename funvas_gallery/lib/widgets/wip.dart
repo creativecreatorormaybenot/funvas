@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:funvas/funvas.dart';
 import 'package:funvas_gallery/factories/animations.dart';
-import 'package:funvas_tweets/funvas_tweets.dart';
 
 /// Displays the current [wipFunvas].
 class WIPFunvasPage extends StatefulWidget {
