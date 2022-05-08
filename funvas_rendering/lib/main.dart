@@ -48,6 +48,13 @@ Future<void> main() async {
     ..handleBeginFrame(Duration.zero)
     ..handleDrawFrame();
   await _renderFrame();
+  _RenderingFlutterBinding.instance
+    // Schedule and render another frame as shaders will otherwise not draw on
+    // the first frame (don't ask me why).
+    ..scheduleFrame()
+    ..handleBeginFrame(Duration.zero)
+    ..handleDrawFrame();
+  await _renderFrame();
 
   final microseconds = animationDuration.inMicroseconds,
       framesToRender = fps * (microseconds / 1e6) ~/ 1;
@@ -55,17 +62,16 @@ Future<void> main() async {
   final clock = Stopwatch()..start();
   final futures = <Future>[];
   for (var i = 0; i < framesToRender; i++) {
-    final frame = i + 1;
     time.value = microseconds / framesToRender * i / 1e6;
 
     // Render the funvas animation / frame in the render view.
     _RenderingFlutterBinding.instance
-      ..attachRootWidget(rootWidget)
       ..scheduleFrame()
       ..handleBeginFrame(clock.elapsed)
       ..handleDrawFrame();
 
     final image = await _renderFrame();
+    final frame = i + 1;
     // We parallelize the saving of the rendered frames by running the futures
     // in parallel.
     futures.add(_exportFrame(image, clock, framesToRender, frame));
