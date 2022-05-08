@@ -29,7 +29,7 @@ class GalleryPage extends StatefulWidget {
   final VoidCallback onShuffle;
 
   @override
-  _GalleryPageState createState() => _GalleryPageState();
+  State<GalleryPage> createState() => _GalleryPageState();
 }
 
 const _kOverlayTransitionDuration = Duration(milliseconds: 150);

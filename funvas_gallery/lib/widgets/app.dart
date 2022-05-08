@@ -5,7 +5,7 @@ class GalleryApp extends StatefulWidget {
   const GalleryApp({Key? key}) : super(key: key);
 
   @override
-  _GalleryAppState createState() => _GalleryAppState();
+  State<GalleryApp> createState() => _GalleryAppState();
 }
 
 class _GalleryAppState extends State<GalleryApp> {
@@ -17,8 +17,14 @@ class _GalleryAppState extends State<GalleryApp> {
     return MaterialApp.router(
       title: 'funvas gallery',
       themeMode: ThemeMode.dark,
-      theme: ThemeData(),
-      darkTheme: ThemeData.dark(),
+      theme: ThemeData(
+        brightness: Brightness.light,
+        colorSchemeSeed: Colors.black,
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        colorSchemeSeed: Colors.black,
+      ),
       debugShowCheckedModeBanner: false,
       routerDelegate: _routerDelegate,
       routeInformationParser: _routerInformationParser,

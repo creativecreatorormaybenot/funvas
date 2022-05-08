@@ -5,8 +5,13 @@ import 'dart:ui';
 import 'package:flutter/services.dart';
 import 'package:funvas/funvas.dart';
 import 'package:funvas_tweets/src/future_mixin.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
-class Fifty extends Funvas with FunvasFutureMixin {
+class Fifty extends Funvas with FunvasFutureMixin, FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://twitter.com/creativemaybeno/status/1523422845992243200?s=20&t=cTQxnco1e8-6-sXljpXNMw';
+
   Fifty() {
     _init();
   }

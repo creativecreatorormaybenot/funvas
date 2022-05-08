@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:funvas/funvas.dart';
 import 'package:funvas_gallery/factories/factory.dart';
 import 'package:funvas_tweets/funvas_tweets.dart';
@@ -32,6 +33,7 @@ final funvasFactories = <int, FunvasFactory<FunvasTweetMixin>>{
   44: FunvasFactory(() => FortyFour()),
   47: FunvasFactory(() => FortySeven()),
   48: FunvasFactory(() => FortyEight()),
+  if (!kIsWeb) 50: FunvasFactory((() => Fifty())),
 };
 
 /// Funvas factory for a WIP funvas that does not need to have an associated
