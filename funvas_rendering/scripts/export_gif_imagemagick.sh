@@ -1,5 +1,4 @@
-rm -rf animation
-mkdir google_fonts
-flutter run export/export_animation.dart
-rm animation/_warmup.png
-convert -delay 2 animation/*.png -loop 0 animation.gif
+rm -rf export/animation/
+mkdir -p export/animation/
+flutter run
+convert -delay 2 export/animation/*.png -loop 0 export/animation.gif

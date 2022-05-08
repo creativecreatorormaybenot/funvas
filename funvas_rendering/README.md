@@ -18,7 +18,12 @@ will have to execute the commands manually.
 
 ### Usage
 
-You can simply edit the `lib/main.dart` file to adjust the settings of the exporter.
+You can simply edit the `lib/main.dart` file to adjust the settings of the exporter.  
+Then, you want to run one of the scripts. An example execution might look like this:
+
+```sh
+bash scripts/export_gif.sh
+```
 
 You can configure the following parameters:
 
