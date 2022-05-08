@@ -18,7 +18,7 @@ const dimensions = Size(750, 750);
 // If you use a different animation name, you will have to also consider that
 // when assembling the animation using ffmpeg.
 const animationName = 'animation';
-const exportPath = String.fromEnvironment('EXPORT_PATH');
+const exportPath = 'export';
 
 // Using a callback so that the constructor is executed after initializing the
 // binding.
@@ -66,7 +66,7 @@ Future<void> main() async {
     // in parallel.
     futures.add(_exportFrame(
       renderView.layer.toImage(renderView.paintBounds),
-      '$animationName/${'$i'.padLeft(fileNameWidth, '0')}.png',
+      '${'$i'.padLeft(fileNameWidth, '0')}.png',
     ));
 
     final frame = i + 1;

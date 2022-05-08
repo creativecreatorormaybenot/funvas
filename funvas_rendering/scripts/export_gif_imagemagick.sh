@@ -1,4 +1,5 @@
 rm -rf export/animation/
 mkdir -p export/animation/
-flutter run --dart-define=EXPORT_PATH="$(pwd)/export/"
+flutter run
+mv $HOME/Library/Containers/creativemaybeno.funvasRendering/Data/export/animation/* ./export/animation/
 convert -delay 2 export/animation/*.png -loop 0 export/animation.gif
