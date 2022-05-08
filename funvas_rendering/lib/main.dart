@@ -91,7 +91,6 @@ Future<void> _exportFrame(Future<ui.Image> imageFuture, String fileName) async {
 
   final filePath = p.join(exportPath, animationName, fileName);
   final file = File(filePath);
-  print(file.absolute.path);
   await file.parent.create(recursive: true);
   await file.writeAsBytes(bytes!.buffer.asUint8List(), flush: true);
 }
