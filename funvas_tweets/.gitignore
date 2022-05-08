@@ -73,9 +73,3 @@ build/
 !**/ios/**/default.mode2v3
 !**/ios/**/default.pbxuser
 !**/ios/**/default.perspectivev3
-
-# Animation export
-export/*/*.png
-export/*.gif
-export/*.mp4
-export/google_fonts/*
