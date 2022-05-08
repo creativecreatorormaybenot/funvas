@@ -44,9 +44,8 @@ Future<void> main() async {
     ..setSurfaceSize(dimensions)
     ..attachRootWidget(rootWidget)
     // Schedule and render a warm-up frame.
-    ..scheduleWarmUpFrame()
-    ..handleBeginFrame(Duration.zero)
-    ..handleDrawFrame();
+    ..scheduleWarmUpFrame();
+  await _renderFrame();
 
   final microseconds = animationDuration.inMicroseconds,
       framesToRender = fps * (microseconds / 1e6) ~/ 1;
@@ -64,8 +63,7 @@ Future<void> main() async {
       ..handleBeginFrame(clock.elapsed)
       ..handleDrawFrame();
 
-    final renderView = _RenderingFlutterBinding.instance.renderView;
-    final image = await renderView.layer.toImage(renderView.paintBounds);
+    final image = await _renderFrame();
     // We parallelize the saving of the rendered frames by running the futures
     // in parallel.
     futures.add(_exportFrame(image, clock, framesToRender, frame));
@@ -81,6 +79,11 @@ Future<void> main() async {
   time.dispose();
   clock.stop();
   exit(0);
+}
+
+Future<ui.Image> _renderFrame() {
+  final renderView = _RenderingFlutterBinding.instance.renderView;
+  return renderView.layer.toImage(renderView.paintBounds);
 }
 
 Future<void> _exportFrame(
@@ -99,7 +102,7 @@ Future<void> _exportFrame(
   final estimatedRemaining = Duration(
       microseconds:
           elapsedTime.inMicroseconds ~/ frame * (framesToRender - frame));
-  print('s$fileName, $elapsedTime, -$estimatedRemaining');
+  print('e$frame/$framesToRender, $elapsedTime, -$estimatedRemaining');
 }
 
 /// Binding implementation specifically tailored to rendering animations.
