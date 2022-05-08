@@ -76,10 +76,10 @@ Future<void> main() async {
             elapsedTime.inMicroseconds ~/ frame * (framesToRender - frame));
     print('r$frame/$framesToRender, $elapsedTime, -$estimatedRemaining');
   }
-  clock.stop();
 
   await Future.wait(futures);
   time.dispose();
+  clock.stop();
   exit(0);
 }
 
