@@ -43,18 +43,21 @@ Future<void> main() async {
   _RenderingFlutterBinding.instance
     ..setSurfaceSize(dimensions)
     ..attachRootWidget(rootWidget)
-    ..scheduleWarmUpFrame();
+    // Schedule and render a warm-up frame.
+    ..scheduleWarmUpFrame()
+    ..handleBeginFrame(Duration.zero)
+    ..handleDrawFrame();
 
   final microseconds = animationDuration.inMicroseconds,
       framesToRender = fps * (microseconds / 1e6) ~/ 1;
-  final fileNameWidth = (framesToRender - 1).toString().length;
 
   final clock = Stopwatch()..start();
   final futures = <Future>[];
   for (var i = 0; i < framesToRender; i++) {
+    final frame = i + 1;
     time.value = microseconds / framesToRender * i / 1e6;
 
-    // Render the page in the widget tree / render view.
+    // Render the funvas animation / frame in the render view.
     _RenderingFlutterBinding.instance
       ..attachRootWidget(rootWidget)
       ..scheduleFrame()
@@ -62,19 +65,16 @@ Future<void> main() async {
       ..handleDrawFrame();
 
     final renderView = _RenderingFlutterBinding.instance.renderView;
+    final image = await renderView.layer.toImage(renderView.paintBounds);
     // We parallelize the saving of the rendered frames by running the futures
     // in parallel.
-    futures.add(_exportFrame(
-      await renderView.layer.toImage(renderView.paintBounds),
-      '${'$i'.padLeft(fileNameWidth, '0')}.png',
-    ));
+    futures.add(_exportFrame(image, clock, framesToRender, frame));
 
-    final frame = i + 1;
     final elapsedTime = clock.elapsed;
     final estimatedRemaining = Duration(
         microseconds:
             elapsedTime.inMicroseconds ~/ frame * (framesToRender - frame));
-    print('$frame/$framesToRender, $elapsedTime, -$estimatedRemaining');
+    print('r$frame/$framesToRender, $elapsedTime, -$estimatedRemaining');
   }
   clock.stop();
 
@@ -83,15 +83,23 @@ Future<void> main() async {
   exit(0);
 }
 
-Future<void> _exportFrame(ui.Image image, String fileName) async {
+Future<void> _exportFrame(
+    ui.Image image, Stopwatch clock, int framesToRender, int frame) async {
   final bytes = await image.clone().toByteData(format: ui.ImageByteFormat.png);
   image.dispose();
 
+  final fileNameWidth = (framesToRender - 1).toString().length;
+  final fileName = '${'${frame - 1}'.padLeft(fileNameWidth, '0')}.png';
   final filePath = p.join(exportPath, animationName, fileName);
   final file = File(filePath);
   await file.parent.create(recursive: true);
   await file.writeAsBytes(bytes!.buffer.asUint8List(), flush: true);
-  print('wrote $fileName to disk');
+
+  final elapsedTime = clock.elapsed;
+  final estimatedRemaining = Duration(
+      microseconds:
+          elapsedTime.inMicroseconds ~/ frame * (framesToRender - frame));
+  print('s$fileName, $elapsedTime, -$estimatedRemaining');
 }
 
 /// Binding implementation specifically tailored to rendering animations.
