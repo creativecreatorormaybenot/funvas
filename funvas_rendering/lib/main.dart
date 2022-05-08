@@ -55,13 +55,13 @@ Future<void> main() async {
     time.value = microseconds / framesToRender * i / 1e6;
 
     // Render the page in the widget tree / render view.
-    binding
+    _RenderingFlutterBinding.instance
       ..attachRootWidget(rootWidget)
       ..scheduleFrame()
       ..handleBeginFrame(clock.elapsed)
       ..handleDrawFrame();
 
-    final renderView = binding.renderView;
+    final renderView = _RenderingFlutterBinding.instance.renderView;
     // We parallelize the saving of the rendered frames by running the futures
     // in parallel.
     futures.add(_exportFrame(
