@@ -8,7 +8,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:funvas/src/painter.dart';
+import 'package:funvas/funvas.dart';
 import 'package:funvas_tweets/funvas_tweets.dart';
 import 'package:path/path.dart' as p;
 

@@ -1,0 +1,20 @@
+name: funvas_rendering
+description: Package for rendering and exporting funvas animations.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.0-0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  funvas:
+    path: ../funvas
+  funvas_tweets:
+    path: ../funvas_tweets
+  path: ^1.8.1
+
+dev_dependencies:
+  flutter_lints: ^2.0.0

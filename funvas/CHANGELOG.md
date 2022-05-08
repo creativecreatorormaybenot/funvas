@@ -1,3 +1,8 @@
+## 0.1.7
+
+* Exposed `FunvasPainter`.
+* Bumped minimum SDK version.
+
 ## 0.1.6+6
 
 * Fixed images in README.
