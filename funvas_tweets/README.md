@@ -12,3 +12,5 @@ in `shaders/glsl/` and then compiled to SPRV in `shaders/spir-v/` using the foll
 ```sh
 glslc --target-env=opengl -fshader-stage=frag -o shaders/spir-v/42.sprv shaders/glsl/42.glsl
 ```
+
+Note that this requires the [Vulkan SDK](https://www.lunarg.com/vulkan-sdk/).
