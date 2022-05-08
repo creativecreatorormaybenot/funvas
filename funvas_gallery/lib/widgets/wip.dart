@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -58,19 +59,27 @@ class _WIPFunvasPageState extends State<WIPFunvasPage> {
                 data: SliderTheme.of(context).copyWith(
                   showValueIndicator: ShowValueIndicator.always,
                 ),
-                child: ValueListenableBuilder<double>(
-                    valueListenable: _time,
-                    builder: (context, value, child) {
-                      return Slider(
-                        min: 0,
-                        max: 14.6,
-                        value: value,
-                        label: 'x${(pow(2, value) - 0.5).toStringAsFixed(1)}',
-                        onChanged: (value) {
-                          _time.value = value;
-                        },
-                      );
-                    }),
+                child: ClipRect(
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(
+                      sigmaX: 3,
+                      sigmaY: 3,
+                    ),
+                    child: ValueListenableBuilder<double>(
+                        valueListenable: _time,
+                        builder: (context, value, child) {
+                          return Slider(
+                            min: 0,
+                            max: 14.6,
+                            value: value,
+                            label: 'x${(pow(2, value) - 0.5).toStringAsFixed(1)}',
+                            onChanged: (value) {
+                              _time.value = value;
+                            },
+                          );
+                        }),
+                  ),
+                ),
               ),
             ),
           ],
