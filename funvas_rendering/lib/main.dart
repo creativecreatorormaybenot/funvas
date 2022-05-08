@@ -18,6 +18,7 @@ const dimensions = Size(750, 750);
 // If you use a different animation name, you will have to also consider that
 // when assembling the animation using ffmpeg.
 const animationName = 'animation';
+const exportPath = 'export';
 
 // Using a callback so that the constructor is run inside of the test.
 Funvas funvasFactory() => Fifty();
@@ -86,7 +87,7 @@ Future<void> _exportFrame(Future<ui.Image> imageFuture, String fileName) async {
   final bytes = await image.clone().toByteData(format: ui.ImageByteFormat.png);
   image.dispose();
 
-  final filePath = p.join(animationName, fileName);
+  final filePath = p.join(exportPath, animationName, fileName);
   final file = File(filePath);
   await file.parent.create(recursive: true);
   await file.writeAsBytes(bytes!.buffer.asUint8List(), flush: true);

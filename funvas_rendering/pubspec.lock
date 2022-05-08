@@ -75,7 +75,7 @@ packages:
       path: "../funvas"
       relative: true
     source: path
-    version: "0.1.6+6"
+    version: "0.1.7"
   funvas_tweets:
     dependency: "direct main"
     description:
