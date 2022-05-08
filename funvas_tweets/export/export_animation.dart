@@ -1,97 +1,172 @@
+import 'dart:async';
 import 'dart:io';
+import 'dart:ui' as ui;
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_test/src/_matchers_io.dart';
 import 'package:funvas/src/painter.dart';
 import 'package:funvas_tweets/funvas_tweets.dart';
+import 'package:path/path.dart' as p;
 
-void main() {
-  const fps = 50;
-  const animationDuration = Duration(seconds: 14);
-  const dimensions = Size(750, 750);
-  // If you use a different animation name, you will have to also consider that
-  // when exporting to GIF.
-  const animationName = 'animation';
-  // Using a callback so that the constructor is run inside of the test.
-  Funvas funvasFactory() => Fifty();
+const fps = 50;
+const animationDuration = Duration(seconds: 14);
+const dimensions = Size(750, 750);
+// If you use a different animation name, you will have to also consider that
+// when assembling the animation using ffmpeg.
+const animationName = 'animation';
 
-  late final ValueNotifier<double> time;
+// Using a callback so that the constructor is run inside of the test.
+Funvas funvasFactory() => Fifty();
 
-  TestWidgetsFlutterBinding.ensureInitialized();
+Future<void> main() async {
+  final time = ValueNotifier(.0);
   const MethodChannel('plugins.flutter.io/path_provider')
       // Allow google_fonts to download fonts to this directory during tests.
-      .setMockMethodCallHandler((call) async => 'export/google_fonts');
+      .setMethodCallHandler((call) async => 'export/google_fonts');
 
-  setUpAll(() {
-    // Allow using HTTP calls.
-    HttpOverrides.global = null;
-    time = ValueNotifier<double>(0);
-  });
-
-  tearDownAll(() {
-    time.dispose();
-  });
-
-  Future<void> pumpFunvas(WidgetTester tester) async {
-    // Using runAsync to enable using HTTP calls (e.g. for loading images).
-    await tester.runAsync(() async {
-      await tester.binding.setSurfaceSize(dimensions);
-      tester.binding.window.physicalSizeTestValue = dimensions;
-      tester.binding.window.devicePixelRatioTestValue = 1;
-
-      final funvas = funvasFactory();
-      if (funvas is FunvasFutureMixin) {
-        await funvas.future;
-      }
-
-      await tester.pumpWidget(SizedBox.fromSize(
-        size: dimensions,
-        child: CustomPaint(
-          painter: FunvasPainter(
-            time: time,
-            delegate: funvas,
-          ),
-        ),
-      ));
-    });
+  final funvas = funvasFactory();
+  if (funvas is FunvasFutureMixin) {
+    await funvas.future;
   }
 
-  testWidgets('trigger google_fonts preload', (tester) async {
-    await pumpFunvas(tester);
-    await tester.pump();
-    await MatchesGoldenFile.forStringPath('$animationName/_warmup.png', null)
-        .matchAsync(find.byType(SizedBox));
-  });
+  final rootWidget = SizedBox.fromSize(
+    size: dimensions,
+    child: CustomPaint(
+      painter: FunvasPainter(
+        time: time,
+        delegate: funvas,
+      ),
+    ),
+  );
+  final binding = _RenderingFlutterBinding.ensureInitialized()
+    ..setSurfaceSize(dimensions)
+    ..attachRootWidget(rootWidget)
+    ..scheduleWarmUpFrame();
 
-  testWidgets('export funvas animation', (tester) async {
-    await pumpFunvas(tester);
+  final microseconds = animationDuration.inMicroseconds,
+      framesToRender = fps * (microseconds / 1e6) ~/ 1;
+  final fileNameWidth = (framesToRender - 1).toString().length;
 
-    final microseconds = animationDuration.inMicroseconds,
-        goldensNeeded = fps * (microseconds / 1e6) ~/ 1;
+  final clock = Stopwatch()..start();
+  final futures = <Future>[];
+  for (var i = 0; i < framesToRender; i++) {
+    time.value = microseconds / framesToRender * i / 1e6;
 
-    final fileNameWidth = (goldensNeeded - 1).toString().length;
+    // Render the page in the widget tree / render view.
+    binding
+      ..attachRootWidget(rootWidget)
+      ..scheduleFrame()
+      ..handleBeginFrame(clock.elapsed)
+      ..handleDrawFrame();
 
-    final watch = Stopwatch()..start();
-    for (var i = 0; i < goldensNeeded; i++) {
-      time.value = microseconds / goldensNeeded * i / 1e6;
-      await tester.pump();
+    final renderView = binding.renderView;
+    // We parallelize the saving of the rendered frames by running the futures
+    // in parallel.
+    futures.add(_exportFrame(
+      renderView.layer.toImage(renderView.paintBounds),
+      '$animationName/${'$i'.padLeft(fileNameWidth, '0')}.png',
+    ));
 
-      final matcher = MatchesGoldenFile.forStringPath(
-          '$animationName/${'$i'.padLeft(fileNameWidth, '0')}'
-          '.png',
-          null);
-      await matcher.matchAsync(find.byType(SizedBox));
+    final frame = i + 1;
+    final elapsedTime = clock.elapsed;
+    final estimatedRemaining = Duration(
+        microseconds:
+            elapsedTime.inMicroseconds ~/ frame * (framesToRender - frame));
+    // ignore: avoid_print
+    print('$frame/$framesToRender, $elapsedTime, -$estimatedRemaining');
+  }
+  clock.stop();
 
-      final frame = i + 1;
-      final elapsedTime = watch.elapsed;
-      final estimatedRemaining = Duration(
-          microseconds:
-              elapsedTime.inMicroseconds ~/ frame * (goldensNeeded - frame));
-      // ignore: avoid_print
-      print('$frame/$goldensNeeded, $elapsedTime, -$estimatedRemaining');
+  await Future.wait(futures);
+  time.dispose();
+}
+
+Future<void> _exportFrame(Future<ui.Image> imageFuture, String fileName) async {
+  final image = await imageFuture;
+  final bytes = await image.clone().toByteData(format: ui.ImageByteFormat.png);
+  image.dispose();
+
+  final filePath = p.join(animationName, fileName);
+  final file = File(filePath);
+  await file.parent.create(recursive: true);
+  await file.writeAsBytes(bytes!.buffer.asUint8List(), flush: true);
+}
+
+/// Binding implementation specifically tailored to rendering animations.
+///
+/// This binding allows setting the surface size of the root [RenderView] and
+/// inserts an [_ExposedRenderView] for converting the rendered root to images.
+class _RenderingFlutterBinding extends BindingBase
+    with
+        SchedulerBinding,
+        ServicesBinding,
+        GestureBinding,
+        SemanticsBinding,
+        RendererBinding,
+        PaintingBinding,
+        WidgetsBinding {
+  static _RenderingFlutterBinding? _instance;
+  static _RenderingFlutterBinding get instance =>
+      BindingBase.checkInstance(_instance);
+
+  static _RenderingFlutterBinding ensureInitialized() {
+    if (_RenderingFlutterBinding._instance == null) {
+      _RenderingFlutterBinding();
     }
-    watch.stop();
-  }, timeout: const Timeout(Duration(hours: 3)));
+    return _RenderingFlutterBinding.instance;
+  }
+
+  @override
+  void initInstances() {
+    super.initInstances();
+    _instance = this;
+  }
+
+  Size? _surfaceSize;
+
+  void setSurfaceSize(Size? size) {
+    if (_surfaceSize == size) return;
+    _surfaceSize = size;
+    handleMetricsChanged();
+  }
+
+  @override
+  ViewConfiguration createViewConfiguration() {
+    final devicePixelRatio = window.devicePixelRatio;
+    final size = _surfaceSize ?? window.physicalSize / devicePixelRatio;
+    return ViewConfiguration(
+      size: size,
+      devicePixelRatio: devicePixelRatio,
+    );
+  }
+
+  @override
+  void initRenderView() {
+    renderView = _ExposedRenderView(
+      configuration: createViewConfiguration(),
+      window: window,
+    );
+    renderView.prepareInitialFrame();
+  }
+
+  @override
+  _ExposedRenderView get renderView => super.renderView as _ExposedRenderView;
+}
+
+/// Render view implementation that exposes the [layer] as an [OffsetLayer]
+/// for converting to images at the root level.
+class _ExposedRenderView extends RenderView {
+  _ExposedRenderView({
+    RenderBox? child,
+    required ViewConfiguration configuration,
+    required ui.FlutterView window,
+  }) : super(child: child, configuration: configuration, window: window);
+
+  // Unprotect the layer getter.
+  @override
+  OffsetLayer get layer => super.layer as OffsetLayer;
 }
