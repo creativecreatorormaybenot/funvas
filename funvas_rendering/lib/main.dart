@@ -24,10 +24,6 @@ Funvas funvasFactory() => Fifty();
 
 Future<void> main() async {
   final time = ValueNotifier(.0);
-  const MethodChannel('plugins.flutter.io/path_provider')
-      // Allow google_fonts to download fonts to this directory during tests.
-      .setMethodCallHandler((call) async => 'export/google_fonts');
-
   final funvas = funvasFactory();
   if (funvas is FunvasFutureMixin) {
     await funvas.future;
