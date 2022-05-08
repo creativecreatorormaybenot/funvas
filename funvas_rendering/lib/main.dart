@@ -18,7 +18,7 @@ const dimensions = Size(750, 750);
 // If you use a different animation name, you will have to also consider that
 // when assembling the animation using ffmpeg.
 const animationName = 'animation';
-const exportPath = 'export';
+const exportPath = String.fromEnvironment('EXPORT_PATH');
 
 // Using a callback so that the constructor is executed after initializing the
 // binding.
@@ -91,6 +91,7 @@ Future<void> _exportFrame(Future<ui.Image> imageFuture, String fileName) async {
 
   final filePath = p.join(exportPath, animationName, fileName);
   final file = File(filePath);
+  print(file.absolute.path);
   await file.parent.create(recursive: true);
   await file.writeAsBytes(bytes!.buffer.asUint8List(), flush: true);
 }

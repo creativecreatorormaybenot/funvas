@@ -1,3 +1,4 @@
 rm -rf export/animation/
-flutter run
+mkdir -p export/animation/
+flutter run --dart-define=EXPORT_PATH=./export/
 convert export/animation/*.png gif:- |  gifsicle -O3 --delay=2 --multifile - > export/animation.gif

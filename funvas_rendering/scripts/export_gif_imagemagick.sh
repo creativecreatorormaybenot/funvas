@@ -1,4 +1,4 @@
 rm -rf export/animation/
 mkdir -p export/animation/
-flutter run
+flutter run --dart-define=EXPORT_PATH=./export/
 convert -delay 2 export/animation/*.png -loop 0 export/animation.gif
