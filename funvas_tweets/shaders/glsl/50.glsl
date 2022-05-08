@@ -19,7 +19,7 @@ vec3 hsl2rgb(in vec3 c) {
 }
 
 void main() {
-  float scale = pow(2, t) - 1;
+  float scale = pow(2, mod(t, 14)) - 0.5;
 
   vec2 rel = gl_FragCoord.xy / res.xy;
   rel -= vec2(0.5);
