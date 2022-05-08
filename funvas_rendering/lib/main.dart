@@ -65,7 +65,7 @@ Future<void> main() async {
     // We parallelize the saving of the rendered frames by running the futures
     // in parallel.
     futures.add(_exportFrame(
-      renderView.layer.toImage(renderView.paintBounds),
+      await renderView.layer.toImage(renderView.paintBounds),
       '${'$i'.padLeft(fileNameWidth, '0')}.png',
     ));
 
@@ -74,7 +74,6 @@ Future<void> main() async {
     final estimatedRemaining = Duration(
         microseconds:
             elapsedTime.inMicroseconds ~/ frame * (framesToRender - frame));
-    // ignore: avoid_print
     print('$frame/$framesToRender, $elapsedTime, -$estimatedRemaining');
   }
   clock.stop();
@@ -84,8 +83,7 @@ Future<void> main() async {
   exit(0);
 }
 
-Future<void> _exportFrame(Future<ui.Image> imageFuture, String fileName) async {
-  final image = await imageFuture;
+Future<void> _exportFrame(ui.Image image, String fileName) async {
   final bytes = await image.clone().toByteData(format: ui.ImageByteFormat.png);
   image.dispose();
 
@@ -93,6 +91,7 @@ Future<void> _exportFrame(Future<ui.Image> imageFuture, String fileName) async {
   final file = File(filePath);
   await file.parent.create(recursive: true);
   await file.writeAsBytes(bytes!.buffer.asUint8List(), flush: true);
+  print('wrote $fileName to disk');
 }
 
 /// Binding implementation specifically tailored to rendering animations.
