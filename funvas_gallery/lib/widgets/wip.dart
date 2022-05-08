@@ -66,18 +66,19 @@ class _WIPFunvasPageState extends State<WIPFunvasPage> {
                       sigmaY: 3,
                     ),
                     child: ValueListenableBuilder<double>(
-                        valueListenable: _time,
-                        builder: (context, value, child) {
-                          return Slider(
-                            min: 0,
-                            max: 14.6,
-                            value: value,
-                            label: 'x${(pow(2, value) - 0.5).toStringAsFixed(1)}',
-                            onChanged: (value) {
-                              _time.value = value;
-                            },
-                          );
-                        }),
+                      valueListenable: _time,
+                      builder: (context, value, child) {
+                        return Slider(
+                          min: 0,
+                          max: 14.6,
+                          value: value,
+                          label: 'x${(pow(2, value) - 0.5).toStringAsFixed(1)}',
+                          onChanged: (value) {
+                            _time.value = value;
+                          },
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),
