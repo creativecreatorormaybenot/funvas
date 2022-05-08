@@ -74,7 +74,7 @@ Future<void> main() async {
     final estimatedRemaining = Duration(
         microseconds:
             elapsedTime.inMicroseconds ~/ frame * (framesToRender - frame));
-    print('r$frame/$framesToRender, $elapsedTime, -$estimatedRemaining');
+    print('[r] $frame/$framesToRender, $elapsedTime, -$estimatedRemaining');
   }
 
   await Future.wait(futures);
@@ -104,7 +104,7 @@ Future<void> _exportFrame(
   final estimatedRemaining = Duration(
       microseconds:
           elapsedTime.inMicroseconds ~/ frame * (framesToRender - frame));
-  print('e$frame/$framesToRender, $elapsedTime, -$estimatedRemaining');
+  print('[e] $frame/$framesToRender, $elapsedTime, -$estimatedRemaining');
 }
 
 /// Binding implementation specifically tailored to rendering animations.
