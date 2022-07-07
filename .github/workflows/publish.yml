@@ -60,7 +60,7 @@ jobs:
           credential: ${{ secrets.PUB_CREDENTIALS }}
           flutter_package: true
           skip_test: true
-      - name: Create Release
+      - name: Create release
         if: steps.pubspec.outputs.changed == 0
         id: create_release
         uses: actions/create-release@v1.1.4
