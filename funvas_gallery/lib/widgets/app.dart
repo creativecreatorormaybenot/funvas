@@ -5,7 +5,7 @@ class GalleryApp extends StatefulWidget {
   const GalleryApp({Key? key}) : super(key: key);
 
   @override
-  _GalleryAppState createState() => _GalleryAppState();
+  State<GalleryApp> createState() => _GalleryAppState();
 }
 
 class _GalleryAppState extends State<GalleryApp> {

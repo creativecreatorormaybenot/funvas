@@ -41,7 +41,7 @@ class FunvasContainer extends StatefulWidget {
   final Funvas funvas;
 
   @override
-  _FunvasContainerState createState() => _FunvasContainerState();
+  State<FunvasContainer> createState() => _FunvasContainerState();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
