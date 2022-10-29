@@ -13,7 +13,7 @@ import 'package:funvas_tweets/funvas_tweets.dart';
 import 'package:path/path.dart' as p;
 
 const fps = 50;
-const animationDuration = Duration(seconds: 15);
+const animationDuration = Duration(seconds: 8);
 const dimensions = Size(750, 750);
 // If you use a different animation name, you will have to also consider that
 // when assembling the animation using ffmpeg.
@@ -22,7 +22,7 @@ const exportPath = 'export';
 
 // Using a callback so that the constructor is executed after initializing the
 // binding.
-Funvas funvasFactory() => Fifty();
+Funvas funvasFactory() => Four();
 
 Future<void> main() async {
   _RenderingFlutterBinding.ensureInitialized();
@@ -146,11 +146,9 @@ class _RenderingFlutterBinding extends BindingBase
 
   @override
   ViewConfiguration createViewConfiguration() {
-    final devicePixelRatio = window.devicePixelRatio;
-    final size = _surfaceSize ?? window.physicalSize / devicePixelRatio;
     return ViewConfiguration(
-      size: size,
-      devicePixelRatio: devicePixelRatio,
+      size: _surfaceSize ?? dimensions,
+      devicePixelRatio: 1,
     );
   }
 
