@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io' as io;
 import 'dart:ui' as ui;
 
 import 'package:flutter/foundation.dart';
@@ -9,16 +8,17 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_rendering/src/platform.dart';
 import 'package:funvas_tweets/funvas_tweets.dart';
 import 'package:path/path.dart' as p;
 
-const fps = 50;
-const animationDuration = Duration(seconds: 8);
-const dimensions = Size(750, 750);
+const fps = 50; // TODO: FROM ENVIRONMENT
+const animationDuration = Duration(seconds: 8); // TODO: FROM ENVIRONMENT
+const dimensions = Size.square(750); // TODO: FROM ENVIRONMENT
 // If you use a different animation name, you will have to also consider that
 // when assembling the animation using ffmpeg.
-const animationName = 'animation';
-const exportPath = 'export';
+const animationName = 'animation'; // TODO: FROM ENVIRONMENT
+const exportPath = 'export'; // TODO: FROM ENVIRONMENT
 
 // Using a callback so that the constructor is executed after initializing the
 // binding.
@@ -79,7 +79,7 @@ Future<void> main() async {
   await Future.wait<void>(futures);
   time.dispose();
   clock.stop();
-  io.exit(0);
+  Platform.exit();
 }
 
 Future<ui.Image> _renderFrame() {
@@ -92,13 +92,12 @@ Future<void> _exportFrame(
   final bytes = await image.clone().toByteData(format: ui.ImageByteFormat.png);
   image.dispose();
 
+  if (bytes == null) throw StateError('Could not export frame $frame.');
+
   final fileNameWidth = (framesToRender - 1).toString().length;
   final fileName = '${'${frame - 1}'.padLeft(fileNameWidth, '0')}.png';
   final filePath = p.join(exportPath, animationName, fileName);
-  final file = io.File(filePath);
-  await file.parent.create(recursive: true);
-  await file.writeAsBytes(bytes!.buffer.asUint8List(), flush: true);
-
+  await Platform.downloadBytes(bytes.buffer.asUint8List(), filePath);
   final elapsedTime = clock.elapsed;
   final estimatedRemaining = Duration(
       microseconds:

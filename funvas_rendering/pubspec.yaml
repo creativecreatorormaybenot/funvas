@@ -15,6 +15,7 @@ dependencies:
   funvas_tweets:
     path: ../funvas_tweets
   path: ^1.8.1
+  meta: ^1.3.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0
