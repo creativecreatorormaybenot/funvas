@@ -5,6 +5,8 @@ import 'dart:convert' show base64Encode;
 import 'dart:html' show AnchorElement, HttpRequest, document;
 import 'dart:typed_data' show ByteBuffer;
 
+import '../config.dart';
+
 FutureOr<void> $downloadBytes(List<int> bytes, String filename) {
   // Encode our file in base64
   final base64 = base64Encode(bytes);
@@ -68,4 +70,21 @@ Future<void> $downloadUrl(
   return completer.future;
 }
 
+Config $getConfig() => _ConfigWeb();
+
 void $exit() => document.window?.close();
+
+class _ConfigWeb implements Config {
+  const _ConfigWeb._();
+  static _ConfigWeb? _instance;
+  factory _ConfigWeb() => _instance ??= const _ConfigWeb._();
+
+  @override
+  final int fps = 14;
+
+  @override
+  final int animationDuration = 4;
+
+  @override
+  final int dimensions = 512;
+}
