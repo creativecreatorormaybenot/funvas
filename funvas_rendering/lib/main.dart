@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:io';
+import 'dart:io' as io;
 import 'dart:ui' as ui;
 
 import 'package:flutter/foundation.dart';
@@ -76,10 +76,10 @@ Future<void> main() async {
     print('[r] $frame/$framesToRender, $elapsedTime, -$estimatedRemaining');
   }
 
-  await Future.wait(futures);
+  await Future.wait<void>(futures);
   time.dispose();
   clock.stop();
-  exit(0);
+  io.exit(0);
 }
 
 Future<ui.Image> _renderFrame() {
@@ -95,7 +95,7 @@ Future<void> _exportFrame(
   final fileNameWidth = (framesToRender - 1).toString().length;
   final fileName = '${'${frame - 1}'.padLeft(fileNameWidth, '0')}.png';
   final filePath = p.join(exportPath, animationName, fileName);
-  final file = File(filePath);
+  final file = io.File(filePath);
   await file.parent.create(recursive: true);
   await file.writeAsBytes(bytes!.buffer.asUint8List(), flush: true);
 
