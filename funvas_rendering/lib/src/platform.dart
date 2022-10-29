@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:meta/meta.dart';
 
+import 'config.dart';
 import 'platform/platform_io.dart'
     // ignore: uri_does_not_exist
     if (dart.library.html) 'platform/platform_web.dart';
@@ -18,6 +19,8 @@ abstract class Platform {
   static Future<void> downloadUrl(Uri url,
           {String? filename, Map<String, String>? headers}) =>
       $downloadUrl(url, filename, headers);
+
+  static Config getConfig() => $getConfig();
 
   static void exit() => $exit();
 }
