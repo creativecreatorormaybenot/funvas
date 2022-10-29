@@ -18,8 +18,10 @@ const dimensions = Size.square(750); // TODO: FROM ENVIRONMENT
 // If you use a different animation name, you will have to also consider that
 // when assembling the animation using ffmpeg.
 const animationName = 'animation'; // TODO: FROM ENVIRONMENT
+// The path to the directory where the animation will be saved.
 const exportPath = 'export'; // TODO: FROM ENVIRONMENT
 
+// TODO: FROM ENVIRONMENT
 // Using a callback so that the constructor is executed after initializing the
 // binding.
 Funvas funvasFactory() => Four();
