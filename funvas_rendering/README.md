@@ -11,7 +11,7 @@ and exports them to images lives in the `lib/` directory.
 You will need [gifsicle] for exporting GIFs. The installation is as easy as running `brew install gifsicle`.
 If you are not on macOS, you will need to read through installation guides yourself.
 Additionally, you need to have [ImageMagick] to convert PNGs to individual GIFs as gifsicle only
-supports GIF input. This can also be as easy as using `brew install imagemagick`.
+supports GIF input. This can also be as easy as running `brew install imagemagick`.
 
 The script for exporting animations is a **bash script**. If you do not have access to Bash, you
 will have to execute the commands manually.
@@ -42,6 +42,22 @@ delay between two frames - you will have to calculate that yourself).
 
 The process is essentially the same for mp4, just that the tool used is `ffmpeg`
 (`brew install ffmpeg`) and the bash script is `scripts/export_mp4.sh` :)
+
+### Windows
+
+All above explanations and available scripts assume that you are running on macOS.  
+In order to export animations on Windows instead, follow the following steps
+(tested on Windows 10 Professional 64-bit on a Ryzen 3400G with 16GB of RAM):
+
+1. Download and install [ImageMagick7][ImageMagick].
+2. Download gifsicle and extract the executable into the directory you want to use for rendering.
+3. Add Windows support using `flutter create --platforms=windows .` in `funvas_rendering`.
+4. Generate the `.png` files using `flutter run -d windows` in `funvas_rendering`.
+5. Run the following command in a Command Prompt:
+
+```sh
+magick "D:\Path\To\Repo\funvas_rendering\export\*.png" gif:- | gifsicle -O3 --delay=2 --multifile - > "D:\Path\To\Repo\funvas_rendering\export\animation.gif"
+```
 
 [Twitter]: https://twitter.com/creativemaybeno
 [funvas]: https://pub.dev/packages/funvas
