@@ -54,7 +54,7 @@ Future<void> main() async {
 
   final clock = Stopwatch()..start();
   final futures = <Future>[];
-  for (var i = 0; i < 1; i++) {
+  for (var i = 0; i < framesToRender; i++) {
     time.value = microseconds / framesToRender * i / 1e6;
 
     // Render the funvas animation / frame in the render view.
