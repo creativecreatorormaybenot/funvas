@@ -14,7 +14,7 @@ dependencies:
   funvas:
     path: ../funvas
 
-  google_fonts: ^2.3.1
+  google_fonts: ^4.0.1
   open_simplex_2:
     path: ../open_simplex_2
 
@@ -23,6 +23,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
-  assets:
-    - shaders/spir-v/
+  shaders:
+    - shaders/50.frag
