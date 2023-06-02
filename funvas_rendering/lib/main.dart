@@ -172,7 +172,7 @@ class _ExposedRenderView extends RenderView {
     RenderBox? child,
     required ViewConfiguration configuration,
     required ui.FlutterView window,
-  }) : super(child: child, configuration: configuration, window: window);
+  }) : super(child: child, configuration: configuration, view: window);
 
   // Unprotect the layer getter.
   @override
