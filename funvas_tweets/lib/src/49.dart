@@ -3,8 +3,10 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:funvas/funvas.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
-class FortyNine extends Funvas {
+
+class FortyNine extends Funvas with FunvasTweetMixin {
   @override
   void u(double t) {
     const period = 6;
@@ -41,4 +43,8 @@ class FortyNine extends Funvas {
       c.drawPath(p, paint);
     }
   }
+  
+  @override
+  // TODO: placeholder
+  String get tweet => 'https://twitter.com';
 }
