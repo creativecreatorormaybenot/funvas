@@ -156,7 +156,7 @@ class _RenderingFlutterBinding extends BindingBase
   void initRenderView() {
     renderView = _ExposedRenderView(
       configuration: createViewConfiguration(),
-      window: window,
+      view: platformDispatcher.implicitView!,
     );
     renderView.prepareInitialFrame();
   }
@@ -171,8 +171,8 @@ class _ExposedRenderView extends RenderView {
   _ExposedRenderView({
     RenderBox? child,
     required ViewConfiguration configuration,
-    required ui.FlutterView window,
-  }) : super(child: child, configuration: configuration, window: window);
+    required ui.FlutterView view,
+  }) : super(child: child, configuration: configuration, view: view);
 
   // Unprotect the layer getter.
   @override
