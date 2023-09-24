@@ -1,3 +1,7 @@
+## 0.1.8
+
+* Updated to accomodate latest framework changes.
+
 ## 0.1.7
 
 * Exposed `FunvasPainter`.
