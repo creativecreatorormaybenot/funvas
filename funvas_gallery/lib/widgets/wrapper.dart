@@ -38,7 +38,7 @@ class DebugWrapper extends StatelessWidget {
         actions: {
           _DebugWIPIntent: CallbackAction(
             onInvoke: (_) {
-              Overlay.of(context)!.insert(OverlayEntry(
+              Overlay.of(context).insert(OverlayEntry(
                 opaque: true,
                 builder: (context) => const WIPFunvasPage(),
               ));

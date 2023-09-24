@@ -64,7 +64,7 @@ class GalleryRouterDelegate extends RouterDelegate<int> with ChangeNotifier {
 class GalleryRouteInformationParser extends RouteInformationParser<int> {
   @override
   Future<int> parseRouteInformation(RouteInformation routeInformation) async {
-    final uri = Uri.parse(routeInformation.location!);
+    final uri = routeInformation.uri;
     final pathSegments = uri.pathSegments;
 
     if (pathSegments.length != 1) return FunvasDrawer.instance.key;
@@ -78,6 +78,8 @@ class GalleryRouteInformationParser extends RouteInformationParser<int> {
 
   @override
   RouteInformation? restoreRouteInformation(int configuration) {
-    return RouteInformation(location: '/$configuration');
+    return RouteInformation(
+      uri: Uri.parse('/$configuration'),
+    );
   }
 }
