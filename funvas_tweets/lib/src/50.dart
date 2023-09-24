@@ -3,8 +3,13 @@ import 'dart:ui';
 
 import 'package:funvas/funvas.dart';
 import 'package:funvas_tweets/src/future_mixin.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
-class Fifty extends Funvas with FunvasFutureMixin {
+class Fifty extends Funvas with FunvasFutureMixin, FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://x.com/creativemaybeno/status/1523422845992243200?s=20';
+
   Fifty() {
     _init();
   }
