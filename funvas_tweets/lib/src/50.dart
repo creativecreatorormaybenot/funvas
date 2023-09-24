@@ -1,12 +1,15 @@
 import 'dart:async';
-import 'dart:typed_data';
 import 'dart:ui';
 
-import 'package:flutter/services.dart';
 import 'package:funvas/funvas.dart';
 import 'package:funvas_tweets/src/future_mixin.dart';
+import 'package:funvas_tweets/src/tweet_mixin.dart';
 
-class Fifty extends Funvas with FunvasFutureMixin {
+class Fifty extends Funvas with FunvasFutureMixin, FunvasTweetMixin {
+  @override
+  String get tweet =>
+      'https://x.com/creativemaybeno/status/1523422845992243200?s=20';
+
   Fifty() {
     _init();
   }
@@ -18,11 +21,8 @@ class Fifty extends Funvas with FunvasFutureMixin {
   Future get future => _completer.future;
 
   Future<void> _init() async {
-    final byteData = await rootBundle.load(
-      'packages/funvas_tweets/shaders/spir-v/50.sprv',
-    );
-    _completer.complete(_fragmentProgram = await FragmentProgram.compile(
-      spirv: byteData.buffer,
+    _completer.complete(_fragmentProgram = await FragmentProgram.fromAsset(
+      'packages/funvas_tweets/shaders/50.frag',
     ));
   }
 
@@ -31,9 +31,10 @@ class Fifty extends Funvas with FunvasFutureMixin {
     final fragmentProgram = _fragmentProgram;
     if (fragmentProgram == null) return;
 
-    final shader = fragmentProgram.shader(
-      floatUniforms: Float32List.fromList([x.width, x.height, t]),
-    );
+    final shader = fragmentProgram.fragmentShader();
+    shader.setFloat(0, x.width);
+    shader.setFloat(1, x.height);
+    shader.setFloat(2, t);
     c.drawRect(Offset.zero & x.size, Paint()..shader = shader);
   }
 }

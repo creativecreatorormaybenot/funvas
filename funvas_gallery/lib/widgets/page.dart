@@ -258,9 +258,9 @@ class _PageHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return _Bar(
       children: [
-        Expanded(
+        const Expanded(
           child: Padding(
-            padding: const EdgeInsets.symmetric(
+            padding: EdgeInsets.symmetric(
               horizontal: 16,
             ),
             child: Align(
@@ -272,7 +272,7 @@ class _PageHeader extends StatelessWidget {
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: const [
+                    children: [
                       Link(
                         body: Text('@creativemaybeno'),
                         url: 'https://twitter.com/creativemaybeno',
@@ -280,7 +280,7 @@ class _PageHeader extends StatelessWidget {
                       SelectableText('\'s funvas collection'),
                     ],
                   ),
-                  const SelectableText(
+                  SelectableText(
                     'follow for new animations :)',
                     textAlign: TextAlign.center,
                   ),
