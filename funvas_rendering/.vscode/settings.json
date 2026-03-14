@@ -1,0 +1,50 @@
+{
+    "[dart]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.suggestSelection": "first",
+        "editor.tabCompletion": "onlySnippets",
+        "editor.wordBasedSuggestions": false,
+        "editor.selectionHighlight": false,
+        "editor.defaultFormatter": "Dart-Code.dart-code",
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.formatOnPaste": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll": true,
+            "source.organizeImports": true
+        },
+        "editor.quickSuggestions": {
+            "comments": "on",
+            "strings": "on",
+            "other": "on"
+        },
+        "editor.links": true,
+        "editor.rulers": [
+            80
+        ]
+    },
+    "dart.lineLength": 80,
+
+    // Flutter Version Manager
+    //"dart.flutterSdkPath": ".fvm/flutter_sdk",
+
+    // Remove .fvm files from search
+    "search.exclude": {
+        "**/.fvm": true,
+        ".firebase": true,
+        ".dart_tool": true,
+        "coverage": true,
+        "build": true,
+    },
+
+    // Remove from file watching
+    "files.watcherExclude": {
+        "**/.fvm": true,
+        ".firebase": true,
+        ".dart_tool": true,
+        "coverage": true,
+        "build": true,
+    }
+}
